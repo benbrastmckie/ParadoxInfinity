@@ -1,0 +1,105 @@
+
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+%\usepackage{setspace}
+%\usepackage{endnotes} \let\footnote=\endnote %Remember to update below
+
+% Bibliography Packages
+%\usepackage{linquiry}
+\usepackage{natbib}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+%\usepackage{latexsym}
+%\usepackage{amsfonts}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+\usepackage{enumerate}
+
+%Diagram packages
+%\usepackage{bar}
+%\usepackage{curves}
+%\usepackage{pst-plot}
+
+%Tree packages
+%\usepackage{ecltree}
+%\usepackage{eclbip}
+%\usepackage{eepic}
+%\usepackage{epic}
+
+
+\begin{document}
+
+\begin{center} {\large 24.118x -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 7: Answer Key \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+
+\subsection*{Answers:}
+
+
+\begin{enumerate}
+
+\item Take the line, and for all $i,j \le 2^k$ such that $i-j=1$, divide the line into segments $[\frac{j}{2^k}, \frac{i}{2^k})$.\footnote{The last segment should be a closed interval, rather than open on the right. But it doesn't really matter because, if you divided the line into intervals that are all open on the right, you'd only miss one point, which has probability 0 of being chosen by the coin-toss method. So everything that I say here would remain true.} So, for instance, if $2^k=8$, you've divided the line into $$\big[\frac{0}{8}, \frac{1}{8}\big), \big[\frac{1}{8}, \frac{2}{8}\big), \ldots \big[\frac{7}{8}, \frac{8}{8}\big]$$ There are, in general, $2^k$ such intervals. 
+
+When you flip the coin the first time, you narrow down the intervals your number will be in by one half --- i.e., you determine that is in one of $\frac{2^k}{2} = 2^{k-1}$ intervals. When you flip the second time, you again narrow down the intervals by one half --- i.e., you determine that your number is in one of $\frac{2^{k-1}}{2}=2^{k-2}$ intervals. And so on, until, after $k$ flips, you narrow down the interval your number is in to $\frac{2^k}{2^k}=1$ interval. So the probability of choosing a number in one of these intervals is the probability of getting a certain sequence after $k$ flips, which is $\frac{1}{2^k}$.
+
+Now, let $P(p)$ be the probability of picking a point in $$\big[\frac{m}{2^k},\frac{n}{2^k}\big]$$ and let $$P(p_1 \vee p_2 \vee \ldots \vee p_{n-m})$$ be the probability of picking a point in$$\big[\frac{m}{2^k},\frac{m+1}{2^k}\big)\text{, or in }\big[\frac{m+1}{2^k}, \frac{m+2}{2^k}\big)\text{, or in \ldots or in }\big[\frac{n-1}{2^k}, \frac{n}{2^k}\big]$$ $p$ and $p_1\vee p_2\vee\ldots\vee p_{n-m}$ are equivalent, because  $$\big[\frac{m}{2^k},\frac{n}{2^k}\big] = \big[\frac{m}{2^k},\frac{m+1}{2^k}\big) \cup \big[\frac{m+1}{2^k}, \frac{m+2}{2^k}\big) \cup \ldots \cup \big[\frac{n-1}{2^k}, \frac{n}{2^k}\big]$$ And $p_1, p_2, \ldots p_{n-m}$ are mutually exclusive. So, by countable additivity, $$P(p)=P(p_1)+P(p_2)+\ldots+P(p_{n-m})$$
+
+By the earlier argument, $$P(p_1) = P(p_2) = \ldots =P(p_{n-m}) = \frac{1}{2^k}$$ So $$P(p) = (n-m)\times \frac{1}{2^k} = \frac{n-m}{2^k}$$
+
+\item \begin{enumerate}
+	\item \begin{itemize}
+		\item At Stage 1, the interval $(\frac{1}{3}, \frac{2}{3})$ is taken away. That has Lebesgue measure $\frac{1}{3}$.
+		\item At Stage 2, the intervals $(\frac{1}{9}, \frac{2}{9})$ and $(\frac{7}{9}, \frac{8}{9})$ are taken away. They each have Lebesgue measure $\frac{1}{9}$, and they are disjoint, so by countable additivity the Lebesgue measure of what gets taken away at Stage 2 is $\frac{1}{9}+\frac{1}{9}=\frac{2}{9}$.
+		\item At Stage 3, four intervals are taken away, each has Lebesgue measure $\frac{1}{27}$, and they are all disjoint, so the Lebesgue measure of what gets taken away during Stage 3 is $\frac{4}{27}$
+		\item At Stage $n$, $2^{n-1}$ intervals are taken away, each with Lebesgue measure $\frac{1}{3^n}$, and they are all disjoint, so the Lebesgue measure of what gets taken away during Stage $n$ is $$\frac{2^{n-1}}{3^n}$$
+		\end{itemize}
+	\item What is taken away at each stage is disjoint from what is taken away at all other stages. So the Lebesgue measure of what is gone after every stage equal the measure of what is taken away at Stage 1 plus what is taken away at stage 2 plus \ldots which is $$\sum_{n=1}^\infty \frac{2^{n-1}}{3^n} = \frac{1}{3}\sum_{n=1}^\infty \frac{2^{n-1}}{3^{n-1}} = \frac{1}{3}\times\frac{1}{1-\frac{2}{3}} = \frac{1}{3}\times 3 = 1$$
+	\item Let $\lambda$ be the Lebesgue measure, $C$ the Cantor Set, and $S$ all the stuff that was taken away. $C$ and $S$ are disjoint, and their union equals the entire interval $[0, 1]$, so $$\lambda(C) + \lambda(S) = \lambda([0,1]) = 1$$ We know that $\lambda(S)=1$, so by the above, $\lambda(C)=0$.
+	\vspace{3mm}
+	
+	Interesting factoid: the Cantor Set has the cardinality of the reals (that is not obvious, so don't feel bad about not seeing how that's true). So the Cantor Set is an example of a set with the cardinality of the reals but Lebesgue measure 0.
+	\end{enumerate}
+
+\item \begin{enumerate}
+	\item \begin{itemize}
+		\item Reflexivity: for all $f$, there are 0 many numbers $k$ such that $f(k)\neq f(k)$. So there are at most finitely many such $k$. So $f$ is in the same orbit as itself.
+		\item Symmetry: suppose $f_1$ is in the same orbit as $f_2$. Then there are at most finitely many numbers $k$ such that $f_1(k)\neq f_2(k)$. So there are at most finitely many numbers $k$ such that $f_2(k)\neq f_1(k)$. So, $f_2$ is in the same orbit as $f_1$.
+		\item Transitivity: suppose $f_1$ is in the same orbit as $f_2$, and $f_2$ is in the same orbit as $f_3$. Then there are at most finitely many numbers $k$ such that $f_1(k)\neq f_2(k)$. Say there are $n$. And there are at most finitely many numbers $k$ such that $f_2(k)\neq f_3(k)$. Say there are $m$. Then there are, at most, $n+m$ numbers $k$ such that $f_1(k)\neq f_3(k)$. So there are at most finitely many numbers $k$ such that $f_1(k)\neq f_3(k)$. So $f_1$ is in the same orbit as $f_3$.
+		\end{itemize}
+	\item For all $f\in O_0$, Let $$g_0(f) = f(0)\times 2^0 + f(1)\times 2^1 +f(2)\times 2^2 +\ldots$$ This will assign a natural (finite) number to every $f$, as, for all $f$, there is some $n$ such that, for all $k\ge n$, $f(k)=0$.
+	
+	If you write out $f(n)f(n-1)f(n-2)\ldots f(0)$, you will have written out $g_0(f)$ in binary notation. If you think about it, you'll see that this means that $g_0$ does not assign any two functions the same number. (Exercise: spell out the proof.)
+	\item If we are willing to assume the Axiom of Choice, then yes, it is possible. For each orbit, pick some representative $f^*$. Let the $g$ for that orbit be defined as follows $$g(f) = |f(0)-f^*(0)|\times 2^0 + |f(1)-f^*(1)| \times 2^1 + |f(2)-f^*(2)|\times 2^2 + \ldots$$ This will assign a natural (finite) number to every $f$, as for every $f$, there is some $n$ such that, for all $k\ge n$, $f(k)-f^*(k) = 0$. It will assign a different natural number to each $f$ for similar reasons to those in part (b).
+	
+	If we are \emph{not} willing to assume the Axiom of Choice, then no, it is not possible, as far as I know. I know of now way of defining something like $g$ for each orbit that doesn't rely on having picked out a representative of that orbit, and there is no description you can use to pick out a representative for each orbit --- something like ``the smallest function in each orbit'' --- that doesn't require that you've already defined something like the function $g$.
+	
+	You didn't need to mention the Axiom of Choice explicitly to get full marks for this question; you just needed to provide something like one of the above rationales for your answer.
+	
+	\end{enumerate}
+	
+\item This is a question is quite open-ended; you just needed to pick a thesis and make a case for choosing it that didn't betray any misunderstandings, and was mildly interesting. 
+
+Personally, I find theses 1 and 2 most difficult to accept (and about equally difficult). Denying those seems more like starting to talk about something other than volume, and using the word ``volume'' for this new thing, rather than affirming a surprising thesis about volume. Having said that, the line between changing the subject and accepting a surprising thesis is not completely clear. I'm sure that, in the 19th century, people would have thought you were changing the subject, if you told them that time was relative to a frame of reference; but now we think that Relativity is not only about time, but is also \emph{true}.
+
+I am somewhat sympathetic to accepting 4, and denying the Axiom of Choice, as I think we have independent reasons for being suspicious about the Axiom of Choice. But, as I say in the notes, I have trouble seeing, in this particular case, how denying the Axiom of Choice helps. In this particular case, denying the Axiom of Choice seems to me like making the Banach-Tarski theorem unprovable, but not giving us a reason to think it is false.
+
+So, by process of elimination, I guess I accept the orthodox solution --- i.e., thesis 3. That means I have to accept the Banach-Tarski Theorem. When I think about it as kind of like the circle warm-up case, except more complicated, I don't feel so bad about it. Both the warm-up case and the Banach-Tarski Theorem have to do with the fact that the cardinality of any subset of $\mathbb{R}^n$ is the same as any other. That is a weird fact, but once I accept that, I can see a way of accepting the Banach-Tarski theorem. Sometimes.
+
+\end{enumerate}
+
+\end{document}
+

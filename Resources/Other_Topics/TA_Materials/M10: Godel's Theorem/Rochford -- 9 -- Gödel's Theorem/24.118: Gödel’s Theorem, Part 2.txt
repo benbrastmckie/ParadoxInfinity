@@ -1,0 +1,152 @@
+Title: 24.118: Gödel’s Theorem, Part 2
+Author: Damien Rochford
+
+* [First Incompleteness Theorem: Some Commentary][section_first]
+	* [Alternative Turing-Machine Formulations][section_alternative]
+	* [Outline of the Proof][section_outline]
+	* [Two Levels of Interpretation][section_levels]
+	* [Every Turing Machine Has a Gödel Sentence][section_every]
+	* [Strengthening the Result][section_strengthening]
+	* [The “Axiomatic Systems Formulation][section_axiomatic]
+* [The Second Incompleteness Theorem][section_second]
+* [More Powerful Languages][section_powerful]
+* [The Philosophical Upshot][section_upshot]
+	* [Truth and Provability][section_truth]
+	* [Minds and Machines][section_minds]
+
+#First Incompleteness Theorem: Some Commentary [section_first]
+
+The most important thing, this week, is that you understand the proof of Gödel’s First Incompleteness Theorem. So let me just remind you how it works.
+
+##Alternative Turing-Machine Formulations [section_alternative]
+
+Firstly: be aware that Matt’s statement of the theorem is different to mine in the notes. Matt’s formulation is (to paraphrase):
+
+>There is no Turing Machine that, given empty input, prints sentences of \(\mathcal{L}\) such that:
+	1. for every trues sentence of \(\mathcal{L}\), there is some finite amount of time after which the Turing Machine prints out that sentence, and
+	2. the machine never prints out a false sentence.
+
+My formulation is:
+>There is no Turing Machine that outputs a “\(1\)” if and only if it is given a true sentence of \(\mathcal{L}\) as input.
+
+Another way of putting this: there is no Turing Machine that *validates* all and only true sentences of \(\mathcal{L}\).
+
+These two formulations of the theorem are in fact equivalent; you’ll get a chance to say something about this on the final assignment.
+
+The only difference in the proof is that Matt uses a formula of \(\mathcal{L}\) that he calls \(\mathtt{Print(x_1, x_2)}\), which is true iff Turing Machine number \(x_1\) prints out the sentence encoded by \(x_2\), at some stage. I, instead, use a formula I call \(\mathtt{Validate(x_1,x_2)}\), which is true iff Turing Machine \(x_1\) validates the sentence encoded by \(x_2\).
+
+##Outline of the Proof [section_outline]
+
+1. We suppose, for reductio, that there is a Turing Machine that validates all and only the true sentences of \(\mathcal{L}\).
+2. We show that, if 1, then there exists a sentence \(Gödel(k)\) of \(\mathcal{L}\) that is true iff  \(\mathtt{Gödel(k)}\) is *not* validated by our magic Turing Machine.
+3. We derive a contradiction.
+4. We conclude: there is no Turing Machine that validates all and only the true sentences of \(\mathcal{L}\).
+
+Step 2 is the hard part. It involves showing that 
+* there exists a formula \(\mathtt{Validate(x_1,x_2)}\) of \(\mathcal(L)\) that is true iff Turing Machine \(x_1\) validates the sentence encoded by \(x_2\), and
+* there exists a formula \(\mathtt{Sub(x_1,x_2,x_3)\) that is true iff 
+	* \(x_2\) encodes a formula of \(\mathcal{L}\) with one free variable;
+	* \(x_3\) encodes a sentence of \(\mathcal{L}\); and
+	* the sentence \(x_3\) encodes is the result of substituting the name in \(L\) of \(x_1\) for the free variable in \(x_2\).
+We use both of those together to construct \(\mathtt{Gödel(k)}\).
+
+##Two Levels of Interpretation [section_levels]
+
+Something to be clear about is that, when it comes to formulas like \(\mathtt{Validate(x_1,x_2)}\), and \(\mathtt{Gödel(k)}\), there are two ways of understanding what they say. On one level, these formulas are just about numbers, in the same way any formula of \(\mathcal{L}\) is about numbers. “\(\mathtt{Gödel(k)}\)” is just an abbreviation for some very long, complicated sentence about a relationship among natural numbers, involving addition and multiplication and universal quantification and whatever. But, at the same time, it turns out that that complicated equation is true if and only if our Turing Machine does not validate \(\mathtt{Gödel(k)}\), and in that sense that \(\mathtt{Gödel(k)}\) “says”: the magic Turing Machine won’t validate me! That’s the second level of interpretation.
+
+## Every Turing Machine has a Gödel Sentence [section_every]
+
+Our proof went by assuming that there was a certain Turing Machine, and then showing that, if there was, then there would be a sentence that was either true and not-validated, or false and validated. But the construction we used didn’t rely very much on the details of the particular Turing Machine we were imagining to exist. For *any* Turing Machine, you can do something like the construction used in Gödel’s proof, and produce a sentence of \(\mathcal{L}\) that is true if and only if that Turing Machine doesn’t validate it. So every Turing Machine has its own Gödel Sentence.
+
+##Strengthening the Result [section_strengthening]
+
+The result, as I’ve stated it, is that there’s no Turing Machine that validates all and only the true sentences of \(L\). Another way of putting this: any Turing Machine that validates all the True sentences also validates some false ones. We can, in fact, strengthen the result to this:
+
+>There is no Turing Machine that validates all true sentences of \(L\) and is *consistent*
+
+where **consistent** means “does not validate both a sentence of \(L\) and its negation.
+
+This is pretty easy to see. Consider the Gödel sentence \(G\) of a Turing Machine \(M\) that validates all true sentences. \(G\) can’t be true, because then it would not be validated by \(M\), so \(M\) would not validate all true sentences after all, contrary to our supposition. So \(G\) must be false, in which case \(M\) must validate it.
+
+Now, if \(G\) is false, the negation of \(G\) is true. And \(M\) validates all true sentences. So \(M\) validates the negation of \(G\). So \(M) validates both \(G\) and its negation. So it is inconsistent.
+
+You can, in fact, strengthen the result yet further. I won’t give you the details of how here; I’ll just report them.
+
+Let us say a Turing Machine is **complete** iff for every sentence in \(L\), it validates either it, or its negation (and perhaps both). The strongest form of the First Incompleteness Theorem is:
+
+>There is no Turing Machine that is both consistent and complete.
+
+The two weaker version of the theorem follow from this one. (Exercise: think about why this is so.)
+
+##The “Axiomatic System” Formulation [section_axiomatic]
+
+The way Gödel originally stated the theorem was not in terms of Turing Machines; Gödel’s theorem predates the paper that introduced Turing Machines to the world. It was, rather in terms **axiomatic systems**.
+
+What are those? They are:
+1. some sentences in a formal language, plus
+2. some syntactic rules for deriving new sentences from old sentences.
+You use an axiomatic system to form a proof. You start the proof with some axioms, and use the rules to derive more and more sentences, until you get the sentence you are trying to prove (or not).
+
+Here is how you might see Gödel’s Incompleteness Thoerem stated, in axiomatic-system terms:
+>There is no effective axiomatisation of arithmetic that is both consistent and complete.
+
+“Effective axiomatistaion of arithmetic” means a set of axioms in the language of arithmetic that can be specified in a finite way. You need a restriction of this sort to rule out things like having every true sentence of \(\mathcal{L}\) as an axiom.
+
+What *exactly* it means to be able to specify the set of axioms in “a finite way” was not made super-precise until Turing Machines came on the scene. The way we define an “effective axiomatisation” now is this: there is a Turing Machine that, for each axiom, would print out that axiom after some finite amount of time.
+
+In general, for every finitely specifiable axiomatic system, there is a corresponding Turing Machine that validates all and only the sentences that are provable in that system. So, if there were an effective axiomatisation of arithmetic that is both consistent and complete, there would be a Turing Machine that is both consistent and complete. But there isn’t, so there’s not.
+
+#The Second Incompleteness Theorem [section_second]
+
+The details of proving the Second Incompleteness Theorem are somewhat messy. So here’s just the gist of the idea. You can write a sentence in \(L\) that is true iff a given set of axioms is consistent. So there is a question as to whether you can derive this sentence from that very set of axioms. The theorem is this:
+
+>If an axiomatisation of arithmetic can prove its own consistency, then it isn’t consistent.
+
+The proof involves finding a sentence in \(L\) that encodes the proof of the first incompleteness theorem that you can prove from a given set of axioms, \(A\). Exactly how to do this is very sensitive to exactly what \(A\) is, and how provability is codified in \(L\). That’s the messy part. But it can be done.
+
+So, in effect, you can always find a sentence of \(L\) from axioms \(A\) that says:
+>If the set \(A\) is consistent, then \(G\) is true.
+(The above being equivalent to the strong version of the First Incompleteness Theorem.)
+
+If you can *also* prove the set \(A\) is consistent from \(A\), then you can prove \(G\), the system’s Gödel sentence. And \(A\) can only do that if it is inconsistent. So \(A\) can only prove that it is consistent if it isn’t.
+
+#More Powerful Languages [section_powerful]
+
+We’ve been talking entirely about the language of arithmetic. But Gödel’s incompleteness results are in fact extremely general. The results apply to any language that contains arithmetic as a fragment — like, for instance, set theory.
+
+Some thing that are *not* provable from a finite set of consistent axioms in the language of arithmetic are provable within set theory. But any set of axioms of set theory will have it’s own Gödel sentence, in the language of set theory. So no set of axioms in the language of set theory is both consistent and complete. And no consistent set of axioms in the language of set-theory can prove its own consistency.
+
+#Philosophical Upshot [section_upshot]
+
+##Truth and Provability [section_truth]
+
+Minimally, Gödel’s Incompleteness Theorem shows that there are mathematical questions we can formulate that can’t be answer by means of any standard computational method. That, by itself, is somewhat astounding.
+
+If you believe the Church-Turing thesis, then it follows that these questions can’t be answered by any method whatsoever.
+
+There was a theory of meaning that was very popular in the early part of the twentieth century, among philosophers, called “verificationism”. Verificationism is the view that, among other things, if a sentence cannot be verified — i.e., if there is no way to determine whether it is true or false — then it is neither true nor false. 
+
+Verificationism has lots of problems. But the place you might think it is most plausible is mathematics. The only grip we have, you might think, one what mathematical terms *mean* is what we can prove or not prove using them; so proof cannot come apart from truth, in mathematics.
+
+Gödel’s Theorem appears to show definitively that this is false.
+
+That isn’t as straightforward a consequence of Gödel’s Theorem as you might think. For some sentences in the language of set theory that cannot be proved by our standard set theory axioms (called ZFC), it is not entirely implausible that they in fact have no truth-value. Maybe there is no fact of the matter as to whether the [continuum hypothesis][continuum] is true, for instance. Maybe what is true is that our ordinary notion of sets is imprecise, and there are different ways of making it precise, some of which entail that the continuum hypothesis is true, others of which entail that it is false.
+
+[continuum]:https://en.wikipedia.org/wiki/Continuum_hypothesis
+
+But for other unprovable sentences, this is not so plausible. Scott Aaronson, in his guest lecture, spoke about a very good example. He and Adam Yedidia have shown that the value of \(BB(8000)\) is neither provable nor disprovable from ZFC (assuming ZFC is consistent).  Can we really convince ourselves there is no fact of the matter about what value \(BB(8000)\) has? I can’t. It seems to me that here is a clear case in which truth and provability come apart.
+
+##Minds and Machines [section_minds]
+
+Gödel’s Theorem shows that certain mathematical truths cannot be known by computational means. If you think there are ways to know these things *anyway*, then you will take Gödel’s Theorem to show that the Church-Turing thesis is, in fact, false; there are kinds of computations, that tell us the answer to non-computable questions in mathematics, which are not doable by any Turing-Machine, or equivalent to any Turing-specifiable set of axioms.
+
+If *we* can know things about mathematics that cannot be known by Turing-computational means, then those non-computational things must be happening *in our minds*. The most famous contemporary proponent of this view is [Roger Penrose][Penrose], a British physicist. (His argument is most fully developed in his book *Shadows of the Mind*. You can read a paper by David Chalmers laying out the argument of that book and critiquing it [here][chalmers]. You can read Penrose’s response [here][Presponse].)
+
+[chalmers]:http://consc.net/papers/penrose.html
+[Presponse]:http://www.calculemus.org/MathUniversalis/NS/10/01penrose.html
+
+As Penrose points out, all contemporary physical theory is computable, in the sense that you can simulate any physical system on a Turing-machine, to an arbitrarily high level of precision (though perhaps not *perfect* precision, if there are continuous quantities in physics). So, if the only things going on in our minds are things compatible with contemporary physical theory, then our minds must be Turing-computable. Penrose draws the amazing conclusion that we have yet to discover the physics that is relevant to describing how our minds work. Understanding minds will, Penrose thinks, require discovering new physics. It is one of the things we can look forward to, when we finally reconcile quantum mechanics and relativity.
+
+[Penrose]:https://en.wikipedia.org/wiki/Roger_Penrose
+
+Why, exactly, *should* we believe that we can know some of these things that are not Turing Computable? That’s a good question, and one for which many philosophers think there is not a good answer. But the proponents of the view have argument. I have given one such argument in the problem set for you to think about. There is another version laid out in the Chalmers reading; you should check it out! You should also see what Chalmers has to say about it.

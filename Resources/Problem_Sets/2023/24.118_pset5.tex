@@ -1,0 +1,924 @@
+
+
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{pset-2023}
+
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{qa}
+
+
+\begin{document}
+
+\psintro{Problem Set 5: Newcomb's Problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\question{
+\subsection*{Notation:} 
+
+\subsubsection*{A. Evidential Decision Theory} 
+
+
+According to Evidential Decision Theorists, the \textbf{expected value} of an option $A$ is the weighted average of the values of $A$'s possible outcomes, with weights determined by the probability of the relevant state of affairs, given that you choose $A$. Formally:
+\[
+EV(A) = v(A S_1) \cdot p(S_1|{}A) +  v(A S_2) \cdot p(S_2|{}A) + \ldots +  v(A S_n) \cdot p(S_n|{}A)
+\]
+where $S_1, S_2,\ldots S_n$ is any list of (exhaustive and mutually exclusive) states of the world, $v(A S_i)$ is the value of being in a situation in which you've chosen $A$ and $S_i$ is the case, and $p(S|A)$ is the probability of $S$, given that you choose $A$.
+
+Evidential Decision Theorists endorse the following principle:
+\begin{description}
+\item[Expected Value Maximization]
+In any decision problem, you ought to choose an option whose expected value is at least as high as that of any rival option.
+\end{description}
+
+
+\subsubsection*{B. Causal Decision Theory} 
+
+Causal Decision Theorists prefer a different way of calculating expected value. To avoid confusion, I shall refer to the causalist's notion as \textbf{expected causal utility}. 
+
+The {expected causal utility} of an option $A$ is the weighted average of the values of $A$'s possible outcomes, with weights determined by the probability of the following subjunctive conditional: \emph{were you to perform $A$, the outcome would come about}. Formally:
+\[
+ECU(A) = v(A S_1) \cdot p(A \ \Box\hspace{-1.6mm}\rightarrow S_1) +  v(A S_2) \cdot p(A \ \Box\hspace{-1.6mm}\rightarrow S_2) + \ldots +  v(A S_n) \cdot p(A \ \Box\hspace{-1.6mm}\rightarrow S_n)
+\]
+where $S_1, S_2,\ldots S_n$ is any list of (exhaustive and mutually exclusive) states of the world, $v(A S_i)$ is the value of being in a situation in which you've chosen $A$ and $S_i$ is the case, and $A \ \Box\hspace{-1.6mm}\rightarrow S_i$ is the claim that $S_i$ would come about were you to perform $A$. 
+
+Note that in the special case in which each $S_i$ ($i \leq n$) is a state of the world whose obtaining or not is causally independent of action $A$, $A \ \Box\hspace{-1.6mm}\rightarrow S_i$ is equivalent to $S_i$. So we get:
+\[
+ECU(A) = v(A S_1) \cdot p(S_1) +  v(A S_2) \cdot p(S_2) + \ldots +  v(A S_n) \cdot p(S_n)
+\]
+
+
+Causal Decision Theorists endorse the following principle:
+\begin{description}
+\item[Expected Causal Utility Maximization]
+In any decision problem, you ought to choose an option whose expected causal utility is at least as high as that of any rival option.
+\end{description}
+(For further discussion of Causal Decision Theory, see lecture materials.)
+
+
+\subsubsection*{C. Your Value Function} 
+
+
+Throughout the problem set we will assume that you value only money (and value it linearly): you assign value \(n\) to a situation in which you net \(\$n\).
+}
+
+\subsection*{Part I (28 points, on Canvas Quiz)} 
+
+
+
+
+
+\begin{enumerate}
+
+
+
+
+\item \question{There are two boxes before you, Left Box and Right Box. You have two options:
+\begin{description}
+\item[Left] Take the contents of the Left Box only.
+\item[Right] Take the contents of the Right Box only.
+\end{description}
+Predictor has placed \$100 in one of the boxes, but you don't know which. What you do know is that last night Predictor made a prediction about whether you would choose Left or Right. The predictor is your friend: if she predicted Left, she put the money in Left Box; if she predicted Right, she put the money in Right Box. Predictor is 90\% reliable:
+$$
+p(\text{LeftPredicted}|\text{Left}) =  p(\text{RightPredicted}|\text{Right})  = 0.9
+$$
+The boxes have been filled ahead of time and your choice will not cause their contents to change. (So, for example, if Predictor placed the \$100 in Left Box, were you to choose Left, the money would still be in Left Box, and were you to choose Right, the money would still be in Left Box. )
+}
+
+\begin{enumerate}
+
+\item \question{What is the expected value of choosing Left? (2 points)
+}
+
+
+\answer{
+\[ \begin{array}{rcl}
+EV(\text{L}) &= &v(\text{L}\ \text{LeftPred}) \cdot p(\text{LeftPred}|\text{L}) + v(\text{L}\ \text{RightPred}) \cdot p(\text{RightPred}|\text{L})\\
+&= &100 \cdot .9 + 0 \cdot .1\\
+&= &90
+\end{array}\] 
+}
+
+%\item \question{What is the expected value of choosing Right? (2 points)}
+
+\item \question{Is the expected value of choosing Right ``greater than'', ``less than', or the ``same as'' the EV of choosing Left? (2 points)
+}
+
+\answer{By symmetry, also 90}
+
+
+
+
+\item \question{Assume that you see yourself as equally likely to choose Left and Right, and therefore that $p(\text{LeftPredicted}) =  p(\text{RightPredicted})  = 0.5$.\\
+%\footnote{I'll ask you to prove this entailment in Problem Set 6. 
+%See end of document for proof
+%} 
+ What is the expected causal utility of choosing Left? (2 points)
+}
+
+\answer{
+\[ \begin{array}{rcl}
+ECU(\text{L}) &= &v(\text{L}\ \text{Lpred}) \cdot p(L \ \Box\hspace{-1.6mm}\rightarrow \text{Lpred}) + v(\text{L}\ \text{Rpred}) \cdot p(L \ \Box\hspace{-1.6mm}\rightarrow \text{Rpred})\\
+&= &v(\text{L}\ \text{Lpred}) \cdot p(\text{Lpred}) + v(\text{L}\ \text{Rpred}) \cdot p(\text{Rpred})\\
+&= &100 \cdot 0.5 + 0 \cdot 0.5\\
+&= &50
+\end{array}\] 
+}
+
+
+
+\item \question{Is the expected causal utility of choosing Right ``greater than'', ``less than', or the ``same as'' the ECU of choosing Left? (2 points)
+}
+
+\answer{By symmetry, also 50}
+
+\end{enumerate}
+
+
+\item[2.--5.]: See the Canvas Quiz for Part 1 for questions 2 thru 5!
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+%%%%%%%%%
+%PART II
+%%%%%%%
+
+
+\subsection*{Part II (72 points; show work and justify all answers!)} 
+
+
+
+
+
+
+\begin{enumerate}
+ \setcounter{enumi}{5}
+ 
+ 
+ \com{ %left out for 2023, in light of similar canvas questions; could use for in-class practice 
+ \item
+   \question{You are finally planning to do something fun over the weekend and are going to a concert. There are two ways of getting there: 
+   %note: could automate this question 
+   \begin{description}
+\item[Taxi] Take a taxi. 
+
+\item[Car]  Drive your car.
+  
+   \end{description}
+   Taking a taxi is expensive ($\$41$). Driving there would cost you only gas money ($\$2$), but there might be a robber at the parking lot. If he's there, he'll steal your boom box, and you'll have to spend $\$130$ to replace it. (At home, your boom box is safe.)}
+   
+   \begin{enumerate}
+   
+\item \question{Assume that your two options have the same expected value and that the robber's presence in the parking lot is independent of whether you drive (i.e. $p(\text{RobberInLot}) = p(\text{RobberInLot}|\text{Car})$). What is the probability that the robber will be at the parking lot? (5 points; don't forget to justify your answer.)}
+
+\answer{
+\[ \begin{array}{rcl}
+EV(T) &= &EV(C) \\
+v(T) &= &(v(C R)\cdot p(R | C)) + (v(C \overline{R})\cdot p(\overline{R} | C))\\
+v(T) &= &(v(C R)\cdot p(R) + (v(C \overline{R})\cdot p(\overline{R}))\\
+v(T) &= &(v(C R)\cdot p(R) + (v(C \overline{R})\cdot (1 - p(R)))\\
+-41 &= &((-2-130)\cdot p(R) + (-2\cdot (1 - p(R)))\\
+-41 &= &-132 p(R) + -2 + 2p(R))\\
+-41 &= &-130 p(R)\\
+\frac{39}{130} &= &p(R)\\
+\frac{3}{10} &= &p(R)
+\end{array}\] 
+}
+
+
+\item \question{Now suppose that the robber has a (perfectly accurate) informant who will tell him whether you'll be driving to the concert. If you drive to the concert, he'll be there with probability 50\%. If not, he won't show up.
+
+According to the Principle of Expected Value Maximization, should you drive or should you take a cab? (5 points; don't forget to justify your answer.)}
+
+\answer{You should take a taxi:
+\[ \begin{array}{rcl}
+EV(C) &= &(v(C R)\cdot p(R | C)) + (v(C \overline{R})\cdot p(\overline{R} | C))\\
+EV(C) &= &(v(-2-130)\cdot 0.5) + (v(-2)\cdot 0.5)\\
+EV(C) &= &-66 - 1\\
+EV(C) &= &-67\\
+\ \\
+EV(T) &= &-41
+\end{array}\] 
+}
+
+   \end{enumerate}
+
+} %end com 
+
+
+
+
+
+
+\item \question{There are two boxes before you: Open and Closed. Open contains \$10. You cannot see the contents of Closed, but you are told that it is either completely empty or contains \$100. You have two options: 
+
+\begin{description}
+\item[One-Box] Take the contents of Closed and leave the contents of Open behind.
+\item[Two-Box] Take the contents of both boxes.
+\end{description}
+The boxes have been filled ahead of time and your choice will not cause their contents to change.  (So, for example, if Closed contains \$100, were you to One-Box, it would still contain \$100, and were you to Two-Box, it would still contain \$100.)}
+
+\begin{enumerate}
+
+
+
+
+\item \label{ex:coin}
+ \question{
+There is no predictor. Instead, a fair coin was flipped. If it landed Heads, Closed was filled with \$100; if it landed Tails, Closed was left empty.  All this happened yesterday and your choice will not cause the contents of the boxes to change.
+
+According to the Principle of Expected Value Maximization, should you one-box or two-box? (8 points; don't forget to justify your answer.)
+}
+
+
+\answer{
+      \[EV(1B) = v(1B\,H)\cdot p(H|1B\,) + v(1B\,T )\cdot p(T|1B\,) = 100 \cdot 0.5 + 0 \cdot 0.5 = 50\]
+      \[EV(2B) = v(\mbox{2B \,H})\cdot p(H|2B) + v(2B\, T)\cdot p(T | 2B) = 110 \cdot 0.5 + 10 \cdot 0.5 = 60\]
+ Since \(EV(1B) < EV(2B)\) the Principle of Expected Value Maximization says that you should two-box. 
+}
+
+\item \question{Same setup as (\ref{ex:coin}). According to the Principle of Expected Causal Utility Maximization, should you one-box or two-box? (8 points; justify answer)}
+
+\answer{You should two-box
+\[ \begin{array}{rcl}
+ECU(1B) &= &v(1B\ H) \cdot p(1B \ \Box\hspace{-1.6mm}\rightarrow H) + v(1B\ T) \cdot p(1B \ \Box\hspace{-1.6mm}\rightarrow T)\\
+ &= &v(1B\ H) \cdot p(H) + v(1B\ T) \cdot p(T)\\
+  &= &100 \cdot 0.5 + 0 \cdot 0.5\\
+   &= &50
+\end{array}\] 
+\[ \begin{array}{rcl}
+ECU(2B) &= &v(2B\ H) \cdot p(2B \ \Box\hspace{-1.6mm}\rightarrow H) + v(2B\ T) \cdot p(1B \ \Box\hspace{-1.6mm}\rightarrow T)\\
+ &= &v(2B\ H) \cdot p(H) + v(2B\ T) \cdot p(T)\\
+  &= &110 \cdot 0.5 + 10 \cdot 0.5\\
+   &= &60
+\end{array}\] 
+
+
+}
+
+
+
+
+\item \label{ex:pred}
+\question{
+Now assume there is a predictor. Yesterday evening, Predictor was enlisted to make a prediction about whether you would one-box or two-box. If Predictor predicted that you would one-box, the \$100 dollars was placed in Closed. Otherwise, Closed was left empty. The probability that Predictor guesses correctly is 60\%. The boxes have now been sealed and their contents will not be changed.  
+
+According to the Principle of Expected Value Maximization, should you one-box or should you two-box? (8 points; don't forget to justify your answer!)
+ }
+ 
+ 
+ \answer{ 
+ Expected value of  one-boxing:
+  \[(100 \times .6) + (0 \times (1-.6)) = 60\] 
+  
+  Expected value of  two-boxing: \[(110 \times (1-.6)) + (10 \times .6) = 44 + 6 = 50\]
+  
+     Since the expected value of one-boxing is greater than the expected value of two-boxing, you should one-box, according to the Principle of Expected Value Maximization.
+}
+
+
+
+
+
+\item \question{Same setup as (\ref{ex:pred}). According to the Principle of Expected Causal Utility Maximization, should you one-box or should you two-box? (8 points; don't forget to justify your answer.)}
+
+\answer{You should two-box:
+\[ \begin{array}{rcl}
+ECU(1B) &= &v(1B\ \text{Full}) \cdot p(1B \ \Box\hspace{-1.6mm}\rightarrow \text{Full}) + v(1B\ \overline{\text{Full}}) \cdot p(1B \ \Box\hspace{-1.6mm}\rightarrow \overline{\text{Full}})\\
+ &= &v(1B\ \text{Full}) \cdot p(\text{Full}) + v(1B\ T) \cdot p(\overline{\text{Full}})\\
+  &= &100 \cdot p(\text{Full}) + 0 \cdot p(\overline{\text{Full}})\\
+  &= &100 \cdot p(\text{Full})
+\end{array}\] 
+\[ \begin{array}{rcl}
+ECU(2B) &= &v(2B\ \text{Full}) \cdot p(2B \ \Box\hspace{-1.6mm}\rightarrow \text{Full}) + v(2B\ \overline{\text{Full}}) \cdot p(2B \ \Box\hspace{-1.6mm}\rightarrow \overline{\text{Full}})\\
+ &= &v(2B\ \text{Full}) \cdot p(\text{Full}) + v(2B\ T) \cdot p(\overline{\text{Full}})\\
+ &= &110 \cdot p(\text{Full}) + 10 \cdot p(\overline{\text{Full}})\\
+  &= &100 \cdot p(\text{Full}) + 10
+\end{array}\] 
+
+
+
+}
+
+
+
+
+\item \question{Same setup as (\ref{ex:pred}), except that this time you learn that Closed has \$100.
+
+According to the Principle of Expected Value Maximization, should you one-box or should you two-box? (10 points; don't forget to justify your answer.)}
+
+\answer{Since we know that Closed has $\$100$ we know exactly what each box contains. So we needn't consider different states of the world in calculating expected value. Expected value collapses into actual value:
+
+Expected value of  one-boxing: $100$
+
+Expected value of  two-boxing: $110$
+
+     Since the expected value of two-boxing is greater than the expected value of one-boxing, you should two-box, according to the Principle of Expected Value Maximization.
+
+}
+
+
+\item \question{Same setup as (\ref{ex:pred}), except that this time you learn that Closed has \$0.
+
+According to the Principle of Expected Value Maximization, should you one-box or should you two-box? (10 points; don't forget to justify your answer.)}
+
+\answer{Since we know that Closed has $\$0$ we know exactly what each box contains. So we needn't consider different states of the world in calculating expected value. Expected value collapses into actual value:
+
+Expected value of  one-boxing: $0$
+
+Expected value of  two-boxing: $10$
+
+     Since the expected value of two-boxing is greater than the expected value of one-boxing, you should two-box, according to the Principle of Expected Value Maximization.
+
+}
+
+\item \label{ex:certain}
+\question{Same setup as (\ref{ex:pred}), except for the following. It is now time $t_0$ and you have no idea whether Closed contains \$100 or \$0. At a later time $t_2$ you must decide whether to one-box or two-box. At time $t_1$ between $t_0$ and $t_2$ you will learn the contents of Closed.
+
+Assume that you're certain that you always choose in accordance with the Principle of Expected Value Maximization. What should you believe at time $t_0$ about what your decision at time $t_2$ will be? (10 points; justify your answer.)}
+
+\answer{At time $t_0$ you should believe that at time $t_2$ you will be either in the situation described in part (c) or in the situation described in part (d). Either way, the Principle of Expected Value Maximization entails that you should two-box. Since you're certain that you'll choose in accordance with the Principle of Expected Value Maximization, this means that at $t_0$ you should be certain that at $t_2$ you will two-box.}
+
+
+\item \question{Same setup as (\ref{ex:pred}), except for the following. It is now time $t_0$ and you have no idea whether Closed contains \$100 or \$0. At a later time $t_2$ you must decide whether to one-box or two-box. At time $t_1$ between $t_0$ and $t_2$ you will be \emph{offered the chance} to learn the contents of Closed.
+
+Assume that you're certain that you always choose in accordance with the Principle of Expected Value Maximization. According to the Principle of Expected Value Maximization, should you choose, at $t_1$, to learn the contents of Closed or should you choose to remain ignorant? Is that answer intuitively correct? (10~points; don't forget to justify your answer and discuss its significance.)}
+
+\answer{
+You can now be certain that, if you choose to remain ignorant at $t_1$, you will, by (\ref{ex:pred}), one-box at $t_2$.
+By (\ref{ex:certain}), you are now certain that if you choose to acquire the information at $t_1$, you will two box at $t_2$.
+So, from your present point of view, remaining ignorant at $t_1$ entails one-boxing at $t_2$ and acquiring information at $t_1$ entails two-boxing at $t_2$. Since you value only money:
+$$
+EV_{t_1}(\text{RemainIgnorant}) = EV_{t_1}(\text{RemainIgnorant \& One-Box}) = $$
+$$\hspace{90mm} EV_{t_1}(\text{One-Box}) = 60
+$$
+
+$$
+EV_{t_1}(\text{Learn}) = EV_{t_1}(\text{Learn \& Two-Box}) = EV_{t_1}(\text{Two-Box}) = 50
+$$
+So, according to the Principle of Expected Value Maximization, you should choose to remain ignorant.
+
+To many, this seems like a bizarre result and a reason to reject the Principle of Expected Value. But full credit can be earned to any answer to the question of whether the result is intuitive, as long as it reveals that the student has some basic understanding of what's going on. E.g. there remain reasons to prefer one-boxing and bite the bullet here. 
+}
+
+
+\end{enumerate}
+
+
+
+\com{  % start com for Dicing with Death example (issue is that students could google this?)
+\item \question{
+There are two boxes before you, Left Box and Right Box. You have three options:\footnote{This example is due to Arif Amhed. %See his ``Dicing with Death," \emph{Analysis} 74: 587-592, 2014.
+} 
+\begin{description}
+\item[Left] Take the contents the Left Box only.
+\item[Right] Take the contents the Right Box only.
+\item[Coin] Pay \$1 for the privilege of flipping a coin. If it lands Heads you keep the contents of Left Box; if it lands Tails, you keep the contents of Right Box.
+\end{description}
+Predictor has placed \$100 in one of the boxes, but you don't know which. What you do know is that last night Predictor made a prediction about whether you would choose Left, Right, or Coin. Unfortunately for you, {the predictor is evil}. If she predicted Left, she put the money in Right Box; if she predicted Right, she put the money in Left Box.  If she predicted Coin, she flipped a fair coin. If it landed Heads she put the money in Right Box, if it landed Tails, she put the money in Left Box. Predictor is 100\% reliable:
+$$
+p(\text{LeftPredicted}|\text{Left}) =  p(\text{RightPredicted}|\text{Right}) =  p(\text{CoinPredicted}|\text{Coin}) = 1
+$$
+The boxes have been filled ahead of time, and their contents will not be changed. (Suppose, for example, that Predictor placed the \$100 in Left Box. Were you to choose Left, the money would still be in Left Box, were you to choose Right, the money would still be in Left Box, and were you to pick Coin, the money would still be in Left Box.)
+}
+
+\begin{enumerate}
+
+\item \question{
+According to the Principle of Expected Value Maximization, which of the three options should you choose? (10~points; don't forget to justify your answer.)
+}
+
+\answer{
+You should choose Coin.
+
+Where $P^L$ = Predictor predicts you will choose Left, $P^R$ = Predictor predicts you will choose Right, $P^C$ = Predictor predicts you will choose Coin, $H^P$ = predictor's coin lands Heads, $T^P$ = predictor's coin lands Tails, $H^Y$ = your coin lands Heads, $T^P$ = your coin lands Tails:
+
+$$EV(L) = $$
+$$v(L P^L) \cdot p(P^L|L) + v(L P^R) \cdot p(P^R|L) + v(L P^C) \cdot p(P^C|L) = $$
+$$0 \cdot 1 + 100 \cdot 0 + v(L P^C) \cdot 0  = $$
+$$0$$
+
+$$EV(R) = $$
+$$v(R P^L) \cdot p(P^L|R) + v(R P^R) \cdot p(P^R|R) + v(R P^C) \cdot p(P^C|R) = $$
+$$100 \cdot 0 + 0 \cdot 1 + v(R P^C) \cdot 0 = $$
+$$0$$
+
+\tiny
+$$EV(C) = $$
+$$v(C H^Y P^L) p(P^L H^Y |C) + v(C T^Y P^L)  p(P^L T^Y |C) + v(C H^Y P^R)  p(P^R H^Y |C) + v(C T^Y P^R)  p(P^R T^Y |C) +$$
+$$\hspace{10mm} v(C H^Y H^P P^C) p(P^L H^Y H^P|C) + v(C H^Y T^P P^C) p(P^L H^Y T^P|C) + v(C T^Y H^P P^C) p(P^L T^Y H^P|C) + v(C T^Y T^P P^C) p(P^L T^Y T^P|C) =$$
+$$-1\cdot 0 + 99 \cdot 0 + 99 \cdot 0 + -1 \cdot 0  -1 \cdot 1/4 + 99 \cdot 1/4 + 99 \cdot 1/4  -1 \cdot 1/4 = $$
+$$= 49$$
+
+}
+
+
+\item \label{ex:three} 
+\question{
+Assume that you see yourself as equally likely to choose Left, Right, and Coin, and therefore that $p(\text{LeftPredicted}) =  p(\text{RightPredicted})  = p(\text{CoinPredicted}) = 1/3$. According to the Principle of Expected Causal Utility Maximization, which of the three options should you choose? (10~points; don't forget to justify your answer.)}
+
+
+\answer{
+You should choose Left or Right.
+
+Where $P^L$ = Predictor predicts you will choose Left, $P^R$ = Predictor predicts you will choose Right, $P^C$ = Predictor predicts you will choose Coin, $H^P$ = predictor's coin lands Heads, $T^P$ = predictor's coin lands Tails, $H^Y$ = your coin lands Heads, $T^P$ = your coin lands Tails:
+\scriptsize
+$$EV(L) = $$
+$$v(L P^L) \cdot p(L \ \Box\hspace{-1.3mm}\rightarrow P^L) + v(L P^R) \cdot p(L \ \Box\hspace{-1.3mm}\rightarrow P^R) + v(L P^C H^P) \cdot p(L \ \Box\hspace{-1.3mm}\rightarrow P^C H^P) + v(L P^C T^P) \cdot p(L \ \Box\hspace{-1.3mm}\rightarrow P^C T^p) = $$
+$$v(L P^L) \cdot p(P^L) + v(L P^R) \cdot p(P^R) + v(L P^C H^P) \cdot p(P^C H^P) + v(L P^C T^P) \cdot p(P^C T^p) = $$
+$$0 \cdot 1/3 + 100 \cdot 1/3 + 0 \cdot 1/6 + 100 \cdot 1/6$$
+$$\frac{0 + 100 + 0 + 50}{3} =$$
+$$50$$
+\normalsize
+For analogous reasons, $EV(R) = 50$. In contrast:
+
+\tiny
+$$EV(C) = $$
+$$v(C H^Y P^L) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow H^Y P^L) + v(C T^Y P^L) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow T^Y P^L) + v(C H^Y P^R) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow H^Y P^R) + v(C T^Y P^R) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow T^Y P^R) + $$
+$$v(C H^Y P^C H^P) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow H^Y P^L H^P) + v(C H^Y P^C T^P) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow H^Y P^L T^P) + v(C T^Y P^C H^P) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow T^Y P^L H^P)$$
+$$\hspace{100mm} + v(C T^Y P^C T^P) \cdot p(C \ \Box\hspace{-1.3mm}\rightarrow T^Y P^L T^P) =$$
+%
+$$v(C H^Y P^L) \cdot p(H^Y P^L) + v(C T^Y P^L) \cdot p(T^Y P^L) + v(C H^Y P^R) \cdot p(H^Y P^R) + v(C T^Y P^R) \cdot p(T^Y P^R) + $$
+$$\hspace{10mm} v(C H^Y P^C H^P) \cdot p(H^Y P^L H^P) + v(C H^Y P^C T^P) \cdot p(H^Y P^L T^P) + v(C T^Y P^C H^P) \cdot p(T^Y P^L H^P) + v(C T^Y P^C T^P) \cdot p(T^Y P^L T^P) =$$
+$$-1 +(0 \cdot 1/6 + 100 \cdot 1/6 + 100 \cdot 1/6 + 0 \cdot 1/6 + 0 \cdot 1/12 + 100 \cdot 1/12 + 100 \cdot 1/12 + 0 \cdot 1/12 )$$
+$$-1 + \frac{0 + 100 + 100 + 0 + 0 + 50 + 50 + 0}{6} = $$
+$$-1 + \frac{2 * 150}{6} = $$
+$$49$$
+}
+
+\item \question{\textbf{Extra Credit:} Does your answer to (4b) undermine Causal Decision Theory? (5 points; credit will be awarded with extreme stinginess and will be  based on how effectively you are able to make your case; you may avail yourself of 250 words)}
+
+\answer{
+There are (at least) two answers that might deserve credit. 
+
+One of them argues that (4b) is no threat to Causal Decision Theory, on the grounds that, right before making your decision, your evidence gives equal credence to the money's being in Left Box and Right Box and that your choice will have no causal effect on its location. So the best you can do is pick one of them at random without wasting your money on paying for a coin toss to do the picking for you. (And excellent answer -- deserving of a follow-up email and an invitation to read Jim Joyce -- would show awareness of the fact that if you pick by first forming an intention to choose one of the options and later choosing accordingly, then the fact that you've formed an intention might undermine your earlier argument that you should just pick at random.)
+
+Another answer argues that (4b) does indeed undermine Causal Decision Theory. It might argue that you should flip the coin on the grounds that: (i) flipping a coin causes the selection of a box to no longer be up to you and that (ii) having the box selection not be up to you is worth paying for when you are the target of a frustrator. So far the student deserves no more than 3 points. To get full credit, she would also have to show awareness of the fact that the Causal Decision Theorist takes (i) and (ii) into account in her reasoning. (An especially impressive version -- which, again would deserve a follow-up email -- would evince awareness of the possibility of giving the first answer above.)
+
+
+}
+
+
+
+\end{enumerate}
+}
+\com{
+\item \question{Consider a Newcomb-style setup in which the small box contains $n$ dollars and the large box contains either $m$ dollars or nothing. How accurate must the predictor be in order for the Principle of Expected Value Maximization to recommend 1-boxing? (6 points)}
+
+
+\answer{
+
+Where $r$ is the accuracy of the predictor, we have:
+
+$\begin{array}{rl}
+EV(1B)&=v(Full \cdot 1B) \cdot p(Full \ | \ 1B) + v(\overline{Full} \cdot 1B ) \cdot p(\overline{Full} \ | \ 1B) \\
+\ &= m \cdot p(Full \ | \ 1B) + 0 \cdot p(\overline{Full} \ | \ 1B) \\
+\ &= m \cdot p(Full \ | \ 1B) \\
+\ &= m \cdot r
+\end{array}$
+
+
+
+
+$\begin{array}{rl}
+EV(2B)&=v(Full \cdot 2B) \cdot p(Full \ | \ 2B) + v(\overline{Full} \cdot 2B ) \cdot p(\overline{Full} \ | \ 2B)\\
+\ &=(m+n) \cdot p(Full \ | \ 2B) + n \cdot (1 - p(Full \ | \ 2B))\\
+\ &=(m+n) \cdot p(Full \ | \ 2B) + n - n \cdot p(Full \ | \ 2B)\\
+\ &=m \cdot p(Full \ | \ 2B) + n \\
+\ &=m \cdot (1-r) + n
+
+\end{array}$
+
+So, in order for the Principle of Expected Value Maximization to recommend one boxing, the following must be true:
+
+$\begin{array}{rl}
+EV(1B) &> EV(2B)\\
+m \cdot r  &> m \cdot (1-r) + n \\
+m \cdot r - m\cdot (1-r) &> n \\
+m \cdot (2r - 1) &> n \\
+2r - 1 &> \frac{n}{m} \\
+2r  &> \frac{n}{m} + 1\\
+r  &> \frac{n}{2m} + \frac{1}{2}\\
+\end{array}$
+
+
+}
+}
+\com{
+\item \question{
+
+
+Suppose you are considering whether to buy a lottery ticket. The ticket costs \$1, and has a 5\% chance of winning. If you win, you get \$100; otherwise you get nothing.  }
+
+\begin{enumerate}
+
+\item \question{What is the expected value of buying a ticket? (5 points)}
+
+  \answer{
+ There are two relevant states of the world: ticket wins, and ticket loses. If you buy a ticket and win, you will have won \$100 and spent \$1: the value of that to you is 99 and the likelihood of its happening is 5\%. If you lose, you will have won \$0 and spent \$1: the value of that to you is -1 and the likelihood of its happening is 95\%
+
+ 
+ The expected value of buying the ticket is: 
+ \[(99)(.05) + (-1)(.95) = 4.95 - 0.95 = 4\] 
+ }
+ 
+
+
+\item \question{What is the expected value of not buying a ticket? (5 points)}
+
+\answer{The expected value of not buying the ticket is 0.}
+
+
+\end{enumerate}
+}  % end com 
+
+
+\com{ %left out for 2023 version
+   
+   \item \question{Recall that $A$ and $B$ are \textbf{causally independent} of one another if neither of them is a cause of the other, and that $A$ is \textbf{probabilistically dependent} on $B$ if $p(\text{$A$ occurs}) \neq p(\text{$A$ occurs}|\text{$B$ occurs})$.}
+
+Give an example of a pair of events $A$ and $B$ such that: (1) $A$ and $B$ are causally independent of one another but $(2)$ $A$ is probabilistically dependent on $B$. Make sure your example is significantly different from any cases mentioned in lecture or in the course materials. (6~points; don't forget to explain your answer)
+
+
+\answer{Canonical examples will involve a common cause. For instance, let $A$ be \emph{it's snowing in Cambridge, MA} and $B$ be \emph{it's snowing in Boston, MA}. Snow in Cambridge does not cause, and is not caused by, snow in Boston. But it's much more likely to snow in one place if it's snowing in the other, because snow in the two cities tends to be caused by the same weather system.} 
+
+} % end com 
+
+\com{  % begin com 
+\item \question{You are considering whether to study for tomorrow's exam. There is a cost associated with studying,  but it is much smaller than the cost of failing the exam. Studying for the exam will cause you to pass; not studying will cause you to fail.
+
+Now suppose that a time traveler who you know to be perfectly reliable informs you that you will, in fact, fail the exam.}
+
+\begin{enumerate}
+
+\item \question{Will you study for the exam? (10 points)}
+
+\answer{No. It follows from what the time traveller says that you will fail and it follows from what we know about the case said that you will fail just in case you don't study. }
+
+
+\item \question{Should you study for the exam? (10 points)}
+
+\answer{What I'm looking for here is not a particular answer, but an argument that shows that the student has some gasp of the underlying philosophical terrain.
+
+Here is one good answer: ``Yes, you should study. For studying will cause you to pass, and the cost of studying is much smaller than the cost of failing the exam.''
+
+}
+\end{enumerate}
+}
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
+
+A question Hunt automated for the Canvas Quiz: 
+
+\item \question{
+The following example is due to MIT philosopher Caspar Hare:
+\begin{quote}
+
+\textbf{Symmetrical Worlds} Imagine that the universe is divided in two along a plane. As far as anyone can tell, the universe is completely symmetrical across this plane: what happens on one side is an exact mirror image of what happens on the other side. The plane is a great tourist attraction. People go up to the plane to peer into the other side, and invariably see their symmetrical twin peering back at them. 
+
+The plane alternates between being opaque and transparent, and scientists have established that when the plane is opaque, there are no causal interactions between events on different sides of the plane. A favorite activity of visitors is to wait until the plane turns opaque, and unveil some crazy prop or hold some ridiculous pose, only to find their twin displaying the same crazy prop or holding the same ridiculous pose when the plane turns transparent.
+
+You are having fun with your symmetry twin when then plane turns opaque. A mysterious but credible stranger comes up to you and offers you a deal. ``Here is a thousand dollars,'' she says.``It's yours to keep. But consider this: my symmetrical twin is right now giving your twin, on the other side of the opaque plane, a thousand dollars. If your twin burns her thousand dollars, I will give you a million dollars. Here is a lighter!"
+\end{quote}
+
+
+}
+
+\begin{enumerate}
+
+\item \question{According to an Evidential Decision Theorist, should you burn the thousand or not burn the thousand? (5 points; don't forget to justify your answer)}
+
+\answer{According to an evidential decision theorist, you should burn the thousand. This conclusion might be justified formally, using the evidentialist's version of expected value. But it can also be justified informally. For instance:
+
+\begin{quote}
+Given the observed correlation between what happens on this side of the plane and what happens on the other side, you know that, if you don't burn the thousand, it is overwhelmingly likely that neither will your twin, and you'll end up with a thousand dollars. On the other hand, you know that if you burn the thousand, it is overwhelmingly likely that your twin will too, and you'll end up with a million dollars. A million dollars is better than a thousand dollars, so: burn the thousand!
+\end{quote}
+}
+  
+
+
+\item \question{According to a Causal Decision Theorist, should you burn the thousand or not burn the thousand? (5 points; don't forget to justify your answer)}
+
+\answer{According to a causal decision theorist, you shouldn't burn the thousand. This conclusion might be justified formally, using the causalist's version of expected value. But it can also be justified informally. For instance:
+\begin{quote}
+When the plane is opaque, there is no causal influence between this side of the plane and the other side. So your twin is either going to burn her money, or not; there's nothing you can do to affect what she does. Now, if she were to not burn her money, you would obviously be better off not burning your money, since not burning would leave you with a thousand dollars rather than nothing. And if she were to burn her money, you would still be better off not burning your money; you would end up with a million plus a thousand, rather than just a million. Either way, you would be better off not burning the money. So: don't burn the money!
+
+\end{quote}
+}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+%%%%%%%%%%
+OLD questions
+%%%%%%%%%%
+
+
+
+
+
+%left out for variety
+
+\com{
+\item \question{Consider a Newcomb-style setup in which the small box contains $n$ dollars and the large box contains either $m$ dollars or nothing. How accurate must the predictor be in order for the Principle of Expected Value Maximization to recommend 1-boxing? (10 points)}
+
+
+\answer{
+
+Where $r$ is the accuracy of the predictor, we have:
+
+$\begin{array}{rl}
+EV(1B)&=v(Full \cdot 1B) \cdot p(Full \ | \ 1B) + v(\overline{Full} \cdot 1B ) \cdot p(\overline{Full} \ | \ 1B) \\
+\ &= m \cdot p(Full \ | \ 1B) + 0 \cdot p(\overline{Full} \ | \ 1B) \\
+\ &= m \cdot p(Full \ | \ 1B) \\
+\ &= m \cdot r
+\end{array}$
+
+
+
+
+$\begin{array}{rl}
+EV(2B)&=v(Full \cdot 2B) \cdot p(Full \ | \ 2B) + v(\overline{Full} \cdot 2B ) \cdot p(\overline{Full} \ | \ 2B)\\
+\ &=(m+n) \cdot p(Full \ | \ 2B) + n \cdot (1 - p(Full \ | \ 2B))\\
+\ &=(m+n) \cdot p(Full \ | \ 2B) + n - n \cdot p(Full \ | \ 2B)\\
+\ &=m \cdot p(Full \ | \ 2B) + n \\
+\ &=m \cdot (1-r) + n
+
+\end{array}$
+
+So, in order for the Principle of Expected Value Maximization to recommend one boxing, the following must be true:
+
+$\begin{array}{rl}
+EV(1B) &> EV(2B)\\
+m \cdot r  &> m \cdot (1-r) + n \\
+m \cdot r - m\cdot (1-r) &> n \\
+m \cdot (2r - 1) &> n \\
+2r - 1 &> \frac{n}{m} \\
+2r  &> \frac{n}{m} + 1\\
+r  &> \frac{n}{2m} + \frac{1}{2}\\
+\end{array}$
+
+
+}
+
+}
+
+
+
+
+
+
+%left out for variety
+\com{
+\item \question{
+
+
+Suppose you are considering whether to buy a lottery ticket. The ticket costs \$1, and has a 5\% chance of winning. If you win, you get \$100; otherwise you get nothing.  }
+
+\begin{enumerate}
+
+\item \question{What is the expected value of buying a ticket? (5 points)}
+
+  \answer{
+ There are two relevant states of the world: ticket wins, and ticket loses. If you buy a ticket and win, you will have won \$100 and spent \$1: the value of that to you is 99 and the likelihood of its happening is 5\%. If you lose, you will have won \$0 and spent \$1: the value of that to you is -1 and the likelihood of its happening is 95\%
+
+ 
+ The expected value of buying the ticket is: 
+ \[(99)(.05) + (-1)(.95) = 4.95 - 0.95 = 4\] 
+ }
+ 
+
+
+\item \question{What is the expected value of not buying a ticket? (5 points)}
+
+\answer{The expected value of not buying the ticket is 0.}
+
+
+\end{enumerate}
+   }
+
+
+ 
+
+
+  
+    
+      %%Hunt put some of these on the quiz part, for Part 1; could use some for in-class practice! 
+%left out for variety
+\com{      
+\item 
+\question{Of each of the conditionals below, say whether it is indicative or subjunctive. (You might find it helpful to look at Section~5.4.2 of the lecture notes.)}
+
+\begin{enumerate}
+
+\item \question{If you lived here, you'd be home by now. (2 points)}
+
+\answer{Subjunctive}
+
+% LEFT OUT FOR VARIETY
+\com{
+\item \question{If I left the door open, the cat escaped. (2 points)}
+
+\answer{Indicative}
+}
+
+\item \question{If Abraham Lincoln hadn't gone to the theater, he wouldn't have been assassinated. (2 points)}
+
+\answer{Subjunctive}
+
+% LEFT OUT FOR TO ADD VARIETY
+\com{
+\item \question{If you come pick me up from the train station, I'll buy you dinner. (2 points)}
+
+\answer{Indicative}
+}
+
+\item \question{If she promised she would be here, she'll be here. (2 points)}
+
+\answer{Indicative}
+
+\item \question{If you had listened more carefully, we wouldn't be having this conversation. (2~points)}
+
+\answer{Subjunctive}
+
+
+\item \question{I would have gone to the party, had I been in the mood. (2 points)}
+
+\answer{Subjunctive}
+
+
+\end{enumerate}
+}
+
+
+
+
+
+
+
+
+
+%Left out for variety
+\com{
+
+\item \question{Recall that $A$ and $B$ are \textbf{causally independent} of one another if neither of them is a cause of the other, and that $A$ is \textbf{probabilistically dependent} on $B$ if $p(\text{$A$ occurs}) \neq p(\text{$A$ occurs}|\text{$B$ occurs})$.}
+
+Give an example of a pair of events $A$ and $B$ such that: (1) $A$ and $B$ are causally independent of one another but $(2)$ $A$ is probabilistically dependent on $B$. Make sure your example is significantly different from any cases mentioned in lecture or in the course materials. (10~points; don't forget to explain your answer)
+
+
+\answer{Canonical examples will involve a common cause. For instance, let $A$ be \emph{it's snowing in Cambridge, MA} and $B$ be \emph{it's snowing in Boston, MA}. Snow in Cambridge does not cause, and is not caused by, snow in Boston. But it's much more likely to snow in one place if it's snowing in the other, because snow in the two cities tends to be caused by the same weather system.} 
+
+\item \question{You are considering whether to study for tomorrow's exam. There is a cost associated with studying,  but it is much smaller than the cost of failing the exam. Studying for the exam will cause you to pass; not studying will cause you to fail.
+
+Now suppose that a time traveler who you know to be perfectly reliable informs you that you will, in fact, fail the exam.}
+
+\begin{enumerate}
+
+\item \question{Will you study for the exam? (10 points)}
+
+\answer{No. It follows from what the time traveller says that you will fail and it follows from what we know about the case said that you will fail just in case you don't study. }
+
+
+\item \question{Should you study for the exam? (10 points)}
+
+\answer{What I'm looking for here is not a particular answer, but an argument that shows that the student has some gasp of the underlying philosophical terrain.
+
+Here is one good answer: ``Yes, you should study. For studying will cause you to pass, and the cost of studying is much smaller than the cost of failing the exam.''
+
+}
+}
+
+
+%Left out for variety
+\com{
+
+\question{
+The following example is due to Caspar Hare:
+\begin{quote}
+
+\textbf{Symmetrical Worlds} Imagine that the universe is divided in two along a plane. As far as anyone can tell, the universe is completely symmetrical across this plane: what happens on one side is an exact mirror image of what happens on the other side. The plane is a great tourist attraction. People go up to the plane to peer into the other side, and invariably see their symmetrical twin peering back at them. 
+
+The plane alternates between being opaque and transparent, and scientists have established that when the plane is opaque, there are no causal interactions between events on different sides of the plane. A favorite activity of visitors is to wait until the plane turns opaque, and unveil some crazy prop or hold some ridiculous pose, only to find their twin displaying the same crazy prop or holding the same ridiculous pose when the plane turns transparent.
+
+You are having fun with your symmetry twin when then plane turns opaque. A mysterious but credible stranger comes up to you and offers you a deal. ``Here is a thousand dollars,'' she says.``It's yours to keep. But consider this: my symmetrical twin is right now giving your twin, on the other side of the opaque plane, a thousand dollars. If your twin burns her thousand dollars, I will give you a million dollars. Here is a lighter!"
+\end{quote}
+
+In answering the following questions, assume that you value only money and that you value it linearly. (You might find it helpful to look at the characterization of Evidential and Causal Decision Theory in Section~5.4.3 of the course materials.)
+}
+
+\begin{enumerate}
+
+\item \question{According to an evidential decision theorist, should you burn the thousand or not burn the thousand? (10 points; don't forget to justify your answer)}
+
+\answer{According to an evidential decision theorist, you should burn the thousand. This conclusion might be justified formally, using the evidentialist's version of expected value. But it can also be justified informally. For instance:
+
+\begin{quote}
+Given the observed correlation between what happens on this side of the plane and what happens on the other side, you know that, if you don't burn the thousand, it is overwhelmingly likely that neither will your twin, and you'll end up with a thousand dollars. On the other hand, you know that if you burn the thousand, it is overwhelmingly likely that your twin will too, and you'll end up with a million dollars. A million dollars is better than a thousand dollars, so: burn the thousand!
+\end{quote}
+}
+  
+
+
+\item \question{According to a causal decision theorist, should you burn the thousand or not burn the thousand? (10 points; don't forget to justify your answer)}
+
+\answer{According to a causal decision theorist, you shouldn't burn the thousand. This conclusion might be justified formally, using the causalist's version of expected value. But it can also be justified informally. For instance:
+\begin{quote}
+When the plane is opaque, there is no causal influence between this side of the plane and the other side. So your twin is either going to burn her money, or not; there's nothing you can do to affect what she does. Now, if she were to not burn her money, you would obviously be better off not burning your money, since not burning would leave you with a thousand dollars rather than nothing. And if she were to burn her money, you would still be better off not burning your money; you would end up with a million plus a thousand, rather than just a million. Either way, you would be better off not burning the money. So: don't burn the money!
+
+\end{quote}
+}
+}
+
+\end{enumerate}
+
+
+
+
+
+
+\com{
+\item Here is a famous puzzle, introduced in Gregory Kavka's ``The Toxin Puzzle" (1983):
+
+\begin{quote}
+An eccentric billionaire places before you a vial of toxin that. If you drink it, it will make you ill for a day. It will not, however, threaten your life or have any lasting effects. The billionaire will pay you one \$1M dollars Monday morning if, on Sunday evening, you \emph{intend} to drink the toxin the next day. He emphasizes that you need not drink the toxin in order to receive the money; in fact, if you form the intention the money would be in your bank account before the time for drinking it arrives. All you have to do is \emph{intend} on Sunday night to drink the toxin on Monday afternoon. You are perfectly free to change your mind after receiving the money, and not drink the toxin after all.
+\end{quote}
+
+Suppose you really need the money---enough to warrant a day of illness. It is now Sunday afternoon. Should you decide to  drink the toxin? (10 points)
+
+\answer{You should certainly form the intension to drink the toxin. But it would be irrational to drink the toxin once the money is in your bank account, since not drinking the toxin will not remove the money from your bank account. An excellent answer would point out that it may be hard to have the intention to drink the toxin without planning to actually drink it. In other words: the only way to form the intention may be to self-bind. In that case, one might think that you should drink the toxin. }
+
+}
+
+
+
+
+
+
+%%%%%%%%%
+
+
+\footnote{
+\emph{Proof:} We start by using the facts that $p(\text{LPred}|\text{Left}) =  p(\overline{\text{LPred}}|\overline{\text{Left}})$ and $p(\text{Left}) =  p(\overline{\text{Left}})$ to show that  $p(\text{LPred} \ \text{Left}) =  p(\overline{\text{LPred}} \ \overline{\text{Left}})$:
+
+\[ \begin{array}{rcl}
+p(\text{LPred}|\text{Left}) &=  &p(\text{RPred}|\text{Right})\\
+p(\text{LPred}|\text{Left}) &=  &p(\overline{\text{LPred}}|\overline{\text{Left}})\\
+\frac{p(\text{LPred}\ \text{Left})}{p(\text{Left})} &=  &\frac{p(\overline{\text{LPred}} \ \overline{\text{Left}})}{p(\overline{\text{Left}})}\\
+p(\text{LPred} \ \text{Left}) &=  &p(\overline{\text{LPred}} \ \overline{\text{Left}})\\
+p(\text{LPred} \ \text{Left}) &=  &p(\overline{\text{LPred}} \ \overline{\text{Left}})
+ \end{array}\] 
+Now, generally speaking, $p(A | B) = 1 - p(\overline{A} | B)$, assuming $p(B) \neq 0$:
+\[ \begin{array}{rcl}
+p(AB \vee \overline{A}B) &= &p(AB) + p(\overline{A}  B)\\
+p(B) &= &p(AB) + p(\overline{A}  B)\\
+p(A B) &= &p(B) - p(\overline{A}  B)\\
+\frac{p(A  B)}{p(B)} &= &1 - \frac{p(\overline{A}  B)}{p(B)}\\
+p(A | B) &= &1 - p(\overline{A} | B)
+ \end{array}\] 
+So we can also use our assumptions to show $p(\text{LPred} \ \overline{\text{Left}}) =  p(\overline{\text{LPred}} \ \text{Left})$:
+\[ \begin{array}{rcl}
+1 - p(\text{LPred} | \text{Left}) &=  &1 -p(\text{LPred} | \text{Left})\\
+1 - p(\text{LPred} | \text{Left}) &=  &1 -p(\overline{\text{LPred}} | \overline{\text{Left}})\\
+p(\overline{\text{LPred}} | \text{Left}) &=  &p(\text{LPred} | \overline{\text{Left}})\\
+p(\text{Left}) \cdot p(\overline{\text{LPred}} | \text{Left}) &=  &p(\text{Left}) \cdot p(\text{LPred} | \overline{\text{Left}})\\
+p(\text{Left}) \cdot p(\overline{\text{LPred}} | \text{Left}) &=  &p(\overline{\text{Left}}) \cdot p(\text{LPred} | \overline{\text{Left}})\\
+p(\overline{\text{LPred}} \ \text{Left}) &=  &p(\text{LPred} \ \overline{\text{Left}})\\
+ \end{array}\] 
+
+The result is then straightforward:
+\[ \begin{array}{rcl}
+p(\text{LPred}\ \overline{\text{Left}}) &=  &p(\overline{\text{LPred}}\ \text{Left})\\
+p(\text{LPred Left}) + p(\text{LPred}\ \overline{\text{Left}}) &=  &p(\overline{\text{LPred}}\ \text{Left}) + p(\text{LPred}\ \text{Left}))\\
+p(\text{LPred Left}) + p(\text{LPred}\ \overline{\text{Left}}) &=  &p(\overline{\text{LPred}}\ \text{Left}) + p(\overline{\text{LPred}}\ \overline{\text{Left}}))\\
+p(\text{LPred}) &=  &p(\overline{\text{LPred}})
+ \end{array}\] 
+
+}
+
+
+
+

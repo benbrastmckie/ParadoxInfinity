@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0mm}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem*{wo}{The Well-Ordering Principle}
+
+\pagestyle{fancy}
+
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $8$: Computability}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+
+In the following exercises, we will use $T_n$ to denote the Turing machine with code $n$. Also, we will assume that Turing machines only take natural numbers as inputs and only deliver natural numbers as outputs.
+
+\begin{defn}
+A Turing Machine (TM), $T$, is \textit{total} just in case for any input $i \in \mathbb{N}$, $T$ halts on $i$. 
+\end{defn}
+
+\begin{exer}
+Let $f: \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$ be the following function:
+$$
+f(n, i) = 
+\begin{cases}
+j, \, \, \, \, \text{if $n$ codes some total TM $T_n$, and $T_n$ outputs $j$ on the input $i$.} \\
+0, \, \, \, \, \text{if otherwise.}
+\end{cases}
+$$
+
+Show that $f$ is not Turing computable, i.e. it is impossible for there to be a Turing machine that computes $f$.
+\end{exer}
+
+\begin{exer}
+Let $f: \mathbb{N} \rightarrow \mathbb{N}$ be the following function:
+$$
+f(n) = 
+\begin{cases}
+1, \, \, \, \, \text{if $n$ codes some TM $T_n$, and $T_n$ halts on the input $2$.} \\
+0, \, \, \, \, \text{if otherwise.}
+\end{cases}
+$$
+
+Show that $f$ is not Turing computable, i.e. it is impossible for there to be a Turing machine that computes $f$. 
+\end{exer}
+
+\begin{exer}
+Let $f: \mathbb{N} \rightarrow \mathbb{N}$ be the following function:
+$$
+f(n) = 
+\begin{cases}
+1, \, \, \, \, \text{if Condition 1 is the case.} \\
+0, \, \, \, \, \text{if Condition 1 is not the case.}
+\end{cases}
+$$
+where Condition 1 is the following: $n$ codes some TM $T_n$, and for every $i \in \mathbb{N}$, either $T_n$ outputs $i$ on the input $i$, or $T_n$ loops on the input $i$.
+
+Show that $f$ is not Turing computable, i.e. it is impossible for there to be a Turing machine that computes $f$. 
+\end{exer}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,305 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\Large Section 5,  Newcomb's Problem \large \\[.3cm]
+\noindent  David Boylan \hfill{11-12, 66-154}
+
+\noindent\HRule
+\end{fullwidth}
+
+\section{What is decision theory?}
+
+\begin{itemize}
+
+\item It's a theory of \emph{rational} decision making;\marginnote{Not a theory of how we \emph{actually} make decisions, but a theory of how we \emph{should} make decisions (if we're anything like Bayesian agents).} in particular, it tells us how to make decisions when we are uncertain about what is to happen. 
+
+\item We assume the agent faces a decision problem $D$: there is a set of mutually exclusive and exhaustive options of which an agent can choose one.
+
+
+\item State space $S$ : a set of mutually exclusive and exhaustive events; these are \emph{not} in the agent's power to control.
+
+\item We assume a set of outcomes $O$ : think of this as all the possible sets of pairs of states and decisions.
+
+\item Simple example of decision problem: $\{\emph{take an umbrella, don't take an umbrella}\}$
+
+\vspace{.2cm}
+
+\noindent State space: $\{rain, \emph{no rain}\}$
+
+
+\vspace{.2cm}
+
+\noindent Outcomes: $\{\emph{rain and I take an umbrella, rain and I don't take an umbrella,}$ \\$\emph{no rain and I take an umbrella, no rain and I don't take an umbrella}\}$
+
+
+\item We assume the agent has utility function $U$: it assigns a real number to every possible outcome representing how good the agent takes it to be.
+
+
+\item We assume that the agent has probabilities: every possible outcome is assigned some real number between 0 and 1 reflecting how likely the agent thinks it is to come about. 
+
+\vspace{.2cm}
+
+\noindent This also gives us conditional probabilities: $P(B|A) = \frac{P(A\wedge B)}{P(A)}$, whenever $P(A) >0$.
+
+
+\item Let's call agents of this kind \emph{Bayesian agents}.
+
+
+\item Decision theory tells you to maximise \emph{expected utility}.\marginnote{Also called expected value.}
+
+
+\vspace{.2cm}
+
+\noindent $EU(A) = \Sigma_{s\in S} U(s \wedge A) \times P(s|A)$
+
+
+\vspace{.2cm}
+
+\noindent More generally,\marginnote{Interestingly, we know that if your preferences obey certain natural axioms, then you are representable as a Bayesian agent.} decision theory says that your preferences should track expected utility: you prefer $A$ to $B$ just in case $EU(A)>EU(B)$.
+
+
+\end{itemize}
+
+
+\section{Exercise}
+
+\begin{itemize}
+
+\item Here's a case: 
+
+\begin{quote}
+
+I'm thinking of buying dental insurance. I really don't want to be stuck without insurance if I need root canal surgery: the costs would be extremely high. But the costs of insurance for a year are reasonably high too. I also think it's fairly likely I won't need the surgery this year.
+
+(I don't think that buying insurance will make it any more or less likely that I'll need the surgery: so assume $P(\emph{need surgery}|\emph{buy insurance})= P(\emph{need surgery}|\emph{ don't buy insurance}) = P(\emph{need surgery})$.)
+
+\end{quote}
+
+
+\begin{itemize}
+
+\item Assign some reasonable probabilities and utilities to the possible outcomes here.
+
+
+\item Rank the options in order of expected utility.
+
+\item What would it take to flip your preferences? What would you have to change about the case?
+
+\end{itemize}
+
+\end{itemize}
+
+
+\section{Newcomb's problem}
+
+\begin{itemize}
+
+\item Remember the case: 
+
+\begin{quote}
+
+You are led into a room, and shown two boxes: a large one and a small one. You're
+told that the small box contains a thousand dollars. You're not sure what the large one
+contains, but you're told that it either contains a million dollars or is completely empty.
+
+Your choices are to take the contents of the large box (one boxing) or to take the contents of both (two boxing).
+
+ And there's a twist: a couple of weeks ago, a personality expert was summoned, and was handed as much information about you as could be gathered. The expert was then asked to predict, on the
+basis of that information, whether you will one-box or two-box. If the expert concluded
+that you will one-box, the large box was filled with a million dollars. If she concluded that you will two-box, the large box was left empty.
+
+
+\end{quote}
+
+
+
+\item What would you do?
+
+
+
+\item Suppose you see a crowd of people leaving the experiment thrilled by their newfound wealth. Are they (most likely) one boxers or two boxers?
+
+What if anything does this tell you?
+
+
+\item Imagine that the experimenter can see the contents of the boxes. What advice would they give you?
+
+What if anything does this tell you?
+
+
+
+\item Newcomb's original case is pretty science fiction-y. Can you come up with a real life example of a Newcomb case?
+
+
+
+\end{itemize}
+
+
+
+
+\section{Another kind of decision theory}
+
+\begin{itemize}
+
+\item CDT assumes a special kind of state space. Here the elements are \emph{causal hypotheses}, hypotheses about what might cause what in the real world. 
+
+
+\item Example: in the Newcomb case our state space is
+
+ $\mathcal{K} = \{\emph{taking one box causes me to get $1M$ and taking two boxes causes me to get $1M+1K$},$ \\$\emph{taking one box causes me to get 0 and taking two boxes causes me to get $1K$}\}$
+
+
+\item We also have a new way of calculating expected utility:
+
+$EU_{CDT}(A) = \Sigma_{K\in\mathcal{K}} P(K) \times U(K \wedge A)$
+
+
+\item This predicts that two boxing has higher expected utility.
+
+\vspace{.2cm}
+
+\noindent $EU(\emph{one box})= P(K_1)U(K_1 \wedge \emph{one box}) + P(K_2)(U(K_2 \wedge \emph{one box})$
+
+$= P(K_1)(1M) + P(K_2)(0)$
+
+\vspace{.2cm}
+
+\noindent $EU(\emph{two box})= P(K_1)U(K_1 \wedge \emph{two box}) + P(K_2)(U(K_2 \wedge \emph{two box})$
+
+$=P(K_1)(1M+1K) + P(K_2)((1K)$
+
+\end{itemize}
+
+
+
+
+
+
+
+
+\end{document}
+
+
+\section{Different kinds of conditionals (and conditional probabilities)}
+
+
+\begin{itemize}
+
+\item Indicative conditionals:
+
+\ex. If it rains and I don't have an umbrella, I will get wet.
+
+\ex. If it doesn't rain, I won't get wet.
+
+\item Counterfactual conditionals:
+
+\ex. If it had rained, then I would have gotten wet. 
+
+\ex. If it hadn't rained, I would have stayed dry.
+
+
+\item In general, conditional probabilities seem to go with indicatives:\marginnote{This is not true in full generality though.} generally $P(C|A)$ is high iff $P(\emph{If A then C})$ is high.
+
+\vspace{.2cm}
+
+\noindent Causality generally goes with counterfactuals:\marginnote{Though again, not always.} generally $A$ causes $C$ iff if A had been the case, then $C$ would have been the case.
+
+\item 
+
+
+
+\end{itemize}
+
+
+\section{How might we decide which side is right?}
+
+\begin{itemize}
+
+
+\item One way is to come up with independent problems for each analysis. 
+
+
+\item In some way, we've already seen problems for evidentialism: in real life Newcomb problems it's hard to get the the one-boxing intuition.
+
+
+Focus on the Prisoner's Dilemma: can you get the intuition there that the right thing to do is to cooperate?
+
+
+\item But CDT has problems too. Here's a plausible principle about decision making: 
+
+If you're rational, you don't make decisions that you can \emph{foresee now} that you will regret taking.
+
+CDT violates this.
+
+
+\item 
+
+
+
+\item Here are some plausible probabilities and utilities. 
+
+
+\item Q. What will a CDT Bayesian agent do?
+
+
+\item 
+
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+

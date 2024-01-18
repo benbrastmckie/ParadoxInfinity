@@ -1,0 +1,102 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE To Infinity and Beyond  \normalsize \\[.3cm]
+\noindent  \textsc{24.118 Recitation Section $\bullet$ Matthias Jenny\\  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927 $\bullet$ Hours: Thu 11:30-12:30} \hfill{October 3, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+\marginnote{\\\\\\\includegraphics[height=7.69cm]{buzz.jpg}}
+\section{Some definitions}
+
+\noindent A function $f$ from set $A$ to set $B$ is \emph{one-one}, or \emph{injective}, iff: \underline{\hspace{2.62cm}}\\\\\underline{\hspace{11.48cm}}\\\\\underline{\hspace{11.48cm}}\\
+
+\noindent $f$ is \emph{onto}, or \emph{subjectve}, iff: \underline{\hspace{7.67cm}}\\\\\underline{\hspace{11.48cm}}\\
+
+\noindent $f$ is a \emph{one-one correspondence}, or \emph{bijective}, iff: \underline{\hspace{4.84cm}}\\\\\underline{\hspace{11.48cm}}
+
+\section{Warm up}
+
+\begin{enumerate}
+\item In our proof of $|\mathbb{N}|\neq|\mathbb{R}|$, why can't we just add the evil twin to the end or the beginning of the list? \end{enumerate}
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item What is the cardinality of the set $[0,\frac{1}{2}]$?\end{enumerate}
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item To prove that $|[0,1)|=|[0,1]|$, can't we just take the 1 in $|[0,1]|$ and ``move'' it to the front? \end{enumerate}
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+
+\section{Pset 4, problem 1}
+
+\begin{quote}
+Show that there is a 1-1 correspondence between the whole numbers ($\dots$ -3, -2, -1, 0, 1, 2, 3, $\dots$) and the prime numbers.
+\end{quote}
+
+\begin{description}
+\item[Step 1:] Show that there are infinitely many prime numbers.\\\\\\\\\\\\\\\\\
+\item[Step 2:] Show that there is a one-one correspondence between the natural numbers and the prime numbers.\\\\\\\\\\\\\\\\\
+\end{description}
+
+
+\section{Pset 4, problem 4}
+
+\begin{quote}
+Show that there can be no 1-1 correspondence between the natural numbers and the set of all functions from the natural numbers to the set $\{a, b, c, d, e\}$.
+\end{quote}
+
+\noindent \emph{Hint:} Assume for \emph{reductio} that there is a one-one correspondence $f$ between the natural numbers and the relevant set of functions.
+
+
+
+
+
+\end{document}

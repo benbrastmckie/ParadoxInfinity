@@ -1,0 +1,362 @@
+
+
+\documentclass[12pt]{extarticle}
+
+\usepackage{summary-intro}
+\usepackage{longtable}
+\newcommand{\boxarrow}{\ \Box\hspace{-1.8mm}\rightarrow}
+
+
+
+\begin{document}
+
+
+%version from 2022
+\sumintro{Newcomb's Problem}{Spring 2023}
+
+
+\section{One-boxing vs. Two-boxing}
+
+There are two boxes. The transparent box contains \$1K; you're not sure what the opaque box contains but it's either \$0 or \$1M. You have two choices: 
+\begin{description}
+\item[Two-Box]
+Keep both boxes.
+\item[One-Box]
+Keep the opaque box; leave the transparent box behind. 
+\end{description}
+The boxes were sealed before you entered the room, and your choice will not cause their contents to change. How should you choose?
+
+
+\section{Newcomb's Problem}
+
+Same set-up as before, except now the contents of the opaque box were selected by a predictor, who is known to be 99\% accurate:
+
+\begin{longtable}[c]{@{}lll@{}}
+\hline
+\textbf{Prediction} & \textbf{Opaque Box} & \textbf{Transparent Box}
+\tabularnewline
+\hline
+\endhead
+One-Box & \$1M & \$1K\tabularnewline
+Two-Box & \$0 & \$1K\tabularnewline
+\hline
+\end{longtable}
+\noindent
+As before, the boxes were sealed before you entered the room, and your choice will not cause their contents to change. How should you choose?
+
+
+\begin{itemize}
+
+\item \emph{Wait!} Could there even be such a predictor? (it is at least logically possible)
+
+\end{itemize}
+
+\section{A Case for One-Boxing}
+
+
+\begin{itemize}
+
+\item
+  {If you one-box, it is almost certain
+  (99\%) that the opaque box will contain \$1M;}
+
+\item
+  {If you two-box, it is almost certain (99\%)
+  that~the opaque box will be empty.
+  }
+\end{itemize}
+
+
+\section{A Case for Two-Boxing}
+
+
+\begin{itemize}
+\item
+  If the opaque box is empty, you'll be better off if you two-box than if you
+  one-box.
+\item
+  If the opaque box is full, you'll be better off if you two-box
+  than if you one-box.
+  
+\end{itemize}
+
+
+\section{Decision Theory}
+
+\fbox{\parbox{135mm}{$$\text{your options} + \text{the probabilities} + \text{your values} \Rightarrow \text{a recommendation}$$}}
+
+
+\vspace{4mm}
+\begin{description}
+\item[Expected Value Maximization]
+Choose an option whose \emph{expected value} is at least as high as that of any rival option.\label{gloss:evm}
+\end{description}
+The \textbf{expected value} of an option $A$ is the weighted average of the value of the outcomes that $A$ might lead to, with weights determined by the probability of the relevant state of affairs, given that you choose $A$.\label{gloss:ev} 
+
+\subsection{Formally Speaking\dots}
+\[
+EV(A) = v(A S_1) \cdot p(S_1|{}A) + 
+ \ldots + 
+v(A S_n) \cdot p(S_n|{}A)
+\]
+\begin{itemize}
+
+\item $S_1, S_2,\ldots, S_n$ is any list of (exhaustive and mutually exclusive) states of the world;
+
+\item $v(A S_i)$ is the value of being in a situation in which you've chosen $A$ and $S_i$ is the case;
+
+\item $p(S|A)$ is the probability of $S$, given that you choose $A$.\label{gloss:cond-prob5}
+
+\end{itemize}
+
+
+
+\section{Independence}
+
+
+\begin{itemize}
+\item Two events are \textbf{causally independent} of one another if neither of them is a cause of the other. 
+
+(Otherwise, the effect is  \textbf{causally dependent}  on the cause.\label{gloss:ca-dep})
+
+\item Two events are \textbf{probabilistically independent} of one another if the assumption
+that one of them occurs does not affect the probability that the other
+one will occur.
+
+(Otherwise, each of them is \textbf{probabilistically
+dependent} on the other.\label{gloss:pr-dep})
+
+\end{itemize}
+
+\section{Newcomb's Problem}
+
+\begin{itemize}
+
+\item The contents of the opaque box are probabilistically dependent on your decision.
+
+$p(F|1) > p(F)$
+
+
+\item The contents of the opaque box are causally independent of your decision.
+
+One-boxing does not cause the opaque box to be full. (And vice-versa.)
+
+\end{itemize}
+Should you one-box, if you want the opaque box to be full?
+
+\section{An Analogy}
+
+
+\begin{itemize}
+
+\item Wet sidewalks are probabilistically dependent on umbrella use.
+
+$p(W|U) > p(W)$
+
+\item Wet sidewalks are causally independent of umbrella use.
+
+Bringing your favorite umbrella will not cause the sidewalks to be wet. (And vice-versa.)
+
+\end{itemize}
+Should you refrain from carrying your favorite umbrella, if you want the sidewalks to be dry?
+
+
+\section{Conditionals, Indicative and Subjective}
+
+Past Events:
+\begin{quote}
+\begin{description}
+\item[Indicative] If Oswald didn't shoot Kennedy, somebody else did.
+\item[Subjunctive] Had Oswald not shot Kennedy, somebody else would have.
+\end{description}
+
+\end{quote}
+Present Events:
+\begin{quote}
+\begin{description}
+\item[Indicative] If people are using their umbrellas, it's raining.
+\item[Subjunctive] Were people to use their umbrellas, there would be rain.
+
+
+\end{description}
+\end{quote}
+
+
+
+\begin{quote}
+\begin{description}
+\item[Indicative] If it's raining, people are using their umbrellas.
+
+\item[Subjunctive] Were it to rain, people would use their umbrellas.
+
+\end{description}
+\end{quote}
+
+
+\section{Indicative Conditionals}
+
+\begin{itemize}
+\item ``$A \rightarrow B$'' is shorthand for the indicative conditional``if $A$, then $B$''.
+
+
+\item The probability of an indicative conditional is the conditional probability of its consequent given its antecedent:\footnote{Provided that $A$ contains no indicative conditionals.}
+$$p(A \rightarrow B) = p(B|A)$$
+
+\end{itemize}
+
+\section{Subjunctive Conditionals}
+
+\begin{itemize}
+\item ``$A \boxarrow B$'' is shorthand for the subjunctive conditional ``were it that $A$, it would be that $B$''.
+
+\item If $A$ causes $B$, then, typically, $A \boxarrow B$. 
+
+\emph{Example:} Rain causes umbrella use. So: were it to rain, people would use their umbrellas.
+
+
+
+\item If $A$ doesn't cause $B$, then, typically:
+
+\begin{itemize}
+
+\item If $B$: $A \boxarrow B$ and $\neg A \boxarrow B$; or
+
+\item If $\neg B$: $A \boxarrow \neg B$ and $\neg A \boxarrow \neg B$
+
+\end{itemize}
+\emph{Example:} Umbrella use doesn't cause rain. Assuming it's sunny:
+
+\begin{description}
+\item[] Were people to use their umbrellas, it would (still) be sunny outside; and
+\item[] Were people to refrain from using their umbrellas, it would (still) be sunny outside.
+\end{description}
+
+
+\end{itemize}
+
+\section{A Connection with Free Will}
+
+As you have breakfast in NYC, Susan tells you that she was considering going on a train trip to Alaska the previous night. She obviously did not make the trip. Was she in a position to do otherwise?
+
+\begin{itemize}
+\item As judged using the indicative conditional, no:
+
+If Susan decided to make a train trip to Alaska last night, she failed.
+
+
+\item As judged using the subjunctive conditional, maybe:
+
+Had Susan decided to make the trip, she would have succeed.
+
+\end{itemize}
+Susan faces a Newcomb scenario. Should she One-Box?
+\begin{itemize}
+\item As judged using the indicative conditional, yes:
+
+\begin{itemize}
+
+\item If Susan one-boxes, she'll almost certainly be rich. 
+\item If Susan two-boxes, she'll almost certainly be poor. 
+
+\end{itemize}
+\item As judged using the subjunctive conditional, no:
+
+\begin{itemize}
+
+\item
+Were Susan to one-box, she would fail to bring about a situation in which she ends up with as much money as is available.
+
+\item
+Were Susan to two-box, she would succeed in bringing about a situation in which she ends up with as much money as is available.
+
+\end{itemize}
+
+\end{itemize}
+
+\section{Evidential Decision Theory}
+
+\[
+\begin{array}{ccc}
+EV(1) &= &v(1\, F) \cdot p(F|1) + v(1\,E) \cdot p(E|1)\\
+EV(2) &= &v(2\, F) \cdot p(F|2) + v(2\,E) \cdot p(E|2)\\
+\end{array}
+\]
+But $p(A \rightarrow B) = p(B|A)$. So:
+\[
+\begin{array}{ccc}
+EV(1) &= &v(1\, F) \cdot p(1 \rightarrow F) + v(1\,E) \cdot p(1\rightarrow E)\\
+EV(2) &= &v(2\, F) \cdot p(2 \rightarrow F) + v(2\,E) \cdot p(2 \rightarrow E)
+\end{array}
+\]
+
+
+
+\section{Causal Decision Theory}
+
+
+\[
+\begin{array}{ccc}
+ECU(1) &= &v(1\, F) \cdot p(1 \, \boxarrow  F) + v(1\,E) \cdot p(1 \, \boxarrow E)\\
+ECU(2) &= &v(2\, F) \cdot p(2 \, \boxarrow  F) + v(2\,E) \cdot p(2 \, \boxarrow E)
+\end{array}
+\]
+But $p(1 \, \boxarrow  F) = p(F)$ (and similarly for other cases). So:
+\[
+\begin{array}{ccc}
+ECU(1) &= &v(1\, F) \cdot p(F) + v(1\,E) \cdot p(E)\\
+ECU(2) &= &v(2\, F) \cdot p(F) + v(2\,E) \cdot p(E)\\
+\end{array}
+\]
+Since, $v(2\, F) > v(1\, F)$ and $v(2\, E) > v(1\, E)$:
+$$ECU(1) < ECU(2)$$
+
+
+
+\section{Prisoner's Dilemma}
+
+
+\begin{longtable}[c]{@{}lll@{}}
+\hline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+You defect
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+You keep quiet
+\strut\end{minipage}\tabularnewline
+\hline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones defects
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones $\rightarrow$ $-$9,000\\
+You $\rightarrow$ $-$9,000
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones $\rightarrow$ 0\\
+You $\rightarrow$ $-$10,000
+\strut\end{minipage}\tabularnewline
+\hline
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones keeps quiet
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones $\rightarrow$ $-$10,000\\
+You $\rightarrow$ 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+Jones $\rightarrow$ $-$1,000\\
+You $\rightarrow$ $-$1,000
+\strut\end{minipage}\tabularnewline
+\hline
+\end{longtable}
+
+
+
+
+
+
+\end{document}
+
+

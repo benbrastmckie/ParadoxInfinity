@@ -1,0 +1,112 @@
+
+
+
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{enumerate}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+
+\begin{document}
+
+\begin{quote}
+
+\begin{center} {\large 24.118 -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 5: Orderings and the Higher Infinite\\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+\noindent How these problems will be graded:
+
+\begin{itemize} 
+
+\item You will be graded both on the basis of whether your answers are correct and on the basis of whether they are properly justified. 
+\end{itemize} 
+
+You can assume anything in the course notes. There is no word limit.
+
+
+\end{quote}
+
+\subsection*{Problems:}
+
+
+\begin{enumerate}
+
+\item Definitions: 
+\begin{itemize}
+\item $\varnothing$ is the empty set. If $A$ and $B$ are sets, $A-B$ is the set whose members are the elements of $A$ that are not also in $B$ (so, for instance $\{1, 2\} - \{1\} = \{2\}$). Note that $\{1, \{1\}\} - \{1\}$ is $\{\{1\}\}$, \emph{not} $\{1\}$.
+\item $\mathcal{P}(A)$ is the power set of $A$ (i.e. the set of all subsets of $A$).
+\end{itemize}
+
+Say of each of the following sets whether it is well-ordered by $\in$. (1 point each)
+\begin{enumerate}[(a)]
+\item $\varnothing$
+\item $\mathcal{P}(\mathcal{P}(\mathcal{P}(\varnothing)))$
+\item $\mathcal{P}(\mathcal{P}(\mathcal{P}(\varnothing))) - \{\varnothing\}$
+\item $\mathcal{P}(\mathcal{P}(\mathcal{P}(\varnothing))) - \{\{\varnothing\}\}$
+\item $\mathcal{P}(\mathcal{P}(\mathcal{P}(\varnothing))) - \{\{\{\varnothing\}\}\}$
+\end{enumerate}
+
+\item Recall that that the ordinals are well-ordered, and that $\alpha<_o\beta$ iff $\alpha\in\beta$.
+\begin{enumerate}[(a)]
+\item Show that there is no ordinal $\alpha$ such that $\alpha<_o\varnothing$. (2 points)
+\item Show that there is no infinite ordinal (i.e., no ordinal with infinitely many members) $\alpha$ such that $\alpha<_o\omega$. (2 points)
+\end{enumerate}
+
+\item  If $\alpha$ is an ordinal, say that $\alpha'=\alpha \cup \{\alpha\}$. (For example, $\omega' = \omega \cup \{\omega\} = \{0_o, 1_o,\ldots,\omega\}$.)
+\begin{enumerate}[(a)]
+\item Show that there is a bijection between $\omega$ and $\omega'$. (1 point)
+\item Show that $\omega$ and $\omega'$, as ordered by $<_o$, do not have the same well-order type --- that is, the orderings are \emph{not} isomorphic. (2 points)
+\end{enumerate}
+
+\item Below, ``+'' and ``$\times$'' always refer to ordinal addition and ordinal multiplication.
+
+Which of the following are true? (1 point each)
+\begin{enumerate}[(a)]
+\item $\alpha + 1_o =  \alpha'$
+\item $1_o + \omega = \omega + 1_o$
+\item $1_o + 3_o = 3_o + 1_o$
+\item $(\omega + 2_o) + \omega <_o (\omega + \omega) + 3_o$
+\item $1_o \times 3_o = 3_o\times 1_o$ 
+\item $3_o\times\omega = (\omega + \omega) + \omega$
+\item $\omega\times 3_o = \omega + (\omega + \omega)$
+\item $(\omega\times 2_o) + \omega <_o (\omega\times\omega) + 2_o$
+\item $\omega\times\omega <_o  \omega\times (2_o\times\omega)$
+\item $\omega\times (\omega + \omega) = (\omega\times \omega) + (\omega\times \omega)$
+\end{enumerate}
+
+\item \textbf{Extra Credit}
+
+Explain in words what the well-ordering represented by each of the following ordinals looks like. (1 point each)
+\begin{enumerate}[(a)]
+\item $(\omega\times 2_o) + \omega$
+\item $\omega + (\omega\times 2_o)$
+\item $\omega\times\omega$ 
+\item $(\omega\times\omega)\times\omega$
+\item $(\omega\times\omega)\times(\omega\times\omega)$
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+

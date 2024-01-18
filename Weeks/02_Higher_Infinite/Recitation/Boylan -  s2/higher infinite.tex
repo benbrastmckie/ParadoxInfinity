@@ -1,0 +1,266 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\Large Section 2, The Higher Infinite \large \\[.3cm]
+\noindent  David Boylan \hfill{11-12, 66-154}
+
+\noindent\HRule
+\end{fullwidth}
+
+
+\section{Background}
+
+\begin{itemize}
+
+
+\item Quiz answers:
+
+\begin{enumerate}
+
+\item The set of natural numbers is well ordered.
+
+\item The rationals are not well-ordered. Why not?
+
+\item The reals in [0,1] are well ordered. Why not?
+
+\end{enumerate}
+
+\item Given an example of a set $S$ and a relation $R$, where $R$ well orders $S$. Why does it meet each of the conditions for a well-ordering?
+
+
+\item We'll say that $\langle S,<_1\rangle$ and $\langle S,<_2\rangle$ are of the same well-order type whenever they are isomorphic. But when are they \emph{isomorphic}?
+
+  
+
+\item Which of the following pairs of well-orderings have the same well-order type?
+
+\begin{itemize}
+
+ \item The set $\{7, 2, 13, 12\}$ ordered by $<_N$ and the set $\{412, 708, 20081\}$ ordered by $<_N$,where $<N$ is the standard ordering of the natural numbers.
+ \item The natural numbers under $<_N$, and natural numbers greater than $17$ under $<_N$.
+
+
+\end{itemize}
+
+\end{itemize}
+
+\section{Isomorphisms and Ordinals}
+
+\begin{itemize}
+
+
+\item Let's dwell on the notion of an isomorphism. Isomorphisms capture structure: if two mathematical objects are isomorphic, then intuitively they have the same structure.
+
+\item In fact, since isomorphisms are an equivalence relation, i.e.: 
+
+
+\begin{itemize}
+
+\item A is always isomorphic to A (reflexive);
+
+\item if there is an isomorphism from A to B, then there's an isomorphism from B to A;
+
+
+\item if there's an isomorphism from A to B and an isomorphism from A to C, then there's an isomorphism from A to C.
+
+
+\end{itemize}
+
+
+ This means that we can divide up the set of objects we are interested in into \emph{equivalences classes}.
+
+\item This means we can pick a representative $R$ for each equivalence class and we will know that if something is isomorphic to $R$ it belongs in that equivalence class.
+
+
+
+\item Now we can see that if we have a set plus a well-ordering on it, that is a kind of structure. We can then divide well-ordered sets up into equivalence classes.
+
+
+\item This helps us answer the question of what work the ordinals are supposed to be doing. The point of the ordinals is that they give us a way of constructing a representative member for each equivalence class.
+
+\item In fact every well-ordered set is isomorphic to some ordinal ordinal. (Sadly we won't be proving this in this class.)
+
+
+\end{itemize}
+
+
+\section{Constructing the Ordinals}
+
+
+\begin{itemize}
+
+
+\item \textbf{Ordinal Principle.} At each stage, introduce a new ordinal, which is the set of all ordinalsthat have been introduced at previous stages of the process.
+
+\item In notation: $\alpha' = \alpha \cup \{\alpha\}$
+
+
+\item This gives us two kinds of ordinals: 
+
+$\alpha$ is a successor ordinal iff there's a $\beta$ such that $\alpha =\beta'$
+
+$\alpha$ is a limit ordinal iff it is not a successor ordinal. 
+
+(What kind of ordinal is 0?)
+
+
+\item Let $\alpha <_O\beta$ say that $\alpha$ is introduced before $\beta$. Since our stages of construction are well-ordered, $<_O$ is a well-ordering.
+
+
+
+\item This gives us the nice result that $\alpha <_O \beta$ iff $\alpha \in \beta$
+
+
+
+\item The ordinals are well-ordered: every ordinal is well-ordered by $\in$.
+
+
+
+\item Ordinals are set-transitive: if $\beta \in\gamma$ and $\alpha\in\beta$ then $\alpha \in\beta$. Why?
+
+
+\item Indeed the official definition of an ordinal is that an ordinal is a set that is well-ordered by $\in$ and set-transitive.
+
+\end{itemize}
+
+
+\section{Ordinal Arithmetic} 
+
+
+\begin{itemize}
+
+
+\item Intuitively, adding $\alpha$ to $\beta$ is playing the $\beta$ sequence after the $\alpha$ sequence.
+
+
+\item Here is a more rigourous definition: 
+
+$\alpha + 0 = \alpha$
+
+$\alpha + \beta'= (\alpha + \beta)'$
+
+$\alpha + \lambda = \bigcup\{\alpha +\beta: \beta <_O \lambda\}$
+
+\item Intuitively, multiplying  $\alpha$ by $\beta$ is to replace every element of $\beta$ with a sequence of type $\alpha$.
+
+\item A more rigourous definition: 
+
+$\alpha \times  0= 0$
+
+$\alpha \times \beta'=(\alpha \times \beta) + \alpha$
+
+$\alpha \times \lambda = \bigcup \{\alpha\times\beta: \beta<_O \lambda\}$
+
+
+
+
+
+\item Some questions for you: 
+
+\begin{enumerate}
+
+\item Is addition commutative i.e. does $\alpha +\beta = \beta +\alpha$ ? Why or why not?
+
+
+\item Is multiplication commutative i.e. does $\alpha\times\beta=\beta\times\alpha$? Why or why not? 
+
+\item Is $(\omega + \omega) + \omega = \omega + (\omega + \omega)$?
+
+
+\item Is $(\omega +0''')\times 0'' = (\omega \times 0'') + (0''' \times 0'')?$ 
+
+
+\end{enumerate}
+
+
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+\section{Paradoxes of Set Theory}
+
+
+\begin{itemize}
+
+
+\item Paradox of the barbers: suppose we live on an island where there lives a barber. This barber shaves only those people who do not shave themselves. 
+
+Question: does the barber shave himself? What does this show about the barber?
+
+
+\item This lighthearted example was used to shed light on a rather deep paradox.
+
+
+
+
+
+
+\item comprehension axiom
+
+
+\item What do you think has gone wrong here? What has led us to the paradox?
+
+
+
+\end{itemize}
+
+
+
+
+
+
+
+

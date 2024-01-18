@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amscd}
+
+\usepackage{amsthm}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{setspace}
+\usepackage{enumitem,linegoal}
+
+\usepackage{amssymb}
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\newtheorem{theo}{Theorem}[section] 
+
+\theoremstyle{definition}
+\newtheorem{defin}[theo]{Definition} 
+\newtheorem{lema}[theo]{Lemma} 
+\newtheorem{cor}[theo]{Corollar}
+\newtheorem{prop}[theo]{Proposition}
+\newtheorem{exer}{Exercise}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{Xinhe Wu (xinhewu@mit.edu)}
+\rhead{$24.118$ Paradox and Infinity $|$ Recitation $6$}
+
+\begin{center}
+{\Large \bf Newcomb's Problem and Decision Theory}
+\end{center}
+
+\smallskip
+
+\section{Evidential Decision Theory}
+
+Let $A$ be an option. Let $S_1$, $S_2$, $...$, $S_n$ be a list of exhaustive and mutually exclusive states of the world. Let $v(A \land S_i)$ be the value of being in a situation in which you’ve chosen $A$ and $S_i$, and let $p(S_i|A)$ be the probability of $S_i$, given that you choose $A$.
+\[
+\begin{array}{ccc}
+EV(A) &= &v(A \land S_1) \cdot p(S_1|A) + v(A \land S_2) \cdot p(S_2|A)+... +v(A \land S_n) \cdot p(S_n|A)\\
+\end{array}
+\]
+
+\section{Causal Decision Theory}
+\[
+\begin{array}{ccc}
+ECU(A) &= &v(A \land S_1) \cdot p(A \, \counterfactual S_1) +... +v(A \land S_n) \cdot p(A \, \counterfactual S_n)\\
+\end{array}
+\]
+
+\section{A Complication for EDT}
+
+Suppose you are asked to do the Newcomb experiment. Facing the two boxes, you are about to make a choice. You best friend, John, who is also in the room, takes a look at the content of the large box. He then knows whether there is a million dollars in it.
+
+
+\begin{defin}
+Let $H$ be an hypothesis and let $A$, $B$ be two pieces of evidences. We say that $B$ \textit{screens off} the evidence of that $A$ provides for $H$ just in case $p(H | A \land B) = p(H | B)$, or equivalently, $p(H \land A|B) = p(H|B) \cdot p(A|B)$.
+\end{defin}
+
+\begin{exer}
+John writes down on a note what he sees. Suppose I look at the note, and it says the large box is empty. Suppose further that John does not lie to me. Let $J_E$ denote the piece of evidence that John writes the large box is empty. 
+Let $1B$ be that I will one box, $2B$ be that I will two box, $F$ be that the large box is full, $E$ be that the large box is empty.
+Does $J_E$ screen off the evidential import of $2B$ on $E$?
+\end{exer}
+
+\begin{exer}
+Suppose I look at the note and it says the large box is empty ($J_E$). What is the expected value of $1B$ right now? What is the expected value of $2B$? What should we do according to EDT? What if John says that the large box is full?
+\end{exer}
+
+\begin{exer}
+Now I face two options: look at John's note or not. According to EDT, what is the expected value of me choosing to look? What is the expected value of me choosing not to look? Should I look or not?
+\end{exer}
+
+\begin{exer}
+According to CDT, should I look or not?
+\end{exer}
+
+\section{The Tickle Defense for EDT}
+
+We've shown that as soon as we know something that screens off the evidential import my choice provides for what's in the box, we should two box according to EDT. 
+
+\noindent
+But perhaps in the original case, we do have something like a `tickle': namely, my own beliefs and desires!
+
+\section{Real Life Case - Smoking}
+
+Suppose one day we learn that smoking does not cause cancer, rather some people with a special gene are more inclined to enjoy smoking and to get cancer. Shall I quit smoking? Shall I quit smoking according to EDT?
+
+\section{A Problem for CDT}
+
+\textbf{Death in Damascus}. A man in Damascus knows that he has an appointment with Death at midnight. He will escape Death if he manages at midnight not to be at the place of his appointment. He can be in either Damascus or Aleppo at midnight. As the man knows, Death is a perfect predictor of his whereabouts. If he stays in Damascus, he thereby has evidence that Death will look for him in Damascus. However, if he goes to Aleppo he thereby has evidence that Death will look for him in Aleppo. Wherever he decides to be at midnight, he has evidence that he would be better off at the other place.
+
+
+
+\end{document}

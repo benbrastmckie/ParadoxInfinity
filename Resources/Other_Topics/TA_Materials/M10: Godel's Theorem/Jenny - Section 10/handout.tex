@@ -1,0 +1,118 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE G\"odel's Theorem  \normalsize \\[.3cm]
+\noindent  \textsc{24.118 Recitation Section $\bullet$ Matthias Jenny\\  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927 $\bullet$ Hours: Thu 11:30-12:30} \hfill{December 5, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+\section{Pset, 2d}
+
+\begin{quote}Identify a formula ``Prime$(x_i,x_j)$'' of $L$ which is true if and only if $x_i$ is the $x_j^\mathrm{th}$ prime number.\end{quote}
+
+Let's tackle this in three parts:
+
+\begin{enumerate}
+\item Say that $x_i$ is prime: \underline{\hspace{13.3cm}}\\
+\item Say that every number in the sequence before $x_i$ is prime and a smaller prime in the sequence occurs before a larger prime: \underline{\hspace{7.22cm}}\\\\\underline{\hspace{16.44cm}}\\
+\item Say that the sequence contains \emph{every} prime less than $x_i$: \underline{\hspace{7.94cm}}\\\\\underline{\hspace{16.44cm}}\\
+\end{enumerate}
+Putting these three parts together:  \underline{\hspace{11.51cm}}\\\\\underline{\hspace{16.85cm}}\\
+
+
+\section{Pset, 3d}
+
+\begin{quote}
+In the lecture notes I prove a version of G\"odel's Theorem which states that there cannot be a Turing machine which outputs all and only the true sentences of $L$. Suppose we had instead tried to prove this:
+\begin{itemize}
+\item There cannot be a Turing machine which prints out every true sentence of $L$.
+\end{itemize}
+Would our proof break down? If so, where?
+\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Some more facts about G\"odel's theorem}
+
+Central to G\"odel's proof of his \marginnote{Robinson Arithmetic ($\mathsf{Q}$):\scriptsize \begin{description}[noitemsep,nolistsep]
+	\item[(Q1)] \scriptsize$(\forall x)\neg Sx=0$
+	\item[(Q2)] \scriptsize$(\forall x)(\forall y)(Sx=Sy\rightarrow x=y)$
+	\item[(Q3)] \scriptsize$(\forall x)((x+0)=x)$
+	\item[(Q4)] \scriptsize$(\forall x)(\forall y)(x+Sy)=S(x+y)$
+	\item[(Q5)] \scriptsize$(\forall x)(x\cdot 0)=0$
+	\item[(Q6)] \scriptsize$(\forall x)(\forall y)(x\cdot Sy)=((x\cdot y)+x)$
+	\item[(Q7)] \scriptsize$(\forall x)(x\mathrm{E}0)=S0$
+	\item[(Q8)] \scriptsize$(\forall x)(\forall y)(x\mathrm{E}Sy)=((x\mathrm{E}y)\cdot x)$
+	\item[(Q9)] \scriptsize$(\forall x)\neg x<0$
+	\item[(Q10)] \scriptsize$(\forall x)(\forall y)(x<Sy\leftrightarrow(x<y\vee x=y))$
+	\item[(Q11)] \scriptsize $(\forall x)(\forall y)(x<y\vee(x=y\vee y<x))$
+	\end{description}}theorem is the establishment of the following lemma:
+
+\begin{description}
+\item[Diagonal lemma] Every interesting set of mathematical axioms such as $\mathsf{Q}$ is such that for any property $P$, the theory proves that there's a sentence that says of itself that it has property $P$.
+\end{description}
+Two interesting properties to plug in here:
+
+\begin{itemize}
+\item $P=$ the property of not being provable in $\mathsf{Q}$.
+\item $P=$ the property of not being true.
+\end{itemize}
+
+\noindent Recall the \emph{realists}:\marginnote{Professor Rayo mentioned this on Wednesday.} They think that a true sentence of mathematics is true independently of any mathematical axioms that we pick. Here's some reason to think that realism is right: \\
+
+\noindent Let $\rho$ be the sentence that says of itself that it's not provable in $\mathsf{Q}$. If the theory is consistent, it won't prove $\rho$. But that seems to show that $\rho$ is true! But then we have something that's true even though it's not provable in $\mathsf{Q}$.
+
+\section{How complex is arithmetical truth?}
+
+\noindent Recall the halting problem. We saw that a Turing machine can't solve it, so it's not computable. But it is \emph{computably enumerable}. G\"odel's theorem shows that the true sentences of $L$ aren't computably enumerable. So arithmetical truth is more complex than the halting problem. How complex is it?\\
+
+\noindent Recall the degree ${\bf 0}$, which denotes the complexity of all Turing computable problems. Then there's the degree ${\bf 0'}$, which is the complexity of the halting problem. Then there's the degree ${\bf 0''}$, which is the complexity of the halting problems for oracle machines with an oracle for the original halting problem. And so on.\\
+
+\noindent The complexity of arithmetical truth is ${\bf 0}^{(\omega)}$!\\
+
+\noindent So if you wanted to decide in general whether something is an arithmetical truth, you'd need an oracle machine with an oracle for the halting problem of oracle machines with an oracle for the halting problem of oracle machines with an oracle for the halting problem for \dots
+
+\end{document}

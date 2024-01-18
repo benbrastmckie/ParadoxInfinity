@@ -1,0 +1,111 @@
+%URLs
+\usepackage{url}
+
+
+%Theorems
+\newtheorem{basic}{Proposition}
+\newtheorem{local}{}
+
+%Counters
+\newcounter{all}
+
+%Reference
+\newcommand{\n}[1]{(\ref{#1})}
+
+%Propositions
+\newcounter{propositions}
+\newcommand{\bprop}[1]{
+\addtocounter{propositions}{1}
+\begin{list}
+{(\arabic{propositions})}{\usecounter{all}}
+\setcounter{all}{\value{propositions}} \addtocounter{all}{-1}
+\item \label{#1}
+}
+\newcommand{\eprop}{\end{list}}
+
+
+%Named Propositions
+\newcommand{\bname}[1]{
+\begin{enumerate}
+\item[(#1)]
+}
+\newcommand{\ename}{\end{enumerate}}
+
+%Braces
+\newcommand{\seq}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\rseq}[1]{\left( {#1} \right)}
+\newcommand{\sqb}[1]{\left[ {#1} \right]}
+\newcommand{\db}[1]{\left\llbracket {#1} \right\rrbracket}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+%Quotes
+\newcommand{\cn}[1]{\ulcorner{#1}\urcorner}
+\newcommand{\qt}[1]{\mbox{``}{#1}\mbox{''}}
+\newcommand{\sqt}[1]{\mbox{`}#1\mbox{'}}
+
+
+%Appendix
+\newcommand{\app}{\vspace{0.3in} \pagebreak[1] \appendix \noindent \Large \textbf{Appendix} \normalsize \vspace{0.12in} \\ \noindent}
+
+%Hyphenation
+\hyphenation{mo-na-dic}
+\hyphenation{re-gi-men-ta-tion}
+\hyphenation{runs-ra-pid}
+
+%Proofs
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+%At Symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
+%Powerset Symbol
+\newcommand{\powerset}{\raisebox{.1\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\ftpowerset}{\raisebox{.1\baselineskip}{\large\ensuremath{\wp}}}
+
+
+%Format Commands
+\newcommand{\un}{\underline}
+\newcommand{\bo}{\textbf}
+\newcommand{\existsu}[1]{\un{\exists #1}}
+%\newcommand{\sc}[1]{\textsc{#1}}
+\newcommand{\sbt}[1]{$_{\mbox{#1}}$}
+\newcommand{\ot}[1]{$^{\mbox{#1}}$}
+\newcommand{\cl}[1]{{\mathcal{#1}}}
+
+
+%Predicate Commands
+\newcommand{\asc}[1]{\mbox{\textsc{#1}}}
+\newcommand{\abf}[1]{\mbox{\textbf{#1}}}
+\newcommand{\asf}[1]{\mbox{\textsf{#1}}}
+\newcommand{\nq}[1]{^{#1}}
+\newcommand{\elem}{\ \epsilon \ }
+
+%Comments
+%\newcommand{\com}[1]{\textbf{[#1]}  % prints comments in brackets
+\newcommand{\com}[1]{}  % do not print comments
+
+
+%Environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{convention}{Convention}
+\newtheorem{corollary}{Corollary}
+
+%Margins
+\newcommand{\mar}[1]{\marginpar{\scriptsize \fbox{\parbox{18mm}{#1}}}}
+
+%Blanks
+\newcommand{\blank}{\underline{\hspace{18mm}}}
+
+%Box
+%\newcommand{\box}[1]{\marginpar{\scriptsize \fbox{\parbox{18mm}{#1}}}}
+
+

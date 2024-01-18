@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity }
+\rhead{Recitation $1$: Infinite Cardinalities}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Definitions}
+
+\begin{defn}
+A \textit{function} $f$ from a set $A$ to a set $B$, in symbols, $f: A \rightarrow B$, is an assignment from $A$ to $B$ such that for any $a \in A$, there is exactly one $b \in B$ that $f$ assigns to $a$. For any $a \in A$, let $f(a)$ be the unique $b$ that $f$ assigns to $a$.
+\end{defn}
+
+\begin{defn}
+A function $f: A \rightarrow B$ is \textit{injective}, or an \textit{injection}, just in case for any two elements $a_1, a_2 \in A$, if $f(a_1) = f(a_2)$, then $a_1 = a_2$.
+\end{defn}
+
+\begin{defn}
+A function $f: A \rightarrow B$ is \textit{surjective}, or a \textit{surjection}, just in case for any element $b \in B$, there is some $a \in A$ such that $f(a) = b$.
+\end{defn}
+
+\begin{defn}
+A function $f: A \rightarrow B$ is \textit{bijective}, or a \textit{bijection}, just in case $f$ is both surjective and injective.
+\end{defn}
+
+\begin{defn}
+Let $A$ and $B$ be two sets. $|A| \leqslant |B|$ just in case there is an injection $f: A \rightarrow B$. $|A| = |B|$ just in case there is a bijection $f: A \rightarrow B$.
+\end{defn}
+
+\begin{defn}
+Let $f: A \rightarrow A$. For every natural number $n$ (including $0$), the function $f^n: A \rightarrow A$ is defined as follows:
+\[
+\begin{cases}
+\text{For any} \, \, a \in A, f^0(a) = a; \\
+\text{For any} \, \, a \in A, f^{n+1}(a) = f(f^n(a)). \\
+\end{cases}
+\]
+\end{defn}
+
+\section{Exercises}
+
+\begin{theorem} [Cantor-Schr\"{o}eder-Bernstein]
+Let $A$ and $B$ be two sets. If $|A| \leqslant |B|$ and $|B| \leqslant |A|$, then $|A| = |B|$.
+\end{theorem}
+
+The goal of the following series of exercises is to prove the Cantor-Schr\"{o}eder-Bernstein Theorem! 
+
+Let $f: A \rightarrow B$ be an injection and $g: B \rightarrow A$ be an injection. This is assumed for all of the following exercises.
+
+\begin{exer}
+The composite function $f \circ g: B \rightarrow B$ is the function such that for any $b \in B$, $(f \circ g)(b) = f(g(b))$. Show that $f \circ g$ is also an injection.
+\end{exer}
+
+\begin{exer}
+The range of $g: B \rightarrow A$, in symbols, $g[B]$, is the subset of $A$ such that $a \in g[B]$ if and only if $a = g(b)$ for some $b \in B$. The inverse function of $g$, $g^{-1}$, is the function from $g[B]$ to $B$ such that for any $a \in g[B]$, $g^{-1}(a)$ is the $b \in B$ such that $g(b) = a$. Using that fact that $g$ is an injection, show that $g^{-1}$ is well-defined, i.e. for any $a \in g[B]$, there is exactly one $b \in B$ that $g^{-1}$ assigns to $a$. Also, show that $g^{-1}$ is injective.
+\end{exer}
+
+\begin{exer}
+Call an element $b \in B$ \textit{lonely} if there is no element $a \in A$ such that $f(a) = b$. Call an element $b_2 \in B$ a \textit{descendant} of an element $b_1 \in B$ if there is a natural number $n$ (including $0$) such that $b_2 = (f \circ g)^n (b_1)$.
+
+Define a function $h: A \rightarrow B$ as follows:
+\[
+h(a) = 
+\begin{cases}
+g^{-1}(a) \; \; \; \; & \text{if} \, \, f(a) \, \, \text{is a descendant of some lonely element of} \, \, B, \\
+f(a) \; \; \; \; & \text{if otherwise}. \\
+\end{cases}
+\]
+
+Show that $h$ is well defined: in particular, for any $a \in A$, if $f(a)$ is a descendant of some lonely element of $B$, then $a \in g[B]$.
+\end{exer}
+
+\begin{exer}
+Show that $h: A \rightarrow B$, as defined above, is surjective:
+\begin{enumerate}
+\item[(a)] Step one: show that if $b \in B$ is a descendant of a lonely element, then $b = h(a)$ for some $a \in A$.
+\item[(b)] Step two: show that if $b \in B$ is not a descendant of any lonely element, then $b = h(a)$ for some $a \in A$.
+\end{enumerate}
+\end{exer}
+
+\begin{exer}
+Show that $h: A \rightarrow B$, as defined above, is injective:
+\begin{enumerate}
+\item[(a)] Step one: show that for any $a \in A$, $h(a)$ is a descendant of a lonely element if and only if $f(a)$ is a descendant of a lonely element.
+\item[(b)] Step two: Using the previous step, show that for any two elements $a_1, a_2 \in A$, if $h(a_1) = h(a_2)$, then $a_1 = a_2$. [Hint: consider in turn the case when $f(a_1)$ is a descendant of a lonely element and the case when it is not.]
+\end{enumerate}
+\end{exer}
+
+\end{document}

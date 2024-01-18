@@ -1,0 +1,384 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inzane Syllabus Template
+% LaTeX Template
+% Version 1.2 (8.22.2019)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Zane Wolf (zwolf.mlxvi@gmail.com)
+%
+% I (Zane) have left a lot of instructions both in the .tex file and the .cls file that can guide you to customize this document to suite your tastes and requirements. Here is a brief guide: 
+%  - Changing the Main Color: .cls line 39
+%  - Adding more FAQs: .cls line 126 and .tex line 99
+%  - Adding TA emails: uncomment .cls lines 220 & 224 and .tex lines 85 and 89
+%  - Deleting the FAQ sidebar entirely: .tex line 188
+%  - Removing the Lab/TA Info and placing a brief Overview/About section in their place:        uncomment .tex line 91 and .cls line 227, and comment .cls lines for the LAB/TA info        that you no longer want (c. lines 184-227)
+
+% I am also happy to help with crafting/designing modifications to this template to help suite your personal needs in a syllabus. Feel free to reach out! 
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{infinity_syllabus} % a4paper for A4
+
+\usepackage{booktabs, colortbl, xcolor}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{ltablex} 
+\usepackage{multirow}
+
+\setlist{nolistsep}
+
+\usepackage{lscape}
+\newcolumntype{r}{>{\hsize=0.9\hsize}X}
+\newcolumntype{w}{>{\hsize=0.6\hsize}X}
+\newcolumntype{m}{>{\hsize=.9\hsize}X}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\arraystretch}{2.0}
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\profilepic{fish.jpg} % Profile picture, if the height of the picture is less than that of the cirle, it will have a flat bottom. 
+
+
+% To remove any of the following, you need to comment/delete the lines in the .cls file (c. line 186). Commenting/deleting the lines below will produce an error. 
+
+%To add different lines, you will need to create the new command, e.g. \profPhone, in the .cls file c. line 76, and command to create the line in the side bar in the .cls file c. line 186
+
+\classname{Paradox and Infinity} 
+\classnum{24.118, Spring 2024} 
+
+%%%%%%%%%%%%%%% PROF INFO
+\profname{Benjamin Brast-McKie}
+\officehours{Office Hrs: Mon \& Wed 11-12pm} 
+\office{32-D966}
+\siteA{\href{https://canvas.mit.edu/courses/22144}{Canvas Website}} 
+\email{brastmck@mit.edu}
+
+%%%%%%%%%%%%%%% COURSE INFO
+\prereq{Recommended: 6.100A, 18.01}
+\classdays{Lecture: Mon \& Wed}
+\classhours{10am - 11am}
+\classloc{32-141}
+
+%%%%%%%%%%%%%%% TA INFO
+\taAname{Katie Zhou}
+\recA{Recitation: Fri 10am}
+\taAofficehours{Office Hrs: TBD} %Tues \& Thurs 10-11a
+\taAoffice{26-142}
+\TAemail{katie\_z@mit.edu}
+
+\taBname{Bess Ann Rothman}
+\recB{Recitation: Fri 11am}
+\taBofficehours{Office Hrs: TBD} %Tues \& Thurs 10-11a
+\taBoffice{26-142}
+\TBemail{bessroth@mit.edu}
+
+\taCname{Kenneth Nathaniel Black}
+\recC{Recitation: Fri 12pm}
+\taCofficehours{Office Hrs: TBD} %Tues \& Thurs 10-11a
+\taCoffice{26-142}
+\TCemail{black199@mit.edu}
+
+%%%%%%%%%%%%%%% PROBLEM SET INFO
+\labdays{Due Fridays}
+\labhours{5pm sharp}
+\labloc{Online}
+
+
+% \about{Fish make up the largest group of vertebrates on the planet, easily outnumbering mammals, marsupials, birds, and reptiles combined. Not only are they abundant, but they've diversified into an extraordinary array of sizes, shapes, lifestyles, and habitats. You can find them in the coldest, deepest parts of the ocean, and in the hottest freshwater ponds in the desert. This course will explore fish diversity and their biology. } 
+
+
+%---------------------------------------------------------------------------------------
+%	 FAQs
+%----------------------------------------------------------------------------------------
+%to add more questions or remove this section, go to the .cls file and start with lines comment
+%lines 226-250. Also comment out this section as well as line 152(ish), the command \makeSide
+
+\qOne{Is logic math?}
+\aOne{We will use formal symbols as in mathematics, but this does not make logic a type of math any more than it makes physics a type of mathematics. Rather, logic has a subject mater all its own, though saying what this is will require some care.}
+
+\qTwo{Is logic philosophy?}
+\aTwo{\textit{Philosophical Logic} concerns the philosophy of logic. There are also formal approaches to philosophy which employ methods from proof theory and model theory. \textit{Mathematical Logic} is a sub-discipline that falls considerably closer to mathematics. We will be doing a bit of all of these.}
+
+\qThree{Is logic a descriptive science?}
+\aThree{No! Logic is a \textit{normative} science insofar as it aims to regiment how we ought to reason in an artificial language, not merely how we happen to reason in a natural language like English.}
+
+\qFour{Why learn logic?}
+\aFour{Logic seeks to describe an ideal for reasoning. Of course, we are all engaged in reasoning. Learning logic is something akin to upgrading your firmware. It will literally change how you think.}
+
+\qFive{What does logic have to show for itself?}
+\aFive{Logic played a critical role in putting mathematics on a solid foundation (ZFC is accepted by most working mathematicians) and gave birth to the modern theory of computation as well as modern linguistics.}
+
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	 DESCRIPTION
+%----------------------------------------------------------------------------------------
+
+\makeprofile % Print the sidebar
+
+%----------------------------------------------------------------------------------------
+%	 OVERVIEW
+%----------------------------------------------------------------------------------------
+\section{Overview}
+
+During the first three parts of this course, 
+
+In the second three parts of this course, 
+
+%----------------------------------------------------------------------------------------
+%	 READING MATERIAL
+%----------------------------------------------------------------------------------------
+\vspace{0.5cm} %I make liberal use of the \vspace{} command to partition and place sections just how I want them. Alter as you see fit. 
+\section{Material}
+
+{\color{myCOLOR} Textbook}\\
+\textit{On the Brink of Paradox} by Agust\'{i}n Rayo (2019)\\
+
+{\color{myCOLOR} Other}\\
+All of the other required readings will be provided on Canvas.
+% I will also post supplemental readings written in a more philosophical vein.
+
+%----------------------------------------------------------------------------------------
+%	 GRADING SCHEME
+%----------------------------------------------------------------------------------------
+\vspace{0.5cm}
+\section{Grading Scheme}
+
+%below is the \twentyshort environment - a list with only two inputs. However, there is a \twenty environment, which creates a list with four inputs. You can find/alter details of that table in the .cls file c. lines 320. 
+\begin{twentyshort}
+	%\twentyitemshort{X\%}{Attendance/Participation}
+  \twentyitemshort{25\%}{Problem Sets (5 assignments at \%5 each)}
+  \twentyitemshort{10\%}{Responses (2 assignments at \%5 each)}
+  \twentyitemshort{40\%}{Short Essays (4 assignments at \%10 each)}
+  \twentyitemshort{12\%}{Recitation Attendance (12/14 meetings at \%1 each)}
+  \twentyitemshort{8\%}{Pop Quizzes (4 quizzes at \%2 each)}
+\end{twentyshort}
+
+Grades for the course will be set as follows: A+ = 97-100; A = 93-96; A- = 90-92; B+ = 87-89; B = 83-86; B- = 80-82; C+ = 77-79; C = 73-76; C- = 70-72; D = 60-69; F $<$ 60. Grades will not be curved.
+
+%----------------------------------------------------------------------------------------
+%	 EXTRAS
+%----------------------------------------------------------------------------------------
+
+\vspace{0.5cm}
+\section{Problem Sets}
+
+There will be 5 problem sets and 2 optional problem sets which can be used to replace past problem set grades.
+You are welcome to work through the problem set with at most two other students IN PREPARATION, but when it comes time to submit answers, you must be on your own.
+
+\vspace{0.5cm}
+\section{Responses and Essays}
+
+There will be 2 responses (500 words) which will provide a warm up for the 4 essays (1000 words) in later weeks.
+
+\vspace{0.5cm}
+\section{Recitations}
+
+There will be 14 recitations throughout the term.
+You are expected to attend at least 12 of the 14 recitations, where two absences will be granted in case you get sick or something else comes up.
+
+\vspace{0.5cm}
+\section{Pop Quizzes}
+
+Pop quizzes will be easy points if you are up on your reading and present in class.
+
+\vspace{0.5cm}
+\section{Piazza}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                SECOND PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage % Start a new page
+
+\makeSide % Print the FAQ sidebar; To get rid of, simply comment out and uncomment \makeFullPage
+
+% \makeFullPage
+
+\vspace{0.5cm}
+\section{Academic Integrity}
+
+Blindly copying someone else’s solution (written or typed) is cheating.
+By contrast, you are encouraged to talk through a solution step-by-step with a classmate or two where in doing so, everyone involved comes to understand each part.
+However, when it comes time to write up and submit the solutions, it is important that you do this for yourself without consulting others throughout the process.
+
+Doing problem sets is the best way to practice throughout the course.
+Cheating on problem sets will be to your own disadvantage in preparing for the exams.
+If you cheat on an exam, the academic consequences will be severe, so please don't consider it.
+There is more to life than grades; don't let them distract from learning!
+
+Instead of worrying about your grade, I recommend that you focus on mastering logic, doing your best work and feeling good about it.
+Logic is an extremely deep subject, and foundational for this information age that we are all a part of.
+This course should provide you with an important tool kit that I hope you enjoy learning to use and that will serve you well beyond the end of this course.
+% This has certainly been true for me!
+
+\vspace{0.5cm}
+\section{Make-up Policy}
+
+Make-up exams or problem-sets are only permitted for students in the midst of a medical or family emergency.
+Making arrangements IN ADVANCE of the due date is required except in particularly difficult circumstances.
+
+\vspace{0.5cm}
+\section{Learning Objectives}
+
+%use \begin{outline} or \begin{outline}[enumerate] to create a list with subitems. 
+\begin{itemize}
+  \item Practice regimenting a range of natural language sentences into propositional and first-order languages.
+  \item Learn how to assess complex natural language arguments for validity.
+  \item Practice applying the rules of a proof system, regimenting valid reasoning.
+  \item Develop an appreciation for meta-logical proofs about our proof systems and their corresponding semantics.
+  \item Contemplate elements of the philosophy of logic, exploring such questions as: What is logic? What unites it as a discipline? What can logic do, and what are its limits? Do the rules of logic describe something universal or conventional?
+\end{itemize}
+
+\vspace{0.5cm}
+\section{Diversity and Inclusivity Statement}
+
+In all course-related activities and communications, you will be treated with respect.
+I welcome individuals of all ages, backgrounds, cultures, beliefs, ethnicities, gender identities and expressions, national origins, religious affiliations, abilities, sexual orientations, and other visible and non-visible differences.
+All members of this class are expected to help create a respectful, welcoming, and inclusive environment for every other member of the class.
+
+\vspace{0.5cm}
+\section{Accommodations for Students with Disabilities}
+
+If you are a student with learning needs that require accommodation, please contact Disability and Access Services at \texttt{das-student@mit.edu} (or for assistive technology, \texttt{atic-staff@mit.edu}) as soon as possible, to make an appointment to discuss your needs and to obtain an accommodations letter.
+Please also e-mail me as soon as possible to set up a time to discuss your learning needs.
+As someone who has used these services in the past, you can assume that you will have my full support.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                COURSE SCHEDULE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\makeFullPage
+\section{Class Schedule}
+  \vspace{.1in}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{p{2.5cm}p{7.5cm}p{9.5cm}} %change the width of the comments by changing these cm measurements. Add/substract columns by adding/deleting p{} sections. 
+\arrayrulecolor{myCOLOR}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 1 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large Part 1: The Infinite}}} \\
+\hline
+% Week & Topic & Readings \\ \hline 
+%%Alternatively, instead of Week #, you can do Class date for meeting
+
+\textbf{(Week 1)} & Paradox and Infinity & \textit{On the Brink of Paradox}, Ch.~1 \\
+Feb 05, 07 &  & Problem Set 1 Due Friday 02/09\\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 2)} & The Higher Infinite & \textit{On the Brink of Paradox}, Ch.~2 \\
+Feb 12, 14 &  & Problem Set 2 Due Friday 02/16  \\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 3)} & Omega Sequences & \textit{On the Brink of Paradox}, Ch.~3 \\
+Feb 20, 21 &  & Problem Set 3 Due Friday 02/23 \\
+\arrayrulecolor{maingray}\hline
+
+~\\
+\arrayrulecolor{maingray}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 2 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 2: Cantor's Paradise}}} \\
+\hline
+
+  \textbf{(Week 4)} & The Metaphysics of Sets & "What is the iterative conception of set" Parsons (1977) \\
+Feb 26, 28 &  & Response 1 Due Sunday 03/03\\ 
+\arrayrulecolor{maingray}\hline
+
+  \textbf{(Week 5)} & Absolute Generality & "Speaking of Everything" Cartwright (1994) \\
+Mar 4, 6 &  & Response 2 Due Sunday 03/10\\
+\arrayrulecolor{maingray}\hline
+
+~\\
+\arrayrulecolor{maingray}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 3 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 3: Truth}}} \\
+\hline
+
+  \textbf{(Week 6)} & The Liar & "Outline of a Theory of Truth" Kripke (1975) \\
+Mar 11, 13 &  & Optional Replacement Problem Set Due Friday 03/15 \\ % Problem Set 
+\arrayrulecolor{maingray}\hline
+
+  \textbf{(Week 7)} & Yablo's Paradox & "A Plea for Semantic Localism" Rayo (2013) \\
+Mar 18, 20 &  &  Essay 1 Due Sunday 03/24\\
+\arrayrulecolor{maingray}\hline
+
+~\\
+\arrayrulecolor{maingray}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 4 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 4: Time Travel}}} \\
+\hline
+
+  \textbf{(Week 8)} & Watch the film "Timecrimes" (2007) over break &  \\
+Mar 25, 27 & --- SPRING BREAK --- &  \\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 9)} & Time Travel & \textit{On the Brink of Paradox}, Ch.~4 \\
+Apr 1, 3 &  &  Problem Set 4 Due Friday 04/05\\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 10)} & Grandfather Paradox & "The Paradoxes of Time Travel" Lewis (1976) \\
+Apr 8, 10 &  &  Essay 2 Due Sunday 04/14\\
+\arrayrulecolor{maingray}\hline
+
+\newpage
+
+~\\
+\arrayrulecolor{maingray}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 5 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 5: Newcomb's Problem}}} \\
+\hline
+
+\textbf{(Week 11)} & Newcomb's Problem & \textit{On the Brink of Paradox}, Ch.~5 \\
+Apr 17 &  &  No Assignment\\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 12)} & One-Boxing & "Counterfactuals and Newcomb's Problem" Horgan (1981) \\
+Apr 22, 24 &  & Problem Set 5 Due Friday 04/26 \\
+\arrayrulecolor{maingray}\hline
+ 
+\textbf{(Week 13)} & Two-Boxing & "Why Take Both Boxes" Spencer and Wells (2019) \\
+Apr 29, May 1 &  & Essay 3 Due Sunday 05/05 \\
+\arrayrulecolor{maingray}\hline
+
+~\\
+\arrayrulecolor{maingray}\hline
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 6 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 6: Prisoner's Dilemma}}} \\
+\hline
+
+\textbf{(Week 14)} & Prisoners' Dilemma & "Prisoners' Dilemma is a Newcomb Problem" Lewis (1979) \\
+May 6, 8 &  & Optional Replacement Problem Set Due Friday 05/10 \\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 15)} & Natural Deduction (QD) & "Prisoner's Dilemma and Newcomb's problem: Why Lewis's Argument Fails" Berm\'{u}dez (2013) \\
+May 13 & & Essay 4 Due Sunday 05/19 \\
+\arrayrulecolor{maingray}\hline
+
+\end{tabularx}
+\end{center}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
+
+
+

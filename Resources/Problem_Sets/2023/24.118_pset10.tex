@@ -1,0 +1,566 @@
+%%this is the 2023 file, based more directly on the 2021 file 
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{pset-2023-no-quiz}
+
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{qa}
+
+
+\begin{document}
+
+\psintro{Problem Set 10: G\"odel's Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Idea for next time: a problem aimed at showing that Godel's Theorem does not entail that there are "essentially" unprovable sentences -- only that for any suitable axiom system there will be some unprovable sentence. 
+
+\subsection*{Preface}
+
+\subsubsection*{1.~Note}
+
+Several of the questions below pertain to a specific formal language $L$, which is defined in the course materials. The symbol ``$\mathcal{L}$'', in contrast, is used as a variable to range over arbitrary formal languages.
+
+\subsubsection*{2.~Advice on Formalizing Arithmetical Statements}
+
+Suppose you're trying to express an arithmetical claim within $L$. When should you use quantifiers? 
+
+\begin{itemize}
+
+\item Say you want to find a sentence of $L$ that expresses the following claim: ``$8$ is the sum of two primes". Here's one way to do it:
+
+(1) $\exists x_0 \exists x_1 (\text{Prime}(x_0) \ \& \ \text{Prime}(x_1) \ \& \ 8 = x_0 + x_1)$
+
+But wait! Why not instead use the following, which has no quantifiers?
+
+(2) $\text{Prime}(x) \ \& \ \text{Prime}(y) \ \& \ 8 = x + y)$
+
+This second formula doesn't quite express the claim that we're after. It says---of the given objects $x$ and $y$---that they are prime and that they add up to 8. This means that whether or not (2) is true depends on what the given objects are. If $x = 3$ and $y = 5$, the claim is true; if $x = 19$ and $y = 7$, the claim is false.
+
+Notice, in contrast, that the truth of ``$8$ is the sum of two primes" does not depend on the value of some parameter. It is simply true. (1) captures this point because it doesn't make a claim about particular given objects. Instead, it asserts the existence of primes that add up to $8$.
+
+\item We've considered an example in which we want to make sure that our variables are bound by quantifiers. But there are also examples in which we want to make sure that a variable is not bound by quantifiers.
+
+Suppose, for example, that I ask you to find a formula of $L$ that expresses the property of being the sum of two primes. Here's one way of doing so:
+
+(3) $\exists x_0 \exists x_1 (\text{Prime}(x_0) \ \& \ \text{Prime}(x_1) \ \& \ x_2 = x_0 + x_1)$
+
+Note that although $x_0$ and $x_1$ are bound by quantifiers in (3), $x_2$ is not. Instead, $x_2$ is treated like an object that's been given to us. In other words, (3) says---of the given object $x_2$---that it is the sum of two primes. So, as in the case of (2), whether or not (3) is true depends on what the given object is. If $x_2 = 8$, (3) is true; if $x_2 = 11$, (3) is false.
+
+If we wanted an abbreviation for (3), we might use something like ``DoublePrimeSum($x_2$)", with unbound variable $x_2$ displayed as a reminder of the fact that ``DoublePrimeSum($x_2$)" makes a claim about a given object.
+
+
+\end{itemize}
+
+
+\subsection*{Part I (no need to justify answers here)} 
+
+
+\begin{enumerate}
+
+
+\item \question{The following are meant to test your ability to formalize sentences of $L$. So the domain of quantification is the naturals $\mathbb{N}$. You may make use of any of the notational abbreviations introduced in the course materials. (4~points each)}
+
+\begin{enumerate}
+
+\item \question{Define an expression ``Mult19($x_i$)'' of $L$ that is true if and only if $x_i$ is a multiple of 19.} %(5 points)}
+
+\answer{
+\[
+\text{Mult19($x_i$)} \leftrightarrow_{df} \exists y (x_i = y \times 19)
+\]
+}
+
+
+% LEFT OUT, FOR VARIETY
+\com{
+
+\item \question{Define an expression ``Div3($x_i$)'' of $L$ that is true if and only if $x_i$ is divisible by 3. (5 points)}
+
+\answer{
+\[
+\text{Div3($x_i$)} \leftrightarrow_{df} \exists y (x_i = y \times 3)
+\]
+}
+}%end com 
+
+
+
+\item \question{Define an expression ``PerfectCube($x_i$)'' of $L$ that is true if and only if $x_i$ is a perfect cube.}% (5 points)}
+
+\answer{
+\[
+\text{PerfectCube($x_i$)} \leftrightarrow_{df} \exists y (x_i = (y \times y) \times y), \, \text{ i.e. } \exists y (x_i = y^3)
+\]
+}
+
+
+\com{% Left out in 2023
+
+\item \question{Define an expression ``PerfectSquare($x_i$)'' of $L$ that is true if and only if $x_i$ is a perfect square. (5 points)}
+
+\answer{
+\[
+\text{PerfectSquare($x_i$)} \leftrightarrow_{df} \exists y (x_i = y \times y)
+\]
+}
+} %end com 
+
+% LEFT OUT, FOR VARIETY
+\com{
+\item \question{Define an expression ``EvenOdd($x_i$)'' of $L$ that is true if and only if $x_i$ is both even and odd. (5~points)}
+
+\answer{
+Here is one option:
+\[
+\text{EvenOdd}(x_i) \leftrightarrow_{df} \text{Even}(x_i) \, \& \, \text{Odd}(x_i)
+\]
+Here is another:
+\[
+\text{EvenOdd}(x_i) \leftrightarrow_{df} \neg(x_i = x_i)
+\]
+}
+}
+
+
+\item \question{Define an expression ``IrrationalRoot($x_i$)'' of $L$ that is true if and only if $\sqrt{x_i}$ is an irrational number. You may find it helpful to think about what it takes for $n \in \mathbb{N}$ to have a rational root.}% (5 points)}
+
+% Note from Agustin 2021 for next time: it is a theorem that every natural number that isn't a perfect square has an irrational square root. So the answer here is much simpler than I anticipated...
+
+\answer{
+\[
+\text{IrrationalRoot}(x_i) \leftrightarrow_{df} \neg \exists x_0 \exists x_1 (x_1 > 0 \ \& \ (x_0)^2 = x_i \times (x_1)^2)
+\]
+
+\noindent Simpler answer: Note that it is a theorem of arithmetic that every natural number that isn't a perfect square has an irrational square root. So the following schematization also works:
+\[
+\text{IrrationalRoot}(x_i) \leftrightarrow_{df} \neg \text{PerfectSquare($x_i$)} \leftrightarrow_{df} \neg \exists y (x_i = y \times y)
+\]
+}
+
+
+\com{ %left out in 2022 and 2023
+\item \question{Define an expression ``Perfect($x_i$)'' of $L$ that is true if and only if $x_i$ is a perfect number.\footnote{Recall that a perfect number is a number that is equal to the sum of its proper divisors. (A proper divisor of $n$ is a divisor of $n$ distinct from $n$.)} Warning: very hard! (5~points)}
+
+\answer{This question is super-hard. I expect only the very best students to get it right.
+
+Here is the intuitive idea: for $x_i$ to be perfect is for there to be an $n$-sequence $c$ consisting of the proper divisors of $x_i$ such that there is an $n$-sequence $d$ whose $i$th member is the result of adding up the first $i$ members of $c$ such that $x_i$ is the $n$th member of $d$.
+
+The formal version is below, except that I use $c,n,a,b,i$ as variables (and $[,]$ as brackets) to increase readability:
+$$
+\exists c \exists n \forall a \forall i [((i \leq n \, \& \, \text{Seq}(c,n,a,i)) \supset  (a|x_i \, \& \, a < x_i)) \ \&
+$$$$
+\forall a ((a|x_i \, \& \, a < x_i) \supset \exists!i (i \leq n \, \& \, \text{Seq}(c,n,a,i))) \ \&
+$$$$
+\exists d [\forall a (\text{Seq}(c,n,a,1) \supset \text{Seq}(d,n,a,1) ) \ \& 
+$$$$
+ \forall i \forall a \forall b ((1 \leq i \, \& \, i < n \, \& \, \text{Seq}(d,n,a,i) \, \& \, \text{Seq}(c,n,b,i+1)) \supset \text{seq}(d,n,a+b,i+1)) \ \&
+ $$$$
+ \text{Seq}(d,n,x_i,n)]]
+$$
+}
+} %end com 
+
+
+\com{% Left out in 2023
+%Note that the following question is in the MITx materials!
+\item \question{Find a sentence of $L$ that expresses Goldbach's Conjecture: every even number greater than 2 is the sum of two primes.}% (5~points)}
+
+\answer{
+\[
+\forall x_0 ((\text{Even}(x_0) \ \& \ 2 < x_0) \supset \exists x_1 \exists x_2 (\text{Prime}(x_1) \ \& \ \text{Prime}(x_2) \ \& \ x_0 = x_1 + x_2))
+\]
+}
+}
+
+
+
+\item \question{Find a sentence of $L$ that expresses the (false) claim that the natural numbers are dense: between any two natural numbers there is a third.} % (5~points)}
+
+\answer{
+\[
+\forall x_0 \forall x_1 \exists x_2 ((x_0 < x_2 \ \& \ x_2 < x_1) \vee (x_1 < x_2 \ \& \ x_2 < x_0))
+\]
+}
+
+
+
+\item \question{Find a sentence of $L$ that expresses Fermat's Last Theorem: there are no positive integers $a, b, c$ and $n> 2$ such that $a^n + b^n = c^n$.} % (5~points)}
+
+\answer{
+\[
+\neg \exists x_0 \exists x_1 \exists x_2 \exists x_3 (x_1^{x_0} + x_2^{x_0} = x_3^{x_0}  \ \&\ 2 < x_0 \ \&\ 0 < x_1 \ \&\ 0 < x_2 \ \&\ 0 < x_3)
+\]
+}
+
+
+%left out for variety
+%\com{
+\item \question{Find a sentence of $L$ that expresses Euclid's Theorem: there are infinitely many primes.} %(5~points)}
+
+\answer{
+\[
+\forall x_0 (\text{Prime}(x_0) \supset \exists x_1(\text{Prime}(x_1) \ \& \ x_0 < x_1))
+\]
+}
+%}
+
+
+\item \question{Find a sentence of $L$ that expresses Euclid's Lemma: if a prime $p$ divides the product of natural numbers $a$ and $b$, then $p$ must divide at least one of $a$ and $b$.} %(5~points)}
+
+\answer{
+\[
+\forall x_0 \forall x_1 \forall x_2 ((\text{Prime}(x_0) \, \& \, x_0 | (x_1 \times x_2)) \supset (x_0 | x_1 \vee x_0 | x_2))
+\]
+}
+
+\end{enumerate}
+
+
+% %following is from Andreas 2022 version, although he had it in part 2
+\item \question{Let PA be the standard axiomatization of arithmetic and suppose that PA is consistent. By G\"odel's Theorem, there is an arithmetical truth that is not provable on the basis of PA. Let $\phi$ be such a truth. Is there an axiomatization of arithmetic on the basis of which $\phi$ is provable? (4 points)
+
+}  
+\answer{Yes. For example, $\text{PA}+\phi$ is such an axiomatization. In other words, just adjoin the sentence $\phi$ as an axiom to PA. (The point is that G\"odel's Theorem doesn't show that there are ``essentially'' unprovable truths." It would be more apt to call G\"odel's theorem an `Incomplete-ability theorem': there is no way to recursively axiomatize arithmetic that yields a complete theory.}
+
+
+% %following is from Andreas 2022 version, although he had it in part 2. 
+%Left out in 2023 version
+\com{
+\item \question{Is it possible to obtain a consistent and complete axiomatization of arithmetic by taking every arithmetical truth as an axiom? (4 points)}
+
+\answer{No. In order for something to be an axiomatization, the list of axioms (in this case the list of all arithmetical truths) must be Turing-computable, i.e. it must be possible to program a Turing Machine to determine what counts as an axiom. But the list of all arithmetical truths is not Turing-computable. If there were a Turing Machine that determined, for a given arithmetical sentence, whether it is an arithmetical truth, then we could use this Turing Machine to construct a Turing Machine that outputs all the arithmetical truths and no falsehoods, in violation of G\"odel's Theorem. 
+}
+
+}%end com
+
+\end{enumerate}
+
+\subsection*{Part II (justify all answers!)} 
+
+
+
+
+\begin{enumerate}
+  \setcounter{enumi}{2}
+
+
+
+\item \question{The following questions are aimed at making sure you understand what G\"odel's Theorem is all about. Brief justifications should suffice (6~points each)}
+
+\begin{enumerate}
+
+\item  \question{Is it possible to construct a Turing Machine \(M_1\) that runs forever outputting sentences of $L$ in such a way that every arithmetical truth is eventually output by \(M_1\)?}
+  
+\answer{Yes.  We could program a Turing Machine to output every sentence of L. First it could output all the possible one-symbol sentences of L; then all the two-symbol sentences of L; then all the three-symbol sentences; and so on. So every truth in L would eventually be output by this Turing Machine.}
+
+\item \question{Is it possible to construct a Turing Machine \(M_2\) that runs forever outputting sentences of $L$ in such a way that no arithmetical falsehood is ever output by \(M_2\)?}
+
+\answer{Yes.    We could also program a Turing Machine that could run forever never outputting falsehoods. We could, for example, program a Turing Machine to output the sentences ``\(1+1=2\)", ``\(2+2=4\)", ``\(3+3=6\)", and so on.
+
+
+      What G\''odel's theorem shows us is that it is impossible to construct a Turing Machine \(M\) such that both of these conditions are met \emph{at once} \(M\) runs forever, outputting arithmetical sentences in such a way that: $(a)$ every arithmetical truth is eventually outputted by \(M\); and $(b)$ no arithmetical falsehood is ever outputted by \(M\). It is the \emph{conjunction} of those conditions, not any individually, that is impossible. 
+}
+
+\item  \question{Is it possible to construct a Turing Machine that satisfies both the conditions of $M_1$ above and the conditions of $M_2$ above?}
+
+\answer{No. That's G\"odel's Theorem.}
+
+\end{enumerate}
+
+
+
+
+
+
+\item
+\question{
+
+
+
+The following definitions are adapted from the course materials:
+
+An \textbf{axiomatization} for a language $\mathcal{L}$ is a system for proving claims within $\mathcal{L}$. It consists of two different components, a set of axioms and a set of rules of inference:
+
+\begin{itemize}
+
+\item An \textbf{axiom} is a sentence of $\mathcal{L}$ that one treats as provable by fiat.
+
+When $\mathcal{L}$ is the language of arithmetic, for example, it is natural to select ``$0=0$'' as an axiom.
+
+\item A \textbf{rule of inference} is a rule that allows you to count a sentence of $\mathcal{L}$ as provable, given that other sentences of $\mathcal{L}$ are provable.
+
+An example of a rule of inference is \emph{modus ponens}, which says that $\psi$ is provable whenever $\phi$ and $\phi \supset \psi$ are both provable. 
+%``if $\phi$, then $\psi$" are both provable.
+
+
+\end{itemize}
+For an axiomatization of $\mathcal{L}$ to be \textbf{complete} is for every true sentence of $\mathcal{L}$ to be provable on the basis of that axiomatization. For it to be \textbf{consistent} is for it to never be the case that both a sentence of $\mathcal{L}$ and its negation are provable on the basis of that axiomatization.
+
+Now consider a language $\mathcal{L}$ that satisfies the following conditions:
+
+\begin{itemize}
+
+\item[$\ast$] ``pigeons can fly'' and ``camels are mammals'' are both sentences of $\mathcal{L}$.
+
+\item ``it is not the case that pigeons can fly'' and ``it is not the case that camels are mammals''  are both sentences of $\mathcal{L}$.
+
+\item If $\phi$ and $\psi$ are sentences of $\mathcal{L}$, then so is ``it is both the case that $\phi$ and that $\psi$''.
+
+\item Nothing else is a sentence of $\mathcal{L}$.
+
+\end{itemize}
+and consider the following axiomatization of $\mathcal{L}$:
+
+\begin{description}
+
+\item[Axioms:] ``camels are mammals''
+
+\item[Rules of Inference:] (1) If $\phi$ is provable, then so is any sentence of the form ``it is both the case that $\phi$  and that $\psi$''. (2) If ``it is both the case that $\phi$ and that $\psi$'' is provable, then each of $\phi$ and $\psi$ is provable.
+
+\end{description}
+
+}
+The following questions are aimed at testing your understanding of completeness and consistency (8~points each):
+\begin{enumerate}
+
+
+
+\item \question{Is the given axiomatization complete?}
+
+\answer{Yes. Let $\phi$ be a true sentence. Here is a proof that $\phi$ is provable on the basis of our axiomatization:
+
+\begin{enumerate}
+
+\item ``camels are mammals'' is provable, since it is an axiom.
+
+\item $\ulcorner$it is both the case that camels are mammals and that $\phi\urcorner$ is provable, by step i.~and rule (1).
+
+\item $\phi$ is provable, by step ii.~and rule (2).
+
+\end{enumerate}
+}
+
+
+
+\item \label{axioms} \question{Is the given axiomatization consistent?}
+
+\answer{No. Here is a proof that ``camels are mammals'' and its negation are both provable on the basis of our axiomatization:
+
+\begin{enumerate}
+
+\item ``camels are mammals'' is provable, since it is an axiom.
+
+\item ``it is both the case that camels are mammals and that it is not the case that camels are mammals'' is provable, by step i.~and rule (1).
+
+\item ``it is not the case that camels are mammals'' is provable, by step ii.~and rule (2).
+
+\end{enumerate}
+}
+
+
+
+
+
+\item \question{Specify a complete and consistent axiomatization of $\mathcal{L}$. Assume that the two sentences in ($\ast$) above are true, namely that ``pigeons can fly'' and ``camels are mammals''. No need to do a hardcore proof of completeness and consistency assuming that your axiomatization makes these properties sufficiently obvious.}
+
+\answer{\noindent There are many ways of doing so. Here is one example of a suitable axiomatization:
+
+\begin{description}
+
+\item[Axioms:] ``camels are mammals'', ``pigeons can fly''
+
+\item[Rule of Inference:] If $\phi$ and $\psi$ are both provable, then so is $\ulcorner$it is both the case that $\phi$ and that $\psi\urcorner$.
+
+\end{description}
+
+
+}
+
+\end{enumerate}
+
+
+
+
+
+%\end{enumerate}
+
+
+
+
+
+
+
+%\subsection*{Part II} 
+
+
+
+
+%\begin{enumerate}
+ % \setcounter{enumi}{3}
+  
+  
+  
+
+\item \question{Let $L^{10^{100}}$ be the sublanguage of $L$ consisting of formulas of $L$ with $10^{100}$ symbols or fewer. Is $L^{10^{100}}$ immune from G\"odel's Theorem? More specifically, is there a Turing Machine $M^{10^{100}}$ that when run on an empty input eventually outputs every true sentence of $L^{10^{100}}$ without ever outputting a false sentence of $L^{10^{100}}$?
+
+If you think $M^{10^{100}}$ exists, give a sketch of how it might work. If you think $M^{10^{100}}$ cannot exist, adapt the proof of G\"odel's Theorem in the course materials to show that its existence would lead to contradiction. (10~points.)
+
+}
+
+\answer{
+Yes, $M^{10^{100}}$ definitely exists. Since $L^{10^{100}}$ consists of finitely many sentences and Turing Machines can have programs of arbitrary finite length, there is a program that, in effect, contains of a list of all true sentences of $L^{10^{100}}$ and works by printing out every sentence on its list and halting.
+
+(Note that it is irrelevant whether anyone is in a position to compile such a list. As long as there is a fact of the matter about which sentences of $L^{10^{100}}$ are true, there is a Turing Machine that, in effect, lists all and only those sentences in its program.)
+
+}
+
+
+
+
+%left out for variety
+\com{  
+\item \question{
+
+Say that a sentence \(s\) of \(L\) is \textbf{provable} on the basis of a given axiomatization if there is a finite sequence of sentences of $L$ with the following two properties: (1) the last member of the sequence is \(s\), and (2) every member of the sequence is either an axiom or something that results from previous members of the sequence by applying a rule of inference.
+
+Now consider an axiomatization $\mathfrak{A}$ that consists of the following axioms:
+
+\begin{itemize}
+ \item[$(A0)$] {$0 = 0$}
+  \item[$(A1)$]{$1 = 1$}
+   \item[$(A2)$]{$2 = 2$}
+  
+  \hspace{3mm} \vdots
+\end{itemize}
+and the following rules of inference:
+
+\begin{itemize}
+\item[$(R1)$] You may infer ``$\phi \, \& \, \psi$'' if you have $\phi$ and $\psi$.
+
+\item[$(R2)$] You may infer ``$\forall x$ ($x = x$)'' if you have all of the following:
+\[
+\begin{array}{c}
+0 = 0\\
+1 =1 \\
+ 2 =2\\
+   \vdots
+\end{array}
+\]
+\end{itemize}
+}
+
+\begin{enumerate}
+\item \question{Is ``$0 = 0$'' provable on the basis of $\mathfrak{A}$? (5~points)}
+
+\answer{Yes. Each axiom of $\mathfrak{A}$ is provable because there is a finite list of sentences such that every member is either an axiom or something that results from previous members of the sequence by applying a rule of inference---namely, the one-sentence proof consisting of the axiom itself. Every member of that sequence is either an axiom or something that results from previous members by applying a rule of inference, because every member is an axiom. And the last member of the sequence (which is also the only member of the sequence) is the sentence we wanted to prove.}
+
+\item \question{Is ``$1 = 1 \ \& \ 2=2 \ \& \ 7=7$'' provable on the basis of $\mathfrak{A}$? (5~points)
+}
+
+\answer{Yes. Here is a proof:
+
+\[
+\begin{array}{rlr}
+ (1) &1 =1  & \text{[$(A1)$]}  \\
+ (2) &2 =2  &\text{[$(A2)$]}  \\
+ (3) &7=7  & \text{[$(A7)$]}  \\
+ (4) & (1 = 1 \ \& \ 2=2) & \text{[From (1) and (2) by ($R1$)]}\\
+ (5) & ((1 = 1 \ \& \ 2=2) \ \& \ 7=7) \hspace{20mm}& \text{[From (3) and (7) by ($R1$)]}
+\end{array}
+\]
+
+
+}
+
+\item \question{Is the following provable on the basis of $\mathfrak{A}$ (5~points)?
+\[
+0=0 \ \& \ 1=1 \ \& \ 2=2 \ \& \ 3=3 \ \& \ \dots
+\]
+}
+
+\answer{No. Notice, first, that the string above is not a sentence of $L$. But we wouldn't be able to prove it in $\mathfrak{A}$ even if it was, since that would require infinitely many applications of rule $(R1)$, and therefore an infinitely long proof. But proofs must be finite.}
+
+\item \question{Does rule $(R2)$ license inferring ``$\forall x$ ($x = x$)'' from the axioms of $\mathfrak{A}$? (5~points)}
+
+\answer{Yes. That's just what $(R2)$ says!}
+
+
+
+\item \question{Is ``$\forall x$ ($x = x$)'' provable on the basis of $\mathfrak{A}$? (5~points)}
+
+\answer{No. Such a sentence could only be proved in $\mathfrak{A}$ by applying rule $(R2)$. But $(R2)$ requires infinitely many premises, and therefore an infinitely long proof. But proofs must be finite.}
+
+
+
+\end{enumerate}
+}
+
+
+
+\bigskip
+
+\item \question{
+(16~points) The course materials describe a proof of G\"odel's Theorem that is based on the following lemma:
+\begin{description}
+\item[Lemma 1] \(L\) contains a formula (abbreviated ``\(\mbox{Halt}(x_i)\)") which is true of a number $k$ if and only if the $k$th Turing Machine halts on input \(k\).
+\end{description}
+As it happens, the following lemma is also true:
+\begin{description}
+\item[Lemma 2] \(L\) contains a formula (abbreviated ``\(\mbox{BB}(x_i,x_j)\)") expressing the Busy Beaver function, i.e. \(\mbox{BB}(k, n)\) is true if and only if the productivity of the most productive (one-symbol) Turing Machine with $k$ states or fewer is $n$.\footnote{Recall the definition of the \textit{productivity of a Turing Machine} from Topic 9: If a Turing Machine yields output $n$ on an empty input, then its productivity is $n$; otherwise, its productivity is zero, unlike your nonzero productivity on this PSet!!!}
+\end{description}
+Prove G\"odel's Theorem by relying on Lemma~2 rather than Lemma~1. You may assume that the Busy Beaver Function is not computable. (16 points; don't worry about the word limit so much.)
+
+}
+  
+  \answer{
+  
+We assume, for \emph{reductio}, that  \(M\) is a Turing Machine that outputs all and only the true sentences of $L$.  We then show that $M$'s program can be used as a subroutine to construct an impossible Turing Machine \(M^B\) which computes the Busy Beaver Function, contradicting the fact the Busy Beaver Function is not Turing-computable (Chapter~9). We will proceed in two steps. First, we will verify that if $M$ existed, it could be used to construct a machine $M^B$. We will then verify that $M^B$ would compute the Busy Beaver Function, if it existed.
+
+
+Step 1. Here is how to construct $M^B$, on the assumption that $M$ exists:
+
+\begin{itemize}
+
+\item Assume that $M^B$'s input is a sequence of $k$ ones.
+
+\item \(M^B\) starts by using \(M\)'s program as a subroutine, and allows it to keep going until it outputs some sentence of the form ``\(\mbox{BB}(k,n)\)'' (coded on the tape), for some number $n$.
+
+\item \(M^B\) then uses the code for ``\(\mbox{BB}(k,n)\)'' on the tape (as input) to print a sequence of $n$ ones, erases everything else on the tape, and halts with the reader positioned on the first member of the sequence.
+
+
+\end{itemize}
+Step 2. Let us now verify that \(M^B\) would compute the Busy Beaver Function, if it existed. 
+
+Let $n$ be the result of applying the Busy Beaver Function to $k$.  Then Lemma~2 guarantees that ``\(\mbox{BB}(k,n)\)'' is true. Since \(M\) will eventually output every true sentence of \(L\), this means that $M$ will eventually output  ``\(\mbox{BB}(k,n)\)''. And since \(M\) will never output any falsehood, it will never output  ``\(\mbox{BB}(k,m)\)'' for $m \neq n$. This means that  \(M^B\) will input $n$ when run on input $k$, and therefore that \(M^B\) computes the Busy Beaver Function.
+
+\iffalse %try to fix up the following! it might indicate that my proof sketch on slide 10.b.4 is misleading sketchy; slide 15. might need to email about this lol. 
+
+Note that this proof proves what we called ``Version 2'' of \\ Incompleteness, where a Turing Machine runs forever outputting sentences of $L$. It seems to be somewhat easier to prove ``Version 1'' of Incompleteness, which shows that no Turing Machine can decide the truth-value of an arbitrary sentence of $L$. 
+
+Assume for contradiction that we had a Turing Machine $M$ that could decide the truth-value of an arbitrary sentence $\phi$ of $L$. Then $M$ could decide the truth-value of the formula \(\mbox{BB}(k,n)\). So we could construct a Turing Machine $M^B$ that works as follows: for any $k$, we run $M^B$ on input $k$. $M^B$ runs $M$ as a subroutine to determine whether \(\mbox{BB}(k,n)\) is true. If it is true, i.e. if $M$ outputs a $1$, then $M^B$ outputs $n$. Otherwise (if \(\mbox{BB}(k,n)\) is false), then $M$ outputs a $0$ and $M^B$ does not output $n$
+
+
+We would simply feed into $M$ the code for the formula \(\mbox{BB}(k,n)\). If  \(\mbox{BB}(k,n)\) is true, $M$ would output a $1$. If \(\mbox{BB}(k,n)\) is false, then $M$ would output a $0$. So $M$ would in some sense compute the Busy Beaver function. Now technically, for a Turing Machine $G$ to compute \(\mbox{BB}(k,n)\), we need it to be the case that whenever $G$ is fed $k$ (i.e. an input of $k$ ones) then it outputs $n$. So technically I suppose students ought to construct a Turing Machine like $M^B$ above. 
+
+\fi 
+  
+}
+
+
+
+
+  
+  \end{enumerate} 
+
+
+\end{document}
+
+
+
+
+
+

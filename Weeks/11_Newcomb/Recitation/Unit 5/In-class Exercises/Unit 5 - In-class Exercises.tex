@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0mm}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $5$: Newcomb's Problem}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{The Tickle Defense}
+
+\begin{defn}
+Let $H$ be an hypothesis and let $A$, $B$ be two pieces of evidences. We say that $B$ \textit{screens off} the evidence of that $A$ provides for $H$ just in case $p(H | A \land B) = p(H | B)$.
+\end{defn}
+
+
+Suppose I am asked to do the Newcomb experiment: in front of me there are a large box and a small box. I am told that the small box contains a thousand dollars, and the large box either contains a million dollars or is empty. I am offered two choices - either taking both boxes, or only taking the large box. One week before I am asked to do the experiment, a predictor with $99\%$ accuracy predicted my choice. If she predicted that I would one-box, then the large box would contain a million dollars; if she predicted that I would two-box, then the large box would be empty.
+
+Before I make the choice, my best friend, John, who is also in the room, takes a look at the content of the large box, and writes on a note, truthfully, whether the large box contains one million dollar or not.
+
+\begin{exer}
+Suppose I look at John's note and it says that the large box is empty. Let $J_E$ denote the piece of evidence that John writes the large box is empty. 
+Let $2B$ be that I will two box and $E$ be that the large box is empty.
+Does $J_E$ screen off the evidential import of $2B$ on $E$?
+\end{exer}
+
+\begin{exer}
+Suppose I look at the note and it says the large box is empty. According to Evidential Decision Theory, what is the expected value of $1B$ now? What is the expected value of $2B$?  What if John's note says that the large box is full?
+\end{exer}
+
+
+\begin{exer}
+Suppose now I offered to choose between whether to look at John's note or not, before I choose between whether to two-box or one box. According to Evidential Decision Theory, what is the expected value of me choosing to look? What is the expected value of me choosing not to look? Should I look or not?
+
+\end{exer}
+
+
+\begin{exer}
+According to Causal Decision Theory, does looking at the content of John's note have any impact on my decision to one-box or two-box? Should I look at John's note or not?
+
+\end{exer}
+
+
+\begin{exer}
+We've shown that as soon as we know something that screens off the evidential import my choice provides for what's in the box, we should two-box according to EDT. Of course, in the standard Newcomb case, there is no John's note. But could you think of a way of using similar reasoning to get Evidential Decision Theory recommend two-boxing in the standard Newcomb case?
+
+\end{exer}
+
+
+\end{document}

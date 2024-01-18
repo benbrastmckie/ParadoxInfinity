@@ -1,0 +1,125 @@
+
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+%\usepackage{setspace}
+%\usepackage{endnotes} \let\footnote=\endnote %Remember to update below
+
+% Bibliography Packages
+%\usepackage{linquiry}
+\usepackage{natbib}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+%\usepackage{latexsym}
+%\usepackage{amsfonts}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+\usepackage{enumerate}
+
+%Diagram packages
+%\usepackage{bar}
+%\usepackage{curves}
+%\usepackage{pst-plot}
+
+%Tree packages
+%\usepackage{ecltree}
+%\usepackage{eclbip}
+%\usepackage{eepic}
+%\usepackage{epic}
+
+
+\begin{document}
+
+\begin{center} {\large 24.118x -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 6: Answer Key \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+
+\subsection*{Problems:}
+
+
+\begin{enumerate}
+
+\item Let $C(p_0)=x_0$, $C(p_1)=x_1$, and so on, and let $C(p_0\vee p_1\vee p_2\vee\ldots)=y$. Consider the following bets (there's one for every $p_n$):
+\begin{itemize}
+\item Bet 0: Get \$1 if $p_0$ turns out true, nothing otherwise.
+\item Bet 1: Get \$1 if $p_1$ turns out true, nothing otherwise.
+\item Bet 2: Get \$1 if $p_2$ turns out true, nothing otherwise
+\item And so on.
+\end{itemize}
+
+
+We are going to sell all of these bets to our victim; she will buy Bet 0 for $\$x_0$, Bet 1 for $\$x_1$, and so forth.
+
+We are also going to buy the following bet from our victim for $\$y$ (the ``D'' is for ``Disjunction''):
+\begin{itemize}
+\item[Bet D]: Get \$1 if $p_0\vee p_1\vee p_2\vee\ldots$ turns out true, nothing otherwise.
+\end{itemize}
+
+What are the possible payoffs for our victim? There are two cases to consider: the case in which exactly one of $p_0,p_1,p_2,\ldots$ is true, and the case where none of them are true.
+
+In the case in which exactly one of $p_0,p_1,p_2,\ldots$ is true, our victim will win \$1. She will be out $\$x_i$, for all $i$. She will be up the $\$y$ we payed her for Bet D. But she will have to pay out \$1 on Bet D. So her net payoff in this case is $$\$1-\$x_0 - \$x_1 - \$x_2\ldots +\$y -\$1 = \$(y-(x_0+x_1+x_2+\ldots))$$
+
+In the case in which none of $p_0,p_1,p_2,\ldots$ turn out true, our victim will, again, be out $\$x_i$, for all $i$, and up the $\$y$ we payed her for Bet D. She won't have to pay out for Bet D, but she won't win any of the bets she bought, either. So her net payoff in this case is, again, $$\$(y-(x_0+x_1+x_2+\ldots))$$
+
+So whatever happens, our victim's net payoff will be  $\$(y-(x_0+x_1+x_2+\ldots))$. So she is bound to lose money, unless $y\ge x_0+x_1+x_2+\ldots$
+
+If you buy Bet 0, Bet 1, Bet 2 etc. from the victim, and sell her Bet D, you can show that she is bound to lose unless $y\le x_0+x_1+x_2+\ldots$.
+
+So the only way our victim can avoid being Dutch-bookable, one way or another, is if $y= x_0+x_1+x_2+\ldots$. That is, she only avoids being Dutch-bookable if $$C(p_0\vee p_1\vee p_2\vee\ldots)=C(p_0)+C(p_1)+C(p_2)+\ldots$$
+		
+\item It is up to you to decide how plausible you find this assumption. I, personally, don't find it very plausible. Here's a case in which it seems particularly implausible: take someone who refuses to gamble on principle, perhaps for religious reasons. I believe that some Baptists regard gambling as sinful. If that is so, then such a Baptist is not going to be inclined to buy a bet of any kind, whatever her credences are.
+
+That's one kind of case you might have mentioned. Another possibility is a case in which an agent is risk averse; she has credence $x$ in $p$, and for small $D$ she's willing to pay $x\times \$D$ to buy a bet, but if $D$ gets really big, the agent gets spooked, and is unwilling to do it. We are all probably like this, for some values of $D$.
+
+\emph{Another} possibility is the opposite --- someone who loves risk, at least in some instances. Such a person will be willing to buy certain bets for \emph{more} than $x\times\$D$, because she is willing to pay a premium for the thrill of the risk. Many people who buy lottery tickets are like this, I think. Many addicted gamblers, too.
+
+In general, when the agent not only has preferences with regard to the payoffs, but also with regard to how those payoffs are achieved --- in particular, she has preferences with regard to whether takes the relevant gamble --- then her betting behaviour is not going to be a good guide to her credences. I'm sure there are many other examples of this kind.
+
+\item  All of those views except anti-Humean indeterminism entail that the principal is false. 
+
+Frequentism and Humean indeterminism entail that it is false because, on both those views, facts about what happens after time $t$ can effect what the probability of an event at time $t$ is. 
+
+The deterministic view entails it is false because, if determinism is true, a perfectly rational agent who knows everything about the universe before time $t$, and knows all the consequences of what she knows, will have either credence 0 or 1 that a particular event will occur at time $t$.
+
+\item \begin{enumerate}
+	\item The expected dollar value of Bet 1 is $$0\times -\$1 + \frac{1}{2}\times\$3 = \$\frac{3}{2}$$ The expected dollar value of Bet 2 is $$\frac{1}{2}\times -\$4 + \frac{1}{4}\times -\$9 = \frac{1}{4}$$ The expected dollar value of Bet 3 is $$\frac{1}{4}\times -\$10 + \frac{1}{8}\times \$21 = \frac{1}{8}$$
+	\item You should take all of them. You can verify this by checking the expected dollar value of each subset. But it also follows from the answer below.
+	\item You should take the first $n+1$ bets. In general, if you are offered to take any finite set of these bets, you maximise expected value by taking them all. Why? Consider an arbitrary bet, Bet $k$. Whatever other bets you've taken, you do better, expected-dollar-value-wise, by taking Bet $k$ too. You don't need to provide a proof of this in your answer, but here is the beginning of one, to give you the idea.
+	
+	Proof: there are four cases to consider. I'll just consider the first two.
+	\begin{itemize}
+	\item[\textbf{Case 1}:] The other bets you've taken include neither Bet $k-1$ nor Bet $k+1$. In that case, you obviously do better by taking Bet $k$. You only win or lose money, by taking Bet $k$, when the coin lands heads on either flip $k-1$ or flip $k$. If the other bets do not contain either Bet $k-1$ or Bet $k+1$, then the only money to change hands in those cases does so as a result of you taking Bet $k$. So the only relevant bet to determining the expected dollar value for getting a head on flip $k-1$ or flip $k$ is the expected value of Bet $k$. And Bet $k$ has positive expected value (all the bets have positive expected value). So you can only improve your expected value by taking Bet $k$, in Case 1.
+	\item[\textbf{Case 2:}] The other bets you've taken include Bet $k-1$, but not Bet $k+1$. In that case, if you don't take Bet $k$, then you win some amount --- call it $W$ --- if the coin lands heads on flip $k-1$, and nothing happens on flip $k$. On the other hand, if you \emph{do} take Bet $k$, then you lose \$1 if the coin lands head on flip $k-1$, and you win \$$2W +3$ if the coin lands heads on flip $k$. So, confining our attention to those possibilities, the expected dollar value of not taking Bet $k$ is $$\frac{1}{2^{k-1}}\times \$W = \$\frac{2W}{2^k}$$ and the expected dollar value of taking Bet $k$ is $$\frac{1}{2^{k-1}}\times -\$1 + \frac{1}{2^k}\times\$2W+3 = \$\frac{2W+3-2}{2^k} = \$\frac{2W+1}{2^k}$$ So you have a higher expected dollar value, overall, by taking Bet $k$
+	\end{itemize}
+	Exercise: finish the proof.
+	\item You should not take all the bets; that results in a sure loss of \$1 --- i.e., no matter what happens, you will end up paying out \$1.
+	
+	 How can this be so, given the proof above? What the proof demonstrates is that, no matter what other bets you've taken, you improve the expected dollar value of your bets by taking one more. That's \emph{true}. If you've taken 6 bets, you improve things by taking 7, and if you've taken 7 bets, you improve things by taking 8. Also, if you've taken infinitely many bets --- all bets except the first one, for instance --- you improve things by taking that final bet.
+	  
+	  It follows from this that, if offered finitely many bets, you do best, expected-dollar-value-wise, by taking them all (because you improve things by taking one, then one more, then one more\ldots). It does \emph{not} follow this that, when offered infinitely many bets, you do best by taking them all. And in the case where you take \emph{all} the bets, you do \emph{worse} than taking none of them.
+	\end{enumerate}
+	
+\item  \begin{enumerate}
+	\item Taking the gamble maximises expected value. It is a straightforward calculation.
+	\item We'll be relatively broad-minded about your answers here, given the trickiness of the subject matter. As long as you said something relevant, coherent, clear, and not betraying any misunderstandings, that's good enough. But here's what I think: These two situations \emph{are} importantly different. In the two-envelope situation, the expected value of switching, at least in the case where you know what is in your envelope, depends entirely on your previous credences concerning what is likely to be in your envelope. But in this coin-flip situation, the information you have about doing the equivalent of switching --- that is, taking the gamble --- completely \emph{screens of} your credences concerning what is likely to be in your envelope. Whatever you think about how likely or unlikely it is that you have a given value in your envelope becomes irrelevant, when calculating the expected value of taking the gamble.
+	
+	It was because the expected value of switching depended on your credences concerning what is in your envelope, and your credences concerning what is in your envelope are the same as your credences concerning what is in the other envelope, that Argument 1, concerning symmetry of information (before you've looked in your envelope), works in the two-envelope case. But no such argument works here, in the gamble case; you do *not* have symmetrical information about what is likely to happen if you keep your envelope and what is likely to happen if you take the gamble.
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,92 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{agustin}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{qtree}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+\begin{quote}
+
+\begin{center} {\large 24.118 -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 3: Infinite Cardinalities\\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+\noindent How these problems will be graded:
+
+\begin{itemize} 
+
+\item Assessment will be based on both whether you give the correct answer and on the \emph{reasons} you give in support of your answers. In this problem set, all questions have a unique correct answer.
+
+\item  \emph{No answer may consist of more than 200 words}. Words after the first 200 will be ignored. Showing your work in a calculation does not count towards the word limit.
+
+\end{itemize} 
+
+These two constraints are often in competition: it may sometimes seem to you that you can't argue for your answer properly in 200 words or less. Learning to deal with this problem is a skill you will acquire with practice. The ability to distill what is essential about a point in a few words requires clear thinking, and it is clear thinking that we are after.
+
+You are free to make use of results proved in the class notes.
+
+\end{quote} 
+
+
+
+\subsection*{Problems:} 
+\begin{enumerate}
+
+\item Suppose that an infinite number of buses turn up to Hilbert's Hotel -- a bus 0, and bus 1 and so on for every natural number. And suppose that in every bus there are an infinite number of people -- again, one for every natural number. Hilbert's Hotel is full, as usual.
+
+Can Hilbert's Hotel accommodate the infinite bus-loads of infinitely many new guests, by rearranging the current guests? Justify your answer!
+
+\item Say that an ordered set\footnote{By ``ordered set'' I mean a \textsl{totally} ordered set  -- i.e., a set of things that are related by a relation that is \begin{enumerate} \item reflexive, \item transitive, \item anti-symmetric, and \item total.\end{enumerate} If you don't know what that means, don't worry about it.} of objects is \textbf{dense} if and only if the set is not empty, and there is a member of the set between any two other members of the set (according to that order). Does the fact that an ordered set is dense entail that the set is bigger than the set of the natural numbers? Justify your answer!
+
+\item Show that the cardinality of the power-set of the natural numbers equals the cardinality of the reals.
+
+\item Show that there is a bijection from $[0,1)$ to $[0,\infty)$ (i.e., from the set of real numbers greater than or equal to 0 and less than 1 to the set of real numbers greater than or equal to 0).
+
+\end{enumerate}
+
+Consider the following infinite tree:
+
+
+\Tree [.  [.0 [.0 [.0 0 1 ] [.1 0 1 ] ] [.1 [.0 0 1 ] [.1 0 1 ] ] ] [.1 [.0 [.0 0 1 ] [.1 0 1 ] ] [.1 [.0 0 1 ] [.1 0 1 ] ] ] ]
+
+\begin{center} \ \vdots \end{center}
+
+(When fully spelled out, the tree contains one row for each natural number. The zero-th row contains one node, the first row contains two nodes, the second row contains four nodes, and, in general, the $n$th row contains $2^n$ nodes.)
+
+\begin{enumerate} 
+\setcounter{enumi}{4}
+
+\item Is there a bijection between the \emph{nodes} of this tree and the natural numbers? Justify your answer!
+
+\item Is there a bijection between the \emph{paths} of this tree and the natural numbers? Justify your answers!
+
+
+\end{enumerate}
+
+
+
+%Endnotes
+%\newpage \begingroup \parindent 0pt \parskip 2ex \def\enotesize{\normalsize} \theendnotes \endgroup
+
+
+%\newpage\bibliographystyle{linquiry}\bibliography{agustin}
+
+%\end{doublespace}
+\end{document}
+

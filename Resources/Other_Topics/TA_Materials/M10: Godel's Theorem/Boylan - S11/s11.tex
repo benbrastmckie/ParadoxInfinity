@@ -1,0 +1,269 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\LARGE Section 11, G\"{o}del's Incompleteness Theorem \normalsize \\[.3cm]
+\noindent  David Boylan \hfill{5.12.2017}
+
+\noindent\HRule
+\end{fullwidth}
+
+\section{An Arithmetical Languge}
+
+\begin{itemize}
+
+\item Here are the parts of our language:
+
+\begin{itemize}
+\item Arithmetical vocabulary: $0,1, ,\times$
+
+\item Logical vocabulary: $=, \neg, \&, \forall, x_n$
+
+\item Parentheses: $(,)$
+
+\end{itemize}
+
+\vspace{.4cm} 
+
+Some sentences in our language:
+
+\ex.  \a.[] $\forall x_1: (x_1=x_1)$
+\b.[] Everything is equal to itself
+
+\ex. \a.[]$\forall x_1\forall x_2:  (x_1 \times x_2 = x_2 \times x_1)$
+\b.[] Addition is commutative.
+
+\vspace{.4cm} 
+
+
+We can also introduce some abbreviations. Here are a few: 
+
+\ex.[] $\exists x_n Fx_n \equiv_{df} \neg\forall x_n\neg Fx_n $ 
+
+\ex.[] $ p \vee r \equiv_{df} \neg(\neg p \& \neg r)$
+
+\ex.[]$x_i < x_j \equiv_{df} \exists x_k:(x_i + x_k= x_j$ $\&$ $\neg x_k = 0 )$  
+
+
+\vspace{.4cm} 
+
+
+ Exercises:
+
+\begin{itemize}
+
+
+\item For a given formula $\phi(x_i)$ introduce an abbreviation $\exists ! x_i (\phi(x_i))$ by finding a sentence of $\mathcal{L }$ which is true if and only if there is exactly one number $n$ suchthat $\phi(n)$ is the case.
+
+
+\item Introduce an abbreviation $x_i|x_j$, by finding a formula of $\mathcal{L}$ that is true of $x_i$ and $x_j$ if and only if $x_i$ divides $x_j$ , with no remainder.
+
+
+\item Introduce an abbreviation ``$Odd(x_i)$", by finding a formula of $\mathcal{L}$ that is true of $x_i$ if and only if $x_i$ is an even natural number.
+
+
+\end{itemize}
+
+
+
+\end{itemize}
+
+
+
+\section{G\"{o}del's Theorem}
+
+
+\begin{itemize}
+
+\item Question: suppose we taught a computer this language.\marginnote{Remember as well that any computer can be simulated by a Turing machine. So if there were such a computer, there would be a Turing machine that could compute do this for us also.} Could we write a program which would make the computer output \emph{all} arithmetical truths eventually and no falsehoolds?
+
+\vspace{.2cm}
+
+\noindent Answer: no! G\"{o}del's Incompleteness Theorem shows that this is not possible.
+
+\vspace{.7cm}
+
+
+ \noindent Strategy: we show that if we had such a machine existed, we could use it to design a machine that computed the halting function.
+
+\vspace{.2cm}
+
+\noindent Since we already know the halting function is \emph{not} computable, this shows that our machine cannot exist.
+
+
+\vspace{.7cm}
+
+
+ \noindent For this we need an important lemma:
+
+\vspace{.2cm}
+
+
+\begin{quote}
+
+We can define a formula \emph{Halt x} which is true iff the $k$th Turing machine halts on input $k$.
+
+\end{quote}
+
+\vspace{.2cm}
+
+\noindent This requires a good deal of work to show but the basic insight is that we can use sequences of numbers to represent Turing machines, their states, their input tapes and their outputs.
+
+ \vspace{.2cm}
+
+\noindent But $\mathcal{L}$ has no problem talking about these sequences.
+
+\vspace{.7cm}
+
+
+\item Step 1: we construct a machine $M^H$.
+
+\vspace{.2cm}
+
+\noindent Suppose $M^H$ has as input a sequence of $k$ ones.
+
+\vspace{.4cm}
+
+\noindent Start running $M$ and every time $M$ outputs something check whether it is of the form \emph{Halt k} or $\neg$\emph{Halt k}. 
+
+\vspace{.4cm}
+
+\noindent If you find \emph{Halt k}, delete everything on the tape, print a one and halt. If you find $\neg$\emph{Halt k} delete everything on the tape, print a 0 and halt. 
+
+\vspace{.7cm}
+
+
+\item Step 2: we confirm that $M^H$ would compute the halting function.\\ We show that the machine outputs a one if the $k$th Turing halts on $k$; and outputs 0 otherwise.
+
+\vspace{.4cm}
+
+\noindent Suppose the $k$th machine halts on $k$. We know that $M$ will then output \emph{Halt k}. So $M^H$ outputs 1.
+
+
+\vspace{.4cm}
+
+\noindent Suppose the $k$th machine doesn't halt on $k$. We know that $M$ will then output $\neg$\emph{Halt k}. So $M^H$ outputs 0.
+
+\vspace{.4cm}
+
+ \noindent And we're done! We have seen that if $M$ exists, then $M^H$ exists. But $M^H$ exists.
+
+\end{itemize}
+
+\section{GT Again}
+
+\begin{itemize}
+
+
+\item Here's a different (and to some more familiar) statement: 
+
+\begin{quote}
+
+No axiomatization of elementary arithmetic (in a
+rich enough language) can be both consistent and complete.
+
+\end{quote}
+
+Lots of new ideas here.
+
+\item  So far we have a language $\mathcal{L}$. But we don't have a way of saying what sequence of $\mathcal{L}$-sentences count as a proof. An axiomatisation helps us determine this. 
+
+\vspace{.2cm}
+
+\noindent An axiomatisation has two components:
+
+\vspace{.2cm}
+
+\noindent We have a set of axioms. These are sentences of $\mathcal{L}$. They are supposed to be intuitive, obvious truths about arithmetic and logic. 
+
+Examples: $(p\vee \neg p)$; $1=1$; $\forall x_n \exists x_{n+1} ( x_{n+1} = x_{n} +1)$.
+
+\vspace{.3cm}
+
+\noindent We also have a set of rules of inference. These tell us what sentences let us infer what.
+
+Examples: Modus ponens: from $p$ and $p\supset q$, infer $q$.
+
+\vspace{.2cm}
+
+
+\item When we have an axiomatisation, we can say when a sentence is \emph{provable}.
+
+A sentence $s$ is provable just in there is a sequence of sentences ending with $s$ where every sentence is either an axiom or can be derived from the axioms and previous sentences in the sequence using the rules of inference.
+
+\vspace{.2cm}
+
+ \noindent We also say that an axiomatisation for a language is \emph{complete} just in case all the true sentences of $\mathcal{L}$ are provable.
+
+\vspace{.2cm}
+
+\item We can show that there is no complete axiomatisation of $\mathcal{L}$.
+\vspace{.2cm}
+
+ \noindent Suppose there were. We can code sentences and sequences of sentences as single numbers, with each sequence coded as a unique number. 
+
+\vspace{.2cm}
+
+ \noindent We then program a Turing machine to go through the natural numbers and find ones that code sequences. If it does code a sequence, then it checks if that sequence is a proof. If it is, it outputs the last sentence of the sequence. Since we're supposing every sentence is provable, every sentence will eventually be outputted.
+ 
+ \vspace{.2cm}
+
+ \noindent But notice that this is $M^H$!
+
+
+
+\end{itemize}
+ 
+ 
+ 
+
+\end{document}

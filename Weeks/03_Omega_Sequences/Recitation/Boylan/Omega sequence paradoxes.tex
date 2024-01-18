@@ -1,0 +1,248 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\Large Section 6,  Omega Sequence Paradoxes \large \\[.3cm]
+\noindent  David Boylan \hfill{11-12, 66-154}
+
+\noindent\HRule
+\end{fullwidth}
+
+
+\section{Paradoxes}
+
+\begin{itemize}
+
+
+\item \emph{What is a paradox?}
+
+A paradox is an argument that appears to be valid, and goes from seemingly true premises to a seemingly false conclusion.
+
+A good paradox is one where the premises seem very hard to deny but the result is completely untenable.
+
+
+\item \emph{What can we learn from a paradox?}
+
+Good paradoxes can turn up surprising results; sometimes they show that seemingly plausible principles give rise to absurdities.
+
+\end{itemize}
+
+
+\section{Zeno's Paradox}
+
+
+\begin{itemize}
+\item Let's start with an oldie (maybe not a goodie). 
+
+
+
+\item Alice wants to go from A to B, a distance of 1k. Suppose she travels at a speed of 100 m per minute.
+
+\item But it looks like the tortoise has to do an infinite number of tasks. 
+
+\begin{itemize}
+
+\item It has to traverse half the distance, 500m, which takes her 5 minutes;
+
+\item then half the remaining distance, 250m, which takes her 2.5 minutes;
+
+\item then half the remaining distance, 125m, which takes her 1.25 minutes;
+
+\item and so on.
+
+
+\end{itemize}
+
+
+But if it has to do an infinite number of tasks,\marginnote{A task like this involving an infinite number of steps is called a \emph{supertask}.} then how can it ever get to B? Won't she never get to B?
+
+
+\item Zeno concluded that motion is impossible. 
+
+\vspace{.2cm}
+
+\noindent But we should not. What should we say instead? How long does it take her to travel the distance?
+
+
+\item What happens if she slows down? 
+
+
+\end{itemize}
+
+
+
+
+\section{Thomson's Lamp}
+
+
+\begin{itemize}
+
+
+\item Now for a more challenging paradox.
+
+
+\item It is 11pm. In front of me is a lamp, currently switched off.
+
+ Imagine I do the following:
+
+\begin{itemize}
+
+\item After 30 minutes I turn the lamp off;
+
+\item After 15 minutes I turn the lamp on;
+
+\item After 7.5 minutes I turn the lamp off;
+
+\item And so on. 
+
+
+\end{itemize}
+
+Question: is the lamp on or off at midnight?\marginnote{Notice that part of what makes this interesting is that there is no limit here. That is why we cannot simply say the same thing as we did before.}
+
+
+
+\item Thomson thought such a lamp was \emph{logically impossible}. There simply couldn't be any such lamp, in any sense. 
+
+\vspace{.2cm}
+\noindent Was he right?
+
+
+
+
+
+\end{itemize}
+
+
+
+
+\section{The Liar Paradox}
+
+
+\begin{itemize}
+
+
+\item Here is a famous, intuitive principle governing the concept of truth, the T-schema
+
+\ex. `p' is true iff p.\marginnote{Important convention: taking a word and putting it in quotation marks is a way of coming up with a name for a linguistic expression. For example, `It's raining' is the name of a sentence of English.}
+
+Looks obvious, right?
+
+As obvious as it seems, this principle and some basic logic yield a paradox. 
+
+\item  Let $s$ be the sentence `$s$ is false'. (Also called the \emph{liar sentence}.)
+
+Question: Is $s$ true or false? Be clear in your explanation about where the T-schema comes in.
+
+
+\item Notice something about `s'. It refers to itself! So maybe we should ban sentences that refer to themselves from our language.
+
+
+Question: is self-reference \emph{sufficient} for paradox? Does this bear on whether we should ban self-reference?
+
+
+\item Idea: maybe it is still \emph{necessary} for paradox! 
+
+\end{itemize}
+
+\section{Yablo's Paradox}
+
+\begin{itemize}
+
+\item Yablo's paradox is meant to refute our last idea.
+
+\item Imagine a sequence of sentences like this: 
+
+\begin{itemize}
+
+\item $s_1$: for every $n>1$, $s_n$ is false. 
+
+\item $s_2$: for every $n>2$, $s_n$ is false. 
+
+\item $s_3$: for every $n>3$, $s_n$ is false. 
+
+\item and so on.
+
+
+\end{itemize}
+
+
+
+\item Given the T-schema we know the following: 
+
+
+\begin{itemize}
+
+\item $s_1$ is true iff for every $n>1$, $s_n$ is false. 
+
+\item $s_2$ is true iff for every $n>2$, $s_n$ is false. 
+
+\item $s_3$ is true iff for every $n>3$, $s_n$ is false. 
+
+\item and so on.
+
+
+\end{itemize}
+
+\item Question: is $s_k$ true or false? 
+
+
+\item Yablo's paradox potentially sheds some interesting light on what is going on with the Liar paradox. The T-schema is problematic, \emph{even} if we ban self-reference in our language!
+
+\item Question: is there really no self-reference here? Could you argue some kind of self-reference here?
+
+
+
+
+\end{itemize}
+
+
+
+
+\end{document}

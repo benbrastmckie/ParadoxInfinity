@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amscd}
+
+\usepackage{amsthm}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{setspace}
+\usepackage{enumitem,linegoal}
+
+
+\newtheorem{theo}{Theorem}[section] 
+
+\theoremstyle{definition}
+\newtheorem{defin}[theo]{Definition} 
+\newtheorem{lema}[theo]{Lemma} 
+\newtheorem{cor}[theo]{Corollar}
+\newtheorem{prop}[theo]{Proposition}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{Xinhe Wu (xinhewu@mit.edu)}
+\rhead{$24.118$ Paradox and Infinity $|$ Recitation $4$}
+
+
+
+\begin{center}
+{\Large \bf The Liar Paradox and More}
+\end{center}
+
+\smallskip
+
+\section{The Notion of Truth}
+
+\begin{itemize}
+\item Philosophy: the quest for truth.
+\item The notion of knowledge, necessity, analyticity, etc.
+\item Logical consequence is the preservation of truth.
+\item Parts of mathematics can be reduced to a formal theory of truth:
+\begin{itemize}
+\item Second order theories of properties can be reduced to first order theories of truths.
+\item Truth is a useful device for measuring the provability strength of a theory.
+\item Truth can be used to state very strong reflection principles.
+\end{itemize}
+\item (?) In computer science, the question of how to implement introspection in artificial intelligence agents is equivalent to the question of truth definitions.
+
+\end{itemize}
+
+\section{The Liar  in a Formal Setting}
+
+\begin{defin}
+Let our base language $L$ be the language of arithmetic. Let our base theory be $RA$ (Robinson Arithmetic). 
+\end{defin}
+
+\begin{theo} [G\"odel Coding]
+A G\"odel coding scheme is definable in $RA$. In particular, for any formula   $\phi \in L$, $\ulcorner \phi \urcorner$ is the G\"odel code denoting $\phi$.
+\end{theo}
+
+\begin{theo} [ G\"odel's Fixed Point Lemma]
+For any formula $\phi(x)$ definable in $RA$, there is a sentence $\psi \in L$ such that
+$$\phi \leftrightarrow \psi (\ulcorner \phi \urcorner).$$
+\end{theo}
+
+\begin{defin} (The Material Adequacy of Truth Predicate) 
+A predicate $T$ is the \textit{truth predicate} of a theory $S$ only if it satisfies the following scheme: for any sentence $\psi \in L_S$,
+$$T(\ulcorner \psi \urcorner) \leftrightarrow \psi.$$
+\end{defin}
+
+\begin{theo} [Tarski's Undefinability Theorem] 
+The truth predicate of $RA$ is not definable in $RA$.
+\end{theo}
+
+\begin{proof}
+Suppose otherwise. Let $T$ be the truth predicate definable in $RA$. Therefore $\neg T$ is also definable in $RA$.
+
+By 2.3, there exists a sentence $\lambda \in L$ such that $\lambda \leftrightarrow \neg T (\ulcorner \lambda \urcorner)$. By 2.4, $ T(\ulcorner \lambda \urcorner) \leftrightarrow \lambda$. Hence $ T(\ulcorner \lambda \urcorner) \leftrightarrow \neg T (\ulcorner \lambda \urcorner)$. Contradiction.
+\end{proof}
+
+\noindent \textbf{Conflict}: We want a formal definition of truth. But Tarski's result shows that any attempt to define a predicate that satisfies the basic requirement for truth leads to paradox.\\
+
+\noindent \textbf{Tarski's way out}: Separation of object language and meta-language. Forms the basis of modern model theory and formal semantics of mathematics.
+
+
+
+\end{document}

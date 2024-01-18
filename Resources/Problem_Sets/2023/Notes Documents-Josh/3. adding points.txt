@@ -1,0 +1,32 @@
+trying to figure out point assignments for PSet 3:
+
+9 subproblems, so need to average 11 points per problem. so aim for some at 12--16 others at 6--10
+haha wrong: 10 subproblems! 
+
+10, 14, 12
+10
+8, 8, 12
+10
+8
+12
+This hits 104, so need to shave off four points
+
+10, 10, 10
+10
+10, 10, 10
+10
+10, 10
+
+
+10, 14, 10
+8
+10, 10, 10
+10
+8, 10
+
+need to apportion 10 points, so 4, 4, 2:
+
+10, 14, 14
+10
+10, 12, 10
+8, 12

@@ -1,0 +1,1903 @@
+﻿% !TeX root = ./7-handout.tex
+
+%final things to do for tuesday 4-18 lecture:
+%incorporate various positions/responses to banach--tarski that maddy ch. 1 discusses!
+%try to get some clarity on weakenings of axiom of choice and what they let us still achieve
+%possibly refresh on skolem paradox? or save for later? 
+%could look into formalism and how hilbert used this to feel okay and perhaps even vindicate the axiom of choice: a rule we can use in a game. and idea i had that games can have glitches, and that's okay! 
+
+% It seems like perhaps I and Agustin have been misspeaking when we say that the axiom of choice is necessary to prove that there are non-measurable sets of real numbers. It seems that the Boolean Prime Ideal theorem is sufficient, and BPI is weaker than AC!
+%from SEP page: ``There is a Lebesgue nonmeasurable set of real numbers (Vitali 1905). This was shown much later to be a consequence of BPI (see below) and hence weaker than AC. Solovay (1970) established its independence of the remaining axioms of set theory."
+
+% Seems that Solovay's model relies on the assumption that there exists an inaccessible cardinal (and that its existence is consistent with ZFC). So we might have some qualms about that as well! Could be neat to do an excursion into inaccessible Cardinals
+%https://en.wikipedia.org/wiki/Solovay_model
+
+% one thing to possibly discuss on lecture day 3 of this unit: given that the axiom of choice leads to puzzles, and also that the axiom of choice is equivalent to every vector space having a basis (which is a physically fruitful instance of mathematics, i.e. has important applications to quantum mechanics and quantum field theory), should we be concerned that our best physical theories will also inherit some of the paradoxes from axiom of choice?
+% One possible response: even if a physical theory inherited such a paradox, we would have to view this as a limitation of our model, rather than a paradoxical result about physical reality.
+% E.g., the Banach--tarski theorem is not modeling physical spheres. Something can be logically possible or mathematically possible without being physically possible (or even physically meaningful)
+
+% finitism would be one restriction attitude: only use the axiom of choice in finite cases
+% constructivism: only use the axiom of choice where we can actually construct a choice set explicitly, e.g. using something like Separation Axiom 
+% but I still need to investigate sense in which a constructive mathematician like Bishop is happy to use axiom of choice.
+
+%formalism: One thing that I should probably comment on/discuss in class: insofar as Hilbert was super happy with axiom of choice and Hilbert was also a proponent of formalism, presumably formalism is one non-Platonist way of vindicating the axiom of choice: we view this as just another move in our formal game. No problem with a game if it sometimes has `glitches': this is to be expected perhaps. We don't expect game rules to work perfectly all the time. 
+
+%gameplan: tuesday: cover borel sets and brief connection b/w axiom of choice and non-measurable sets
+%Thursday: then recap attitudes we can take toward math (from day 0), and do Bacon's puzzle and interpretative upshots in relation to axiom of choice
+%next tuesday: then continue this w/ banach--tarski, discuss various options P Maddy provides, in contrast w/ Wildberger attitude
+%next Thursday: then finish w/ discussion of rationality and various views on probability; apply the rationality stuff to AC
+%try to get in smoss and yalcin stuff, at least their glosses---holding off till Last Lecture day, topic 11 for this
+
+%could run these slides together w/ Topic 8 slides: goal is to cover basics needed for psets and then kill time w/ backlog of fun topics/excursions! 
+
+%would be nice to expand in detail on what we lose if we give up on the AoC. I recall downloading a book that discussed AoC and its uses in detail. try to find that! maybe the Jech Axiom of choice book?
+%also the history book by Moore 
+
+%possible excursion topics:
+%could also get into the law of nature stuff this week! or save for probability! or even for the last day of class. 
+%free will
+%causal explN background: e.g. woodward view (could be relevant for time-travel stuff, so could also save for later)
+%rationality: straightforwardly factual vs. normative/plan-laden; defs relevant for decision theory unit! and whether dominance reasoning is rational. 
+
+%stuff on axiom of choice: relevant for bacon's puzzle
+%could also save bacon puzzle for AoC unit! or return to later 
+%could couple w/ Yablo's extension case, where the strategy to Bacon's paradox seems to lead to a genuine contradiction!!! see my notes in 3-thoughts and also the slides he sent me. Bevs vs. Owls 
+
+
+% could incorporate/do if needing to kill time:
+% chalk and talk the review sheet for this week
+
+%\newcounter{mysection}
+%\setcounter{mysection}{1}
+%\arabic{mysection}
+%\roman{subsection}
+
+%\begin{itemize}[<+->] 
+%\item<2-> % reveals second and keeps on page in subsequent frames
+%\begin{itemize}[<2->] %does for a whole list of items
+
+
+\setcounter{section}{7} %sets section counter to 0. note that need to switch section counter from Roman to arabic for this to work! since no roman numeral for 0! %put this into preamble, i.e. file common.tex: \renewcommand\thesection{\arabic{section}}
+
+
+
+\section{BT, AC, \& Rationality}
+%\section{Non-measurable Sets \& Axiom of Choice}
+%\subsection*{test}
+
+\begin{frame}
+%\large
+
+\scriptsize{\tableofcontents}
+
+\end{frame}
+
+\iffalse 
+
+
+\begin{frame}
+\frametitle{Liable to forget:}
+%\large
+
+\begin{itemize}[<+->]
+
+\item NO Pset due this Sunday 4/16, woooooooooo!
+
+\item PSet 7/8 due NEXT Sunday, April 23, 5pm!
+
+\item[] some questions in Part I quiz component %which i hopefully won't delete this week
+
+\item Only two PSets left after this one! (`9' and `10')
+
+%\item[] No Pset due Sunday 4/16!!!
+
+\item Feel free to join \href{https://piazza.com/mit/spring2023/24118}{Piazza}! 
+
+\item Feel free to join PSet partners!
+\item[] Groups will be auto-assigned Thursday 
+
+
+\end{itemize}
+\end{frame}
+
+\subsection{Sizable Matters}
+
+\begin{frame}
+\frametitle{Additive notions of size}
+%\large
+
+\begin{itemize}[<+->]
+
+\item The \textbf{length} of two (non-overlapping) line segments placed side by side is the length of the first plus the length of the second; 
+
+\item The \textbf{mass} of two (non-overlapping) objects taken together is the mass of the first plus the mass of the second. 
+
+\item The \textbf{probability} that either of two (incompatible) events occur is the probability that the first occurs plus the probability that the second occurs; 
+
+\item The mathematical notion of \emph{measure} is an abstract way of thinking about additive notions of size
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Generalizing the notion of length}
+%\large
+
+\begin{itemize}[<+->]
+
+\item The standard notion of length, for \textbf{line segments}:
+\begin{itemize}
+\item Recall that the closed interval $[a,b] = \set{x \in \mathbb{R} : a \leq x \leq b}$
+
+\item Call such closed intervals ``line segments''
+
+\item Intuitively, the Length$\left([a,b]\right) = b - a$.
+\end{itemize}
+
+\bigskip
+
+\item We'd like to generalize this notion of length to sets such as the open interval $(a, b)$, the point $\{ a \}$, $[a, b)$, and unions of all of these sets, e.g. $[a, b] \cup [c, d]$ for $a < b< c < d \in \mathbb{R}$
+
+%$[a, b)$, the open interval $(a, b)$, the point $\{ a \}$, 
+
+\end{itemize}
+\end{frame}
+
+%historical note: note that lebesgue was advised by Emile Borel (who was only four years older!); lebesgue measure published in 1901 and in dissertation of 1902. extending borel measure
+
+
+\begin{frame}
+\frametitle{Borel Sets of $\mathbb{R}$ (informal gloss)}
+%\large
+
+%note that these are the Borel sets of the reals under the standard topology, using closed intervals as the basis. 
+
+\begin{itemize}[<+->]
+
+\item Start with the set of closed intervals (a.k.a. `line segments'), which are Borel sets by stipulation
+
+\item Then a subset of $\mathbb{R}$ is a Borel set provided it is generated by finitely-many applications of the following two operations, applied to Borel sets:
+
+\begin{itemize}
+\item \textbf{Complementation}: take each set $A$ to its complement, $\overline{A}= \mathbb{R}-A$.
+%note that if we allowed INFINITELY many complementation operations, then with countable union the Cantor set would end up being Borel. But it is not Borel (although it is Lebesgue measurable)
+
+\item \textbf{Countable union}: take each countable family of sets $A_1, A_2, A_3, \ldots$ to their union, $\bigcup \{A_1, A_2 , A_3 \dots\}$.\label{gloss:count-un} 
+
+\end{itemize}
+
+\bigskip
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Borel sets $\mathbb{R}$ (more formally)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Borel Sets are the members of the \textit{smallest} set $\mathscr{B}$ such that: 
+\bi
+\item[] $(i)$ every line segment $[a,b]$, ($a, b \in \mathbb{R}$) is in $\mathscr{B}$, 
+\item[] $(ii)$ if a set is in $\mathscr{B}$, then so is its complement, and 
+\item[] $(iii)$ if a countable family of sets is in $\mathscr{B}$, then so is its union.
+\ei
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Practice with Borel!}
+%\large
+
+Determine whether the following sets are Borel, where $a, b \in \mathbb{R}$:
+%sets of $\mathbb{R}$
+
+\begin{enumerate}[<+->]
+
+\item $\{a \}$
+
+\item $[b, \infty) = \{ x : b \leq x < \infty \}$
+
+\item $(-\infty, a] = \{ x : -\infty < x \leq a \}$
+
+\item $(a, b)$
+
+\item $[a, b) $
+
+\item[] {\small (Borel Sets: members of the smallest set $\mathscr{B}$ such that: $(i)$ every line segment is in $\mathscr{B}$, $(ii)$ if a set is in $\mathscr{B}$, then so is its complement, and \\ $(iii)$ if a countable family of sets is in $\mathscr{B}$, then so is its union).}
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{La Bagels}
+%\large
+
+There is exactly one function \emph{$\lambda$} on the Borel Sets that satisfies the following three conditions (which we call the \emph{Lebesgue Measure}):\label{gloss:leb-measurable}
+
+\begin{description}[<+->]
+\item[Length on Segments] $\lambda([a,b]) = b-a$ for every $a,b \in \mathbb{R}$.\label{gloss:lls}
+
+
+
+\item[Countable Additivity]
+\[\lambda\left(\bigcup\{A_1,  A_2 , A_3,\ldots\}\right) = \lambda(A_1) + \lambda(A_2) + \lambda(A_3) + \ldots\] whenever $A_1,A_2,\dots$ is a countable family of \emphz{disjoint} sets for each of which $\lambda$ is defined.\label{gloss:count-add-measure}
+
+
+
+\item[Non-Negativity]
+$\lambda(A)$ is either a non-negative real number or the infinite value $\infty$, for any set $A$ in the domain of $\lambda$.\label{gloss:non-neg}
+
+ \end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{Adding up them Bagels!}
+%\large
+
+If well-defined, determine the Lebesgue measure of the following:
+%sets of $\mathbb{R}$
+
+\begin{enumerate}[<+->]
+
+\item $\{a \}$
+
+\item $[b, \infty) = \{ x : b \leq x < \infty \}$
+
+\item $(-\infty, a] = \{ x : -\infty < x \leq a \}$
+
+\item $(a, b)$
+
+\item $[a, b) $
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Philosophy Prompt \#15}
+%\large
+
+\begin{itemize}[<+->]
+
+%\item You come home from math class one day and are super pumped to tell your parents, siblings, mailperson, and anyone willing to listen a MIND-BLOWING FACT: \textit{there are as many numbers in the interval} $[0, 1]$ \textit{as there are in the open interval} $(-\infty, \infty)$
+
+\item Next year, you're chatting with a student who's only a couple weeks into this class. They tell you the following MIND-BLOWING FACT: \textit{there are as many numbers in the interval} $[0, 1]$ \textit{as there are in the interval} $(-\infty, \infty)$. 
+
+\item Another student overhears this claim and remarks that mathematicians must have lost their god d$^{***}$ minds, since clearly $[0, 1]$ is a proper subset of  $(-\infty, \infty)$.
+
+\item How are you disposed to respond to this pair of sizable remarks? 
+
+
+
+% % Indignant, you respond, indeed, there are actually as many multiples of 100 as there are natural numbers!!!
+
+%\item Presently, how are you disposed to respond to your interlocutor?
+
+
+\end{itemize}
+\end{frame}
+
+%Note that student 1 is presumably relying on these two intervals having the same cardinality, namely that of the continuum. But, as we discussed in Topic 1 (prompt 3), cardinality captures only one aspect of the intuitive notion of `size'
+
+%natural response: although there is a bijection between the members of these two intervals, the latter interval has infinite Lebesgue measure and is in that sense a larger set. So Lebesgue measure adds another facet to our notion of size of sets.
+%this is all the more reason to not identify cardinality with `size'.  
+
+%But note that two sets can have the same Lebesgue measure while differing in cardinality. e.g. both the Naturals and the Cantor set have Lebesgue measure 0, but the cantor set is uncountable. 
+
+\begin{frame}
+\frametitle{Lebesgue Measure beyond Borel Measure}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Any function on the Borel Sets is a \textbf{measure} if and only if it satisfies Countable Additivity and Non-Negativity (and assigns the value 0 to the empty set).\label{gloss:measure} 
+
+\item The \emph{Lebesgue Measure} is the (unique) measure $\lambda$ that satisfies Length on Segments
+
+\item Note that even some non-Borel sets have Lebesgue measure: 
+
+\bi
+
+\item In general, we say that a set  $A \subseteq \mathbb{R}$ is \textbf{Lebesgue Measurable} if and only if $A = A^B \cup A^0$, for $A^B$  a Borel Set and $A^0$ a subset of some Borel Set of Lebesgue Measure zero.
+
+\item We apply $\lambda$ to Lebesgue measurable sets that are not Borel sets by stipulating that  $\lambda(A^B \cup A^0) = \lambda(A^B)$. 
+\ei
+
+%note that the Vitali sets are not borel sets. To see this, note that every Borel set has Lebesgue measure. But the Vitali sets lack Lebesgue measure, so they must not be Borel sets! 
+
+%so in particular, note that there are uncountable Borel sets of Lebesgue Measure 0 that have subsets that are NOT Borel sets. 
+%the Cantor set is an uncountable set of Lebesgue Measure 0 (but it is still Borel); see p. 185 of paradox book. 
+%so cantor set has non-borel subsets
+
+%see here for discussion of cantor set: https://math.stackexchange.com/questions/1120032/is-any-subset-of-the-cantor-set-a-borel-set
+
+%``the same reasoning shows that any subset of R that has the same cardinality as R (for instance, any non-degenerate interval) contains non-Borel subsets. In particular, there are non-Borel subsets of R''
+%argument: there are continuum many borel sets of reals, but the subsets of the reals is powerset of the continuum. so there must be `more' subsets of reals than the borel sets. 
+
+%neat connection with the axiom of choice: ``At any rate, note that the axiom of choice—or its equivalent variants like the well-ordering theorem invoked in transfinite induction—is crucial for all of these results. Indeed, the possibility that all subsets of R are Borel is logically consistent with the negation of the axiom of choice.''
+%so if we deny the AC, then it is possible that every subset of R IS a borel set. this is presumably related to the fact that we need the AC to construct non-measurable sets, e.g. the Vitali sets. 
+
+%a faster argument for the cantor set being a borel set: the cantor set is closed! 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Non-Measurable Sets and the Axiom of Choice}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Axiom of Choice}: Every set $A$ of non-empty, non-overlapping sets has a \textbf{choice set} (i.e. a set that contains exactly one member from each member of $A$)
+
+%\item[] A \textbf{choice set} for set $A$ is a set that contains exactly one member from each member of $A$
+
+\item Assuming the AC, we can prove there are sets that lack Lebesgue measure (e.g. Vitali sets)
+
+\item Since every Borel set has Lebesgue measure, these non-measurable sets are not Borel
+
+\item Note that if we deny AC, then we can consistently take every subset of $\mathbb{R}$ to be Borel 
+%(in particular, the reals would be a countable union of countable sets)
+%note that although this latter remark sounds like it would entail that the reals are countable if we deny AC, it actually does not!  ``The reals are still uncountable, and François' construction gives a |R|-sized Q -independent subset. The trick is that without AC, “countable union of countable sets” doesn't imply countable!''
+
+%see here for discussion: https://mathoverflow.net/questions/32720/non-borel-sets-without-axiom-of-choice
+
+\end{itemize}
+\end{frame}
+
+\subsection{The Three Prisoners Puzzle}
+
+\begin{frame}
+\frametitle{The Three Prisoners}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Three prisoners: Each of them is assigned a red or blue hat, based on the outcome of a coin toss.
+\item Each of them can see the colors of the others' hats but has no idea about the color of his own hat.
+\item The prisoners are taken into separate cells and asked about the color of their hat. They can offer an answer or remain silent. 
+\medskip
+\begin{itemize}
+\item If all three prisoners remain silent, all three will remain captive %be killed.
+\item If one of them answers incorrectly, all three will remain captive %be killed.
+\item If at least one prisoner offers an answer, and everyone who offers an answer answers correctly, then all three prisoners will be freed.
+\end{itemize}
+\medskip
+\item \emph{Puzzle}: Find a strategy that the prisoners could agree upon ahead of time that would guarantee that their chance of survival is above 50\%.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Strategy for the Three Prisoners}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Have each prisoner follow these instructions:
+
+\item[a)] If the other two prisoners have hats of the same color, answer the guard by saying the opposite color
+
+\item[b)] If the other two prisoners have different color hats, remain silent
+
+\item Result: 75\% chance of being freed! 
+
+\item Remains the case that each prisoner individually has only a 50\% chance of answering correctly (out of eight possibilities, they remain silent in four, answer correctly in two, \& incorrectly in two)
+
+\item \emph{Moral}: by coordinating on a strategy, a group can improve the chance of collective success without changing chance of individual success
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Illustrating the Strategy}
+%\large
+
+\begin{itemize}[<+->]
+\item The eight possible hat distributions, along with the result of applying the suggested strategy: 
+\end{itemize}
+
+\[
+\begin{array}{cccc}
+\text{\footnotesize Prisoner $A$} & \text{\footnotesize Prisoner $B$} & \text{\footnotesize Prisoner $C$} &\text{\footnotesize Result of following Strategy} \\
+ \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize Everyone answers incorrectly} \\
+  \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize $C$ answers correctly} \\
+   \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize $B$ answers correctly} \\
+    \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize $A$ answers correctly} \\
+     \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize $A$ answers correctly} \\
+      \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize $B$ answers correctly} \\
+       \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize $C$ answers correctly} \\
+        \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize Everyone answers incorrectly} \\
+\end{array}
+\]
+\end{frame}
+
+\subsection{Bacon's Puzzle}
+
+\begin{frame}
+\frametitle{Bacon's Puzzle}
+%\large
+
+\begin{itemize}[<+->]
+
+\item An omega sequence of prisoners: \(P_0, P_1,P_2\dots\). (\(P_0\) is at the end of the line, in front of her is \(P_1\), in front of him is \(P_2\), and so forth.) 
+
+\item Each person is assigned a red or blue hat, based on the outcome of tossing a fair coin. They cannot communicate at this point. 
+%red for heads (0); blue for tails (1)
+
+\item Everyone can only see the hats of the people in front of her, but cannot see her own hat (or the hat of anyone behind her). 
+
+\item At a set time, everyone has to simultaneously guess the color of their own hat by crying out ``Red!" or ``Blue!".
+
+\item People who correctly call out the color of their own hats will be freed. Everyone else will remain captive. 
+
+\item \emph{Puzzle}: Find a strategy that \(P_0, P_1,P_2, \ldots\) could agree upon in advance that would guarantee that \emphz{at most finitely many} people remain captive (i.e. guess incorrectly). 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Solution to get that bacon}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Consider the set of all sequences of red and blue hats
+
+\bi
+\item Let `red' be `0' and `blue' be `1'
+
+\item then these are sequences like $\langle 0, 0, 0, 1, 0, 1, 0, 1, \dots \rangle$
+\ei
+
+\bigskip
+
+\item Partition this set into equivalence classes, i.e. orbits $O$, such that two sequences are equivalent iff they disagree only finitely often
+\item[] e.g. $\langle 1, 1, 1, 0, 0, \dots, 0, \dots 0 \rangle \, \sim \, \langle 0, 0, \dots, 0, \dots 0 \rangle$
+
+\item All agree on an official representative \emph{$r(O)$} from each orbit
+
+\item \textit{Strategy}:
+\bi
+\item Look at all hats in front of you to determine the group's orbit $O_{@}$
+\item Guess the color in accordance with $r(O_{@})$
+\item Then only finitely-many people will guess incorrectly!!!
+\ei
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Magic Bacon?}
+%\large
+
+\begin{itemize}[<+->]
+\item What is happening? With no strategy, each prisoner has at best a 50\% chance of guessing their hat-color correctly
+
+\item Somehow, following this strategy \textit{guarantees} that only finitely-many prisoners remain captive
+
+\item What is the probability that any individual who follows this strategy correctly calls out their hat color?
+
+\item[] \textit{1st argument}: only finitely-many people answer incorrectly, which seems to be a set of measure zero $\Rightarrow$ P(guess correctly) $=1$
+
+\item[] \textit{2nd argument}: consider an arbitrary person $P_k$: she answers correctly if the `cut-off' $c$ between the actual sequence $s_@$ and $r(O_@)$ occurs at or before k, 
+\item[] -- such that for all points after $c$, $s_@(n) = r(O_@)(n)$. 
+\item[] -- So only finitely-many cutoff points are of use to her!
+%although even if the cut-off for perfect agreement occurs later, she could still get lucky. but it would be finite number of places to get lucky!
+
+
+% See page 84. Rayo argues that this probability is not defined. Might need to look into stuff on non-measurable sets coming from axiom of choice
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sneaky AC}
+%\large
+
+\begin{itemize}[<+->]
+
+\item In order to choose a representative from each orbit, one must invoke the Axiom of Choice:
+
+\item[] \emphz{Axiom of Choice}: Every set $A$ of non-empty, non-overlapping sets has a \textbf{choice set} (i.e. a set that contains exactly one member from each member of $A$)
+% presumably, there is no general property we could specify in order to select a representative. E.g. we can't use the separation principle. I guess they technically prove this in their problem set.
+
+\item Partition the set of all $\omega$-sequences of $0$s and $1$s: 
+\bi
+\item Two sequences belong to the same equivalence class provided they disagree at only finitely-many positions
+\item Each orbit has countably many sequences
+\item There are uncountably-many orbits %be able to gloss why this is the case! related to binary expansion?
+\item So we need to select uncountably-many representatives in finite time (a hyper-task!)
+\ei
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Rephrasing the Probability Question}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Given that I use the strategy, what is the probability that I guess my hat color correctly?
+
+\item Equivalently: in the actual orbit $O_@$, what proportion of sequences describe my actual hat color? 
+
+\item Issue: what if this set---containing the sequences that match my hat color---is not measurable? 
+%moral: you can't assume that a set will be measurable. some well-defined sets are not measurable. so be careful! 
+
+%upshot for the hat puzzle, from video lecture: ``What we want to know is, what is the probability that I will guess correctly given that I do use the strategy? That question is equivalent to the question of, what is the proportion of possible representatives in the cell that I know to be actual, that matches the actual color of my hat? And I claim that that is a non-measurable set."
+
+%interpretation of non-measurable sets of interval, from video lecture: ``So the existence of non-measurable sets can be thought of as the observation that sometimes when you pick a subset of the line segment there is no fact of the matter about what proportion of points are in your set."
+
+%Rayo's tidy moral in the last four minutes, which seems right to me: ``So what we've proved is that you can't take for granted that probabilities are well defined. So when you have a space and you know that a member of that space is going to be picked at random you can't assume that there's a well defined fact of the matter that what you pick is going to have a certain property."
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+%\frametitle{To Vindicate, Revise, or Reject?}
+\frametitle{To Vindicate, Restrict, or Revise/Reject?}
+%\large
+%slide from Lecture day 1, lecture-0
+
+\begin{itemize}[<+->]
+
+\item Choice point: \textit{what attitude to take} toward the AC?
+
+\item \emph{Vindication}: AC is indispensable for modern mathematics; relying on it is rational; nothing to fear! 
+%interesting to think how formalists, logicists, structuralists, platonists might all differ in their attitudes of vindication toward AC
+%e.g. logicists might vindicate it only if AC is viewed as principle of logic?
+
+\item \emph{Meh}: we tolerate the AC, but we're disturbed by its counter-intuitive consequences
+%\item[] Avoid using AC as much as possible
+%e.g. fictionalism or quietism
+%we should avoid using the AC as much as possible, and 
+
+\item \emph{Restriction}: \textit{only some} uses of the AC are rationally permissible, e.g. when it leads to results that are fruitful in science 
+%this would be a kind of naturalism about mathematics
+
+
+% %since constructive mathematicians like Bishop are still comfortable w/ the AC (suitably interpreted), perhaps a restriction attitude is to reinterpret the AC?
+%math is doing mostly fine, but we have some issues\dots. Someone's going overboard! 
+
+\item \emph{Revision}: we should forbid using the AC
+%this ship is f$^{***}$ed; abandon ship!!! 
+% Famous examples: folk psychology (churchlands); causation (russell)
+
+%\item Note that restriction and revision both involve \textit{rejecting} parts of classical math, to different extents. 
+
+%\item One true testament to the success of mathematics: \\ no one is trying to \emphz{eliminate} it, unlike other parts of our discourse 
+%\item[] (e.g. folk psychology, causation, astrology, witchcraft \& wizardry)
+
+%\item This is a continuum, so the divisions between `revision' and `rejection' can be a bit blurry. 
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Philosophy Prompt \#16}
+%\large
+
+\begin{itemize}[<+->]
+
+\item In light of Bacon's paradox, what attitude should we take toward the Axiom of Choice and why? How would you proceed? (e.g. your preferred idea or criteria for vindicating, restricting, etc.?)
+
+\medskip
+
+\item Some broad families of views:
+
+\bi
+
+\item \emph{Vindication}: AC is indispensable for modern mathematics; relying on it is rational; nothing to fear! 
+
+\item \emph{Meh}: we tolerate the AC, but we're disturbed by its counter-intuitive consequences
+
+\item \emph{Restriction}: \textit{only some} uses of the AC are rationally permissible, e.g. when it leads to results that are fruitful in science 
+
+\item \emph{Revision}: we should forbid using the AC
+
+\ei
+
+
+\end{itemize}
+\end{frame}
+
+
+
+\iffalse %somewhat worse (different) exposition 
+
+\begin{frame}
+\frametitle{A Solution to get that bacon}
+%\large
+
+\begin{itemize}[<+->]
+\item Use the Axiom of Choice (duh!)
+
+\item Partition the set of all $\omega$-sequences of $0$s and $1$s
+
+\item Two sequences belong to the same equivalence class provided they disagree at only finitely-many positions
+
+\item For each equivalence class, the prisoners agree on a representative from that equivalence class (using AC)
+
+\item Each prisoner can determine which equivalence class the line belongs to (since they see infinitely-many hats in front of them and only finitely-many hats are behind)
+
+\item \textit{Strategy}: answer assuming that the actual sequence is described by the chosen representative
+
+\item The prisoners are guaranteed to be wrong only about finitely-many positions
+
+
+\end{itemize}
+\end{frame}
+
+\fi 
+
+
+
+
+\subsection{Yablo's Beef with Bacon}
+
+%see the Yablo handout for topic 3: paradox for the axiom of choice strategy/solN. two incompatible but seemingly possible plans. could connect as well w/ rationality. 
+
+\begin{frame}
+\frametitle{\textsc{Nice vs. Nasty}}
+%\large
+
+\begin{itemize}[<+->]
+
+% we crucial that we are using a reverse Omega sequence now, since otherwise the Nice team (aka Al's) wouldn't know an infinite number of previous results. and so wouldn't be able to determine the orbit. 
+
+\item Two teams with REVERSE $\omega$-sequences: \emph{Nice} vs. \emphz{Nasty}
+
+\item[] -- Each person will call out `0' or `1', in sequence
+
+\item[] -- Nice player $\#k$ calls out directly before Nasty $\#k$
+
+\item[] -- So Nasty $\#0$ goes last (Nasty $\infty$ goes `first')
+%one way to conceptualize this supertask: for every $1/n$ part of an hour after noon, they play a round, for each n. 
+
+\item \textcolor{highlightA}{Nice team's goal}: have only finitely-many Nice players disagree with their Nasty counterparts
+
+\item \textcolor{OGlyallpink}{Nasty team's goal}: disagree with infinitely-many Nice players 
+
+\item \textcolor{OGlyallpink}{Winning strategy for Nasty}: Nasty $\#k$ says opposite of Nice $\#k$
+
+\item \textcolor{highlightA}{Winning strategy for Nice}: determine the orbit containing all the Nasty player's previous calls. Then answer in accord with a pre-selected representative $r(O)$
+
+% possibly one issue or disanalogy with the bacon puzzle: unlike w/ the hats (which are already on the people's heads), the subsequent Nasty players have yet to call. So what they will call is a future contingent: there might be no fact of the matter now what they will call. so then it's unclear there's a fom about their orbit
+%response: but we'll always have seen infinitely-many Nasty calls, with only finitely-many left. and that's enough to determine the orbit! so the orbit is determined even if the calls are not, and that seems to be enough for the Nice's strategy to succeed! their pre-selected representative will by defN disagree w/ the actual sequence of Nasty calls at only finitely-many places 
+
+% % maybe here's one issue with this strategy: can the subsequent Nasty players alter the orbit? seemingly not, b/c there are only ever a finite number of nasty players left! 
+
+\item But how can both teams have a winning strategy??? 
+
+% if forced to bet or choose, we probably all would bet on Nasty. This perhaps at least indicates that we have less faith in the axiom of choice (or we have less faith in the principle Yablo picks on, namely that individual power entails collective power)
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Can even \textit{ideal} agents carry out the strategy?}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Should we think that the Nice team will somehow fail to be able to follow this strategy? But why? 
+
+\item The following principle seems fairly intuitive: 
+\item \emph{Individual Power}$\Rightarrow$\emph{Collective Power}: if (i) individuals each have the power to follow a rule, and (ii) it is logically possible for them all to follow it, then they collectively have the power to follow the rule or strategy 
+
+\item Does \textsc{Nice vs. Nasty} put pressure on this principle?
+% seemingly yes, if we uphold the Axiom of Choice. At least according to Yablo, it is unclear what other principle we could reject in order to avoid contradiction in Nice vs. Nasty puzzle. 
+
+\item Alternatively, should we view \textsc{Nice vs. Nasty} as putting pressure on the Axiom of Choice? 
+
+
+\end{itemize}
+\end{frame}
+
+
+%\iffalse 
+
+\fi%******************************************************************
+
+\subsection{Historical Choices}
+
+\begin{frame}
+\frametitle{Recap: The Axiom of Choice}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Axiom of Choice} (AC): Every set $A$ of non-empty, non-overlapping sets has a \textbf{choice set} 
+\item[] (a set that contains exactly one member from each member of $A$)
+
+\item Last time, we applied the AC to choose a representative from each orbit in an uncountable set of orbits
+
+\item The AC is useful whenever we fail to know a general property that we could specify in order to select a representative
+
+% presumably, there is no general property we could specify in order to select a representative. E.g. we can't use the separation principle. I guess they technically prove this in their problem set.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Choiceworthy Timeline}
+%\large
+
+\begin{itemize}[<+->]
+
+\item[1904:] Zermelo introduces AC in order to prove the Well-ordering theorem: every set can be well-ordered
+%recall defN of well-ordering: ``a well-order (or well-ordering or well-order relation) on a set S is a total order on S with the property that every non-empty subset of S has a least element in this ordering. "
+%and recall that a total order is a partial order where every element is comparable (i.e. either less than equal to or greater than). partial order requires reflexive, transitive, and anti-symmetric (i.e. if a is distinct from b, then one of them is greater than the other)
+% interesting that this result ends up being logically equivalent to axiom of choice!
+%``Zermelo’s original purpose in introducing AC was to establish a central principle of Cantor’s set theory, namely, that every set admits a well-ordering and so can also be assigned a cardinal number. Zermelo’s 1904 introduction of the axiom, as well as the use to which he put it, provoked considerable criticism from the mathematicians of the day. The chief objection raised was to what some saw as its highly non-constructive, even idealist, character"
+
+\item[1905:] Vitali constructs non-measurable subsets of $\mathbb{R}$
+
+\item[1908:] Zermelo reformulates AC to respond to constructivist critics, and presents axioms for set theory 
+%``Zermelo’s response to his critics came in the form in two papers in 1908. In the first of these, as remarked above, he reformulated AC in terms of transversals; in the second (1908a) he made explicit the further assumptions needed to carry through his proof of the well-ordering theorem. These assumptions constituted the first explicit presentation of an axiom system for set theory."
+
+%\item[1914:] Hausdorff uses AC to derive non-measurable sets
+
+\item[1924:] Banach and Tarski prove that AC entails highly counter-intuitive result about solid spheres
+%``(Banach and Tarski 1924): any solid sphere can be split into finitely many pieces which can be reassembled to form two solid spheres of the same size; and any solid sphere can be split into finitely many pieces in such a way as to enable them to be reassembled to form a solid sphere of arbitrary size. (See Wagon 1993.)"
+
+%1926: ``	Hilbert introduces into his proof theory the “transfinite” or “epsilon” axiom as a version of AC . (Hilbert 1926)." so again, Hilbert must have thought AC is no issue for formalism!!! 
+
+\item[1935:] Zorn publishes his namesake lemma, although Hamburg proved it earlier
+%``Max Zorn, apparently unacquainted with previous formulations of maximal principles, publishes (Zorn 1935) his definitive version thereof later to become celebrated as his lemma (ZL). ZL was first formulated in Hamburg in 1933, where Chevalley and Artin quickly “adopted” it. It seems to have been Artin who first recognized that ZL would yield AC, so that the two are equivalent (over the remaining axioms of set theory). Zorn regarded his principle less as a theorem than as an axiom—he hoped that it would supersede cumbersome applications in algebra of transfinite induction and well-ordering, which algebraists in the Noether school had come to regard as “transcendental” devices."
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Timeline of Consistency and Independence Results}
+%\large
+
+The following results motivate treating AC as an independent axiom: %of set theory
+
+\begin{itemize}[<+->]
+
+\item[1922:] Fraenkel shows that AC is independent of a particular kind of set theory (set theory with atoms)
+%atoms are not sets; rather they are objects that do not have any elements but are distinct from the empty set 
+%see here: https://ncatlab.org/nlab/show/ZFA
+%``Zermelo's original 1908 axiomatisation of set theory included atoms, but they were soon discarded as a foundational approach as they could be modeled inside of atomless set theory.''
+%proof idea: ``By allowing atoms in our models, we lend ourselves to the method of Fraenkel-Mostowski models, where we can obtain models in which the axiom of choice fails by imposing some symmetry on the atoms (so that we cannot uniformly pick an atom out of many).''
+
+
+
+%1936: ``Lindenbaum and Mostowski extend and refine Fraenkel’s permutation method, and prove the independence of various statements of set theory weaker than AC . (Lindenbaum and Tarski 1938)"
+
+\item[1938:] G\"odel shows that AC is consistent with ZF set theory
+%``Gödel’s proof of the relative consistency of AC with the axioms of set theory (see the entry on Kurt Gödel) rests on an entirely different idea: that of definability. He introduced a new hierarchy of sets—the constructible hierarchy—by analogy with the cumulative type hierarchy. "
+% Specifically, Godel constructed something called the constructible universe of sets (which has a similar structure to how we defined the ordinal hierarchy). He showed that this structure is a model of ZF and also a model of AC (and also a model of the generalized continuum hypothesis) % so it follows that the axiom of choice is consistent with ZF set theory
+
+
+\item[1950s:] Various people come close to showing AC is independent of ZF set theory
+%``Mendelson, Shoenfield and Specker, working independently, use the permutation method to establish the independence of various forms of AC from a system of set theory without atoms, but also lacking the axiom of foundation (Mendelson 1956, 1958, Shoenfield 1955, Specker 1957)."
+
+%``This argument shows that collections of sets of atoms need not necessarily have choice functions, but it fails to establish the same fact for the “usual” sets of mathematics, for example the set of real numbers. This had to wait until 1963 when Paul Cohen showed that it is consistent with the standard axioms of set theory (which preclude the existence of atoms) to assume that a countable collection of pairs of sets of real numbers fails to have a choice function. The core of Cohen’s method of proof—the celebrated method of forcing—was vastly more general than any previous technique; nevertheless his independence proof also made essential use of permutation and symmetry in essentially the form in which Fraenkel had originally employed them."
+
+\item[1963:] Paul Cohen shows independence of AC from ZF set theory
+%cohen showed that ``a countable collection of pairs of sets of real numbers [can] fails to have a choice function"
+%seems like Cohen was at MIT for a year after his phD from UChicago:
+%`` spent the academic year 1958–59 at the Massachusetts Institute of Technology before spending 1959–61 as a fellow at the Institute for Advanced Study at Princeton. These were years in which Cohen made a number of significant mathematical breakthroughs.''
+%``For his result on the continuum hypothesis, Cohen won the Fields Medal in mathematics in 1966, and also the National Medal of Science in 1967.[11] The Fields Medal that Cohen won continues to be the only Fields Medal to be awarded for a work in mathematical logic, as of 2022.'' Latter is a fun fact haha! 
+%seems like Cohen thought the continuum hypothesis obviously false; very interesting 
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Some Major Consequences of AC}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Every vector space has a basis (equivalent to AC---Blass 1984)
+\item[] -- Important for physics!!! e.g. quantum mechanics
+
+\item Tychonoff's theorem (1930): every product of compact topological spaces is compact (equivalent to AC---Kelley 1950)
+%This was proved equivalent to AC in Kelley 1950. But for compact Hausdorff spaces it is equivalent to BPI (see below) and hence weaker than AC
+
+\item Every commutative ring with identity has a maximal ideal (equivalent to AC---Hodges 1979)
+%ideals are a generalization of special subsets of rings that are closed under addition and absorb multiplication, e.g. the even integers as a subset of the integers: adding two even numbers results in an even and multiplying an even by any other integer results in an even. 
+%ideals are the kernels of ring homomorphisms, so can be used to define factor (i.e. quotient) rings 
+%``A proper ideal I is called a maximal ideal if there exists no other proper ideal J with I a proper subset of J. The factor ring of a maximal ideal is a simple ring in general and is a field for commutative rings''
+
+\item Downward L\"owenheim--Skolem: if a theory has a model of an infinite cardinality $\kappa$ then it has a model of any smaller infinite cardinality $\mu$ (including a countable model!)
+% we might think that this consequence itself leads to some paradoxes, e.g. Skolem's `paradox' : we can prove in ZFC that there are uncountable sets. but so there are countable models (i.e. models whose domain of objects is countable) that say there are uncountable sets. and in these models, the thing that says `there is an uncoutnable set' will be countable. 
+
+\end{itemize}
+\end{frame}
+
+\subsection{Banach--Tarski Theorem}
+
+\begin{frame}
+\frametitle{Banach--Tarski Theorem}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Banach--Tarski}: It is possible to decompose a ball into a finite number of pieces and reassemble the pieces (without changing their size or shape) so as to get two balls, each of the same size as the original
+% a solid sphere can be decomposed into a finite number of pieces that can be reassembled (without stretching) into two solid spheres of the same volume. so in general: reassembled into an object of arbitrary volume. 
+
+\item What notion of `possibility' is in play here?
+
+\item[] -- e.g. logical vs. mathematical vs. physical
+
+\item What notion of `ball'? (i.e. solid sphere)
+
+\item Note: Some of the Banach--Tarski pieces must be non-measurable, and therefore must lack definite volumes!
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{To Accept or Reject}
+%\large
+
+\begin{itemize}[<+->]
+
+\item A frequent kind of problem in philosophy: when a principle that seems to be obvious leads to seemingly absurd or paradoxical conclusions, do we accept the conclusions?
+
+\item[] -- Or do we reject/restrict the initially plausible principle?
+
+\item The Axiom of Choice initially might seem obvious 
+\item[] -- Indeed, it is much easier to understand than many results that it is logically-equivalent to! 
+\item[] -- This seems to justify its status as an axiom
+
+\item Are consequences such as Banach--Tarski, Bacon's puzzle, Skolem's paradox, etc. bullets to be bitten?
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Philosophy Prompt \#17: To Choose or not to Choose}
+%\large
+
+\begin{itemize}[<+->]
+
+%possibly a more interesting question, since many students discussed BT already in the previous prompt: 
+%what should we make of BT theorem? e.g. what attitude should we take toward it? how should we square the BT theorem w/ our conception of physical balls 
+
+\item[a.)] Does the Banach--Tarski theorem provide evidence against the AC (i.e. should it make you less confident in the AC)?
+
+\item[b.)] Does the BT theorem \textit{change} what attitude you think we should take toward the Axiom of Choice? (recall some broad attitudes):
+
+\medskip 
+
+\bi
+%could be interesting to rewrite these attitudes as they apply to the banach--tarski theorem itself 
+
+\item \emph{Vindication}: AC is indispensable for modern mathematics; relying on it is rational; nothing to fear! 
+
+\item \emph{Meh}: we tolerate the AC, but we're disturbed by its counter-intuitive consequences
+
+\item \emphz{Restriction}: \textit{only some} uses of the AC are rationally permissible, e.g. when it leads to results that are fruitful in science 
+
+\item \emphz{Revision}: we should forbid using the AC
+
+\ei
+
+%some student responses from last time: 
+%Benji: issue is w/ our intuition rather than AC. we shouldn't trust our intuition [but then how do we justify an axiom, if not through intuition]?
+%Brian: agrees that our intuitions w/ infinite objects might not be trustworthy, due to our lack of experience with them [but so again: wouldn't this undermine our confidence in AC as an axiom?]
+
+%milan, German, and some others: if one proves someting w/ AC, try to see if you can prove it w/out AC
+
+%Allen: agrees w/ Maddy that we shouldn't necessarily take consequences of AC literally, at least not in context of physical systems or applications. proceed w/ caution
+
+%Kimi: agrees w/ another aspect of Maddy's view: math's goal is to investigate interesting structures. this goal is separate from physical applications
+
+%Hannah gave a very compelling argument for meh via process of elimination (Tyra agrees w/ part): restriction is tough to defend b/c need principled reason/criteria for how to restrict 
+
+%Cem had neat point: counterintuitive consequences of AC imply some kind of problem w/ using it in math foundations. but math is working fine so far. so nothing to really worry about until we run into serious problems. although would be nice to find a way to fix these problems beforehand.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Statistics from Prompt \#16}
+%\large
+
+In light of Bacon's paradox, what attitude should we take toward the Axiom of Choice and why? How would you develop this attitude? 
+
+\begin{itemize}[<+->]
+
+\item \emph{Vindication}: $6/32 = 19 \%$
+
+\item \emph{Meh}: $ 20/32 = 62 \%$
+
+\item \emphz{Restriction}: $ 6/32 = 19 \%$
+
+\item \emphz{Revision}: $0 / 32 = 0 \%$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{BT Theorem as Evidence against Choice}
+%\large
+
+In the 1920s, constructivists like Borel reacted as follows to BT:
+
+\begin{itemize}[<+->]
+
+\item[P1:] Powerset of $\mathbb{R}^3$ provides a model of physical space
+%an (approximate) model of physical space
+
+\item[P2:] Using Axiom of Choice, BT theorem \textit{predicts} that we can generate mass simply by rearranging parts of a massive object
+
+\item[P3:] This prediction is clearly physically ridiculous 
+
+\item[C:] Reject the AC, since it leads to a false physical prediction
+
+%We must reject an assumption, and the most suspicious one is the Axiom of ChoiceThe assumption to reject is the Axiom of Choice, since it leads to a false physical prediction 
+
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Maddy's Defense of Choice: Background}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Already by the early 20th century, applied mathematics had become ``pure": 
+
+\bi
+\item Autonomous discipline with its own goals %independent of physics
+
+\item One goal: construct mathematical structures that may (or may not) correspond to physical systems (to various degrees)
+
+\ei
+
+\medskip
+
+\item  \emph{Historical Lesson}: we should not expect applied mathematical models to correspond exactly with physical reality. 
+
+\bi
+\item We may need to apply or interpret our model \textit{with care}, treating some implications as artifacts of our representation 
+
+\item Models from applied mathematics ``resemble the world only partially and within certain limits" [2011, p. 35]
+
+% Eloquent way of putting the `third strand' moral: ``we relinquish the dream of literal modeling \dots cautioning us against regarding all questions about our mathematical models as real physical issues" [36]. This seems like an extremely important/relevant moral for interpreting physical theories: when we encounter a problem that seems like a mathematical problem with physical applications, we can't necessarily take this to have physical applications
+% It is interesting to think that Bob Batterman might be on the wrong side of this moral! e.g. Maddy's point here could really take the wind out of batterman's sails on the renormalization group and critical phenomena stuff. 
+
+\ei
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Maddy's Defense of AC vis-\'a-vis BT theorem}
+%\large
+
+\begin{itemize}[<+->]
+
+
+\item[P1:] $\mathcal{P}(\mathbb{R}^3)$ provides a model of physical space
+
+\item[M1:] But this model is \textit{partial}: physical regions are not \textit{literally} isomorphic to (all/arbitrary) subsets of $\mathbb{R}^3$
+
+\item[$C_M$:] Hence, we should not interpret the BT theorem as making a physical prediction about physical balls 
+
+\item[] -- Evidence that physical regions are not \textit{best} modeled by $\mathcal{P}(\mathbb{R}^3)$
+
+%``isn't it at least as reasonable to conclude that the full power set of $\mathbb{R}^3$ was a poor choice as a model for physical regions" [Maddy 2011, page 35]
+
+\end{itemize}
+
+\pause 
+
+Maddy notes that we should therefore apply our $\mathcal{P}(\mathbb{R}^3)$ model with care
+
+\pause 
+We may be motivated to develop a more accurate, literal model of physical space where the BT theorem doesn't apply
+% Maddy: ``wouldn't it be considerably more reasonable to conclude that physical regions are more effectively modeled by measurable subsets of $\mathbb{R}^3$"? 
+% One specific proposal she considers: model physical space in what's called $L(\mathbb{R})$, where all of the sets of the reals are measurable. $L(\mathbb{R})$ is the smallest model of set theory that contains all of the real numbers: its existence requires the existence of a super compact cardinal. See footnote 75, on page 36.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Maddy's further defense of AC}
+%\large
+
+\begin{itemize}[<+->]
+
+\item First, recognize that the goals of (applied) mathematics are distinct from the goals of physics
+
+\item Physical science might go best when mathematicians explore structures that deviate considerably from physical systems
+
+\item One job of mathematics is to construct a ``well-stocked warehouse" of models that could be physically useful
+
+\item \emph{Lesson}: ``any candidate for an empirical confirmation or disconfirmation of the mathematics is more reasonably viewed as confirming or disconfirming the claim that the best model has been identified" [2011, 36].
+
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+%\subsection{\phantom{v} Connections to the Axiom of Choice}
+
+\subsection{Weakenings of Choice}
+
+% % Plausibly save this for the week we discuss AC and Banach Tarksi!!!
+
+\begin{frame}
+\frametitle{Weaker Consequences of AC}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Some key results are consequences of AC but weaker than it \\ (i.e. AC entails them but not vice versa, in ZF)
+
+\item \emph{Boolean Prime Ideal Theorem} (BPI): every Boolean algebra has a maximal (or prime) ideal
+
+%``An ideal of the Boolean algebra A is a subset I such that for all x, y in I we have x ∨ y in I and for all a in A we have a ∧ x in I. This notion of ideal coincides with the notion of ring ideal in the Boolean ring A. An ideal I of A is called prime if I ≠ A and if a ∧ b in I always implies a in I or b in I" 
+%``An ideal I of A is called maximal if I ≠ A and if the only ideal properly containing I is A itself. For an ideal I, if a ∉ I and −a ∉ I, then I ∪ a or I ∪ {−a} is properly contained in another ideal J. Hence, that an I is not maximal and therefore the notions of prime ideal and maximal ideal are equivalent in Boolean algebras"
+
+%note that the dual of the Boolean Prime Ideal theorem is the Ultrafilter theorem: every filter can be extended to an ultrafilter. Filters are dual concepts to ideals. Ultrafilters are dual concepts to prime ideals. 
+
+%``The dual of an ideal is a filter. A filter of the Boolean algebra A is a subset p such that for all x, y in p we have x ∧ y in p and for all a in A we have a ∨ x in p. The dual of a maximal (or prime) ideal in a Boolean algebra is ultrafilter." so filters are closed under multiplication (i.e. meet) and they absorb all elements under join (or). note that the ring addition is exclusive disjunction (double check this)
+
+%Ultrafilter theorem: ``The statement every filter in a Boolean algebra can be extended to an ultrafilter is called the Ultrafilter Theorem and cannot be proven in ZF, if ZF is consistent. Within ZF, it is strictly weaker than the axiom of choice. The Ultrafilter Theorem has many equivalent formulations: every Boolean algebra has an ultrafilter, every ideal in a Boolean algebra can be extended to a prime ideal, etc."
+
+\item Compactness theorem for first-order logic: \\ if every finite subset of a set of first-order sentences has a model, then the set has a model (even if this set is infinite)
+% This was shown, in Henkin 1954, to be equivalent to BPI, and hence weaker than AC.
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Axiom of Dependent Choice (DC)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item This is a weakening of the Axiom of Choice that suffices to recover most of real analysis (Bernays 1942)
+
+\item In ZF, equivalent to Baire Category Theorem (important in topology and functional analysis)
+%wiki: ``The theorem has two forms, each of which gives sufficient conditions for a topological space to be a Baire space (a topological space such that the intersection of countably many dense open sets is still dense). It is used in the proof of results in many areas of analysis and geometry, including some of the fundamental theorems of functional analysis."
+
+%https://en.wikipedia.org/wiki/Axiom_of_dependent_choice
+
+\item In ZF, one cannot prove the existence of a non-measurable set of real numbers using only DC
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Axiom of Countable Choice ($AC_{\omega}$)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item aka `Axiom of Denumerable Choice' 
+
+\item Axiom of choice restricted to a \textit{countable} sequence of sets, where these sets themselves can be uncountable 
+
+\item[] -- i.e. choice function for a set with countably-many members
+
+\item Cohen showed $AC_{\omega}$ is also independent of ZF 
+
+\item Can also be used to develop much of analysis 
+
+%``ACω is particularly useful for the development of analysis, where many results depend on having a choice function for a countable collection of sets of real numbers. "
+
+
+\end{itemize}
+\end{frame}
+
+
+\subsection{Equivalents of Choice}
+
+\begin{frame}
+\frametitle{Well-Ordering Theorem}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emph{Well-ordering theorem} (Zermelo's theorem): every set can be well-ordered, i.e. equipped with a strict total order such that every non-empty subset has a smallest element
+
+\item Perhaps surprisingly, this theorem is logically equivalent to the Axiom of Choice (AC) \\ (in first-order logic; in 2nd-order logic the AC is weaker)
+\item[] (indeed, Zermelo originally used the AC to prove this theorem, taking the AC to be `obvious.')
+
+\item Can you conceptualize or visualize a well-ordering of $\mathbb{R}$? 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Another Logically Equivalent Theorem}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Both the well-ordering theorem and the Axiom of Choice are logically equivalent to Zorn's lemma
+
+\item \emph{Zorn's lemma}: given a partially ordered set that has upper bounds for every totally-ordered subset, there is necessarily at least one maximal element (i.e. an element that is not smaller than any other element)
+%note that these totally ordered subsets are called CHAINS 
+
+\item Used to show a number of key results in 20th century math: \\ -- every vector space has a basis; \\  every product of compact spaces is compact (Tychonoff); \\ Hahn--Banach theorem in functional analysis (can extend bounded linear functionals from a subspace to the whole space), etc. 
+
+\item So rejecting AC comes at great cost! 
+
+%\item Utility of Zorn's lemma: rather than undertake a new transfinite induction, you can check the conditions of Zorn's lemma! 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Clarifying the Equivalence}
+%\large
+
+\begin{itemize}[<+->]
+
+\item These three claims (Axiom of Choice, well-ordering theorem, and Zorn's lemma) are logically equivalent in the following sense:
+
+\item Working within Zermelo--Fraenkel set theory, given one of these claims, you can prove the other two.
+
+\end{itemize}
+\end{frame}
+
+
+
+%could get to this stuff in Banach--Tarski week as well, if staying superficial w/ the details of the construction, which are probably not necessary to understand. 
+
+
+\subsection{Rationality}
+
+\begin{frame}
+\frametitle{The Principal Principle}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{The Principal Principle}: a rational agent \textcolor{OGlyallpink}{ought} to set their credence in $p$ to what they take the objective chance of $p$ to be
+
+\item Chance Rationalists define the objective chances in terms of the credences of a \textcolor{OGlyallpink}{perfectly rational agent}
+%note that a chance rationalist could be a primitivist about these oughts! 
+
+\item Even a Chance Primitivist needs an account of this \textcolor{OGlyallpink}{ought}, insofar as they endorse PP or other principles of rationality
+
+\item And everyone who distinguishes between \textit{actual} vs. \textit{rational} credences needs an account of rationality
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Descriptive vs. Non-descriptive Claims}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Are claims about rationality descriptive or non-descriptive? \\ -- Likewise for claims about probabilities? 
+
+\item \emphz{Descriptive claim}: purports to mirror or represent the way the world is, i.e. describes some state of affairs
+
+\item[] e.g. ``There is a chalkboard behind me and in front of you''
+
+\item \emph{Non-descriptive claim}: Performs some non-representational functional role
+
+\item[] e.g. expresses an attitude, mental state, or command
+
+\item[] e.g. ``don't be late''! 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Primitivism about Rationality}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Rationality Primitivism} (a version of descriptivism): \\ a full specification of the world requires stating which constraints on agent's credences are (perfectly) rational
+
+\item These constraints are presumably (irreducibly) \textcolor{OGlyallpink}{normative}: \\ they are basic claims of the form $\langle$Agents \textcolor{OGlyallpink}{ought} to $\phi$$\rangle$
+
+\item So Rationality Primitivism is (at least  na\"ively) a kind of ``non-naturalism'': the world comes along with facts that do not reduce to physical states of affairs 
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Moral Expressivism}
+%\large
+
+\begin{itemize}[<+->]
+
+\item For non-descriptivism about rationality, start with a warm-up:% case:
+
+\item \emph{Moral Expressivism}: moral claims are non-descriptive; specifically they express pro- or con- attitudes toward actions
+
+\item ``The right thing to do is to hold the door open for people'': \\ -- expresses an attitude of
+\item[] \centering{ \emph{being for} \textit{holding the door open for others} }
+
+\item Alternatively: expresses acceptance of a set of norms that \textit{recommend} (or at least permit) holding the door open for others
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Expressivism about Rationality (Gibbard 1990)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item To judge that an action is rational is to express acceptance of a set of norms that recommend (or at least permit) that action
+
+\item[] -- ``\textcolor{highlightA}{perfectly rational}" $\Rightarrow$ \emph{required} by the norms
+
+\item To judge that an action is \emphz{irrational} is to express acceptance of a set of norms that \textcolor{OGlyallpink}{forbid} that action
+
+\item For every action, a complete set of norms renders it required, recommended, permissible, or forbidden 
+
+\item Judgments of rationality may not be ``straightforwardly factual'' (they need not track or mirror states of affairs)
+\item[] -- But they may be factual in a weaker, deflationary sense 
+
+%thinking what you ought to do is thinking what to do
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Subjective vs. Objective Bayesianism}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emph{Subjective Bayesianism}: an agent is perfectly rational just in case their credence function $C$ satisfies (i) Necessity, \\ (ii) Additivity, and (iii) Update by Conditionalization
+
+\item[] -- A large class of prior credences are equally rational
+
+\item  \emphz{Objective Bayesianism}: an agent is perfectly rational just in case their credence function $C$ satisfies (i), (ii), (iii), AND \\ (iv) \textit{Privileged Priors}: their credences match that of a privileged probability function, conditional on their evidence
+
+\item[] -- There is a uniquely rational set of prior credences
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Understanding the debate between SB vs. OB}
+%\large
+
+\begin{itemize}[<+->]
+
+\item If \textcolor{OGlyallpink}{Rationality Primitivism} is correct, then the debate between subjective vs. objective Bayesians is straightforwardly factual: \\ at most one of them can be correct about the way the world is
+
+\item If \textcolor{highlightA}{Rationality Expressivism} is correct, then this debate is mainly normative: SB and OB disagree about what we ought to do to count as being rational; they endorse different norms
+
+\item -- we might remain agnostic as to whether or not judgments of rationality also play a descriptive/representational role 
+
+\item Either way, how are we to settle who is right?
+
+\end{itemize}
+\end{frame}
+
+% % For each of our constraints on rational credences, we can debate whether they are truly required by rationality. E.g., does ideal rationality genuinely require logical omniscience?
+
+% Could note that logical omniscience might be part of a regulative ideal, notion of ideally rational as a limit of rationality.
+
+\begin{frame}
+\frametitle{Back to Newcomb!}
+%\large
+
+\begin{itemize}[<+->]
+
+\item A strategy or act/option $A$ \emphz{strongly dominates} rival acts iff no matter the outcome, you are better off choosing $A$ over any rival 
+
+\item[] -- Recall that two-boxing dominates in Newcomb's problem
+
+\item Two-boxers favor the following principle of rationality:
+
+\item \emphz{Dominance}: if an act $A$ strongly dominates, then you \textit{ought} to choose $A$
+
+\item[] -- If you do not choose $A$, then you are \textcolor{red}{irrational} 
+
+
+
+%\item If the opaque box is empty, you are better off two-boxing: \\ \$1K rather than \$0
+
+%\item If the opaque box is full, you are better off two-boxing: extra \$1K
+
+%\item So no matter what, you are better off two-boxing
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{On the Rationality of \emphz{Dominance}}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Proponents and opponents of \emphz{Dominance} are at least in a normative dispute:
+
+\item[] They disagree about the norms we ought to endorse when it comes to making decisions
+
+\item Proponents of \emphz{Dominance} are always in favor of choosing strongly dominant strategies
+
+\item Opponents believe that rationality allows for exceptions 
+
+\item What could settle who is ultimately right? 
+
+\item[] -- i.e. what settles what we should do?
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Philosophy Prompt \#18}
+%\large
+
+\begin{enumerate}[<+->]
+
+\item Which family of views about rationality is more plausible: descriptivism vs. non-descriptivism (e.g. rationality primitivism vs. rationality expressivism)
+
+\item[] -- \emphz{Rationality Primitivism}: the world comes equipped with (primitive) facts about which principles are rational
+
+\item[] -- \emph{Rationality Expressivism}: to judge that an action is perfectly rational is to express acceptance of norms that require this action
+
+\item What could settle whether \textbf{Dominance} is rationally required?
+
+\end{enumerate}
+\end{frame}
+
+\iffalse %********************************************************************************
+%Save the following for later in computability section?
+
+\subsection{Might we figure out `probability'?}
+
+\begin{frame}
+\frametitle{Possibly, you might be wondering: what is `probably'?}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Nothing puzzling about declarative statements like the following:
+
+\item[] \textit{It is sunny out (right now)}
+\item[] \textit{Philosophy is the Queen of the Humanities}
+
+\item What happens when we add in `might' or `probably'?
+
+\item[] \textit{It might be sunny out} or \textit{Possibly, it is sunny}
+\item[] \textit{It is probably sunny} or \textit{It is likely sunny} 
+%\textit{It is likely sunny} 
+\item[] \textit{Philosophy is probably the Queen of the Humanities}
+
+\item Are \textbf{epistemic modal} claims descriptive or non-descriptive?
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Descriptivism about `might', `possible', \& `probably'}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Descriptivism about epistemic modals}:
+%drawing on Yalcin p. 298ff, Nonfactualism about Epistemic Modality
+
+\item[] -- Epistemic modal claims represent an aspect of the world
+
+\item[] -- e.g. describe the epistemic state of an agent
+% helpful gloss from page 307: ``standardly the descriptivist's truth conditions are propositions about some body of evidence, where this body of evidence includes the knowledge of the agent doing the believing" [307]
+
+\item G. E. Moore: $\langle$\textit{it's possible that I'm not getting promoted}$\rangle$ means `It is not certain that I am' or `I don't know that I am'. 
+% Presumably a similar gloss would work for `I might not be getting promoted'
+% (1873--1958)
+
+% Other descriptivist contextualist account that could explore: hacking 1967, Teller 1972
+
+\item \textit{Which} agents? \textit{Which} aspects of their evidential states?
+%could give Keith DeRose's gloss, quoted by Yalcin on p. 298 on the nonfactualism paper
+%one idea: just index possibility and other epistemic modals to the relevant agents. 
+
+\item Stanley: $\langle$It is possible$_A$ that $p$$\rangle$ is true iff what $A$ knows does not---in a manner obvious to $A$---entail $\enot p$
+
+% Helpful gloss from Sarah Moss 2013 phil review paper, citing Yalcin 2007: the sentence `it might be raining' ``is true just in case certain contextually determined evidence does not rule out that it is raining" [3]
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Descriptivism about `Probably'}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Consider probability modals like `probably' and `it is likely that'
+
+\item \emphz{Descriptivism}: these modals describe the speaker's epistemic state, e.g. their credences. 
+
+\item To assert $\langle$It's probably sunny$\rangle$ means your credence in sunshine is greater than $0.5$ (or above some contextual threshold)
+%where credences can be understood in terms of betting behavior
+\item[] (credences can be understood in terms of dispositions to bet)
+% e.g. Jeffrey quotation in Yalcin footnote 3: ``if you say the probability of rain is 70\% you are reporting that, all things considered, you would bet on rain at odds of $7:3$"
+
+\item Alternative view: $\langle$It's probably sunny$\rangle$ means that relative to a particular probability measure $P$ and body of evidence, $P(\text{sunshine}) > \text{some contextually-determined threshold}$
+% allegedly, a body of evidence can induce a probability measure
+% the relevant body of evidence can be determined by the context, e.g. the context in which the sentence is uttered or assessed
+
+ %relative to a particular probability measure, a relevant set of evidence
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Expressivism about Epistemic Modals}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Guiding question: what state(s) of mind do we express when we believe or say that something \textit{might} be the case \\ (or that something \textit{probably} is the case)?
+
+% % Note that here, I seemingly deviate from Yalcin nonfactualism chapter. The view that he considers, which he calls the `first-order model' (taken from Frank Veltman) seems still descriptivist to me. Or else it involves a seemingly primitive notion of possibility (e.g. possible worlds), which seems partly what's in question here.
+% p. 309: On the allegedly non-descriptivist model that Yalcin discusses, ``to believe Bob might be in his office is simply to be in a doxastic state which fails to rule out the possibility that Bob is in his office". So we don't explicitly mention possible-bob-in-office worlds. 
+% On page 312, Yalcin claims that he is still committed to a (robust) ontology of possibilities, e.g. possible worlds. Yet Thomasson describes how `possiblility' talk is a modal nominalization from `it is possible' talk. which is a modal adjectival form of `might' talk. 
+
+\item \emph{Expressivism}: to judge that $\langle$it is possibly sunny$\rangle$ is to express an attitude of \textit{being for not ruling out that it is sunny}. 
+
+\item[] -- It says something like ``Don't be certain that it's not sunny!"
+
+%\item[] -- Or, ``don't take me to know that it's not sunny"! 
+
+% Helpful gloss from Bennett 2003, p. 90 (cited by smoss 2013): the speaker ``is not assuring me that her value for a certain conditional probability is high, but is assuring me of that high-value. \dots She aims to convince me of that probability, not the proposition that it is her probability" [quoted on p. 4] 
+
+\item Epistemic modals help us coordinate on which states of affairs to leave open, to consider as live options
+
+% So expressivism about probability or credences might be something like the following: being for being this confident! Accepting a set of norms that recommend this degree of confidence (perhaps given a particular body of evidence)
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Modalization}
+%\large
+
+\begin{itemize}[<+->]
+%from Amie Thomasson paper 
+
+\item Modals like `might' allow us to \textit{temper} the force of what we say: introduce degrees beyond ``$p$ is the case" or ``$p$ is not the case"
+
+\item Compare ``A meteor killed off the dinosaurs" to \\ ``A meteor \textit{might have} killed off the dinos"
+
+\item[] -- Enables speaker to express a judgment of certainty, likelihood, or frequency toward a proposition
+
+\item[] -- in general, express attitudes toward propositions, rather than merely assert or deny a proposition 
+
+\item Not necessarily indicating a fact, but rather influencing behavior
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Expressivism about Probability-claims in General}
+%\large
+
+% see Smoss 2013, p. 5, drawing on yalcin 2007 and Swanson 2006 
+
+\begin{itemize}[<+->]
+
+%\item We can generalize the expressivist account to handle probability-claims
+
+\item In general, epistemic modal claims express advice about what credences to have, or whether they should be high or low
+% language of subjective uncertainty
+
+\item $\langle$there's a 60\% chance of sunshine at 2pm$\rangle$: expresses an attitude of \textit{being for having credence 0.6 in 2pm sunshine}
+
+\item[] -- asserting this sentence expresses a constraint that you think your credences (and those listening to you) ought to conform to
+
+\item[] -- being for conforming your credence distribution in a certain way 
+
+\item e.g. $\langle$I'm more likely to collect on all my paychecks than get fired$\rangle$ advises you to be more confident I'll get my \$\$ than be sacked 
+
+
+\end{itemize}
+\end{frame}
+
+
+
+\subsection{Whence Probability Talk?}
+% Looking at parts of Amie Thomasson 2023, a neo-pragmatist approach to modality
+
+\begin{frame}
+\frametitle{Clues from Developmental Linguistics}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Track progression of acquiring probabilistic language through childhood to (philosophical) adulthood
+
+\item Focus on functional roles of probabilistic language
+
+\item[] -- including interpersonal roles, e.g. trying to regulate the behavior of others
+
+\item[] -- expressing attitudes toward propositional contents
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beginnings}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Around age 2: ability modals such as verb `can'
+
+\item then deontic modals: should, have to
+
+\item then early uses of epistemic modals (beginning around age 3): might, must be the case
+
+\item Possibility claims come before necessity claims
+
+% Amie Thomasson: ``children don't learn the strength of different modal claims until around age 7 (Papafragou 1998, 8--14)"
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Grammatical Progression}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Initially: auxiliary or semi-auxiliary verbs like might, could, must
+
+\item Next (ages 6--12): objectified modal expressions such as \\  ``it is possible that" and ``there is a possibility that"
+\item[] -- these claims involve `grammatical metaphors'
+
+\item Eventually (in the philosopher's room): talk of \textit{possible worlds}, an extreme grammatical metaphor!
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Modalization}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Modals like `might' allow us to \textit{temper} the force of what we say: introduce degrees beyond ``$p$ is the case" or ``$p$ is not the case"
+
+\item Compare ``A meteor killed off the dinosaurs" to \\ ``A meteor \textit{might have} killed off the dinos"
+
+\item[] -- Enables speaker to express a judgment of certainty, likelihood, or frequency toward a proposition
+
+\item[] -- in general, express attitudes toward propositions, rather than merely assert or deny a proposition 
+
+\item Not necessarily indicating a fact, but rather influencing behavior
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Objectifying Modals}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Between ages 6-12: acquire expressions ``it is possible that" and ``there is a possibility that" 
+
+\item Modal adjective forms: is possible, is necessary
+% is obligatory
+
+\item[] e.g. ``It might rain" $\Rightarrow$ ``Rain \textit{is possible}"
+
+\item Modal noun forms: a possibility, a necessity
+% an obligation
+
+\item[] e.g. ``Rain \textit{is possible}" $\Rightarrow$ ``there is \textit{a possibility} of rain"
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Grammatical Metaphors}
+%\large
+
+\begin{itemize}[<+->]
+
+\item The grammatical shifts from modal auxiliary verb, to modal adjective, and to modal noun are each a `grammatical metaphor'
+
+\item Introduce a modal predicate or modal nominalization to make claims in a particular grammatical form
+
+\item Enables us to reason more effectively about the initial ``might" claims such as ``it might rain"
+
+\item But invites philosophical questions: what is it for something to be possible? What are possibilities? What are chances?
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Deflationary Answer}
+%\large
+
+\begin{itemize}[<+->]
+
+\item philosophical questions: what is it for something to be possible? What are possibilities? What are chances?
+
+\item If modal predicates and nominalizations are introduced simply to aid expression of attitudes toward propositions and reasoning about these attitudes, then they aren't mysterious
+%there's nothing mysterious going on
+
+\item Possibility-talk is a useful way of expressing attitudes toward propositions; grammatically more powerful and flexible than sticking with modal auxiliary verbs 
+
+\item So if you weren't puzzled by ``it might rain", you should be no more puzzled by ``there is a possibility of rain"
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Credences as a comparative concept}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Through modal adjectives and nouns, we can introduce graded comparisons
+
+\item ``Snow is \textit{more possible} than rain tomorrow" or ``the possibility of snow is \textit{greater than} the possibility of rain tomorrow"
+
+\item From these comparisons, we can introduce credences:
+
+\item[] -- ``the possibility of snow is 70\%" 
+
+\item Deflationary view: Simply a more sophisticated expression of an attitude toward the proposition ``it will snow tomorrow"
+
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Rival Interpretation}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Descriptivism about possibility-talk: interpret possibility-talk as \textit{describing} the epistemic state of an agent or describing some body of evidence
+
+\item Opposed to interpreting possibility-talk as expressing attitudes toward propositions 
+
+\item \emphz{Modal realism}: takes talk of ``possible worlds" to literally describe concrete realities 
+\item[] a multiverse of worlds including not only ours but also any world for any metaphysically possible possibility 
+
+\end{itemize}
+\end{frame}
+
+
+\fi %********************************************************************************
+
+%end of probability talk stuff
+
+
+
+\iffalse %**************************************************************************************
+
+
+\subsection{The Burali-Forti Paradox}
+% recall that I already have draft slides on this material, i think from week 0!
+
+\begin{frame}
+\frametitle{Burali--Forti `Paradox'}
+%\large
+
+\begin{itemize}[<+->]
+
+\item We keep talking about the ordinals, but we can prove that there cannot exist a set of all ordinal numbers
+
+\item In general, there can be no such thing as the set of all sets. Such a set would have to be a member of itself, and hence fail to contain every set.
+%https://en.wikipedia.org/wiki/Absolute_Infinite
+
+\item Of course, `set' is a technical term, so this isn't a paradox in the strict logical sense
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The BF `Paradox'}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Suppose, for \textit{reductio}, that $\Omega$ is the set of all ordinals.
+
+\item Since $\Omega$ consists of every ordinal, it consists of every ordinal that's been introduced so far. But a new ordinal is just the set of every ordinal that's been introduced so far. So: \textbf{$\Omega$  is an ordinal}.
+
+\item If $\Omega$ was itself an ordinal, it would be a member of itself (and therefore have itself as a predecessor). \\ But no ordinal can be its own predecessor (by irreflexivity). 
+\item[] -- So: \textbf{$\Omega$  is not an ordinal} (contradicting prior bolded claim).
+
+\item Hence, there is no set of all ordinals!
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resolution in Zermelo's Set Theory(?)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item One way to avoid `paradox': declare it impermissible to form a set from an arbitrary property (reject ``unrestricted comprehension")
+
+\item Axiom of separation/comprehension: it is permissible to form a set of objects that have a given property provided that they belong to a given set. 
+
+\item i.e. any definable subclass of a set is itself a set 
+%https://en.wikipedia.org/wiki/Axiom_schema_of_specification
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Some Worries about this Resolution}
+%\large
+
+\begin{itemize}[<+->]
+
+\item But if a class of individuals exists, why can't we in general form a \textit{set}??? If there is no set, might we worry that some of the individuals in fact do not exist?
+
+\item Does it start to feel like we are playing a game rather than surveying Platonic space?
+
+\item Alternatively, given that our meta-language contains predicates that refer to classes that are not sets within our theory, might we worry that our theory is \textit{missing something}?
+
+% Our metalanguage contains predicates that do not refer to any sets within the theory 
+%https://en.wikipedia.org/wiki/Absolute_Infinite
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proper Classes}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Some alternative formulations of set theory make explicit the notion of a `proper class'
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\subsection{Free Willy!}
+
+\begin{frame}
+\frametitle{Surface Free Will (just superficial enough)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emph{Surface free will} (a.k.a. compatibilist free will or political free will): the political or social ability to make choices that satisfy your desires. The freedom to do what you want to do.
+\item Perhaps the ordinary or intuitive notion of freedom of choice/will
+\item A power or ability to choose something rather than something else
+\item ``unconstrained freedom of choice or decision'' [Kane, p. 15], \\ coming from within you
+
+\item as in, \textit{Reach for the stars, not drugs} 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Libertarian Free Will (it's apolitical!)}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \emphz{Libertarian Free Will}: (a.k.a.` free will of origination'): 
+\item[] -- the ability to choose what you \textit{want to want} or want to desire. 
+\item Having ultimate power over what you will/want/desire. %Kane refers to this as a deeper sense of free will
+\item ``a kind of ultimate control over what you will or want in the first place'' [Kane, p. 15]
+
+\item The kind of free will your soul craves 
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Compatibilism vs. Incompatibilism}
+%\large
+
+\begin{itemize}[<+->]
+
+\item \textbf{Compatibility Question}: is free will compatible with determinism? Likewise, is free will compatible with any physically-plausible version of indeterminism?
+
+\item If you answer `yes,' then you are a \emph{compatibilist}
+\item[] -- \textit{soft determinist}: you also believe determinism is true 
+
+\item If you answer `no,' then you are an \emphz{incompatibilist}: 
+
+\item \textit{hard determinist}: you also believe that determinism is true
+\item[] -- so you deny we have the relevant kind of free will
+
+\item \textit{libertarian} (about free will): you also deny determinism
+\item[] -- so you believe we do have free will (modulo worries about compatibility with indeterminism!)
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{(Classical) Compatibilism}
+%\large
+
+\begin{itemize}[<+->]
+
+%\item free will has one necessary and sufficient condition: 
+
+\item (Classical) \emph{Compatibilism}: you acted freely if and only if you met the following condition: 
+
+\item \textbf{Weak Principle of Alternative Possibilities}: if you had wanted to choose otherwise than you did, then nothing would have prevented you from choosing otherwise.
+%Frankfurt cases provide a counterexample to the necessity of this condition. still seems sufficient though. 
+
+\item Notice that meeting this condition entails that another claim holds: you have the power or ability to make a choice in the sense that nothing constrains you or prevents you from making that choice
+
+\item According to compatibilism, a sufficient condition for LACKING free will in a given circumstance is that you are constrained, coerced, or otherwise manipulated
+
+
+%\item Hence, if anything does constrain you or prevent you from making that choice, then you don’t have this power or ability to do what you want to do, and hence you could not have chosen otherwise. 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Compatibility with Moral Responsibility}
+%\large
+
+\begin{itemize}[<+->]
+
+\item Imagine that you don't think free will is necessary for moral responsibility: e.g. an agent can be morally responsible for their actions even if they did not act freely 
+\item[] -- roughly, you think it would still be appropriate to praise or blame this agent for their action
+
+\item You might then ask a similar `compatibility question' about whether moral responsibility is compatible with determinism
+
+\item e.g. perhaps \textit{surface free will} suffices for moral responsibility 
+
+\item When it comes to social and political decisions, you might think that moral responsibility is really what matters 
+
+\end{itemize}
+\end{frame}
+
+
+\fi %**********************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+

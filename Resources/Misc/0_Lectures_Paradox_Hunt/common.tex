@@ -1,0 +1,123 @@
+% Make color scheme match forallx:YYC
+\definecolor{OGlyallpink}{RGB}{222,31,149}%used in emph command but not sure where defined...maybe just in highlight commands below? 
+
+\definecolor{lyallpink}{RGB}{91,173,69}  %redefining the color to a nice green 
+
+\definecolor{cof}{RGB}{219,144,71} %colors for octahedron
+\definecolor{pur}{RGB}{186,146,162}
+\definecolor{greeo}{RGB}{91,173,69}
+\definecolor{greet}{RGB}{52,111,72} % too dark for highlights
+
+\colorlet{highlightA}{lyallpink!90!black} %controls emph color; lower number is more black; Zach uses 80 
+\definecolor{highlightB}{RGB}{0, 128, 128} %not sure what this correlates to? 
+\colorlet{highlightbg}{lyallpink!50}
+
+
+\def\GA{\ensuremath{\Gamma\;}} 
+\def\PH{\ensuremath{\Phi\;}} 
+\def\PS{\ensuremath{\Psi\;}} 
+\def\THA{\ensuremath{\Theta\;}} 
+
+%\newcommand*{\metav}[1]{\ensuremath{\mathcal{#1}}} %put this in local style folder 
+
+
+% truth values and their colors! increase number to make them brighter, i.e. further from black 
+\def\True{\ensuremath{\mathbf{\color{green!50!black}T}}}
+%\def\False{\ensuremath{\mathbf{\color{blue!50!black}F}}}%doesn't display well 
+\def\False{\ensuremath{\mathbf{\color{OGlyallpink}F}}}
+
+% things we need for forall x: YYC
+%\usepackage{../sty/forallxyyc}
+%\usepackage{../sty/forallxyyc} %calls local style file form sty folder 
+%\usepackage{../sty/forallxyyc-local}
+\usepackage{../sty/paradox-local}
+
+%JH: replacing with my modified style file for UBC edition
+%\usepackage{../sty/forallx-ubc-Hunt}
+
+\usepackage{lectures} %this package supplies A LOT of the auto formatting: headers, running number footers
+%details here: https://ctan.org/pkg/lectures?lang=en
+%but maybe that is actually different 
+%this could help? https://tex.stackexchange.com/questions/52900/entire-course-with-beamer
+
+%\arabic{section}
+
+\renewcommand\thesection{\arabic{section}} %changes section counter from roman to arabic! 
+%see here: https://tex.stackexchange.com/questions/3177/how-to-change-the-numbering-of-part-chapter-section-to-alphabetical-r
+
+%\input{../metadata} %found in top level folder for this course; contains course info 
+\input{metadata}
+
+\only<handout>{\setbeamercolor{frametitle}{bg=white, fg=black}}
+
+%%%******************Some SHORTCUTS*************************************
+
+\newcommand\bs{\begin{singlespace}} 			% Begins single spacing (sometimes necessary)			
+\newcommand\es{\end{singlespace}} 		
+\newcommand\bq{\begin{quote}\begin{singlespace}\small}	% Begins an in-line quote (very handy)
+\newcommand\eq{\end{singlespace}\end{quote}}
+\newcommand\be{\begin{equation*}} 			% Begins Equation; suppresses number		
+\newcommand\ee{\end{equation*}} 		
+\newcommand\BM{\mathbf} 			% works on everything in math mode
+\newcommand\bi{\begin{itemize}} 			% Begins bullets		
+\newcommand\ei{\end{itemize}} 
+
+\newcommand{\emphz}[1]{\textbf{\textcolor{OGlyallpink}{#1}}} % for pink bold highlight
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value or cardinality
+
+%\newcommand\emphz{\textbf{\textcolor{OGlyallpink}}} 			
+
+
+%******************** Playing with item commands and spacing********************
+
+\let\olditem\item
+\renewcommand{\item}{\setlength{\itemsep}{\fill}\olditem}
+
+%\beamerdefaultoverlayspecification{<+->} % makes default sequential reveal
+%\setbeamercovered{transparent} % makes subsequent bullet points translucent
+%\setbeamercovered{invisible} % can temporarily turn off the above command
+
+%**********************Commands from 24.118 PSet Template***************************
+
+
+%Braces
+\newcommand{\seq}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\rseq}[1]{\left( {#1} \right)}
+\newcommand{\db}[1]{\llbracket {#1} \rrbracket}
+
+%Quotes
+\newcommand{\cn}[1]{\ulcorner{#1}\urcorner}
+\newcommand{\qut}[1]{\mbox{`}{#1}\mbox{'}} %note that 24.118 uses \qt for this
+
+
+%At Symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
+%Comments
+%\newcommand{\com}[1]{\textbf{[#1]}  % prints comments in brackets
+\newcommand{\com}[1]{}  % do not print comments
+
+%Blanks
+%\newcommand{\blank}{\underline{\hspace{18mm}}}
+
+%Special Symbols
+\newcommand{\powerset}{\raisebox{.1\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\ub}{\ensuremath{\underline{\enspace}}}
+
+
+%**************JTAPP PACKAGES FOR HIS LECTURE NOTES******************************
+
+\newcommand{\detritus}[1]{}
+
+\iffalse
+
+\usetheme{Frankfurt}
+
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    \usebeamerfont{footline}%
+    \insertframenumber / \inserttotalframenumber }
+    %inserts framenumber but doesn't overwrite the I.a.1 stuff, so not clear where this is coming from???
+    %maybe from the lectures package which I can't find documentation for? 
+
+
+\fi

@@ -1,0 +1,102 @@
+
+
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{agustin}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+
+
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+\begin{document}
+\begin{quote}
+
+\begin{center} {\large 24.118 --- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 9: G\"odel's Theorem \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+\noindent How these problems will be graded:
+
+\begin{itemize} 
+
+\item Assessment will be based on both whether you give the correct answer and on the \emph{reasons} you give in support of your answers. (Note that not every question has a single correct answer.) Even if it is unclear whether your answer is correct, it can be clear whether or not the reasons you have given in support of your answer are good ones. 
+
+\item  \emph{No answer may consist of more than 250 words}. Words after the first 250 will be ignored. Showing your work in a calculation does not count towards the word limit.
+
+
+\end{itemize} 
+
+These two constraints are often in competition: it may sometimes seem to you that you can't argue for your answer properly in 250 words or less. Learning to deal with this problem is a skill you will acquire with practice. The ability to distill what is essential about a point in a few words requires clear thinking, and it is clear thinking that we are after.
+
+\begin{itemize}
+
+\item You may use formulas defined in the lecture notes as part of your answers.
+
+\end{itemize}
+\end{quote}
+
+
+\vspace{3mm}
+
+
+\subsection*{Problems:}
+
+\begin{enumerate}
+
+\item \begin{enumerate}
+	\item Fermat's Last Theorem entails the following:
+		\begin{quote}
+		No natural numbers $a$, $b$, and $c$ are such that $a^3 + b^3 = c^3$.
+		\end{quote}
+
+	Which of the following sentences of $L$ expresses the above claim?
+		\begin{enumerate}
+		\item $\forall x\forall y\forall z (x^3+ y^3  =  z^3)$
+    		\item $\neg \forall x\forall y \forall z (x^3 + y^3 =  z^3)$
+    		\item $\forall x\forall y \forall z \neg(x^3 + y^3 =  z^3)$
+		\item $\neg \forall x\forall y \forall z \neg(x^3 + y^3 =  z^3)$
+		\end{enumerate}
+	\item Fermat's Last Theorem, in full generality, is this:
+		\begin{quote}
+		For all $n\ge 3$, there are no natural numbers $a$, $b$, and $c$ such that $a^n + b^n = c^n$.
+		\end{quote}
+	How do you express Fermat's Last Theorem in $L$? (Feel free to use vocabulary defined in the notes.)
+	\end{enumerate}
+	
+\item I (Damien Rochford) claim to be omniscient --- that is, I claim that I believe all and only true propositions. Prove me wrong! More specifically: find a proposition, the existence of which, together with my claim, entails a contradiction.
+
+\item Is it possible to build a Turing Machine that prints out all true sentences of $L$? If so, describe how this Turing Machine works. If not, explain why not.
+
+\item Let a \textsl{validating Turing Machine} be a Turing Machine that, when given a sentence of $L$ as input, always outputs either $0$ or $1$. Let such a machine \textsl{validate} a sentence of $L$ iff it outputs $1$, given that sentence as input.
+
+What, if anything, is wrong with the following argument:
+\begin{itemize}
+\item[(1)] If the methods human beings use to determine the truth of a sentence of $L$ were equivalent to a validating Turing Machine $M$, then either those methods validate false sentences of $L$, or those methods cannot be used to validate the G\"odel sentence of $M$, and the G\"odel sentence of $M$ is true.
+\item[(2)] The methods human beings use to determine the truth of a sentence of $L$ do \emph{not} validate false sentences of $L$, and, for any $M$, those methods can be used to validate the G\"odel sentence of $M$.
+\item[(C)] The methods human beings use to determine the truth of a sentence of $L$ are not equivalent to a validating Turing Machine.
+\end{itemize}
+
+(If you think nothing is wrong with this argument, then raise the best objection to it you can think of, and respond.)
+
+\end{enumerate}
+
+
+
+
+\end{document}
+

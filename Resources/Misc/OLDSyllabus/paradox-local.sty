@@ -1,0 +1,432 @@
+%!TEX root = forallxyyc.tex
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{forallxyyc}[2011/10/29 support for a logic textbook]
+
+\RequirePackage{amssymb,amsmath,pifont,rotating} %adding bm on 3-4-23
+%\usepackage{graphicx} %for \scalebox for rescaling proofs 
+\RequirePackage{../sty/fitch} %Selinger fitch; although some bespoke commands in this sty below 
+\RequirePackage{../sty/prooftrees} %for Ichikawa trees! 
+%\RequirePackage[cal=boondoxo]{mathalfa} % %Makes \mathcal font very curvy; i don't like 
+% %JRH note to self: I turned off mathalfa package while making week 5 notes onwards. hopefully this doesn't introduce any problems for weeks 0 thru 4. still need to check! 
+
+% The original forallx.sty was written in 2005
+% Comments marked "TB" are additions by Tim Button in September 2012
+
+%    ****************************************
+%    *            LOGICAL SYMBOLS           *
+%    ****************************************
+%
+% There are, of course, many different symbols used for the truth-functional
+% connectives. In order to make the book adaptable, the symbols are defined
+% here in the style sheet and these commands are used throughout the book.
+% To change conjunction from the ampersand to the carat, for instance,
+% change the definition of \eand from ~\&~ to \wedge. To change negation from
+% the hoe to the swung dash, change \enot from \neg to {\sim}. Other examples
+% are given below.
+%
+\let\oldtherefore\therefore
+\def\therefore{\ensuremath{\oldtherefore}}
+
+% disjunction
+\def\eor{\ensuremath{\vee}}
+% conjunction: 
+% {\,^{_{_{_{_{\mbox{\footnotesize\textbullet}}}}}}} gives the dot
+\def\eand{\ensuremath{\,\&\,}}
+% conditional: \rightarrow gives the right arrow
+\def\eif{\ensuremath{\supset}}
+% biconditional: \leftrightarrow gives the left and right arrow
+\def\eiff{\ensuremath{\equiv}}
+% negation: {\sim} gives the swung dash 
+%\def\enot{\ensuremath{\neg}}
+%\def\enot{\ensuremath{\sim}} %note that \sim is defined as a relation, which leads to spacing issues. adding a \! leads to more spacing issues (piled up double negations).  
+
+\def\enot{\ensuremath{{\sim}}} %redefining as {\sim} treats the tilde as a unary operator, rather than a relation, solving a lot of the spacing issues. 
+
+\let\oldsim\sim %renames any \sim commands as \oldsim. 
+\renewcommand{\sim}{{\oldsim}} %redefines \sim as unary operator version of \sim, in case there are any straggling \sim commands in the wild
+
+%for explanations of these spacing issues, see here:
+%https://tex.stackexchange.com/questions/55701/how-do-i-write-sim-approximately-with-the-correct-spacing
+
+%*******JRH Redefining standard Connectives Commands that Zach's slides use!*******
+
+\let\oldlnot\lnot  %JRH: renames Zach lnot command as oldlnot
+\renewcommand{\lnot}{\enot} %redefines \lnot as \enot 
+
+\let\oldland\land  %JRH: renames Zach land command as oldland
+\renewcommand{\land}{\eand} %redefines \land as \eand
+
+\let\oldto\to  %JRH: renames Zach land command as oldland
+\renewcommand{\to}{\eif} %redefines \land as \eand
+
+\iffalse %this one unnecessary lol since using same \lor command myself! 
+\let\oldlor\lor  %JRH: renames Zach lor command as oldlor
+\renewcommand{\lor}{\eor} %redefines \lor as \eor
+\fi
+
+
+%***********Josh Hunt addition to boost flexibility with Carnap system syntax******%
+\newcommand{\qt}[2]{(#1 #2)} % for modifying style of quantifer and bound variable pairs, e.g. easily adding or removing parentheses around \exists x. Adds a little space afterwards as well! First argument takes \forall or \exists. Second argument takes a variable, e.g. \qt{\exists}{x} will render. 
+
+%Logic book syntax for variables and constants
+\newcommand{\qv}[1]{#1}
+\newcommand{\qvp}[1]{(#1)} %enforce parentheses; useful for multi-letter predicates, e.g. Pt, Ap, etc. 
+%Logic book syntax for relation pairs, e.g. xy, ax 
+\newcommand{\qr}[2]{#1#2}
+\newcommand{\qrp}[2]{(#1, #2)} %enforce parentheses and comma
+
+
+%Calgary preferred notation for relation pairs, e.g. (x,y)
+%\newcommand{\qr}[2]{(#1, #2)}
+%Calgary preferred notation for variables and constants, e.g. (x), (c)
+%\newcommand{\qv}[1]{(#1)}
+
+
+
+
+
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+
+% metalanguage variables: change greek to A and B if you prefer
+\def\metaA{\ensuremath{\varPhi}}
+\def\metaB{\ensuremath{\varPsi}}
+\def\metaC{\ensuremath{\varOmega}}
+\def\metaSetX{\ensuremath{\mathcal{X}}}
+\def\metaSetY{\ensuremath{\mathcal{Y}}}
+\def\metaSetZ{\ensuremath{\mathcal{Z}}}
+
+
+%From Calgary style file: 
+\def\ered{\ensuremath{\bot}}% TB: added to give an absurdity sign
+\newcommand*{\ebox}{\ensuremath{\Box}}
+\def\ediamond{\ensuremath{\Diamond}}
+\def\maththe{\rotatebox[origin=c]{180}{$\iota$}} % TB: added to give definite description operator
+\def\proves{\ensuremath{\vdash}}
+\def\entails{\ensuremath{\vDash}}
+\def\nproves{\ensuremath{\nvdash}}
+\def\nentails{\ensuremath{\nvDash}}
+
+% modal logic systems
+\def\mlK{\ensuremath{\mathbf{K}}}
+\def\mlT{\ensuremath{\mathbf{T}}}
+\def\mlSfour{\ensuremath{\mathbf{S4}}}
+\def\mlSfive{\ensuremath{\mathbf{S5}}}
+
+% args -- format a list of arguments separated by commas without commas
+
+\newcommand*{\args}[1]{%
+  \let\@argsep\@argsepinit
+  \@for\@arg:=#1\do{%
+    \@argsep\@arg}%
+}
+
+\def\@argsepinit{\let\@argsep\argsep}
+
+\newcommand{\argsep}{}
+
+\newcommand{\atom}[2]{\mathord{#1}(#2)}
+
+%    ****************************************
+%    *       SYMBOLS AND SCRIPTY BITS       *
+%    ****************************************
+% equivalent to commenting something out, but usable on multiple lines
+\providecommand{\nix}[1]{}
+
+%\iffalse %Ichikawa script command; could change later! 
+% script letters are rendered in Zapf Chancery,
+% which has both upper and lower case.
+\DeclareFontFamily{OT1}{pzc}{}
+\DeclareFontShape{OT1}{pzc}{m}{it}{<-> s * [1.200] pzcmi7t}{}
+\DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
+\newcommand*{\script}[1]{\ensuremath{\mathscr{#1}}}
+%\fi 
+
+%Calgary script and metav commands: 
+%\newcommand*{\script}[1]{\ensuremath{\mathcal{#1}}} %Josh 11-1-22, commenting out and hoping this doesn't mess up any of the previous lectures....
+%replacing with Ichikawa command in hopes this renders \script{x} as a \chi metavariable 
+
+
+\newcommand*{\metav}[1]{\ensuremath{\mathcal{#1}}}
+
+% create a blank
+\newcommand*{\blank}{\underline{\hspace*{2.5em}}}
+\newcommand*{\gap}[1]{\blank$_{#1}$} % TB: used for keys, to avoid use/mention confusion
+
+% These are included for discussing formal semantics in predicate logic.
+\newcommand*{\model}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand*{\extension}[1]{\ensuremath{\mbox{extension}(#1)}}
+\newcommand*{\referent}[1]{\ensuremath{\mbox{referent}(#1)}}
+  % I personally dislike the default LaTeX angle brackets. I think that
+  % they are too narrow. If you want to use them, though, you can
+  % replace < and > in the commands below with \langle and \rangle
+\newcommand*{\openntuple}{\langle}
+\newcommand*{\closentuple}{\rangle}
+\newcommand*{\ntuple}[1]{\ensuremath{\mathopen{\openntuple}}#1\ensuremath{\mathclose{\closentuple}}} 
+% definitions
+\newcommand*{\define}[1]{\textsc{\lowercase{\color{leadbeater}#1}}}
+
+%\newcommand*{\define}[1]{\textsc{\lowercase{#1}}} %Ichikawa defintion command
+
+%    ****************************************
+%    *          LIST  ENVIRONMENTS          *
+%    ****************************************
+% The {earg} environment is used for arguments and example sentences.
+% The {ekey} environment is used for symbolization keys.
+\newcounter{eargnum}
+\newcounter{OLDeargnum}
+\newenvironment{earg}%
+{\begin{list}{\arabic{eargnum}.}{\usecounter{eargnum}\itemsep=0pt \parsep=0pt}}%
+{\setcounter{OLDeargnum}{\arabic{eargnum}}\end{list}}
+
+\newenvironment{ebullet}% TB: added to give a nice bulleted enivronment
+{\begin{list}{\textbullet}{\itemsep=0pt \parsep=0pt}}%
+{\end{list}}
+
+\newcommand{\ekeylabel}[1]{{\makebox[8ex][r]{\ensuremath{ #1}:}}}
+\newenvironment{ekey}{\begin{list}{}{\renewcommand{\makelabel}{\ekeylabel} \itemsep=0pt \parsep=0pt}}{\end{list}}
+
+%    ****************************************
+%    *             TRUTH TABLES             *
+%    ****************************************
+
+% This facilitates the typesetting of truth tables by
+% effectively eliminating the intercolumn space.
+% This allows truth tables with the Ts and Fs immediately
+% below arbitrary connectives.
+% An example follows:
+%\begin{center}
+%\begin{tabular}{c|c|@{\TTon}*{5}{c}@{\TToff}}
+%$A$&$B$&$(A$&\eand&$B)$&\eif&A\\
+%\hline
+% T & T &    &  T  &    &  T & \\
+% T & F &    &  F  &    &  T & \\
+% F & T &    &  F  &    &  T & \\
+% F & F &    &  T  &    &  T &
+%\end{tabular}
+%\end{center}
+%\newcommand*{\TTon}{\hspace{1.5em}\extracolsep{-1em}}
+%\newcommand*{\TToff}{\extracolsep{-1em}\hspace{.3em}}
+
+\RequirePackage{multicol,array}
+
+% Moving to Memoir breaks Magnus's elegant macro
+% In the preceding column definition, I would offer instead:
+%\begin{tabular}{c c | d e e e f}
+% d for left-most columns, e for middle ones, f for right-most ones. The ensuing spacing is ok.
+\newcolumntype{d}{ c@{\extracolsep{0.1em}}}
+\newcolumntype{e}{@{\extracolsep{0.1em}}c@{\extracolsep{0.1em}}}
+\newcolumntype{f}{@{\extracolsep{0.1em}}c }
+\newcommand*{\TTbf}[1]{\textbf{#1}}
+
+
+\iffalse %Ichikawa UBC truth table commands, in case I want to use his: 
+
+\newcommand*{\TTon}{\hspace{1.5em}\extracolsep{-1em}}
+\newcommand*{\TToff}{\extracolsep{-1em}\hspace{.3em}}
+\newcommand*{\TTbf}[1]{\textbf{#1}}
+
+\fi 
+
+
+%    ****************************************
+%    *                PROOFS                *
+%    ****************************************
+
+\iffalse %incorporate later; need to include proper package for this i think!
+% Tree stuff***************
+
+\forestset{
+	default preamble={
+	single branches,
+	close with=\ensuremath{\times},
+	just sep=1.75em,
+	line no sep=1.75em
+	}
+}
+\fi 
+%**********************
+
+% notation to indicate substitution instances
+% \substitute{x}{c} is the wff obtained by replacing all instances of x in A with c
+% A\substitutesome{x}{c} is a wff obtained by replacing some or all instances of x in A with c
+
+%Logic book notation for substitution instance, note that constant is written second when calling the command, in order to flip Ichikawa commands:
+\newcommand{\substitute}[2]{[#2/#1]}
+
+%JH: idea to use ceiling notation since this looks like a partial bracket, mirroring a partial substitution instance
+\newcommand{\substitutesome}[2]{\mbox{$\lceil#2/#1\rceil$}}
+
+% I keep mixing up the \ce and \ae commands, so I define a less ambiguous
+% alternate set of commands
+
+\newcommand*{\notI}{\ni}
+\newcommand*{\notE}{\ne}
+\newcommand*{\iffI}{\bi}
+\newcommand*{\iffE}{\be}
+\newcommand*{\ifI}{\ci}
+\newcommand*{\ifE}{\ce}
+\newcommand*{\andI}{\ai}
+\newcommand*{\andE}{\ae}
+\newcommand*{\orI}{\oi}
+\newcommand*{\orE}{\oe}
+\newcommand*{\forallI}{\Ai}
+\newcommand*{\forallE}{\Ae}
+\newcommand*{\existsI}{\Ei}
+\newcommand*{\existsE}{\Ee}
+
+% a command for indicating the goal in a proof or subproof
+\newcommand*{\want}[1]{\by{want \ensuremath{#1}}{}}
+% an environment that separates the proof from surrounding paragraphs
+\newenvironment{fitchproof}
+	{\begin{list}{}{\setlength{\leftmargin}{0pt}}\item$\begin{nd}}
+	{\end{nd}$\end{list}}
+
+
+
+% * * *
+% This block defines the natural deduction rules.
+% Rules designated by ordinary letters may be specified with \by{RULE}
+% * 
+%JRH: will have to check that these overwrite the defintions in the fitch.sty file! could also just combine these .sty, like Ichikawa does! 
+
+% patch nd*by, nd*init from fitch.sty
+
+{\chardef\x=\catcode`\*
+\catcode`\*=11
+\global\let\nd*astcode\x}
+\catcode`\*=11
+%\def\nd*by#1#2{\ifx\nd*x#2\nd*x\gdef\nd*byt{\mbox{#1}}\else\gdef\nd*byt{\mbox{#1 \ndref{#2}}}\fi} %defining by command in fitch.sty file instead. 
+\def\nd*init{%
+  \let\open\nd*open%
+  \let\close\nd*close%
+  \let\hypo\nd*hypo%
+  \let\have\nd*have%
+  \let\hypocont\nd*hypocont%
+  \let\havecont\nd*havecont%
+  \let\by\nd*by%
+      \let\pr\nd*pr% %JRH: command for premises at start of proof, to auto print :PR, \pr{}
+      \let\as\nd*as% \as{} (only one set of braces needed! 
+       \let\prs\nd*prs% Requires {}{} at end
+             \let\ass\nd*ass% %Requires {}{} at end
+  \let\guard\nd*guard%
+  \def\bi{\by{{\eiff}I}}%
+  \def\be{\by{{\eiff}E}}%
+  \def\ci{\by{{\eif}I}}%
+  \def\ce{\by{{\eif}E}}%
+  \def\Ai{\by{$\forall$I}}%
+  \def\Ae{\by{$\forall$E}}%
+  \def\Ei{\by{$\exists$I}}%
+  \def\Ee{\by{$\exists$E}}%
+  \def\ae{\by{{\eand}E}}%
+  \def\ai{\by{{\eand}I}}%
+  \def\oi{\by{{\eor}I}}%
+  \def\oe{\by{{\eor}E}}%
+  \def\ni{\by{{\enot}I}}%
+  \def\ne{\by{{\enot}E}}%
+  \def\ri{\by{{\enot}E}}% RZ: this is now \enot E
+   \def\r{\by{R}}% %Ichikawa left this one out for some reason; also left out here it seems, but in the fitch.sty
+  \def\re{\by{X}}% RZ: this is now X (explosion)
+  \def\ii{\by{$=$I}}%
+  \def\ie{\by{$=$E}}%
+  \def\tnd{\by{LEM}}% RZ: Law of excluded middle
+  \def\ip{\by{IP}}% RZ: indirect proof
+  \def\dne{\by{DNE}}% TB: double negation elimination (derived rule)
+  \def\mt{\by{MT}}% TB: modus tollens (derived rule)
+  \def\ds{\by{DS}}% TB: disjunctive syllogism (a derived rule in Cambridge version)
+  \def\dem{\by{DeM}}% TB: De Morgan rule (derived rule)
+  \def\cq{\by{CQ}}% TB: conversion of quantifiers (derived rule)
+  \def\boxi{\by{{\ebox}I}}%SPECIAL ONES FROM ZACH FOR THESE SLIDES 
+  \def\boxe{\by{{\ebox}E}}%
+  \def\mc{\by{MC}}%
+  \def\diadf{\by{Def{\ediamond}}}%
+  \def\rt{\by{R$\mathbf{T}$}}%
+  \def\rfour{\by{R$\mathbf{4}$}}%
+  \def\rfive{\by{R$\mathbf{5}$}}%
+  \def\ellipsesline{\have[ ]{}{\vdots}}%
+  \def\breakline{\have[ ]{}{\begin{tiny}-{}-\end{tiny}}}% For separating subproofs within disjunction Elim and bicond. elim in Carnap %note that font command doesn't seem to work...
+  \nddim{4.5ex}{3.5ex}{1.5ex}{.7em}{1em}{.5em}{1.5em}{.2mm}
+  }
+\catcode`\*=\nd*astcode
+
+%    ****************************************
+%    *            DIAGRAMS IN TIKZ           *
+%    ****************************************
+% TB: I use diagrams in a few places, always using Tikz.
+%   A. To illustrate an argument for the truth table of the material conditional
+%   B. To draw graphs illustrating small finite interpretations. 
+% All these drawings are done using tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes} 
+
+\tikzset{phantom_shape/.style={thick, fill=black!0, minimum width=30pt, minimum height=30pt}, % TB: renders the shape invisible
+		grey_shape/.style={thick, fill=black!20, draw, minimum width=30pt, minimum height=30pt}, % TB: renders a light grey shape with a black outline
+		white_shape/.style={thick, fill=black!0, draw, minimum width=30pt, minimum height=30pt} % TB: renders a white shape with a black outline
+		}
+		
+		% Hyperref set-up & metadata
+		\usepackage{hyperref}
+\hypersetup{
+	pdftitle={Logic 1},
+	pdfauthor={},
+	pdfsubject={Classical First-Order Logic},
+	pdfkeywords={},
+	pdfcreator={LaTeX},
+	pdfproducer={LaTeX},
+	pdftoolbar=false,	% show Acrobat’s toolbar?
+	pdfmenubar=true,	% show Acrobat’s menu?
+	pdffitwindow=false,	% window fit to page when opened
+	pdfstartview={FitH},	% fits the width of the page to the window
+	unicode=true,		% non-Latin characters in Acrobat’s bookmarks
+	pdfnewwindow=true,	% links in new window
+	colorlinks=true,	% false: boxed links; true: colored links
+	linkcolor=black,	% color of internal links
+	citecolor=blue,	% color of links to bibliography
+	filecolor=black,	% color of file links
+	urlcolor=blue		% color of external links
+}
+
+% Tree stuff
+%JRH: adding in definition of line no override, local option included in 2019 revision. since my prooftrees package is not up to date! 
+% see code here: https://tex.stackexchange.com/questions/415976/manually-set-line-numbers-if-prooftrees-sty
+% see p. 24 of prooftrees manual for directions on using this. works w/ {}, e.g. line no override={n+1}
+
+%the command `vdotsline' lets you put anything in number column, without a period appearing afterwards. so it's like `line no override' without \linenumberstyle
+%e.g. for vertical dots vertically aligned, use: vdotsline={\\[-0.55em] \vdots}
+
+\forestset{
+  line no override/.style={
+    before drawing tree={
+      for name/.process={Ow}{proof tree proof line no}{line no ##1}{
+        content=\linenumberstyle{#1},
+        typeset node,
+      },
+    },
+  },
+  no line no/.style={
+    before drawing tree={
+      for name/.process={Ow}{proof tree proof line no}{line no ##1}{
+        content=,
+        typeset node,
+      },
+    },
+  },
+  vdotsline/.style={
+    before drawing tree={
+      for name/.process={Ow}{proof tree proof line no}{line no ##1}{
+        content=#1,
+        typeset node,
+      },
+    },
+  },
+  default preamble={
+	single branches,
+	close with=\ensuremath{\times},
+	just sep=1.75em,
+	line no sep=1.75em
+	}
+}
+
+%\IfFileExists{forallxyyc-local.sty}{\usepackage{forallxyyc-local}}{}

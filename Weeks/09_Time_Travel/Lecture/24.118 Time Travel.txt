@@ -1,0 +1,228 @@
+Title: 24.118 Time Travel
+Author: Damien Rochford
+
+* [Consistent and Inconsistent Time-Travel Stories] [section_con&incon]
+	* [Inconsistent Time-Travel Stories][section_inconsistent]
+	* [Super-Time] [section_super]
+	* [Consistent Time-Travel Stories] [section_consistent]
+* [The Grandfather Paradox][section_grandfather]
+	* [The Paradox][section_paradox]
+	* [The Lewis Solution][section_Lewis]
+	* [The World in which Tim Kills Grandfather][section_world]
+	* [Premises 1 and 2][section_premises]
+		* [Narrow and Wide Abilities][section_narrow]
+		* [An Objection][section_objection]
+* [Time Travel and Decision][section_decision]
+	* [Epistemic and Metaphysical Possibility][section_m&e]
+	* [The Possibility Relevant to Decision][section_relevant]
+
+#Consistent and Inconsistent Time-Travel Stories [section_con&incon]
+
+##Inconsistent Time-Travel Stories [section_inconsistent]
+
+*[Back to the Future][1]* is a great film. It is also, on the most straightforward interpretation, blatantly inconsistent. Towards the beginning of the film, we are told that, in 1985, Marty’s dad George is a well-meaning loser who can’t stand up to his abusive boss Biff. Towards the end of the film, we are told that, *at that every time*, George is a self-confident champ, and *he’s* the boss, not Biff. So, according to the film, the following is true:
+
+>In 1985, Marty is a loser, and in 1985, Marty is not a loser.
+
+That’s a contradiction. The film is inconsistent.
+
+In general:
+> A story (or scenario, or sentence, or whatever) **inconsistent** iff it entails a **contradiction**
+
+Where a contradiction is defined as follows:
+
+>A **contradiction** is a sentence of the form “p and not-p”.
+
+[1]:https://www.youtube.com/watch?v=qvsgGtivCgs
+
+##Super-Time [section_super]
+
+Now, experience leads me to believe that you will resist the claim that *Back to the Future* is inconsistent. You may want to say: there’s no contradiction, because what happens is that *first*, George is a loser in 1985, and then, *later*, he’s not a loser in 1985. 
+
+As we usually conceive of time, that makes no sense. What is this “first” and “later” supposed to mean? It can’t be that we are talking about two different times, such that at the earlier time, George is a loser in 1985, and the later time, George is not a loser in 1985. George either is or is not a loser at the particular time of 1985; there’s no further time for George to be a loser relative too, once we’ve specified that we’re talking about how he is at that particular time.
+
+That is, unless, contrary to what we normally assume, time is *two-dimensional*. There is the normal time with which we are all familiar, and there is a second temporal dimension, that we can call “super-time”.
+
+Imagine a plane before you, the vertical direction representing time, and the horizontal direction representing super-time. Each point represents the whole of three dimensional space at a moment in both time and super-time. The whole history of the universe, as we usually think of it, occupies one vertical line on this plane. At the beginning of the line is the big bang, further up the line the Earth is formed, further still you are born, further yet is a post apocalyptic nightmare, and so on. But, if there is a super time, then the history of the universe that we experience is but one of the many histories the universe has, in time. Right now — i.e., at this very moment in normal time — there are different histories unfolding in other part of the universe. Those different parts of the universe are separated from us not in space or time but in super-time.
+
+Now, as far as we can tell, all of us are confined to the one-dimension of time, where we live and die. But maybe the right way to understand Marty’s adventures is as moving not only in time, but also in super-time. When Marty gets in the DeLorean and reaches 88 mph, he travels backwards in time and side-ways in super-time, over to a part of the universe that is very much like his part was in 1955. But it is not his part of the universe in 1955, for it is at a different moment in super-time.
+
+But if that is really what happened, then it seems like we should feel very differently about events in the film than the film itself encourages us to feel. For instance, it seems like the film is supposed to have a happy ending. But on the super-time interpretation, the ending is tragic. At the end, Marty goes forward in time, while staying in the same moment in super-time. He seems to think he’s been reunited with his real family, and is happy to be home. But he hasn’t; he’s meeting these copies of his real family, over at this different part of the universe, for the first time. His real family is still miserable back in his home super-time moment. They are probably even more miserable now that Marty has disappeared. It seems that Marty will live out his days as an impostor in this new region of the universe, the old region abandoned. This makes *Back to the Future* a total downer!
+
+[Quick aside: note that interpretations involving many universes or branching time are fairly minor variants on the super-time interpretation. Exercise: convince yourself this is so! Hint: think about what parts of the super-time plane you need to delete to, effectively, model multiple (one-time-dimensional) universes, or a branching universe.]
+
+##[Consistent Time Travel Stories] [section_consistent]
+
+Let us confine our attention to single, non-branching universes with only one dimension of time. We have just seen that, interpreted as occurring in such a universe, *Back to the Future* is an inconsistent Time-Travel Story.
+
+Are *all* time-travel stories of this kind inconsistent? No! As long as your time-travel story never makes contradictory claims about what happens at any particular time, it is consistent! It is perfectly compatible with time-travel that nothing contradictory be true at any particular time.
+
+It takes some ingenuity to make a time-travel story completely consistent.  Consistent time-travel stories can be fun to watch or read for that reason. Good examples include Terry Gilliam’s *[Twelve Monkeys][2]* and the short stories of Robert Heinlein, which I would link if they were a little less sexist. Another possible example, which I love, is Shane Carruth’s *[Primer][3]*, though it is so complicated it is hard to tell whether it is consistent or not. Check it out and try to decide!
+
+[2]:https://www.youtube.com/watch?v=TvZpHTR8Lhs
+[3]:https://www.youtube.com/watch?v=3nj5MMURCm8
+
+As the above examples show, being consistent is not the same as being normal. Consistent time-travel stories can be *weird*. For example, they can include causal loops. Consider: one day, an old stranger comes to you and tells you how to build a time machine; you do so, and enjoy an amazing life of time-travel adventure. As you grow old, you travel to the time when you were young, and impart the knowledge of how to build a time machine; *you* were that old stranger, it turns out.
+
+Inconsistent? No! Nothing contradictory needs to be true for this story to be true. Weird? Yes! One is inclined to ask: where did the knowledge of how to build a time-machine *come from*? Now, for any particular moment, you can answer that question; your knowledge in your youth came from the old stranger, your knowledge in your old age is remembered from your youth. But somehow that isn’t satisfying.
+
+No doubt, that is a weird situation. But it isn’t a contradiction, and the story involving that situation is not inconsistent.
+
+#[The Grandfather Paradox] [section_grandfather]
+
+##[The Paradox][section_paradox]
+
+I just said that not all time-travel stories are inconsistent. And that *seems* to be right. But there is an argument that that *isn’t* right; that, in fact, all time travel is inconsistent, and, hence, time travel is impossible. This argument is our first paradox.
+
+Before the argument, a story, due to David Lewis:
+>Consider Tim. He detests his grandfather, whose success in the munitions trade built the family fortune that paid for Tim’s time machine. Tim would like nothing so much as to kill Grandfather, but alas he is too late. Grandfather died in his bed in 1957, while Tim was a young boy. But when Tim has built his time machine and traveled to 1920, suddenly he realizes that he is not too late after all. He buys a rifle; he spends long hours in target practice; he shadows Grandfather to learn the route of his daily walk to the munitions works; he rents a room along the route; and there he lurks, one winter day in 1921, rifle loaded, hate in his heart, as Grandfather walks closer, closer,…
+
+Tim will not kill Grandfather. We know this, because Tim has *already failed* to kill Grandfather. If Tim didn’t kill Grandfather by 1957, then Tim didn’t kill Grandfather by 1957. It is a surprising new fact to learn about the past that, in 1920, Tim was pointing a rifle at Grandfather. But that doesn’t change the fact that Grandfather was not killed in 1920.
+
+Why did Tim fail? Who knows? Nothing we’ve said so far determines that. Maybe he was distracted by a barking dog; maybe he couldn’t bring himself to do it, in the end; maybe Grandfather moved at the last moment, and the bullet went whistling past his evil head. It will be some completely ordinary reason, of the same sort that anything happens.
+
+So far so good; we don’t have a paradox. *Here’s* the paradox. It is not about what Tim in fact does, but rather about what he *could* do, or is *able* to do.
+
+A definition: let’s call Tim being in that room overlooking Grandfather’s route, rifle in hand, training in mind, hate in heart, etc., Tim ‘being in the position’.
+
+1. If time-travel is possible, then it is possible for Tim to be in the position.
+2. If it’s possible for Tim to be in the position, then Tim is able to kill Grandfather.
+3. Tim is not able to kill Grandfather.
+4. Conclusion: Time-travel is not possible.
+
+Some clarificatory points. Firstly, note that Tim doesn’t need to actually time-travel at all for the premises to be true. The argument is that, if time-travel is possible, then right now, whether Tim travels in time or not, he has the ability to kill his Grandfather, and he also lacks that ability. The claim is that time-travel being *possible* makes a contradiction about what Tim is able to do *actual*.
+
+Secondly: the conclusion of this argument is not that time-travel is *physically* impossible. That may well be right, but that’s not what we’re talking about. We’re talking about whether time-travel is possible at *all*. Let the laws of physics be whatever you like; according to the conclusion of this argument, time travel would *still* be impossible. 
+
+That’s a very strong claim. And it is hard to believe. We’ve seen instances of time-travel stories that seem perfectly consistent. *Physicists* describe scenarios involving time-travel that are compatible with general relativity. How could time travel be impossible in this extremely strong way?
+
+What about the premises? Well, take premise 1. Assuming time-travel is possible, what could make it impossible for Tim to be in the position, in the extremely strong sense of ‘impossible’ we are talking about? I don’t see any candidate for an explanation here, and thus no plausible way of rejecting premise 1.
+
+What about premise 2? We’re supposing that it’s possible for Tim, expert marksman, to have Grandfather in the crosshairs. What more does it take for Tim to be able to kill Grandfather? If anyone else were in that position, wouldn’t that person most definitely be able to kill Grandfather? If a *molecule for molecule duplicate* of Tim were to spontaneously materialise, rifle in hand, in 1920, in the position we are supposing Tim to stand, pointing a rifle at Grandfather, wouldn’t *that* person be able to kill Grandfather? It seems like the answer is ‘yes’, and that being so, it seems like Tim must be able to kill Grandfather too.
+
+What about premise 3? We know Tim will not, in fact, kill Grandfather. Why are we so sure? Because, it is tempting to say, he *can’t*! If Tim were to kill Grandfather, a contradiction would be true, and that just can’t happen; Tim does not have the power to make contradictions true. So Tim can’t kill Grandfather! The very reasoning that from which we conclude that Tim won’t kill Grandfather also licenses the conclusion that Tim can’t kill Grandfather, it seems.
+
+It’s a pickle.
+
+##[The Lewis Solution] [section_Lewis]
+
+David Lewis, who was perhaps the most important philosopher in the latter half of the 20th Century, had proposed a solution to this conundrum along the following lines: there’s an equivocation in the word ‘able’, as used in the Grandfather paradox. There is a *sense* in which Tim is able to kill Grandfather, if time-travel is possible, as premise 2 states. And there is a *sense* in which Tim is not able to kill Grandfather, as premise 3 states. But there is no sense of ‘able’ in which Tim both is and is not able to kill Grandfather.
+
+Here is Lewis explaining the view in more detail.
+>To say that something can happen means that its happening is compossible [that is, compatible] with certain facts. Which facts? That is determined, but sometimes not determined well enough, by context. An ape can’t speak a human language — say, Finnish — but I can. Facts about the anatomy and operation of the ape’s larynx and nervous system are not compossible with his speaking Finnish. The corresponding facts about my larynx and nervous system are compossible with my speaking Finnish. But don’t take me along to Helsinki as your interpreter: I can’t speak Finnish. My speaking Finnish is compossible with the facts considered so far, but not with further facts about my lack of training. What I can do, relative to one set of facts, I cannot do, relative to another, more inclusive, set. Whenever the context leaves it open which facts are to count as relevant, it is possible to equivocate about whether I can speak Finnish. It is likewise possible to equivocate about whether it is possible for me to speak Finnish, or whether I am able to, or whether I have the ability or capacity or power or potentiality to.
+
+Just as Lewis is able to speak Finnish, relative to some facts, and not able to speak Finnish, relative to others, Lewis claims that Tim is able to kill his grandfather, relative to some facts, and not able to, relative to others. If we fix the facts we’re talking about, and, hence, fix the sense of “able”, as it is used in premises 2 and 3, then either premise 2 is false or premise 3 is false. That is Lewis’s resolution of the paradox.
+
+What are the fact relative to which Tim is able to kill his grandfather, assuming that time-travel exists? They are, says Lewis, facts like that he has a rifle, and knows how to use it, and is able to get a clear shot of Grandfather, and so on — the kinds of facts about Tim that are true about anyone you would say has the ability to kill Grandfather.
+
+What are the facts about Tim relative to which he is *not* able to kill Grandfather? There is one particularly important fact relative to which Tim cannot kill Grandfather, according to Lewis: the fact that Tim *didn’t* kill grandfather. Tim’s killing Grandfather is not compatible with the fact that Tim didn’t kill Grandfather, and that is the sense in which he is not able to.
+
+But that is a very unimportant sense in which Tim can’t kill Grandfather! You don’t have the ability to do *anything* other than what you in fact do, in *that* sense. In *that* sense, I am not able to wear a red shirt tomorrow. Why not? Because I won’t wear a red shirt tomorrow, and it is incompatible with the fact that I won’t wear a red shirt tomorrow that I wear a red shirt tomorrow.
+
+In most contexts, it is right to say that, even though I will not, as a matter of fact, wear a red shirt tomorrow, I’m able to. After all, there’s a red shirt hanging in my closet, and I know how to put it on. In the same way, says Lewis, it is right to say Tim is able to kill Grandfather.
+
+##[The World in which Tim Kills Grandfather][section_world]
+
+Lewis’s view that claims about what someone is able to do are relative to a set of facts certainly seems plausible, as his example with speaking Finnish shows. And he’s certainly right that, relative to the fact that Tim didn’t kill Grandfather, Tim isn’t able to kill Grandfather. But is that the *only* sense in which Tim isn’t able to kill Grandfather?
+
+Some philosophers don’t think there is *any* sense in which Tim is able to kill grandfather, because they don’t think it is compatible with *any* facts that Tim kill Grandfather. They think *that* because they think it is *impossible* for Tim to kill Grandfather. By “impossible”, here, they mean strictly impossible — there is no possible world, with any laws of physics you like, in which Tim kills Grandfather.
+
+Compare: is there any sense in which I am able to name the largest prime number? No! Because there is no possible world in which there is a largest prime number, and hence no possible world in which I name it. So it is not compatible with *any facts at all* that I name the largest prime number.
+
+Now, Lewis thinks there *is* a world in which Tim kills Grandfather. It is, he admits, difficult to say exactly which possible world is the one that would be actual, if Tim killed Grandfather. But one candidate is a world in which someone physically identical to Tim materialises in 1921 with a bunch of false memories, including that he is the grandson of Grandfather. But, as it happens, he is not, because he kills Grandfather before Grandfather fathers anyone.
+
+Is that a world in which Tim kills Grandfather? Some — most famously Saul Kripke, who is the *other* contender for the most important philosopher of the later half of the 20th Century — say: no! Some guy physically identical to Tim, with Tim-like memories, is not necessarily Tim. It takes more to be Tim than to have certain physical properties. You’ve also got to have a certain history. In particular, you’ve got to have been fathered by Father, who has got to have been fathered by Grandfather. If you’re not the grandson of Grandfather, you’re not Tim.
+
+In other words, on the Kripke view, there is no world in which Tim is not the grandson of Grandfather. And that’s why there is no world in which Tim kills Grandfather before he fathers Father.
+
+Do you agree with Kripke? Even if you do, maybe you think there is some *other* possible world in which Tim kills Grandfather, and the Lewis response can work for that reason? Or is there no such world, and the Lewis response fails?
+
+##Premises 1 and 2
+
+###Narrow and Wide Abilities
+
+If you think there is *no* sense in which Tim is able to kill Grandfather, and you don’t want to accept the conclusion of the Grandfather Paradox, then your only obvious options are either to reject premise 1 or premise 2.
+
+Forget premise 1 for the moment; we will come back to it momentarily. Consider premise 2. The best argument for premise 2 is as follows. Let Tim2 be a molecule for molecule duplicate of Tim as he is when he is in the position.
+
+1. If it’s possible from Tim2 to be in the position, then Tim2 is able to kill grandfather.
+2. If Tim2 is able to do something, then Tim1, in the same position, is able to do the same thing.
+3. Conclusion: if it’s possible for Tim to be in the position, Tim is able to kill Grandfather.
+
+Premise 1 seems hard to deny; Tim2 has what it takes to kill Grandfather. If anyone has the ability to kill Grandfather, assuming they can be in the position, it is Tim2.
+
+Premise 2 also seems hard to deny; Tim is *exactly like* Tim2. How could the one be able to do something the other is not.
+
+Philosopher Kadri Vihvelin, and also MIT’s own Brad Skow, think that we can do it by distinguishing between what they call “narrow” and “wide” abilities. The distinction is not an absolute one, but a matter of degree. An ability is narrower if having it depends just on what is happening in the vicinity of the body of the person with the ability, both spatially and temporally. The ability to raise my right arm is a relatively narrow ability. However things are very far away from me in time and space, if things are as they are within a three-foot vicinity of me now, I have the ability to raise my arm.
+
+The wider an ability is, the larger the area around me that things need to be just right for me to have the ability. Having the ability to raise my right arm is relatively narrow; having the ability to raise my arm, and in doing so bid on the Paul Cézanne’s *The Card Players* in an April 2011 auction of that painting (which involves me raising my arm) is relatively wide. Someone needs to organise an auction for Paul Cézanne’s *The Card Players* on April 2011, for a start. Whether that happens or not depends on stuff quite far away from me.
+
+The abilities that Tim shares with anyone very like him are *narrow* abilities, say Vihvelin and Skow — abilities like the ability to shut one eye, to stand very still, to pull your trigger finger, etc. But the ability to kill Grandfather is quite wide; it depends on what is going on over there with Grandfather, for a start. It is consistent with sharing the same narrow abilities with Tim2 that Tim lack a wide ability that Tim2 has, like being able to kill Grandfather. Thus the above premise 2 is false, and thus we can reject premise 2 of the Grandfather Paradox.
+
+###An Objection
+
+But wait, goes an objection! It is sufficient for Tim2 to be in the position, and to have the narrow abilities he has, for him to be able to kill Grandfather. So, if Tim can be in the *same* position, and has the same narrow abilities, then that’s sufficient for *Tim* to have the same abilities, isn’t it? Once you’ve granted that Tim and Tim2 have the same *narrow* abilities, that’s enough to get the conclusion that, if it’s possible for Tim to be in the position, he is able to kill Grandfather. Or so goes the objection.
+
+Here is how Skow responds to this objection (this isn’t exactly how he put it; I’ve done some interpretation). It all depends what you mean, exactly, by “the position”. We haven’t been maximally specific about what the position is like, thus far. We’ve said it involves holding a rifle, pointing it at Grandfather, being motivated to kill him, and a few other details. But those details leave a lot of specifics underdetermined. And whether you are able to kill Grandfather, on a particular occasion, can depend very delicately on the exact details — atmospheric conditions like wind-speed, the exact movements of Grandfather, the precise timing of events…
+
+So if, when we say that Tim2 and Tim are both in “the position”, that is compatible with things being slightly different for each of them, then it is compatible with Tim2 and Tim both being in the position, and both having the same narrow abilities, that Tim2 is able to kill Grandfather, in the position, and Tim is not. 
+
+If, on the other hand, we specify the position in enough detail that being in the position is sufficient, for someone with Tim’s narrow abilities, to be able to kill Grandfather, then, says Skow, there is no reason to believe that Tim is able to be in *that* position. There may just be constraints on what things can be like around Tim, as he stands there on that bleak winter’s day in 1921, given the way things go for Tim in the future.
+
+In other words, on *this* understanding of “the position”, Skow denies premise 1 of the Grandfather paradox. But, he thinks, this version of the premise 1, which specifies the position so precisely, is much more plausible to deny then the original.
+
+What do you think?
+
+#[Time Travel and Decision][section_decision]
+
+##[Epistemic and Metaphysical Possibility][section_m&e]
+
+We’re going to switch gears now; forget about the Grandfather paradox a moment. We’re going to think about the relevance of all this to decision making.
+
+Consider words like “able”, “possible”, “could”, “can”; there are lots. Philosophers call these “modal terms”. As Lewis pointed out above, there are many senses of such terms.
+
+An important distinction among these terms is the distinction between *epistemic* and *metaphysical* senses. Let me explain.
+
+Something is possible in the *epistemic* sense, for you, iff it is consistent with your knowledge that it is the case. “Might” is usually understood in an epistemic way. If I say “Sally might be in her office”, usually what I mean is that it is consistent with what I know that Sally is in her office.[^fn_epistemic]
+
+[^fn_epistemic]: Roughly. *Exactly* what that means is actually somewhat complicated, and a matter of dispute.
+
+Note that claims about what is epistemically possible are always relative to some particular person’s state of knowledge. What is epistemically possible for me might be different to what is epistemically possible for you, because maybe what I know is different to what you know. Maybe Sally might be in her office, as far I know, but that is not possible, relative to what you know; you’re in her office right now, and can see she’s not there.
+
+When we say that something is epistemically possible, we are saying something about *us*, the people who know or fail to know things about the world. That contrasts with the other kind of possibility: *metaphysical* possibility.
+
+“Metaphysical” is a fancy word; don’t let it scare you. It is just the contrast word with “epistemic”. It means about the *stuff*, rather than about our knowledge of the stuff.
+
+Something is possible in the *metaphysical* sense if it is a fact about the world that it is possible — a fact that has nothing to do with what anyone knows. One kind of metaphysical possibility is *physical* possibility. Something is physically possible iff it is consistent with fundamental physical law that it is so. It is physically possible that a human being run a mile in four minutes; physics does not rule that out. It is not physically possible for a human being to run a mile in one millionth of a second; that human being would have to run faster than light, which is not physically possible.
+
+That’s one sense of metaphysical possibility, but there are lots.
+
+Many philosophers think there is a *broader* sense of metaphysical possibility than physical possibility; some things that are physically impossible are still metaphysically possible, on this view. Those are the things that would be possible if the laws of physics were different. It is physically impossible for anything to travel faster than light, but maybe it’s not completely metaphysically impossible, because if the laws were different, it would be possible.
+
+So what’s metaphysically *impossible*? Thing that couldn’t be true even if the laws of physics were different, in whatever way you liked. The least controversial candidates for metaphysically *impossible* things include false mathematical sentences, like ‘there is a highest prime number’. Maybe there are others.
+
+##[The Possibility Relevant to Decision][section_relevant]
+
+When we make a decision, we choose how to act from a range of things we are able to do; that is, a range of actions that are possible for us. Question: what is the relevant sense of “able” and “possible”, here? Is it epistemic, or is it metaphysical?
+
+Usually, the alternative actions you consider, when making a decision, are both epistemically and metaphysically possible. As you ponder whether to get chocolate or vanilla, you don’t know which you will end up getting, so  each choice is epistemically possible. Also, you are capable of getting chocolate or getting vanilla; it is a fact about you that you have the capacity to say the necessary sentences and hand over enough money to get either chocolate or vanilla. So both options are metaphysically possible.[^fn_determinism]
+
+[^fn_determinism]: Or so it seems, at least. Some people think that the only thing that is metaphysically possible for you, in the sense of “metaphysically possible” relevant to action, is what you in fact do. We’ll ignore this complication here.
+
+But in some situations, these things can come apart. There are situations in which there are epistemically possible options that are not metaphysical possibilities. Maybe, because you know very little about the world, it is an epistemic possibility for you to fly to class. But actually, that is not a metaphysically possible option for you; you are not, in fact, capable of doing that. 
+
+That example makes it seem that the really relevant sense of possibility, for decision, is the metaphysical kind. When you make a decision, you try to figure out what is metaphysically possible for you to do, and then decide among those options. You can be wrong, sometimes, but then you are making a *mistake*; what you thought was an option was not really an option.
+
+But there are also some strange situations in which what is metaphysically possible is not epistemically possible. Time-travelers face such situations.
+
+Consider Tina. Tina is an historian; she finds an archive of security footage from a secret government facility, dating back to the early 50s. She looks through some of those early videos, and sees something incredible: footage of herself, appearing from a time-machine. She sees herself step out, cautiously. She sees that 1950s-Tina is in a room with no obvious exit. There is a wall with two large buttons, and a note reading “Choose wisely; one button leads to freedom, the other to doom.”
+
+1950s Tina is obviously extremely anxious. She hesitates, she keeps seeming to change her mind at the last minute, she goes back and forth, back and forth between the buttons, but eventually, in a kind of desperate panic, she hits one. 2016 Tina can’t quite see which button she hits, as 1950s Tina’s body obscures her view. But all too soon it becomes clear that 1950s Tina has made the wrong decision! 2016-Tina watches in horror as a gas fills the room in which 1950s Tina is trapped. As 1950s Tina struggles for breath, she looks directly at the camera and mouths words that 2016 Tina can’t quite make out: “Choose…” something? But it is too late; 1950s Tina is dead.
+
+Tina has taken 24.118, so she knows that, if what she just witnessed in fact happened in 1950, then there’s no two ways about it; that’s what happened in 1950 (barring super-time shenanigans, which, let us stipulate, she has good reason to rule out). So Tina knows that, at some point in her personal future, she’s going to walk out of time-machine, be confronted with two buttons, press the wrong one, and then choke to death.
+
+Is Tina able to avoid her terrible fate? It is certainly *metaphysically possible* for her to do so. The good button is either the one on the left or the one on the right, and she is obviously capable of pressing either. But it is *not* epistemically possible. Tina knows that she is going to end up pressing the bad button. As she stands there, in 1950, in front of the buttons, she knows this. It certainly seems, from Tina’s perspective, that there is no important sense in which she is able to avoid her asphyxiation.
+
+So maybe it is epistemic possibility that is important after all?
+
+This issue, of whether epistemic or metaphysical possibility is important for decision making, will be at the heart of the next paradox we consider: Newcomb’s Problem.

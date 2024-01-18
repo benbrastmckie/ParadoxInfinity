@@ -1,0 +1,114 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE Final Review Session  \normalsize \\[.3cm]
+\noindent  \textsc{24.118 $\bullet$ Matthias Jenny $\bullet$  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927} \hfill{December 7, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+\section{Pset 4, problem 4}
+
+\begin{quote}Show that there can be no 1-1 correspondence between the natural numbers and the set of all functions from the natural numbers to the set $\{a, b, c, d, e\}$.\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 9, 2d}
+
+\begin{quote}Identify a formula ``Prime$(x_i,x_j)$'' of $L$ which is true if and only if $x_i$ is the $x_j^\mathrm{th}$ prime number.\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+
+\section{Pset 2, problem 5}
+
+\begin{quote}Newcomb set up with an 80\% reliable predictor. According to the Principle of Expected Value Maximization, which of OneBox and Two Box should you choose?\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 3, problem 3}
+
+\begin{quote}You are offered a chance to play a game that works as follows. A coin will be tossed until it lands heads. (If it never lands heads, the game is off.) If the coin lands heads on the first toss, you receive \$2; if it lands heads on the second toss, you receive \$4; and, in general, you receive \$2n if the coin lands heads on the nth toss). What is the expected value of playing the game?\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 1, problem 3}
+
+\begin{quote}Bruno travels back in time to kill his grandfather, to a time before his grandfather had any children. Will he succeed? (Assume no funny business: no rising up from the dead, no frozen sperm, no replicated DNA.)\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+
+\section{Topic 7.2, first exercise}
+
+\begin{quote} If $a$ and $b$ are numbers in $[0,1]$, let us say that they are in the same orbit just in case $a-b$ is a rational number (i.e., a number of the form $n/m$, where $n$ and $m$ are integers and $m\neq 0$). Prove that the relation of having a rational difference is an equivalence relation.\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 5, problem 3b}
+
+\begin{quote}Use the ``Construction Principle'' from the course materials to show that if $\alpha$ is an ordinal with infinitely many members, then either $\alpha = \omega$ or $\omega <_o \alpha$.\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 8, problem 1b}
+
+\begin{quote}Design a Turing machine that does the following: when given a string of $n$ ones as input, it yields a sequence of $2n$ ones as output. It then brings the reader to the beginning of the sequence, and halts.\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\section{Pset 6, problem 1}
+
+\begin{quote}Lazy wants to run from $A$ to $B$, but he likes to take breaks. He first stops halfway between $A$ and $B$ and takes a one-second break. He then stops halfway between that point and B and takes another one-second break, and so on. Is there a positive integer $n$ such that after $n$ seconds Lazy has reached point $B$?\end{quote}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+
+
+
+
+
+
+\end{document}

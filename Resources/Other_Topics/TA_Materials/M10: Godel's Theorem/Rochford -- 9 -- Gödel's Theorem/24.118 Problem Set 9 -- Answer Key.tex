@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+%\usepackage{setspace}
+%\usepackage{endnotes} \let\footnote=\endnote %Remember to update below
+
+% Bibliography Packages
+%\usepackage{linquiry}
+\usepackage{natbib}
+
+\usepackage{enumerate}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+%\usepackage{latexsym}
+%\usepackage{amsfonts}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+
+%Diagram packages
+%\usepackage{bar}
+%\usepackage{curves}
+%\usepackage{pst-plot}
+
+%Tree packages
+%\usepackage{ecltree}
+%\usepackage{eclbip}
+%\usepackage{eepic}
+%\usepackage{epic}
+
+
+\begin{document}
+\begin{center} {\large 24.118 --- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 9 (G\"odel's Theorem): Answer Key \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+
+\subsection*{Problems:}
+
+\begin{enumerate}
+\item \begin{enumerate}
+	\item The answer was option (iii): $$\forall x \forall y \forall z \neg(x^3 + y^3 = z^3)$$ You can read this as: ``For all $x$, for all $y$ and for all $z$, it is not the case that $x^3$ plus $x^3$ equals $z^3$'', which is another way of saying that there are no numbers $a$ $b$ and $c$ such that $a^3 + b^3 = c^3$.
+	
+	What about the incorrect answers?
+	\begin{itemize}
+	\item The first option says: ``All numbers $x$, $y$, and $z$ are such that $x^3 + y^3 = z^3$.'' That is definitely not compatible with the statement you want to translate.
+	\item The second option says: ``It is not the case that for all numbers $x, y$ and $z$ that $x^3 + y^3 = z^3$.'' That is entailed by the statement you want to translate, but it is weaker, because it is compatible with this that there are numbers $x, y$ and $z$ for which it \emph{is} the case that $x^3 + y^3 = z^3$.
+	\item The fourth option says: it is not the case that for all $x$, $y$ and $z$ that it is not the case that $x^3 + y^3 = z^3$.'' That is the same as saying the statement you want to translate is not true.
+	\end{itemize}
+	
+	\item Here is a way to do it: $$\forall x_1 \forall x_2 \forall x_3 \forall x_4 \neg((x_1 < 3 \ \vee \ x_1=3) \supset (x_2^{x_1} + x_3^{x_1} = x_4^{x_1}))$$
+	\end{enumerate}
+
+\item How about this:
+\begin{quote}
+Damien Rochford does not believe this proposition.
+\end{quote}
+This is like my own G\"odel sentence. If it is true, then I don't believe it, so I don't believe something true. If it is false, then I believe it, so I believe something false. Either way, I'm getting things wrong. Damn it!
+
+\item There are, indeed, Turing Machine that print out all the true sentences of $L$. Here is one. First, it prints out all the 1 symbol formulas of $\mathcal{L}$. There are only finitely many. Of course, none of them mean anything, by themselves, but that's ok. Then it prints all the 2 symbol formulas of $\mathcal{L}$. There are only finitely many of those. And so on. If it keeps going this way, then for every formula of $\mathcal{L}$, it will print out that formula, after some finite amount of time. That includes all the true sentences of $\mathcal{L}$.
+
+\item This is really for you to decide; as long as you didn't say anything trivial or false, you got the points, on this question. But let me tell you what I think. I don't think this argument works. I think there is no good reason to believe the second premise. 
+
+I think there \emph{is} good reason to believe the first conjunct of the premise --- that is, that our methods don't validate false sentences. That isn't always true of our methods as actually practices, of course, but I think if you idealise away simple mistakes and confusions, our underlying competence in mathematics doesn't get stuff wrong. I don't think we can rationally believe otherwise --- that is, I don't think you can rationally believe that your methods, idealised, make you believe false things. Because if you believe that, you believe you shouldn't believe the stuff your method tells you to believe, in which case it isn't really your method.
+
+I think there is no reason at all to believe the second conjunct: that, for any $M$, our methods can be used to validate the G\"odel sentence of $M$. There is no upper limit to how complicated $M$ could be, and we are finite beings, so why believe we could always see whether an arbitrary G\"odel sentence is true or false?
+
+Maybe you think there is special reason to believe that we could tell our \emph{own} G\"odel sentence is true, if we were using computable methods to determine the truth and falsehood of mathematical sentences. There is some discussion of this in the readings; I recommend you check them out!
+
+\end {enumerate}
+
+\end{document}

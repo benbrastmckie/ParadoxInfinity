@@ -1,0 +1,260 @@
+
+\documentclass[12pt]{extarticle}
+
+\usepackage{summary-intro}
+
+
+\begin{document}
+
+
+
+\sumintro{Omega-Sequence Paradoxes}{Spring 2023}
+
+
+
+\section{What is a Paradox?}
+
+A \textbf{paradox} is an argument that appears to be valid, and goes from seemingly true premises to a seemingly false conclusion. So we must:
+
+
+\begin{itemize}
+\item learn to live with the conclusion;
+
+\item learn to live without one of the premises; or
+
+\item show that the reasoning is invalid.
+
+\end{itemize}
+An \textbf{omega-sequence paradox} is a paradox based on an $\omega$-sequence ($| | | \dots$) or a reverse $\omega$-sequence ($\dots | | | $).
+
+\section{Zeno's Paradox\footnote{This is a variant of one of several paradoxes attributed to ancient philosopher Zeno of Elea, who lived in the 5th Century BCE.
+} {\normalsize \normalfont [Paradox Grade: 2]}}
+
+\begin{quote}
+You wish to walk from point $A$ to point $B$. In order to do so, you must carry out an \(\omega\)-sequence of tasks:
+\[
+\begin{array}{cc}
+\text{\scriptsize Task  1:} & \text{\scriptsize reach $\frac{1}{2}$ mark}\\
+\text{\scriptsize Task  2:} & \text{\scriptsize reach $\frac{3}{4}$ mark}\\
+\text{\scriptsize Task  3:} & \text{\scriptsize reach $\frac{7}{8}$ mark}\\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\text{\scriptsize Task  $n$:} & \text{\scriptsize reach $\frac{2^n-1}{2^n}$ mark}\\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\end{array}
+\]
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (8,0); % line
+\draw (4,0) -- (4,-0.2); %1/2 way mark
+\node at (4,-0.5) {\scriptsize $\frac{1}{2}$};
+\draw (6,0) -- (6,-0.2); %1/4 way mark
+\node at (6,-0.5) {\scriptsize $\frac{3}{4}$};
+\draw (7,0) -- (7,-0.2); %1/8 way mark
+\node at (7,-0.5) {\scriptsize $\frac{7}{8}$};
+\node at  (7.65,-0.5) {\dots};
+
+\node at (-.3,0)  {$A$}; %  A
+\draw[ultra thick] (0,0) circle [radius=.03];
+
+\node at (8.3,0)  {$B$}; %  B
+\draw[ultra thick] (8,0) circle [radius=.03];
+
+\end{tikzpicture}
+\end{center}
+But it's impossible to complete infinitely many tasks in a finite amount of time. So movement is impossible. 
+\end{quote}
+
+
+
+
+\section{Thomson's Lamp\footnote{Thomson's Lamp was devised by the late James Thomson, who was a professor of philosophy at MIT (and was married to (and then divorced from) the great philosopher Judith Jarvis Thomson).} {\normalsize \normalfont [Paradox Grade: 3]}}
+
+You have a lamp with a toggle button: press the button once and the lamp goes on, press it again and the lamp goes off. Here's what happens:
+\[
+\begin{array}{cc}
+\text{\footnotesize Time to midnight} & \text{\footnotesize Status of lamp shortly thereafter} \\
+\text{\scriptsize 60$s$} & \text{\scriptsize off} \\
+\text{\scriptsize 30$s$} & \text{\scriptsize on}\\ %n = 0, so 2^{2*0+1} = 2^1
+\text{\scriptsize 15$s$} & \text{\scriptsize off}\\% n =1
+\text{\scriptsize 7.5$s$} & \text{\scriptsize on}\\ %n =1 
+
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\text{\scriptsize $\dfrac{60}{2^{2n}}s$} & \text{\scriptsize off}\\ %for evens
+\text{\scriptsize $\dfrac{60}{2^{2n+1}}s$} & \text{\scriptsize on}\\%for odds; use same n here
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\end{array}
+\]
+Is the lamp on or off at midnight?
+\begin{itemize}
+\item For every time the lamp gets turned off before midnight, there is a later time before midnight when it gets turned on. \textbf{So the lamp can't be off at midnight}.
+
+\item For every time the lamp gets turned on before midnight, there is a later time before midnight when it gets turned off. \textbf{So the lamp can't be on at midnight}.
+
+\end{itemize}
+
+
+\section{The Demon's Game\footnote{Rayo learned about this paradox from philosophers Frank Arntzenius, Adam Elga, and John Hawthorne.} {\normalsize \normalfont [Paradox Grade: 4]}}
+
+\(P_1,P_2,P_3,\ldots\) take turns answering  \emph{aye} or \emph{nay}:
+
+\begin{itemize}
+\item If exactly $n$ people say \emph{aye} ($n \in \mathbb{N}$), each person gets $\$n$. 
+
+\item If infinitely many people say \emph{aye}, they all get nothing.
+
+\end{itemize}
+It seems rational for $P_k$ to say \emph{aye}: she can't hurt anyone and might help everyone. But if it's rational for $P_k$ it's rational for everyone. So nobody gets anything.
+
+
+
+
+\section{The Bomber's Paradox\footnote{This paradox is due to Josh Parsons, who was a fellow at Oxford until shortly before his untimely death in 2017. (It is a version of Benardete's Paradox.)
+} {\normalsize \normalfont [Paradox Grade: 6]}}
+
+
+There are infinitely many bombs:
+\[
+\begin{array}{cc}
+\text{\footnotesize Bomb} & \text{\footnotesize When bomb is set to go off} \\
+\text{\scriptsize $B_0$} & \text{\scriptsize 12:00pm} \\
+\text{\scriptsize $B_1$} & \text{\scriptsize 11:30am} \\
+\text{\scriptsize $B_2$} & \text{\scriptsize 11:15am} \\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\text{\scriptsize $B_k$} & \text{\scriptsize \(\dfrac{1}{2^k}\) hours after 11:00am} \\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\end{array}
+\]
+Should one of the bombs go off, it will instantaneously disable all other bombs. So a bomb goes off if and only if no bombs have gone off before it:
+\begin{description}
+
+\item[(0)] \(B_0\) goes off $\leftrightarrow$ \(B_n\)  fails to go off ($n > 0$).
+\item[(1)] \(B_1\) goes off $\leftrightarrow$ \(B_n\)  fails to go off ($n > 1$).
+\item[(2)] \(B_2\) goes off $\leftrightarrow$ \(B_n\) fails to go off ($n > 2$).
+
+
+
+\hspace{5mm }\vdots
+
+\item[$\bm{(k)}$] \(B_k\) goes off $\leftrightarrow$ \(B_n\) fails to go off ($n > k$).
+\item[$\bm{(k+1)}$] \(B_{k+1}\) goes off $\leftrightarrow$ \(B_n\) fails to go off ($n > k+1$).
+
+\hspace{5mm }\vdots
+
+\end{description}
+Will any bombs go off?
+
+
+
+\section{Yablo's Paradox\footnote{This paradox was discovered by Steve Yablo, a philosophy professor at MIT. 
+} {\normalsize \normalfont [Paradox Grade: 8]}}
+
+
+There are infinitely many sentences:
+
+\[
+\begin{array}{cc}
+\text{\footnotesize Label} & \text{\footnotesize Sentence} \\
+ \text{\scriptsize $S_0$} & \text{\scriptsize ``For each \(i>0\), sentence \(S_i\) is false''} \\
+\text{\scriptsize $S_1$} & \text{\scriptsize ``For each \(i>1\), sentence \(S_i\) is false''} \\
+\text{\scriptsize $S_2$} & \text{\scriptsize ``For each \(i>2\), sentence \(S_i\) is false''} \\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\text{\scriptsize $S_k$} & \text{\scriptsize ``For each \(i>k\), sentence \(S_i\) is false''} \\
+\text{\tiny\vdots} & \text{\tiny\vdots}\\
+\end{array}
+\]
+The meanings of our sentences guarantee that each of the following must be true:
+
+\begin{description}
+
+\item[(0)] \(S_0\) is true $\leftrightarrow$ \(S_n\) is false (\(n>0\)).
+
+\item[(1)] \(S_1\) is true $\leftrightarrow$ \(S_n\)  is false (\(n>1\)).
+
+\item[(2)] \(S_2\) is true $\leftrightarrow$ \(S_n\) is false (\(n>2\)).
+
+\hspace{5mm }\vdots
+
+\item[$\bm{(k)}$] \(S_k\) is true $\leftrightarrow$ \(S_n\)  is false (\(n>k\)).
+\item[$\bm{(k+1)}$] \(S_{k+1}\) is true $\leftrightarrow$ \(S_n\)  is false (\(n>k+1\)).
+
+\hspace{5mm }\vdots
+
+
+\end{description}
+Which sentences are true and which ones are false?
+
+
+\section{Bacon's Problem\footnote{This paradox is due to USC philosopher Andrew Bacon. 
+} {\normalsize \normalfont [Paradox Grade: 7]}}
+
+
+\begin{itemize}
+
+\item An omega sequence of prisoners: \(P_1,P_2,P_3,\dots\). (\(P_1\) is at the end of the line, in front of her is \(P_2\), in front of him is \(P_3\), and so forth.) 
+
+\item Each person is assigned a red or blue hat, based on the outcome of a coin toss. 
+
+\item Everyone can see the hats of the people in front of her, but cannot see her own hat (or the hat of anyone behind her). 
+
+\item At a set time, everyone has to guess the color of their own hat by crying out ``Red!" or ``Blue!".
+
+\item  People who correctly call out the color of their own hats will be freed. Everyone else will remain captive. %be shot.
+
+\end{itemize}
+
+\noindent
+\emph{Problem}: Find a strategy that \(P_1, P_2, P_3, \ldots\) could agree upon in advance that would guarantee that at most finitely many people remain captive. %are shot.
+
+
+
+\section{The Three Prisoners\footnote{Rayo doesn't know who invented this paradox, but he learned about it thanks to philosopher and computer scientist Rohit Parikh, from the City University of New York. } {\normalsize \normalfont [Paradox Grade: 2]}}
+
+
+
+
+\begin{itemize} 
+
+\item Three prisoners. Each of them is assigned a red or blue hat, based on the outcome of a coin toss.
+\item Each of them can see the colors of the others' hats but has no idea about the color of his own hat.
+\item The prisoners are then taken into separate cells and asked about the color of their hat. They are free to offer an answer or remain silent. 
+
+\begin{itemize}
+\item If all three prisoners remain silent, all three will remain captive %be killed.
+\item If one of them answers incorrectly, all three will remain captive %be killed.
+\item If at least one prisoner offers an answer, and everyone who offers an answer answers correctly, then all three prisoners will be freed.
+\end{itemize}
+\end{itemize}
+
+\noindent
+\emph{Problem}: Find a strategy that the prisoners could agree upon ahead of time that would guarantee that their chance of survival is above 50\%.
+
+
+
+\begin{figure}
+\[
+\begin{array}{cccc}
+\text{\footnotesize Prisoner $A$} & \text{\footnotesize Prisoner $B$} & \text{\footnotesize Prisoner $C$} &\text{\footnotesize Result of following Strategy} \\
+ \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize Everyone answers incorrectly} \\
+  \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize $C$ answers correctly} \\
+   \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize $B$ answers correctly} \\
+    \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize $A$ answers correctly} \\
+     \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize red} & \text{\scriptsize $A$ answers correctly} \\
+      \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize blue} & \text{\scriptsize $B$ answers correctly} \\
+       \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize red} & \text{\scriptsize $C$ answers correctly} \\
+        \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize blue} & \text{\scriptsize Everyone answers incorrectly} \\
+\end{array}
+\]
+\caption{The eight possible hat distributions, along with the result of applying the suggested strategy.}
+\label{fig:prisoners}
+\end{figure}
+
+
+
+
+
+
+\end{document}
+
+
+
+

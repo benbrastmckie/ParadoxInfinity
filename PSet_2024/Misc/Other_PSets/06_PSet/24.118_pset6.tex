@@ -1,0 +1,752 @@
+
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{pset-2023}
+
+%note to Josh: see my marginalia on 2021/2022 version printed out. lots of things to fix or clarify. really not sure if i understand problem 3...could ask Josh P. could also save a version of this problem for PSet 7/8 depending on the content there. e.g. extend probability day into the week we're slated to start topic 7. fits well enough w/ measure theory! 
+
+%currently at 35 points in the quiz, so need 65 points from Part II, which seems tough...could get 8*4 = 32 from the derivation problem. 
+%there might also be some good commented out questions below?
+%could also supplement with stuff from 183 on Bayes theorem, e.g. the odds formulation 
+
+%Part II Points: 6 points for ticket question; 32 to 40 points for the four derivations; If I include the number 3 worlds question, I'd definitely hit 65 points, e.g. 3 of these subparts at 8 points each: 24 +32+6 = 62.  could delete the part a about strenghts of these worlds...
+%could also automate this question three perhaps??? 
+
+%could ask a philosophical question about subjective or objective probability or preferred interpretation of probability 
+
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{qa}
+\usepackage{graphicx}
+
+
+
+\begin{document}
+
+
+
+\psintro{Problem Set 6: Probability}
+
+
+% For next time: at present the problem set doesn't address countable additivity, which is actually kind of important for the next module. It'd be good to add a problem on that. Alternatively, if Paradox is restructured, countable additivity might be treated as a topic for the residential session.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\question{
+\subsection*{Preliminaries} 
+
+ \subsubsection*{Logical Notation}
+ 
+\begin{itemize}
+
+\item `$\overline{A}$' is the negation of $A$; 
+\item `$A B$' is the conjunction of $A$ and $B$; 
+\item `$A \vee B$' is the disjunction of $A$ and $B$.
+
+\end{itemize}
+
+
+Recall that a \textbf{probability function}, $p(\ldots)$, is an assignment of real numbers between $0$ and $1$ to propositions that satisfies the following two internal coherence conditions:\label{gloss:prob-fun}
+\begin{description}
+\item[Necessity]  $p(A) = 1$ whenever $A$ is a necessary truth (e.g. a logical truth)
+
+\item [Additivity]  $p(A \vee B) = p(A) + p(B)$ whenever $A$ and $B$ are incompatible propositions
+
+\end{description}
+We take logically equivalent sentences to express the same proposition, which means that ``$p(A) = p(B)$'' is true whenever $A$ and $B$ are logically equivalent. (So, for instance, $p(A) = p(AB \vee A\overline{B})$.)
+
+Throughout this problem set, we will assume that the credence function of a rational agent is always a probability function, and always satisfies the following principle:
+\begin{description}
+\item[Bayes' Law]
+%$p(AB) = p(A)\cdot p(B|A)$
+$p(H|E) = p(HE) / p(E) = p(HE) / [p(H) p(E|H) + p(\overline{H}) p(E|\overline{H})]$
+
+\end{description}
+In addition, we will assume the following:
+\begin{description}
+\item[Update by Conditionalization]
+If $S$ is rational, she will update her credences as follows, upon learning that $B$:
+$$p^{new}(A) = p^{old}(A|B)$$
+where  $p^{old}$ is the function describing $S$'s credences before she learned that $B$, and $p^{new}$ is the function describing her credences after she learned that $B$.
+\end{description}
+Finally, we will assume the following connection between objective and subjective probabilities:
+ \begin{description}
+\item[The Objective-Subjective Connection]
+The objective probability of $A$ at time \emph{t} equals the subjective probability that a perfectly rational agent would assign to $A$ if she were to have perfect information about the way the world is before $t$ (and without relying on any information about the way the world is \textit{after} $t$).\footnote{
+\emph{Nerdy observation:} Here we tacitly presuppose that a perfectly rational agent is always certain about the objective probabilities at $t$, given full information about how the world is before $t$. So, in particular, for each complete history of the world up to $t$, $H_t$, there is a specification $P_t$ of the objective probabilities at $t$ such that the agent treats $H_t$ and $H_1 P_t$ as equivalent. This assumption is potentially controversial but simplifies our discussion.
+}
+%The objective probability of $A$ at time \emph{t} equals the subjective probability that a perfectly rational agent would assign to $A$, if she had perfect information about the way the world is before $t$ and no information about the way the world is after $t$.%
+\end{description}
+
+\newpage 
+
+It'd be nice if we could also assume the Principle of Indifference:
+
+\begin{description}
+\item[Principle of Indifference]
+Consider a set of propositions and suppose one knows that exactly one of them is true. Suppose, moreover, that one has no more reason to believe any one of them than any other. Then, insofar as one is rational, one should assign equal credence to each proposition in the set.
+
+\end{description}
+ As you may recall from the course materials, the Principle of Indifference leads to absurd results. But we really need something like it, and it's not clear what to put in its place. So we'll leave it in place warily: we'll try not to use it, but we will if we must\dots very carefully!
+
+
+}
+
+\subsection*{Part I (40 points; submit on Canvas!)} 
+%need to update point values, double check Canvas, and mention Canvas problems
+
+\begin{enumerate}
+ 
+ 
+\item \question{
+This question provides some practice working with probabilities.
+ 
+An urn is filled using the following procedure. At each time $t_i$ for $i \in \{0, 1, 2\}$, two fair coins are tossed. The first coin is used to decide what kind of object to add to the urn: a marble or a die. The second coin is used to decide the color of the selected object: black or white. At the end of the process, there are three objects in the urn, each a marble or a die, each black or white. (7~points total)
+ 
+% For each of the questions below, make sure you justify your answers using the assumptions listed in ``Preliminaries''.
+ }
+ 
+ \begin{enumerate}
+ 
+ \item \question{What initial credence should you have in the proposition that every die in the urn is black (equivalently: the proposition that no object in the urn is a white die)?}
+ 
+ \answer{
+
+ 
+The easiest way to calculate the value of $p(A)$, for $A$ a relevant proposition, is to start with a space of worlds, one for each possible outcome of the coin tosses. One then assigns the same probability to each world (on the grounds that coin tosses are independent of one another). Finally, one takes the number of worlds compatible with $A$ and divides it by the total number of worlds.
+
+In the present case, $A$ is the proposition that every die is black. So we can proceed as follows:
+ 
+$$p(\text{every die  black}) = \frac{|\text{worlds with no white dice}|}{|\text{worlds}|} = \frac{27}{64} \approx 0.42$$
+
+Note there are 64 possible worlds, since the urn contains three objects, and each object is one of four possibilities. So there are $4 * 4 * 4 = 4^3 = 64$ possible urns. 
+
+Similarly, to determine how many possible urns have no white dice, note that this amounts to restricting each object to being one of now three possibilities. So there are $3 * 3 * 3 = 3^3 = 27$ possible urns with no white dice. 
+
+An alternative way of proceeding is by deploying the probability axioms rather than counting worlds. For instance: 
+ \begin{quote}
+ $$p(\text{every die is black}) = p(\overline{D(1) W(1)} \ \overline{D(2) W(2)} \ \overline{D(3) W(3)})$$
+ Since coin tosses are independent of one another, this means that 
+ $$p(\text{every die is black}) = p(\overline{D(1) W(1)}) \cdot p( \overline{D(2) W(2)}) \cdot p(\overline{D(3) W(3)})$$
+  But: $$p( \overline{D(i) W(i)}) = p(D(i)B(i) \vee M(i)) = p(D(i)B(i)) + p(M(i)) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}$$
+  So:
+  $$p(\text{every die is black}) = \left(\frac{3}{4}\right)^3 \approx 0.422$$
+  \end{quote}
+One excellent student answer might spell out the point about independence a bit further:
+\begin{quote}
+For an $H_1$ and $H_2$ to be probabilistically independent  is for it to be the case that $p(H_1|H_2) = p(H_1)$. But:
+\[ \begin{array}{rcl}
+p(H_1|H_2) &=  &p(H_1)\\
+\frac{p(H_1 H_2)}{p(H_2)} &=  &p(H_1)\\
+p(H_1 H_2) &=  &p(H_1)c(H_2)
+ \end{array}\] 
+ So, generally speaking, one's credence in the conjunction of probabilistically independent events should equal the product of one's credences in the individual events.
+ 
+
+\end{quote}
+
+  
+ }
+ 
+ % Note: I've slightly changed the questions from 2021. (Now they only ask whether credences go up or down. I've also updated the answers which were incorrect.)
+ 
+ \item \label{ex:die} 
+ \question{You learn that the urn contains at least one die. Should your credence in the proposition that every die in the urn is black go up or down?}
+ 
+ 
+ \answer{
+Your credence goes down. Here is an intuitive, heuristic argument: upon learning that the urn has a die, you learn that there is a possible counterexample to ``every die being black'', namely the possible existence of a white die in the urn. You rule out those worlds where every object in the urn is a marble (in which it is trivially true that every die in the urn is black)
+
+We can calculate the new credence via conditionalization, again by counting worlds:
+\begin{align*}
+p^{new}(\text{every die  black}) &= p(\text{every die  black} \ | \ \exists \text{  die})\\
+&= \frac{p(\text{every die black} \ \& \ \exists \text{  die})}{p(\exists \text{  die})}\\
+&= \frac{\frac{19}{64}}{\frac{7}{8}}\\
+&=\frac{19}{56}\\
+&\approx 0.34
+\end{align*}
+
+Note that to say ``every die in the urn is black and there is at least one die'' is to say that all the die are black and (either there is exactly one black die, exactly two black dice, or exactly three black dice). There is one possible urn with all black dice. There are $2*3=6$ possible urns with exactly two black dice (and no white dice), since the third object is either a black or white marble, and it can be either the first, second, or third object selected, yielding  $2*3=6$ such urns. \\ Finally, there are $2*2*3=12$ possible urns with exactly one black die (and no white dice), since the black die can be in one of three positions, and the other two objects each have two possibilities (black or white marble). So there are $1+6+12 = 19$ such urns. 
+
+Second, $p(\exists \text{  die}) = 1 - p(\text{no objects in the urn are die}) = 1 - 8/64 = 56/64=7/8$. Note that there are $2*2*2 = 2^3 = 8$ possible urns with all marbles, since for each of the three objects, there are two ways for it to be a marble. 
+
+%Alternatively, note that $p(\text{every die black} \ \& \ \exists \text{  die})$ equals $1- p(not the case that (\text{every die black} \ \& \ \exists \text{  die}))$ which equals $1- p(not every die black OR not there exists a die)$ = $1-p(at least one white die) - p(all marbles) = p(every die is black) - p(all marbles) = 27/64 - 8/64 = 19/64$
+
+Note that there's a different way of thinking about the problem where one learns not that the urn contains at least one die, but rather that some particular item in the urn is a die. Although this is not the right way to think about the problem (and leads to a slightly different result), the difference is subtle and shouldn't be punished in this context. (And it won't: both answers agree that your credence goes down.)
+
+Let $d$ be the item that's identify as being a die, and let $o_1$ and $o_2$ be the other two. Then:
+ $$p^{new}(\text{every die is black}) = p(\emph{every die is black} | D(d)) =$$
+ $$\frac{p(\emph{every die is black}  \ D(d))}{p(D(d))} =$$
+ $$\frac{p(\overline{D(o_1)W(o_1)} \ \overline{D(o_2)W(o_2)} \ B(d) D(d))}{p(D(d))} =$$
+  $$\frac{p(\overline{D(o_1)W(o_1)}) \cdot p (\overline{D(o_2)W(o_2)}) \cdot  p(B(d)) \cdot p(D(d))}{p(D(d))} =$$
+    $$p(\overline{D(o_1)W(o_1)}) \cdot p (\overline{D(o_2)W(o_2)}) \cdot p(B(d))=$$
+    $$\left(\frac{3}{4}\right)^2 \cdot \frac{1}{2} \approx 0.281$$
+  
+ }
+ 
+  
+ \item \question{
+Same question as before, except that instead of learning that the urn contains at least one die, you learn that the urn contains at least one white marble. }
+ 
+  \answer{
+Your credence goes up. Heuristic justification: you have learned that there is one less way for there to be a counterexample, so you should become more confident that every die is black. 
+
+
+\begin{align*}
+p^{new}(\text{every die  black}) &= p(\text{every die  black} \ | \ \exists \text{ white marble})\\
+&= \frac{p(\text{every die black} \ \& \ \exists \text{ white marble})}{p(\exists \text{ white marble})}\\
+&= \frac{\frac{19}{64}}{\frac{37}{64}}\\
+&=\frac{19}{37}\\
+&\approx 0.51
+\end{align*}
+
+Note that $p(\exists \text{ white marble}) = 1- p(\text{there are no white marbles}) = 1 - 27/64 = 37/64$, since if there are no white marbles, each of the three objects can be one of three possible things, leading to $3^3 = 27$ possible urns with no white marbles. 
+
+Where $p$ is your initial credence function, $d$ is the drawn item, and $o_1$ and $o_2$ are the other two:
+ $$p^{new}(\text{every die is black}) = p(\emph{every die is black} | M(d)W(d)) =$$
+ $$\frac{p(\emph{every die is black}  \ M(d)W(d))}{p(M(d)W(d))} =$$
+ $$\frac{p(\overline{D(o_1)W(o_1)} \ \overline{D(o_2)W(o_2)}  \ M(d)W(d))}{p(M(d)W(d))} =$$
+  $$\frac{p(\overline{D(o_1)W(o_1)}) \cdot p (\overline{D(o_2)W(o_2)}) \cdot  p(M(d)W(d))}{p(M(d)W(d))} =$$
+    $$p(\overline{D(o_1)W(o_1)}) \cdot p (\overline{D(o_2)W(o_2)}) =$$
+    $$\left(\frac{3}{4}\right)^2 \approx 0.562$$
+  
+ }
+
+ 
+ \end{enumerate}
+ 
+ 
+ \item \question{For each of the following scenarios, say which of the two outcomes is more probable.
+} 
+
+
+\begin{enumerate}
+
+\item \question{A fair coin is tossed seven consecutive times. Which of the following outcomes is more probable? (2 points)
+  
+  \begin{description}
+  \item[Outcome 1:] The seven tosses result in the sequence \(\langle T, T, T, T, T, T, T\rangle\). 
+  
+\item[Outcome 2:]  The seven tosses result in the sequence \(\langle T, T, T, H, T, H, T\rangle\). 
+  
+  \end{description}
+}
+
+\answer{  They are equally probable. This is so because the outcome of each toss is independent of the outcome of the preceding tosses. So, the probability of Outcome \(1\)  is \((1/2)^{7}\), as is the probability of Outcome \(2\).}
+      
+\item  \question{       
+You are dealt a hand of seven cards from a standard deck of 52 cards, half of which are red (\(R\)) and half of which are black (\(B\)). Which of the following outcomes is more probable? (2 points)
+  
+  \begin{description}
+  \item[Outcome 1:] The seven cards form a sequence \(\langle B, B, B, B, B, B, B\rangle\). 
+  
+\item[Outcome 2:]  The seven cards form a sequence \(\langle B, B, B, R, B, R, B\rangle\). 
+
+  
+  \end{description}
+}
+
+\answer{        Outcome \(2\) is more probable than Outcome \(1\) because as more and more black cards are dealt, it becomes less and less probable that additional black cards will be dealt. 
+       Here's the same point, put a little more precisely: of the ordered 7-tuples of cards that can be built from a standard pack of cards, 
+       \(26\times 25\times 24\times 23\times 22\times 21\times 20\) 
+       of them correspond to Outcome \(1\), and 
+       \(26\times 25\times 24\times 26\times 23\times 25\times 22\) 
+       of them correspond to Outcome \(2\). Since the latter number is larger, Outcome \(2\) is more probable. 
+       }
+       
+     
+ \end{enumerate}
+ 
+ 
+  \item \label{prob-seq}
+ \question{The aim of this problem is for you to think about the differences between objective and subjective probability.
+ 
+For each of the questions below, there is a unique numerical answer. Next, justify your answer using the most relevant principle mentioned in ``Preliminaries'', i.e. provide the `best' answer. Since the Principle of Indifference can lead to absurd results, appeal to it only as a last resort. 
+
+%Half of your grade will be determined by whether the given answer is correct. The other half will depend on whether you are able to justify your answer using one or more of the principles mentioned in ``Preliminaries''. Proofs need not be as rigorous as those in problem~\ref{pr:rigor}, but you must do your best to make your justification water-tight. If you can't make it water-tight, then at least make sure that you identify the right principles from ``Preliminaries'' and use them sensibly. Since the Principle of Indifference can lead to absurd results, use it only as a last resort and use it carefully.   (The word limit does not apply to this problem, but please keep your justifications as succinct as possible.)
+ 
+}
+   
+  
+\begin{enumerate}
+
+\item \label{ex:ur} \question{Let $x$ be a particle of $^{235}$U, which has a half life of $7.04 \cdot 10^8$ years. What credence (i.e. subjective probability) should you assign to the proposition that $x$ will decay sometime within the next $7.04 \cdot 10^8$ years? (3~points)}
+
+\answer{$0.5$. 
+
+A good answer, sufficient for full credit, might go as follows:
+
+\begin{quote}
+It follows from the fact that $x$'s half life is $7.04 \cdot 10^8$ years that the \emph{objective} probability that $x$ will decay within the next $7.04 \cdot 10^8$ years is $0.5$. It then follows from the \textbf{Objective-Subjective Connection} that a perfectly rational agent with perfect information about the past (and none about the future) would assign credence $0.5$ to the proposition that $x$ will decay sometime within the next $7.04 \cdot 10^8$ years. So your own credence should be something other than $0.5$ only if you have information about the future, which you don't. \\ (Note that it's perhaps more apt to say that we're relying on something like the Principal Principle, aka Miller's principle, in setting our subjective credence to the known objective chance. But for whatever reason, the previous versions of this course don't seem to put matters in terms of the Principal Principle...)
+\end{quote}
+An excellent answer, deserving extra credit, would spell out the argument in greater detail:
+\begin{quote}
+Let  $D$ be the proposition that $x$ will decay sometime within the next $7.04 \cdot 10^8$ years.
+It follows from the fact that $x$'s half life is $7.04 \cdot 10^8$ years that the {objective} probability of $D$ is $0.5$. It then follows from the Objective-Subjective Connection that a perfectly rational agent with perfect information about the past (and none about the future) would assign credence $0.5$ to $D$.
+
+Now suppose you are perfectly rational and that---although you have not quite learned the full truth about the past---the information you have acquired, $E$, is entirely about the past. Suppose, moreover, that a rational agent would take $E$ to be compatible with the proposition that $p(D) = 0.5$, were $p$ is objective probability.
+
+
+Because $E$ is entirely about the past, it is equivalent to some disjunction $H^1_t \vee H^2_t \vee \dots$ of possible histories-up-to-$t$. (We must assume that the conjunction is either finite or countably infinite, to ensure Conglomerability later on.) Because perfectly rational agents are always certain about the objective probabilities at $t$, given full information about how the world is before $t$, each $H_t^j$ is equivalent to $H_t^jP_t^j$, where $P_t^j$ is a complete specification of the objective probabilities at $t$. 
+
+Because $E$ (and therefore $H^1_t \vee H^2_t \vee \dots$) is compatible with $p(D) = 0.5$, there are some $H^{k_1}_t,H^{k_2}_t,\dots$ amongst the $H^1_t,H^2_t$  such that each $P^{k_i}_tH^{k_i}_t$ entails $p(D) = 0.5$. (Note that every $H^j_t$ outside this list entails something incompatible with [$p(D) = 0.5$].) So $(p(D) = 0.5)E$ is equivalent to $H^{k_1}_t \vee H^{k_2}_t \vee \dots$:
+$$c(D|(p(D) = 0.5)E) = c(D|H^{k_1}_t \vee H^{k_2}_t \vee \dots)$$
+But, for each $i$, we know that $c(D|H^{k_i}_t) = 0.5$. So, by Conglomerability,
+$$c(D|(p(D) = 0.5)E) = c(D|H^{k_1}_t \vee H^{k_2}_t \vee \dots) = c(D|H^{k_1}_t) =0.5$$
+
+And how do we know that Conglomerability holds? Here is a proof for the finite case. (The result also holds in the countably infinite case but requires Countable Additivity.)
+
+ \[ \begin{array}{rcl}
+p(A|B_1) &=  &p(A|B_2)\\
+\frac{p(AB_1)}{B_1}&=  &\frac{p(AB_2)}{B_2}\\
+p(B_2)\cdot p(AB_1) &=  &p(B_1)\cdot p(AB_2)\\
+p(B_2)\cdot p(AB_1) &=  &p(B_1)( p(AB_2) + p(AB_1) - p(AB_1)) \\
+ p(B_1)\cdot p(AB_1)+p(B_2)\cdot p(AB_1) &=  &p(B_1)\cdot p(AB_2) + p(B_1)\cdot p(AB_1) \\
+ p(AB_1)(p(B_1)+p(B_2)) &=  &p(B_1) (p(AB_2) + p(AB_1)) \\
+ \frac{p(AB_1)}{p(B_1)}(p(B_1)+p(B_2)) &=  & p(AB_2) + p(AB_1) \\
+ p(A|B_1)(p(B_1)+p(B_2)) &=  & p(AB_1) + p(AB_2) \\
+ p(A|B_1) &=  &\frac{ p(AB_1) + p(AB_2)}{p(B_1)+p(B_2)} \\
+  p(A|B_1) &=  &\frac{ p(AB_1 \vee AB_2)}{p(B_1 \vee B_2)} \\
+  p(A|B_1) &=  &\frac{ p(A(B_1 \vee B_2))}{p(B_1 \vee B_2)} \\
+  p(A|B_1) &=  &p(A|B_1 \vee B_2)
+ \end{array}\] 
+We have now shown that $c(D|(p(D) = 0.5)E) = 0.5$.  But the only restrictions on $E$ are that it be entirely about the past and that it be compatible with $p(D) = 0.5$. So if you're fully rational, then as long as everything you've learned is entirely about the past and compatible that $p(D) = 0.5$, Update by Conditionalizing entails that you should believe $D$ to degree 0.5.
+
+\end{quote}
+
+}
+
+
+\item  \label{ex:tt} \question{As in (\ref{ex:ur}), except that this time a time traveler informs you that she has been to the future and knows that the particle will, in fact, decay within the next $7.04 \cdot 10^8$ years. Assume that the time-traveller is completely reliable and that you are certain this is so. What credence (i.e. subjective probability) should you assign to the proposition that the particle decays within the next $7.04 \cdot 10^8$ years? (3~points)}
+ 
+ \answer{
+ Credence 1. Since you are certain that the time-traveller is reliable,
+$$c^{old}(\text{particle decays within the next $7.04 \cdot 10^8$ years} | \text{tt says so}) = 1.$$
+So, by \textbf{Update by Conditionalizing}, you can use your evidence that the time-traveller says the particle will decay within $7.04 \cdot 10^8$ years to conlcude $$c^{new}(\text{particle decays within the next $7.04 \cdot 10^8$ years}) = 1.$$
+ 
+ }
+
+\item \question{In the scenario described in (\ref{ex:tt}), what is the \textbf{objective probability} that the particle decays within the next $7.04 \cdot 10^8$ years? Assume that the decay process is indeterministic (\textit{pace} Bohmian Mechanics!) (3~points)}
+
+\answer{0.5.  It is explicitly stated in the problem that the particle has a half-life of $7.04 \cdot 10^8$ years, which entails that, at any given time, the objective probability of its decaying within that time frame is 0.5. As in part (a), we rely on the \textbf{Objective--Subjective Connection} here.
+
+Just because you know how a chancy event will, in fact, turn out, it doesn't follow that the event isn't chancy!}
+
+
+
+
+
+\item \question{A standard deck of 52 cards has been thoroughly shuffled. Assuming this is all you know about the cards, what credence (i.e. subjective probability) should you assign to the proposition that the card at the top of the deck is the ace of spades? (3~points)}
+
+\answer{By the Principle of Indifference, you should assign equal probability to each proposition [card $X$ is at the top of the deck], where $X$ is a card in a standard deck. So your credence in $A\spadesuit$ (or the ace of spades) should be $1/52$.}
+
+\item \question{A standard deck of 52 cards has been thoroughly shuffled. What is the \textbf{objective probability} that the card at the top of the deck is the ace of spades? \\ You may assume that card-shuffling is a deterministic process. (3~points)}
+
+\answer{0 or 1. 
+
+A good justification, deserving of full credit, might look something like this (written in terms of the three of hearts):
+
+\begin{quote}
+Suppose you are a fully rational agent with full information about the past (but no information about the future). Then you would know exactly how the cards were shuffled and therefore the identity of the card at the top of the deck. Since you are fully rational, you would assign credence 0 or 1 (depending on whether you know that card to be the three of hearts or not) to the proposition that the card at the top of the deck is the three of hearts.
+
+So by the \textbf{Objective-Subjective Connection}, the objective probability that the card is the three of hearts is either 0 or 1.
+\end{quote}
+An excellent justification, deserving of extra credit, would go into greater detail:
+
+\begin{quote}
+Suppose you are a fully rational agent with full information about the past (but no information about the future). Let $3 \heartsuit$ be the proposition that the three of hearts is at the top of the deck.
+
+Let $H$ be a proposition fully describing the past. Since you have full information about the past, you know $H$. By Update by Conditionalization, you accommodate this information by conditionalizing, which means that your updated credence function is as follows:
+$$c^{new}(\dots) = c^{old}(\dots|H)$$
+Let $C$ be the truth about which card is a the top of the deck. Since $H$ entails $C$, $H$ is logically equivalent to $HC$. So 
+$$c^{new}(C) = c^{old}(C|H) = c^{old}(C|HC) = \frac{HC}{HC} = 1$$
+(assuming you did not previously assign credence 0 to $H$).
+So if $C$ is the proposition $3\heartsuit$ , your credence in $3\heartsuit$ is 1. 
+
+If $C$ is the proposition that $X$ is at the top of the deck, for some other card $X$, then your credence in $3\heartsuit$ is 0.  To see this, note that your credence function should be a probability function. So:
+$$1 = c^{new}(\text{3$\heartsuit$} \vee \overline{\text{3$\heartsuit$}})=c^{new}(\text{3$\heartsuit$}) + c^{new}(\overline{\text{3$\heartsuit$}})$$
+So, given that $C$ entails $\overline{\text{3$\heartsuit$}}$:
+$$c^{new}(\text{3$\heartsuit$}) = 1 - c^{new}(\overline{\text{3$\heartsuit$}}) = 1- c^{old}(\overline{\text{3$\heartsuit$}}|C) = 1- c^{old}(\overline{\text{3$\heartsuit$}}|\overline{\text{3$\heartsuit$}C}) = 1 - \frac{\overline{\text{3$\heartsuit$}C}}{\text{3$\heartsuit$}C} = 0$$
+
+(Note that you are not dividing by 0, since, by the Principle of Indifference, you assign equal probability to each proposition [card $X$ is at the top of the deck], where $X$ is a card in a standard deck.) 
+
+
+So your credence in ${\text{3$\heartsuit$}}$ is either 0 or 1. So by the Objective-Subjective Connection, the objective probability that the card is the three of hearts is either 0 or 1.
+\end{quote}
+
+
+}
+
+
+\end{enumerate}
+
+\item[4--8.] See Canvas Quiz for Part I for additional problems. Woooo fun!
+
+\answer{worked solutions to these additional questions can be seen by instructors in the canvas quiz, e.g. by editing the quiz and showing question details. Be careful not to change any answers haha!}
+
+ \end{enumerate}
+  
+  \clearpage
+
+
+%%%%%%%%
+%PART II
+%%%%%%%%
+
+\subsection*{Part II (60 points; justify all answers)} 
+
+
+\begin{enumerate}
+ \setcounter{enumi}{8}
+ 
+ \item \question{
+The aim of this question is to get you to see the importance of \textit{internal coherence} as a constraint on subjective probability.
+
+Let $T(p)$ be a ticket that pays \$1 if $p$ is true and nothing otherwise. Consider a subject who is willing to pay any amount smaller than $\$r$ for ticket $T(p)$ when her credence in $p$ is $r$. Now suppose that our subject is irrational. She assigns credence 0.68 to the proposition that it'll rain at some point today (in her neighborhood), and she also assigns credence 0.68 to the proposition that it won't rain at all today in her neighborhood. 
+
+Describe a pair of tickets $T(p_1)$ and $T(p_2)$, and suggest a price for each ticket, in such a way that: (a) the subject is willing to buy each of your tickets for the suggested price, and (b) the subject ends up loosing money regardless of whether it rains today. (8~points)
+}
+
+\answer{
+\begin{itemize}
+
+\item $T(\text{rain})$: suggested price: \$0.67.
+
+\item $T(\text{no rain})$: suggested price: \$0.67.
+
+\end{itemize}
+Note that since each ticket costs less than her credence in the given proposition, she will be willing to buy each ticket. Yet, if the subject buys both of these tickets she will have spent $\$1.34$, and will receive \$1 regardless of whether it rains or does not rain. Hence, she is guaranteed to lose 34 cents.
+ }
+ 
+ 
+ \item \question{The aim of this problem is to give you some practice working with probability functions in a rigorous way.
+ 
+ Assume that for some probability function $p$, $p(B|A) = p(\overline{B}|\overline{A})$ and $p(A) = p(\overline{A})$. Use Bayes' Law and the fact that $p(\dots)$ is a probability function to give a rigorous proof of each of the following results. You must display every step of your proof. \\ Earlier results may be used in your proofs of later results. } \label{pr:rigor}
+ %(8~points each)
+
+ 
+ \begin{enumerate}
+ 
+ \item  \question{$p(B A) =  p(\overline{B} \, \overline{A})$ (6~points)}
+ 
+ \answer{
+ We know that $p(A) = 0.5 = p(\overline{A})$ and therefore that $p(A) \neq 0 \neq p(\overline{A})$. So we may proceed as follows:
+ \[ \begin{array}{rcl}
+p(B|A) &=  &p(\overline{B}|\overline{A})\\
+\frac{p(BA)}{p(A)} &=  &\frac{p(\overline{B} \, \overline{A})}{p(\overline{A})}\\
+p(B A) &=  &p(\overline{B} \,\overline{A})\\
+%p(B A) &=  &p(\overline{B} \,\overline{A})
+ \end{array}\] 
+ }
+ 
+ \item \question{ $p(C | A) = 1 - p(\overline{C} | A)$, for arbitrary $C$ (10~points) }
+ 
+ \answer{
+We know that $p(A) = 0.5$ and therefore that $p(A) \neq 0$. So we may proceed as follows:
+\[ \begin{array}{rcl}
+p(CA \vee \overline{C}A) &= &p(CA) + p(\overline{C}  A) \text{(since these are mutually exclusive events)}\\
+p(A) &= &p(CA) + p(\overline{C}  A) \text{(since if A occurs, either C does or doesn't)}\\
+p(C A) &= &p(A) - p(\overline{C}  A)\\
+\frac{p(C  A)}{p(A)} &= &1 - \frac{p(\overline{C}  A)}{p(A)}\\
+p(C | A) &= &1 - p(\overline{C} | A)
+ \end{array}\] 
+ }
+ 
+ 
+ \item  \question{$p(\overline{B} A) =  p(B  \overline{A})$ (10~points)}
+
+
+\answer{
+\[ \begin{array}{rcl}
+1 - p(B | A) &=  &1 -p(B | A)\\
+1 - p(B | A) &=  &1 -p(\overline{B} | \overline{A}) \text{(by given property of p)}\\
+p(\overline{B} | A) &=  &p(B | \overline{A}) \text{(since in general, } p(C|D)+p(\overline{C}|D) =1)\\
+p(A) \cdot p(\overline{B} | A) &=  &p(A) \cdot p(B | \overline{A})\\
+p(A) \cdot p(\overline{B} | A) &=  &p(\overline{A}) \cdot p(B | \overline{A})\\
+p(\overline{B} A) &=  &p(B \overline{A})\\
+ \end{array}\] 
+
+}
+
+\item \question{$p(B) = p(\overline{B})$ (10~points) }
+
+
+\answer{
+\[ \begin{array}{rcl}
+p(B\overline{A}) &=  &p(\overline{B}A) \text{ (from part c)}\\
+p(B A) + p(B\overline{A}) &=  &p(\overline{B}A) + p(BA)\\
+p(B A) + p(B\overline{A}) &=  &p(\overline{B}A) + p(\overline{B}\,\overline{A}) \text{ (from part a)}\\
+p(B A \vee B\overline{A}) &=  &p(\overline{B}A \vee \overline{B}\,\overline{A})\\
+p(B) &=  &p(\overline{B}) \text{(since if B occurs, either A does or doesn't)}
+ \end{array}\] 
+}
+ 
+ 
+  \end{enumerate}
+  
+
+
+\item \question{
+Recall the Objective-Subjective Connection from above (i.e. go re-read it!) \\
+%following connection between objective and subjective probability: 
+% \begin{description}
+%\item[The Objective-Subjective Connection]
+%The objective probability of $A$ at time \emph{t} equals the subjective probability that a perfectly rational agent would assign to $A$, if she had perfect information about events before \emph{t} and no information about events after $t$.
+%\end{description}
+A \textbf{deterministic world} is such that given a full specification of the world at any given time, the laws can be used to determine a full specification of the world at any future time.
+}
+
+\begin{enumerate}
+
+\item \question{
+Suppose that we live in a deterministic world and that I am about to toss a coin. Assuming that the Objective-Subjective Connection holds, what is the \emph{objective} probability that the toss will land Heads? (8~points)
+}
+
+\answer{It is \textbf{either 0 or 1}. For the coin will either land heads or it won't. If it will, then, since we live in a deterministic world, a perfectly rational agent with access to full information about the initial conditions, should be able to figure out that the coin will land heads. So she would assign a subjective probability of 1 to the proposition that the coin lands heads. By the \\ \textbf{Objective-Subjective connection}, the current objective probability that the coin will land heads is 1. If the coin won't land heads, a similar reasoning shows that the current objective probability that the coin will land heads is 0.}
+    
+    
+\item \question{What \emph{subjective} probability should \textit{you} assign to the the proposition that the toss will land Heads? Assume that you are an ordinary person, who doesn't know the initial conditions of the universe or the exact physical forces that will be experienced by the coin as I toss it.  (8~points)}
+
+\answer{Ordinary coins land heads about half the time, when tossed. This is all the information you have to go on, in the above scenario, when deciding your subjective probability that the coin will land heads. So you should assign it subjective probability 0.5.}
+
+\end{enumerate}
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ %left out for variety
+\com{ 
+ 
+\item \label{prob}
+\question{The aim of this problem is to get you to think about some of the limitations of probability theory.
+
+A fair coin will be tossed until it lands heads. If the coin lands heads on the $n$th toss, you get \$$2^n$. (If the coin never lands Heads, no money exchanges hands.)}
+
+\begin{enumerate}
+\item \question{What is the expected dollar value of playing the game? (5 points)}
+
+\answer{\[
+\begin{array}{rcl}
+EV(\mbox{Play}) &=& v(\mbox{H1 Play})\cdot p(\mbox{H1}|\mbox{Play}) + \ldots +v(\mbox{H$n$ Play})\cdot p(\mbox{H$n$}|\mbox{Play}) + \ldots\\
+\ &=& 2 \cdot \frac{1}{2} + \ldots +  2^n \cdot \left(\frac{1}{2}\right)^n + \ldots\\
+\ &=& 1 + \ldots + 1 + \ldots\\
+\ &=& \infty
+\end{array}
+\]
+}
+
+
+\item \question{
+A standard assumption in decision theory is that if the expected dollar value of an option is greater than $\$m$, then you should be willing to pay \$$m$ for the privilege of taking that option.  On this assumption, how much should one be willing to pay for the privilege of playing the game? (5 points)
+}
+
+\answer{
+For any natural number $n$, you should be willing to pay $\$n$.
+}
+
+\item \question{
+Does the standard assumption above deliver the right result in this case? If so, explain why. If not, explain what is wrong with the standard assumption? (5~points)
+}
+
+\answer{I'd like to see is some evidence that the student grappled with the problem. A reasonable answer might suggest that, e.g., the standard assumption doesn't work when unbounded amounts of money are involved. 
+}
+
+
+\end{enumerate}
+
+}
+ 
+
+% IDEA FOR NEXT TIME: USE MONTY HALL PROBLEM
+
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+% SOME OLD PART 1 QUESTIONS:
+
+\com{ %begin com
+\item \question{The aim of this question is to get you to think about the nature of objective probability.
+
+Consider three different descriptions of a given world $w$:
+
+\begin{description}
+
+\item[{$[\alpha]$}]
+The world exists for 19,848 seconds. At the $i$th second ($i \leq 19,848$), event $e_i$ occurs.
+
+$e_1$ is of type B; \\  $e_2$ is of type B; \\ $e_3$ is of type A; \\ \vdots \\ $e_{19,848}$ is of type A.
+
+\item[{$[\beta]$}] The world exists for 19,848 seconds. At the $i$th second ($i \leq 19,848$), event $e_i$ occurs. 9,933 of the $e_i$ are of type A; the rest are of type B.
+
+\item[{$[\gamma]$}] The world exists for 19,848 seconds. At the $i$th second ($i \leq 19,848$), event $e_i$ occurs. Before each $e_i$ occurs, the objective probability that it will be an event of type A is 50\% and the objective probability that it will be an event of type B is 50\%.
+
+\end{description}
+We shall assume that all three of these descriptions are accurate representations of $w$, in the following sense: non-probabilistic claims are all true and probabilistic claims all are reasonably close to the observed frequencies.}
+ 
+ \begin{enumerate}
+  \setcounter{enumii}{0}
+
+ 
+ 
+ \item \question{When $X$ and $Y$ are descriptions of a world, say that $X$ is \emph{stronger} than $Y$ if and only if the truth of $Y$ is a necessary consequence of the truth of $X$, but not vice-versa. Which of the following statements are true?  (2~points each)}
+ 
+ \begin{enumerate}
+
+\item \question{{$[\alpha]$} is stronger than {$[\beta]$}}
+
+\answer{True. Any world that satisfies [$\alpha$] is a world at which $[\beta]$ is true, but not vice-versa, since there are many different ways of getting the frequencies described in $[\beta]$.}
+
+\item \question{$[\beta]$ is stronger than $[\gamma]$ }
+
+\answer{False. Any non-trivial probabilities are compatible with $[\beta]$.}
+
+\item {$[\alpha]$} is stronger than $[\gamma]$
+
+\answer{False. Any non-trivial probabilities are compatible with $[\alpha]$.}
+
+
+ 
+ \end{enumerate}
+ 
+ \item \question{Suppose that from amongst the many accurate descriptions one might give of $w$, $[\gamma]$ delivers the optimal balance of simplicity and strength. According to the Best Systems Account of objective probability, what is the objective probability that an event in world $w$ that has not yet occurred will be of type A? (2~points)}
+
+\answer{50\%, by definition.}
+ 
+  \item \question{According to Frequentism, what is the objective probability that an event in world $w$ that has not yet occurred will be of type A? (2~points)}
+  
+  \answer{$\frac{9,933}{19,848} \approx 50.04\%$.}
+
+ 
+ 
+ \item \question{Suppose Rationalism about objective probability is true. Before event $e_1$ occurs, what is the objective probability it will be of type A? (2~points)
+
+In answering this question, you may assume that the notion of \emph{subjective} probability is constrained by the Principle of Indifference. Make sure you apply the Principle with respect to the set consisting of the following two propositions:
+
+\begin{itemize}
+\item $e_1$ is of type A.
+
+\item $e_1$ is of type B.
+
+\end{itemize}
+
+}
+
+\answer{50\%. 
+
+By the Principle of Indifference, before $e_1$ occurs, a fully rational subject with full information about the (empty!) past and no infor\-ma\-tion about the future should assign credence 50\% to the proposition that $e_i$ will be of type A. The result then follows from the Objective-\-Sub\-ject\-ive Connection.}
+
+ 
+ 
+ 
+\end{enumerate}
+
+}%end com
+
+
+% Left out for variety
+\com{
+
+     
+     
+% left out for variety{
+\item \question{
+You are about to be dealt a two-card hand from a standard deck of 52 cards. The deck has been adequately shuffled.} 
+
+
+\begin{enumerate}
+
+\item\question{
+What credence should you assign to the proposition that your two-card hand contains at least one ace or one diamond? (5 points)
+}
+
+\answer{
+The number of ordered pairs of cards that can be built from a standard pack of cards is \(52\times 51 = 2652\). 
+
+In a standard deck, 36 cards are neither diamonds nor aces (12 from each non-diamond suit). So there are $36\times 35 = 1260$ pairs containing neither diamonds nor aces, and therefore $2652 - 1260 = 1392$ pairs containing at least one ace or one diamond. So the probability of getting one such pair is 
+          \(
+          \frac{1392}{2652} = \approx 0.52
+          \)
+or about 52\%.
+}
+}
+
+% COMMENTED OUT, FOR THE SAKE OF VARIETY
+\com{
+
+\item\question{
+What credence should you assign to the proposition that your two-card hand will contain at least one ace? (5 points)
+}
+
+\answer{
+The number of ordered pairs of cards that can be built from a standard pack of cards is \(52\times 51 = 2652\). Since we have no more reason to think that one of these outcomes will occur than we have for thinking that any other will occur, your credence that any one of the will occur is \(1/2652\).
+
+Of our ordered pairs, \(4\times 3\) pairs contain two aces, \(4\times 48\) have an ace only in their first position, and \(48\times 4\) have an ace only in their second position. So the total number of pairs with at least one ace is
+      \[(4\times 3) + (4\times 48) + (48\times 4) = 396\]
+      Since each of them has a probability of \(1/2652\) of occurring, the probability of being dealt a pair with at least one ace is 
+          \[
+          \frac{396}{2652} = \frac{33}{221} \approx \frac{1}{7}
+          \]
+}
+
+}
+
+
+
+\item \question{You are offered a bet. If your two-card hand contains at least one diamond, you get \$100. If it doesn't, you lose \$10. Assuming you value \$$n$ to degree $n$, what is the expected value taking the bet? (5 points)}
+
+
+\answer{  We first need to calculate the probability that you'll be dealt a hand with at least one diamond. The number of ordered pairs of cards that can be built from a standard pack of cards is \(52\times 51 = 2652\). 
+
+In a standard deck, 39 cards are non-diamonds. So there are $39\times 38 =1482$ pairs containing no diamonds, and therefore $2652-1482=1170$ pairs containing at least one diamond. So the probability of getting one such pair is \(\frac{1170}{2652} \).  We can now perform the expected value calculation
+        \[
+\begin{array}{rcl}
+ EV(\mbox{Bet}) &= &(100\times 1170/2652) + (-10\times 1482/2652)\\
+  &= &117000/2652 - 14820/2652   \\
+  &= &102180/2652  =  8515/221 \approx 38.5
+\end{array}
+\]
+}
+
+        
+\end{enumerate}
+     
+     
+     
+%Left out for variety
+
+
+% COMMENTED OUT, FOR VARIETY
+\com{
+
+\item \label{q-sp1}
+\question{You are offered a chance to play a game that works as follows. A coin will be tossed ten times. If all ten tosses are Tails, you get \$100,000. If not,  you get  you get \(\$2^n\) if the coin first lands Heads on the $n$th toss. Assuming you value \$$n$ to degree $n$, what is the expected  value of playing this game? (10 points) }
+
+\answer{  The expected value calculation goes like this: 
+     \[
+\begin{array}{rcl}
+ EV(\mbox{Bet}) &= &\sum_{n = 1}^{10} (1/2^{n} \times \$2^n) + (1/2^{10} \times \$100,000)\\
+  &= &10 + 97.65625  \approx 108 
+\end{array}
+\]
+}
+}
+
+
+
+

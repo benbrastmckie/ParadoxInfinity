@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format" content="complete">
+	<title>24.118: Omega Sequences</title>
+	<meta name="author" content="Damien Rochford (based on notes by Agustín Rayo)">
+	<link rel="stylesheet" type="text/css" href="philosstyle.css">
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body>
+
+<em class="philosophysmall"> 24.118:</em> <em
+ class="titlesmall">Omega Sequences</em> <img style="padding-right:60px" src="omega.png" alt=
+"A diagram illustrating different moments in the race between Achilles and the Tortoise." width="47%" align="right">
+
+<ul>
+<li><a href="#section_omega">Omega Sequences</a></li>
+<li><a href="#section_achilles">Paradox 1: Achilles and the Tortoise</a>
+
+<ul>
+<li><a href="#section_achparadox">The Paradox</a></li>
+<li><a href="#section_contemporary">The Contemporary Solution</a></li>
+</ul></li>
+<li><a href="#section_thomson">Paradox 2: Thomson’s Lamp</a>
+
+<ul>
+<li><a href="#section_thomparadox">The Paradox</a></li>
+<li><a href="#section_Benacerraf">The Benacerraf Solution</a></li>
+
+<ul>
+<li><a href="#section_incompatible">The Conclusions of Arguments 1 and 2 Aren’t Incompatible</a></li>
+<li><a href="#section_invalid">Arguments 1 and 2 are Invalid</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#section_newtonian">Paradox 3: Newtonian Indeterminism</a>
+
+<ul>
+<li><a href="#section_setup">Setup</a></li>
+<li><a href="#section_conservation">Conservation Principles</a></li>
+<li><a href="#section_indeterminism">Indeterminism</a></li>
+</ul></li>
+<li><a href="#section_benardete">Paradox 4: Benardete’s Paradox</a>
+
+<ul>
+<li><a href="#section_benparadox">The Paradox</a></li>
+<li><a href="#section_assessment">Assessment of the Paradox</a></li>
+</ul></li>
+<li><a href="#section_yablo">Paradox 5: Yablo’s Paradox</a>
+
+<ul>
+<li><a href="#section_yabparadox">The Paradox</a></li>
+<li><a href="#section_assessmentyab">Assessment of the Paradox</a></li>
+</ul></li>
+<li><a href="#section_hat">Paradox 6: The Hat Problem</a>
+
+<ul>
+<li><a href="#section_notso">The Not So Hard Version</a></li>
+<li><a href="#section_hard">The Hard Version</a></li>
+<li><a href="#section_argument">An Argument</a></li>
+<li><a href="#section_solution">The “Solution”</a>
+
+<ul>
+<li><a href="#section_orbits">Orbits</a></li>
+<li><a href="#section_strategy">The Strategy</a></li>
+</ul></li>
+<li><a href="#section_choice">The Axiom of Choice</a></li>
+</ul></li>
+</ul>
+
+<h1 id="section_omega">Omega Sequences</h1>
+
+<p>This unit, we’ll be talking about a diverse array of paradoxes. Not all of them have agreed on solutions, and there is no one solution that seems to work for all of them. What unites them all is that the all involve <em>\(\omega\)-sequences</em> or <em>reverse \(\omega\)-sequences</em>.</p>
+
+<p>An <strong>\(\omega\)-sequence</strong> (read “omega sequence”) is a set of things that
+	<ol>
+		<li> have the same cardinality as the natural numbers, and</li>
+		<li> are <em>ordered</em> in a certain way — specifically, the same way the natural numbers are standardly ordered, with a first thing, a second, a third and so on.</li>
+		</ol>
+	</p>
+
+<p>For instance, \(\langle\frac{1}{2},\frac{1}{4},\frac{1}{8},\ldots\rangle\) is an \(\omega\)-sequence.</p>
+
+<p>Note that an \(\omega\)-sequence has <em>no last member</em>.</p>
+
+<p>A <strong>reverse \(\omega\)-sequence</strong> is a set of things that
+	<ol>
+		<li>have the same cardinality as the natural numbers, and</li>
+		<li>are ordered in the <em>opposite</em> way to the way the natural numbers are standardly ordered. There’s a last thing, a second-to-last thing, a third-to-last thing, and so on.</ol>
+		</p>
+
+<p>For instance, \(\langle \ldots \frac{1}{8},\frac{1}{4},\frac{1}{2}\rangle\) is a reverse \(\omega\)-sequence.</p>
+
+<p>Note that a reverse \(\omega\)-sequence has <em>no first member</em>.</p>
+
+<p>Let’s jump right in and see some paradoxes. We will go, roughly, in order of how bamboozled I am by them.</p>
+
+<br>
+
+<h1 id="section_achilles">Paradox 1: Achilles and the Tortoise</h1>
+
+<ul>
+
+<h2 id="section_achparadox">The Paradox</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Zeno_of_Elea">Zeno of Elea</a> was a 5th Century BCE philosopher of Magna Graecia. He is most famous for his many paradoxes, the most famous of which all involve \(\omega\)-sequences. Here is my favourite one.</p>
+
+<p>Achilles is the swiftest of mortals; the Tortoise is slow as a wet week (as my mum says). If they race, Achilles should win, right? In fact, Achilles is so much faster, that even if we give the Tortoise a head start — say, a couple of meters — Achilles should still win a hundred meter race. Right?</p>
+
+<p>Zeno of Elea says: no! For consider: Achilles and the Tortoise will (we can suppose) start moving at the same time, and move forward continuously until they reach the finish line. It will take Achilles some small amount of time to reach the point at which the Tortoise started — let’s say it take him \(t_1\) seconds. The Tortoise will have been moving, slowly and steadily, those \(t_1\) seconds, so will be ahead by some non-zero amount. So, after \(t_1\) seconds, the Tortoise is ahead of Achilles.</p>
+
+<p>Now, it will take some small, but non-zero, amount of time for Achilles to reach the point where the Tortoise was after \(t_1\) seconds. Let’s say he reaches that point after a further \(t_2\) seconds. The Tortoise will have been moving those \(t_2\) seconds, so will be ahead by some non-zero amount. So the Tortoise will still be ahead of Achilles after \(t_1+t_2\) seconds…</p>
+
+<p>And so on. So the Tortoise will be ahead of Achilles after \(t_1\) seconds, after \(t_1 + t_2\) seconds, after \(t_1 + t_2 + t_3\) seconds…</p>
+
+<p>So consider the following argument:
+<ol>
+<li>For all \(n\) the Tortoise is ahead of Achilles after \(t_1 + t_2 +\ldots + t_n\) seconds.</li>
+<li>Therefore, Achilles never overtakes the Tortoise.</li></ol></p>
+
+<p>But that’s crazy! Fast things overtake slower things all the time! Don’t they?</p>
+
+<p>Zeno thought his argument showed that the answer is “no”. This and other paradoxes made him think that motion in general is impossible, despite appearances. But that is pretty hard to believe.</p>
+
+<br>
+
+<h2 id="section_contemporary">The Contemporary Solution</h2>
+
+<p>These days, we think this argument is invalid. We think that Achilles overtaking the Tortoise is consistent with Achilles being behind the Tortoise after \(t_1+t_2+…+t_n\) seconds, for all \(n\), because we think that Achilles can overtake <em>after</em> all that. That infinite sum only adds up to a finite number, we think — in this case, the small number of seconds it takes for Achilles to overtake the Tortoise. </p>
+
+<p>But the idea that a sum of infinitely many terms can equal a finite number is pretty subtle, and wasn’t made really clear and rigorous until the the 19th Century CE. So you can forgive Zeno for thinking his argument was pretty good, more than 2000 years earlier!</p>
+
+</ul>
+
+<br>
+
+<h1 id="section_thomson">Paradox 2: Thomson’s Lamp</h1>
+
+<ul>
+
+<h2 id="section_thomparadox">The Paradox</h2>
+
+<p>James Thomson was a professor of philosophy at MIT. He coined the phrase <em><a href="https://en.wikipedia.org/wiki/Supertask">supertask</a></em>. A <strong>supertask</strong> is a sequence of infinite operations that occur finite time. Thomson, somewhat like Zeno, argued that performing a supertask is logically impossible. His argument involved a certain lamp, now known as Thomson’s Lamp.</p>
+
+<p>Suppose you have a lamp with a toggle button: press the button once and the lamp will go on, press it again and the lamp will go off.</p>
+
+<p>One minute before midnight the lamp is off. Half a minute later, you press the button. Fifteen seconds later, you press the button again. Seven and a half seconds later, you press it again. And so on. (For each \(n&gt;0\), the button is pressed \(\frac{1}{2^n}\) minutes before midnight.)</p>
+
+<p>At midnight, will the lamp be on or off?</p>
+
+<p>Here are two arguments:</p>
+
+<p><strong>Argument 1</strong><br>
+<ol><li>For every time the lamp gets turned off before midnight, there is a later time before midnight when it gets turned on.</li>
+<li>So the lamp can’t be off at midnight.</li></ol></p>
+
+<p><strong>Argument 2</strong><br>
+<ol><li>For every time the lamp gets turned on before midnight, there is a later time before midnight when it gets turned off.</li>
+<li>So the lamp can’t be on at midnight.</li></ol></p>
+
+<p>Are these arguments correct? If so, what is the lamp like at midnight? Is it on or off? If not, where do the arguments go wrong?</p>
+
+<p>Thomson’s own response was something like this: both arguments 1 and 2 are valid, but they have incompatible conclusions. This is a <em>reductio</em> of their premises — that is, the arguments show that the described scenario, involving Thomson’s Lamp, is impossible.</p>
+
+<br>
+
+<h2 id="section_Benacerraf">The Benacerraf Solution</h2>
+
+<p>Princeton University philosopher Paul Benacerraf argued that Thomson’s response to the above arguments is all is all wrong. Firstly, he says, the conclusions of the above arguments are compatible. And secondly, and perhaps more importantly, the arguments are not valid.</p>
+
+<p>Let me explain.</p>
+<ul>
+
+<h3 id="section_incompatible">The Conclusions of Arguments 1 and 2 Aren’t Incompatible</h3>
+
+<p>Here is one way to see the point. Suppose that each time you push the button, the lamp shrinks to half of its previous size. Then, at midnight, there will be no lamp (because the size of the lamp must be smaller than any real number other than 0, and there are no lamps with size 0, so there is not lamp). So, at midnight, it’s not the case that the lamp is on and it’s not the case that the lamp is off. </p>
+
+<p>Since the original description of the problem does not exclude the possibility of a shrinking lamp, it does not exclude the possibility that, at midnight, it’s neither the case that the lamp is on or off. So the conclusions of arguments 1 and 2 are not incompatible.</p>
+
+<br>
+
+<h3 id="section_invalid">Arguments 1 and 2 are Invalid</h3>
+
+<p>One way to see this is to note that although the setup of the case entails each of the following:</p>
+
+<blockquote>
+<p>For every time before midnight the lamp is on, there is a later time before midnight that the lamp is off.</p>
+
+<p>For every time before midnight the lamp is off, there is a later time before midnight that the lamp is on.</p>
+</blockquote>
+
+<p>&hellip;neither of these facts tell us anything about what happens at midnight.</p>
+
+<p>What the Thomson Lamp setup does is constrain what the Thomson Lamp must be like at every moment before midnight. But it does not constrain what the lamp must be like at midnight. For all the setup says, the lamp could be on, or off, or have disappeared.</p>
+
+<p>What makes the Thomson Lamp case so strange is that there is no way of filling in the story about what happens to the lamp at midnight which follows naturally from the story about what happens to the lamp before midnight. Whatever happens will involve a discontinuity.</p>
+
+<p>We tend to think of the world as a place in which macroscopic change is always continuous. In other words: if a macroscopic object is in state \(s\) at a given time \(t\), then it must be in states that are arbitrarily similar to \(s\) at times sufficiently close to \(t\). For instance, if you walk to the grocery store and reach your destination at noon, then you must be arbitrarily close to the grocery store at times sufficiently close to noon. (These days, we think that things work differently at quantum scales, but let’s not worry about that right now.)</p>
+
+<p>The problem with Thomson’s Lamp is that you get a discontinuity both by assuming that it’s on at midnight and by assuming that it’s off at midnight. So you can’t consistently assume that Thomson’s Lamp exists <em>if you assume that there are no discontinuities</em>.</p>
+
+<p>Argument 1 and Argument 2 above both tacitly assume that there are no discontinuities. So even if they constitute valid forms of reasoning in a continuous world, they cannot be used to assess the question of whether a Thomson Lamp is logically consistent.</p>
+
+<p>As <a href="http://web.mit.edu/arayo/www/">Agustín Rayo</a> says, the moral of Thomson’s Lamp is that it shows that a situation can be logically consistent even if it is inconsistent with deeply held assumptions about the way the physical world works — assumptions such as continuity. That’s pretty interesting.</p>
+
+</ul>
+</ul>
+
+<br>
+
+<h1 id="section_newtonian">Paradox 3: Newtonian Indeterminism</h1>
+
+<ul>
+
+<h2 id="section_setup">Setup</h2>
+
+<p>Newton’s Laws of Motion are often claimed to be <em>deterministic</em> — that is, in a universe containing nothing but particles governed by Newton’s Laws of Motion, everything that happens throughout the history of that universe is determined by the initial state of the universe and the laws.</p>
+
+<p>For most of the universes that spring to mind, that’s true. But here is an example in which that seems to be <em>false</em>, contrary to hundreds of years of thinking of the subject.<sup><a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">1</a></sup></p>
+
+<p>Consider a universe that</p>
+
+<ol>
+<li>contains nothing but particles governed by Newton’s Laws of Motion, and</li>
+<li>contains an omega sequence of point-particles, \(p_0, p_1, p_2, \ldots\), all with the same mass.</li>
+</ol>
+
+<p>Our particles are all arranged in a line, like so:
+<ul>
+<li> \(p_0\) is at the at the 0 meter mark.</li>
+<li>\(p_1\) is at the ½ meter mark.</li>
+<li>\(p_2\) is at the ¾ meter mark.</li>
+<li>…and so on.</li></ul>
+(In general, \(p_n\) is at the \(1 - \frac{1}{2^n}\) meter mark.)</p>
+
+<p>I will assume that our particles have been arranged in their tidy \(\omega\)-sequence for all time up until the present moment.</p>
+
+<p>All sorts of surprising things can happen in such a universe…</p>
+
+<br>
+
+<h2 id="section_conservation">Conservation Principles</h2>
+
+<p>Consider what happens when another particle, the same mass as the rest, comes hurtling towards \(p_0\) at 1m/s along the line of the \(\omega\)-sequence. Being point particles, the collision will be perfectly elastic. So all the momentum of the incoming particle will be transferred to \(p_0\), leaving the incoming particle stationary at the 0 meter mark. \(p_0\) will then travel at 1m/s until it hits \(p_1\), after which it will remain at the ¾ mark while \(p_1\) moves off towards \(p_2\) at 1m/s, and so on.</p>
+
+<p>A second after the initial collision, every particle will have collided with the particle in front of it, and no particles will be moving. How do we know that? For every \(n\), \(p_n\) starts moving at \(1-\frac{1}{2^n}\) seconds after the initial collision, and stops moving when the next one starts — i.e., at \(1-\frac{1}{2^{n+1}}\) seconds after the initial collision. That number is obviously smaller than 1, for all \(n\). So, for all \(n\), \(n\) has finished moving by 1 second.</p>
+
+<p>The final arrangement of the particles will be just as before: a particle at the 0 meter mark, a particle at ½, a particle at ¾, and so on.</p>
+
+<p>This is pretty strange. For a start, it is a counterexample to conservation of momentum. Before the first collision, there was the momentum of the incoming particle; a second later, no particle has any momentum. </p>
+
+<p>This is particularly surprising as conservation of momentum is often said to be <em>derivable</em> from Newton’s Laws. What’s really true is that one can derive that <em>in any particular collision</em>, momentum will be conserved; and, indeed, in every collision that occurs in this case, momentum <em>is</em> conserved. Nevertheless, momentum is not conserved overall. A similar thing holds for conservation of energy. </p>
+
+<p>This is an example of something we will see a lot of, in this unit: global properties of situations involving \(\omega\)-sequences are often different from all the local properties added together.</p>
+
+<br>
+
+<h2 id="section_indeterminism">Indeterminism</h2>
+
+<p>Now for the really strange part. </p>
+
+<p>Newton’s laws are time-symmetric. That means that if any motion is consistent with Newton’s laws, so is the motion you would see if you &ldquo;played the movie backwards,&rdquo; so to speak. So let’s play our movie backwards. </p>
+
+<p>We ended up with an omega-sequence of particles, with a particle at 0, a particle at ½, and so on. Going backwards, from the depths of the infinity of particles nearing the 1 meter mark, motion bubbles forth: \(p_n\) moves at &#8211;1m/s towards \(p_{n-1}\), collides, imparts all of its momentum to \(p_{n-1}\), which heads off towards \(p_{n-2}\), which…, which then collides with the particle at the 0 mark. This particle shoots off into the unknown vastness of space, leaving behind an immaculate \(\omega\)-sequence of particles, with a particle at the 0 mark, a particle at the ½ mark, and so on.</p>
+
+<p>What this shows is that there is not one but (at least) two futures that are completely compatible with Newton’s laws for a universe containing an \(\omega\)-sequence of point-particles and nothing else. One is that the particles just sit there, resting at their marks for all eternity. Another is that motion bubbles up from the infinite swarm of particles nearing the 1 meter mark, shooting a particle out into the void at &#8211;1m/s, and then the particles in the sequence are at rest forever. In other words: there are universes governed entirely by Newton’s laws that are indeterministic; the laws by themselves do not guarantee any one future.</p>
+
+<p>This is, I think, an example of a veridical paradox. I think this just shows that it is true that, in certain universes, Newton’s laws are not deterministic. Nuts!</p>
+
+</ul>
+
+<br>
+
+<h1 id="section_benardete">Paradox 4: Benardete’s Paradox</h1>
+
+<ul>
+
+<h2 id="section_benparadox">The Paradox<sup><a href="#fn:2" id="fnref:2" title="see footnote" class="footnote">2</a></sup></h2>
+
+<p>There are a natural number&rsquo;s worth of gods. They hate me. They want me to die. However, no individual god wants to be responsible for my death — too much paperwork. So the gods together devise an ingenious plan. God 0 determines that, should I still be alive at 1 o’clock, she will smite me dead. God 1 determines that, should I be alive at 12:30, he will smite me dead. God 2 determine that, should I still be alive at 12:15, she will smite me dead. And so on.</p>
+
+<p>Gods are good at smiting; if I’m alive at a god’s smiting-time, the relevant god <em>will</em> smite me; the only thing that can stop that happening is that I’m already dead by that god’s smiting-time.</p>
+
+<p>It’s 11:58, 11:59, noon approaches, it’s seconds away…</p>
+
+<p>Question: what will happen? Will I get smote?</p>
+
+<p>Here is an argument that I will not. </p>
+
+<blockquote>
+<p>Suppose that God \(n\) will smite me. That will happen if and only if gods \(n+1, n+2, \ldots\) all fail to smite me — otherwise I will never make it to the point where God \(n\) does her smiting. So, in particular, God \(n+1\) must fail to smite me. </p>
+
+<p>But God \(n+1\) will fail to smite me only if some god among gods \(n+2, n+3,\ldots\) smites me — otherwise, I’ll get to God \(n+1\)’s smiting point, and she will smite me. But we just said above that, assuming God \(n\) smites me, all of gods \(n+1,n+2,\ldots\) fail to smite me! Contradiction!</p>
+
+<p>So our assumption that God \(n\) will smite me must be wrong; God \(n\) will not smite me. And this argument word for every \(n\). So I will not get smote!</p>
+</blockquote>
+
+<p><em>But</em>! Here is an argument that I <em>will</em> get smote — in fact, I will get smote by <em>every</em> god! </p>
+
+<blockquote>
+<p>For God \(n\) to not smite me, some god among gods \(n+1, n+2,\ldots\) must smite me first. But the previous argument established that it is impossible for any of gods \(n+1, n+2,\ldots\) to smite me. So it is impossible for God \(n\) to not smite me; i.e., God \(n\) must smite me!</p>
+
+<p>So God \(n\) will smite me. And this argument word for every \(n\). So I will get smote \(|\mathbb{N}|\)-fold! That is a serious smiting.</p>
+</blockquote>
+
+<p>What’s going on?</p>
+
+<br>
+
+<h2 id="section_assessment">Assessment of the Paradox</h2>
+
+<p>I’m not entirely sure what’s going on. Maybe what happens is that I die at the very stroke of noon, or before; that way, it can be that no god smites me, but no god failed to smite me at their appointed time either. But why should that happen? What kills me? No god — that’s the whole point of supposing that I die at noon or before. Does something else kill me? I’m in good health! Can the mere <em>intentions</em> of the gods to kill me after noon make me die at noon?</p>
+
+<p>What if we stipulate that the only way for me to die is to be smote by a god — I’m a very robust fellow. Then we have an outright contradiction. Clearly, a scenario in which the only way for me to die is to be smote, and there are a bunch of gods willing and able to smite me in and only in the above way, is impossible. But it is hard to get a grip on why, exactly, it is impossible.</p>
+
+<p>To see this, note that no inconsistency arises in finite versions of our scenario. Consider, for example, the case with just God 0. She will smite me if I’m alive at 1. That’s fine; I live until 1, and then at 1 I die. No paradox here!</p>
+
+<p>Now suppose we add God 1. He gets in line, ready to smite me at 12:30. He has no gods in front of him in the death-queue. So he will smite me. (This time God 0 does not have to smite me to make sure I’m dead, and thus avoids the paper work.) Again, no paradox.</p>
+
+<p>We can keep adding gods one by one. At each stage, there is no paradox. So we have a discontinuity: the situation is perfectly consistent when you have only finitely many gods but it becomes inconsistent when you have infinitely many gods. In other words: we have identified an inconsistency that arises as a global feature of an infinite scenario, but not for any of its finite parts.</p>
+
+<p>That’s strange.</p>
+
+</ul>
+
+<br>
+
+<h1 id="section_yablo">Paradox 5: Yablo’s Paradox</h1>
+
+<ul>
+
+<h2 id="section_yabparadox">The Paradox</h2>
+
+<p>Here’s another paradox that is structurally very similar to Benardete’s paradox; it does for truth what Benardete did for smiting.</p>
+
+<p>Steve Yablo is a famous MIT philosophy professor. You’ll have the chance to see him lecture on the 10th. He came up with the following paradox.</p>
+
+<p>Suppose you have infinitely many sentences, \(s_0,s_1,s_2\ldots\), one for each natural number.
+<ul>
+	<li>\(s_0\) is the sentence &ldquo;For each \(n&gt;0\), sentence \(s_n\) is not true&rdquo;.</li>
+<li>\(s_1\) is the sentence &ldquo;For each \(n&gt;1\), sentence \(s_n\) is not true&rdquo;.</li>
+<li>\(s_2\) is the sentence &ldquo;For each \(n&gt;2\), sentence \(s_n\) is not true&rdquo;.</li>
+</ul>
+
+And so forth.</p>
+
+<p>Now, is \(s_0\) true or false?</p>
+
+<p>Here is an argument that \(s_0\) can’t be true:</p>
+
+<blockquote>
+<p>Suppose, for reductio, that \(s_0\) is true. Then it must be the case that, for every \(n&gt;0\), \(s_n\) is not true. So, in particular, \(s_1\) is not true. But \(s_1\) says that, for every \(n&gt;1\), \(s_n\) is not true. So, if \(s_1\) isn’t true, then there’s got to be some \(n&gt;1\) such that \(s_n\) is true. But we just said that, for every \(n&gt;0\), \(s_n) is not true. Contradiction!</p>
+
+<p>Ergo, our supposition that \(s_0\) is true is incorrect. \(s_0\) is not true.</p>
+</blockquote>
+
+<p>Here is an argument that \(s_0\) can’t be false:</p>
+
+<blockquote>
+<p>Suppose, for reductio, that \(s_0\) is false. For \(s_0\) to be false, there’s got to be some \(n&gt;0\) such that \(s_n) is true. Let it be \(s_k\). But the exact same argument that we just used to show that \(s_0\) can’t be true could be used to show that \(s_k\) can’t be true. Contradiction!</p>
+
+<p>Ergo, our supposition that \(s_0\) is false is incorrect. \(s_0\) is not false.</p>
+</blockquote>
+
+<p>So \(s_0\) can’t be true, and it can’t be false. Contradiction.</p>
+
+<br>
+
+<h2 id="section_assessmentyab">Assessment of the Paradox</h2>
+
+<p>I do not know what the solution to Yablo’s paradox is. It’s worse than Benardete’s paradox, because there are no actual gods waiting to smite me; but Yablo’s sentences <em>exist</em>, in the actual world. True, they’ve never all been said, but they exist as abstract objects that are perfectly well specified. We could write a computer program to write them down. So it’s not an option, it seems to me, to just say it isn’t possible for there to be such sentences.</p>
+
+<p>Yablo’s paradox is famous because it changed how people thought of a whole class of paradoxes, called “semantic paradoxes”. They are paradoxes that have to do with truth and meaning. The most famous of all is this one:</p>
+
+<blockquote>
+<p><strong>The Liar Paradox</strong><br>
+Consider the sentence “This very sentence is false.” Is it true or false? If the sentence is true then what it says is true, so the sentence is false. If the sentence is false, what it says is false, so the sentence is true. Contradiction!</p>
+</blockquote>
+
+<p>For many years people thought that the Liar Paradox, and paradoxes like it, were, at root, a puzzle about self-reference. “This very sentence is false,” makes reference to itself, as do all the classic examples of semantic paradoxes.</p>
+
+<p>Yablo’s Paradox is important because it suggests that self-reference is not the root of the problem. None of the sentences that play a role in Yablo’s Paradox refer to themselves. Yablo’s Paradox is a semantic paradox without self-reference.</p>
+
+<p>There is no consensus among contemporary philosophers about what to do with the semantic paradoxes, but it is an area of fruitful research.</p>
+
+</ul>
+
+<br>
+
+<h1 id="section_hat">Paradox 6: The Hat Problem</h1>
+
+<ul>
+
+<h2 id="section_notso">The Not So Hard Version</h2>
+
+<p>You may have heard the following brain teaser. Ten prisoners, \(P_1, P_2,\ldots P_{10}\), are standing in line: \(P_1\) is behind \(P_2\), \(P_2\) is behind \(P_3\), and so forth. Each of them is wearing a hat, and for each \(P_k\), a fair coin was flipped to determine whether to give her a red hat or a blue hat.</p>
+
+<p>Nobody knows the colour of her own hat, but each prisoner can see the colours of the hats of everyone standing in front of her. So, for instance, \(P_6\) can see the colours of the hats worn by \(P_7,P_8,P_9\) and \(P_{10}\).</p>
+
+<p>Each prisoner is going to be asked to guess what colour hat she is wearing, starting with \(P_1\). People who correctly call out the colour of their own hats will be spared. Everyone else will be shot.</p>
+
+<p>Problem: if the prisoners are allowed to confer with each other beforehand (and if they can hear the answers that other prisoners give), is there a strategy they can agree upon to improve their chances of surviving?</p>
+
+<p>The answer is “yes”. In fact, the prisoners can guarantee that \(P_2,\ldots,P_{10}\) survive, and that \(P_1\) gets a 50% chance at survival. (Exercise: figure out how!)</p>
+
+<p>That’s tricky, but it isn’t a paradox. The <em>hard</em> version of this puzzle is the paradox.</p>
+
+<br>
+
+<h2 id="section_hard">The Hard Version</h2>
+
+<p>The setup is as before. We have a line of prisoners. They are all wearing hats, and for each prisoner, a coin was flipped to determine whether to give her a red hat or a blue hat.</p>
+
+<p>This time, however, there are infinitely many prisoners, and they form an \(\omega\)-sequence: \(P_1,P_2,P_3,\ldots\)</p>
+
+<p>\(P_1\) is at the very end of the line, \(P_2\) in front of \(P_1\), \(P_3\) in front of \(P_2\), and so forth, with one prisoner for each natural number.</p>
+
+<p>As before, each person in the sequence can see the hats of the prisoners in front of her, but cannot see her own hat (or the hat of anyone behind her). This time, however, the prisoners will not be called on one at a time to guess their hat colour; instead, at a set time, everyone has to guess the colour of her own hat by crying out “Red!” or “Blue!” Everyone is to speak simultaneously, so that nobody’s guess can be informed by what others say. People who correctly call out the colour of their own hats will be spared. Everyone else will be shot.</p>
+
+<p>Problem: Find a strategy that \(P_1, P_2, P_3, \ldots\) could agree upon in advance, and which would guarantee that at most finitely many people are shot.</p>
+
+<p>(I don’t know who came up with this puzzle originally. I learned about it from <a href="https://dl.dropboxusercontent.com/u/3746313/index.html">Dan Greco</a>.)</p>
+
+<br>
+
+<h2 id="section_argument">An Argument</h2>
+
+<p>Here is an argument.</p>
+
+<blockquote>
+<p>We know that a random, independent process will be used to decide what kind of hat to place on each person. Accordingly, the probability that a coin toss lands Heads is exactly 50%, and this is so independently of how other coin tosses might have landed. This means that knowing the colours of the hats ahead of you, and therefore knowing the outcomes of other coin flips, gives you <em>no information whatsoever</em> about the colour of your own hat. So even after you’ve seen the colours of the hats of everyone in front of you, you should assign a probability of 50% to the proposition that your own hat is red. </p>
+
+<p>That being so, none of the \(P_1, P_2, P_3, \ldots\) could possibly have a better than 50% chance of correctly guessing the colour of their hat. So there is no way of guaranteeing that most of \(P_1, P_2, P_3, \ldots\) will answer correctly. So there is no solution to the hard version of the Hat Problem.</p>
+</blockquote>
+
+<p>Here it is in more explicit, premise-and-conclusion form.</p>
+
+<ol>
+<li>In advance, before getting in line, each prisoner should assign probability .5 to the proposition that she will be wearing a red hat.</li>
+<li>Each prisoner learns no relevant information about what colour hat she is wearing up until the time she must make her guess.</li>
+<li>Hence: at the time when the prisoners must make their guesses, each should assign probability .5 to the proposition that she is wearing a red hat.</li>
+<li>Hence: each prisoner has no better than .5 chance of guessing correctly.</li>
+<li>Hence: there is no way to guarantee that only finitely many prisoners die — i.e., the hard version of the Hat Problem has no solution.</li>
+</ol>
+
+<p>That seems like a good argument. But, astonishingly, there <em>is</em> a solution to the hard problem, despite the above argument. Or at least, there seems to be. Read on.</p>
+
+<br>
+
+<h2 id="section_solution">The “Solution”</h2>
+
+<p>I will tell you the “solution” to this problem. But, once you see the solution, you’ll see that it only makes things worse. The <em>real</em> problem is what to make of the solution.</p>
+
+<ul>
+
+<h3 id="section_orbits">Orbits</h3>
+
+<p>Let us represent an assignment of hats to individuals as an \(\omega\)-sequence of zeroes and ones. A zero in the \(k\)<sup>th</sup> position means that \(P_k\)’s hat is red, and a one in the \(k\)<sup>th</sup> position means that \(P_k\)’s hat is blue. (So, for instance, the sequence \(\langle 0,1,1,1,0,\ldots\rangle\) represents a scenario in which \(P_1\)’s hat is red, \(P_2\)’s hat is blue, and so forth.)</p>
+
+<p>Let \(S\) be the set of all \(\omega\)-sequence of zeroes and ones. We will divide \(S\) into a bunch of subsets (which we’ll call &ldquo;orbits&rdquo;), by employing the following principle: </p>
+
+<blockquote>
+<p>Sequences \(s\) and \(s'\) in \(S\) are part of the same orbit if and only if there are at most finitely many numbers \(k\) such that the \(s\) and \(s'\) differ in the \(k\)th position.</p>
+</blockquote>
+
+<p>(For instance, \(\langle0,0,0,0\ldots\rangle\) and \(\langle1,0,0,0\ldots\rangle\) are in the same orbit because they differ only in the first position. But the \(\langle0,0,0,0\ldots\rangle\) and \(\langle1,0,1,0\ldots\rangle\) are in different orbits because they differ in infinitely many positions.)</p>
+
+<p>The important thing about orbits is that they satisfy the following condition:
+
+<blockquote>
+Every member of \(S\) is in exactly one orbit.
+</blockquote>
+
+</p>
+
+<p>In other words: everything is in some orbit, and nothing is in more than one orbit.</p>
+
+<p>Some fun exercises: prove that every member of \(S\) is in exactly one orbit. Prove that there are as many orbits as natural numbers. Prove that there are more orbits than natural numbers.</p>
+
+<br>
+
+<h3 id="section_strategy">The Strategy</h3>
+
+<p>Our strategy will consist in getting \(P_1,P_2,\ldots\) to agree in advance on a <em>representative</em> from each orbit. So, for instance, they might agree that \(\langle0,1,0,0\ldots\rangle\) is to be the representative for the orbit that contains both \(\langle0,0,0,0\ldots\rangle\) and \(\langle1,0,0,0\ldots\rangle\).</p>
+
+<p>Now imagine that \(P_1,P_2,\ldots\) are lined up, armed with their agreed choice of representatives. Each of them can see the hat colours of everyone ahead of her.</p>
+
+<p>Consider person \(P_{k}\). She can see the colors of the hats of \(P_{k+1},P_{k+2},P_{k+3},\ldots\) So \(P_k\) can see all but finitely many hats. This means that \(P_k\) is in a position to determine which orbit contains the \(\omega\)-sequence corresponding to the actual assignment of hats to persons.</p>
+
+<p>So each of the \(P_1,P_2,\ldots\) is in a position to know which orbit contains the \(\omega\)-sequence representing the actual hat distribution. Call this orbit \(O\), and let \(r_O\) be the representative that had been previously agreed upon for \(O\). The group then follows the following procedure:</p>
+
+<blockquote>
+Everyone is to answer their question on the assumption that the actual sequence of hats is correctly described by \(r_O\).
+</blockquote>
+
+<p>In other words, \(P_k\) will cry out “Red!” if \(r_O\) contains a zero in its \(k\)th position, and she will cry out “Blue!” if \(r_O\) contains a one in its \(k\)th position.</p>
+
+<p>Because \(r_O\) and the sequence corresponding to the actual hat distribution are members of the same group, we know they differ in at most finitely many positions. So, as long as everyone conforms to the agreed-upon strategy, at most finitely many people will guess incorrectly. QED.</p>
+
+<p>(It goes without saying that this strategy presupposes that every prisoner has super-human capabilities. For instance, they must be able to absorb information about infinitely many hat colours in a finite amount of time, and they must be able to pick representatives from sets with no natural ordering. This entails that no actual human could implement this strategy. But all that matters for present purposes is that the strategy exists.)</p>
+
+</ul>
+
+<br>
+
+<h2 id="section_choice">The Axiom of Choice</h2>
+
+<p>We have a compelling argument that there is no strategy, and we have a strategy. What went wrong? Either there is something wrong with our compelling argument, or there is something wrong with our strategy.</p>
+
+<p>The strategy makes use of the Axiom of Choice — that is, an axiom of set theory that says that, whenever you have a bunch of sets, you have another set that contains exactly one element from each of the original bunch. We assumed it when we said that the people in the line pick a representative from each orbit.</p>
+
+<p>The Axioms of Choice seems like a pretty innocuous axiom, when you state it in the way I just did. But it has all sorts of very strange consequences. The solution to the Hat Problem is just one of them; we’ll talk more about others later in the course. For this reason, the Axiom of Choice is the most controversial axiom of set theory (though it almost universally assumed in contemporary set theory).</p>
+
+<p>So whether your reject the argument or the strategy depends, in part, of what you make of the Axiom of Choice. If you reject the Axiom, then you have a way of rejecting the strategy, and accepting the argument. On the other hand, if you accept the Axiom, it is not so clear that the argument is sound. In particular, it is not clear that the inference from 3 to 4 is valid, as, arguably, certain probabilities are undefined, if the Axiom of Choice is true, and the probability mentioned in premise 4 might be one of them.</p>
+
+<p>We will discuss this more in Topic 7 of this course, on non-measurable sets.</p>
+
+</ul>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn:1">
+<p>This particular example is, I believe, due to Frank Arntzenius, though I think John Earman was the first to point out that situations like this involve violations of Newtonian determinacy. <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+<li id="fn:2">
+<p>This is a small variation on a paradox due to José Benardete.<a href="#fnref:2" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+</body>
+</html>

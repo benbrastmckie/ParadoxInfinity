@@ -1,0 +1,19 @@
+\documentclass[handout,aspectratio=169]{beamer}
+
+\usepackage{longtable} %for the decision tables, as typeset in the summary sheets
+% https://tex.stackexchange.com/questions/469892/how-to-use-longtable-in-latex
+
+\newcommand{\boxarrow}{\ \Box\hspace{-1.8mm}\rightarrow}
+
+\newcommand{\must}{%
+  \mathrel{\mathop\Box}\mathrel{\mkern-2.5mu}\rightarrow
+}
+\newcommand{\might}{%
+  \mathrel{\mathop\Diamond}\mathrel{\mkern-2.8mu}\rightarrow
+}
+
+\input{common}
+
+\begin{document}
+\input{6-lecture}
+\end{document}

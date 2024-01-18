@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0mm}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $6$: Probability}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Trouble in St. Petersburg}
+
+Wandering\footnote{The two puzzles in this section and the next are both taken from Arntzenius, Elga, and Hawthorne, "Bayesianism, infinite decisions, and binding" (2004).} along the Nevsky Prospect, Bill Gates encounters Ivan, a shady character who is casually tossing a coin. 'Hey Biell, you vant some acsion?' Ivan asks. 'Here's the deel. I offer some bets. You take or leaf. That's iet.' Ivan explains that he will toss the coin until it lands tails, and offers Bill an infinite sequence of bets.
+
+\begin{exer}
+Suppose the coin is unbiased: the probability that it lands heads/tails on each toss is $1/2$. What is the probability that it first lands tails on toss 4? What it the probability that it never lands tails?
+\end{exer}
+
+Here are the bets Ivan offers:
+\begin{enumerate}[leftmargin=2 \parindent]
+\item[Bet $1$:] You lose $1$ if the coin never lands tails, you gain $3$ if it first lands tails on toss 1. If it first lands tails on some other toss, the bet is void.
+\item[Bet $2$:] You lose $4$ if the coin first lands tails on toss 1, you gain $9$ if it first lands tails on toss 2. If it first lands tails on some other toss, the bet is void.
+\item[Bet $3$:] You lose $10$ if the coin first lands tails on toss 2, you gain $21$ if it first lands tails on toss 3. If it first lands tails on some other toss, the bet is void.
+\item[...]
+\item[Bet $n$:] Let $k$ what you will lose if you lose Bet $n-1$, and $m$ be what you will win if you win Bet $n-1$. You lose $2k+2$ if the coin first lands tails on toss $n-1$, you gain $2m+3$ if it first lands tails on toss $n$. If it first lands tails on some other toss, the bet is void.
+\item[...]
+\end{enumerate}
+
+\begin{exer}
+What is the expected utility of Bet $1$? What about Bet $4$? Can you show that each bet is guaranteed to have a positive utility?
+\end{exer}
+
+
+Since each bet has a positive expectation, Bill takes them all. Ivan says 'Gud. No neet to sro ze coin. Just gif me vun dollar. Sanks.' 
+
+\begin{exer}
+Show that Ivan is right in saying that: in particular, show that in each situation, Bill will lose one dollar. 
+\end{exer}
+
+\section{Two Tickets to Paradise}
+
+Dutch state lottery officials have decided to hold a special lottery, which works as follows. There is one lottery ticket, $A$, which will be sold to the highest bidder. The day after it is sold, the dollar value of $A$ will be determined by a chance process as follows:
+
+\begin{quote}
+$A$ is worth $\$ 1$ with chance $\frac{1}{8}$, $\$ 2$ with chance $\frac{7}{32}$, $\$ 4$ with chance $\frac{21}{128}$, $\$ 8$ with chance $\frac{63}{512}$, etc. The remaining possible dollar values are all and only the remaining powers of 2. For all values $n$ greater or equal to $2$, if the chance of $n$ is $\frac{x}{y}$, the chance of $2n$ is $\frac{3x}{4y}$.
+\end{quote}
+
+\begin{exer}
+What is the expected utility of $A$?
+\end{exer}
+
+According to Bill Gates, dollars equal utilities. So he is willing to pay any amount for $A$. He does his research and wins the auction for the ticket. However, before the chance process which determines the worth of $A$ has occurred, the lottery officials offer him a new deal:
+
+\begin{quote}
+``If you give us ticket $A$ back, and pay us $\$ 0.01$, we will give you a new lottery ticket $B$. The value of $B$ will be determined as follows. After we have determined the value of $A$, we will roll a fair seven-headed die. If the die comes up $1$, $2$ or $3$, then $B$ will be worth double what $A$ is worth. Otherwise $B$ will be worth half what $A$ is worth. The only exception is that if $A$ turns out to be worth $1$, then, for sure, $B$ will be worth $2$. Do you want this deal?'
+\end{quote}
+
+\begin{exer}
+Suppose $A$ turns out to be worth $\$ 2^n$, what will be the expected value of exchanging $A$ with $B$? Should Bill accept the deal?
+\end{exer}
+
+Bill takes the offer and gives them $A$ and $\$ 0.01$. The Dutch officials then offer Bill another deal. They say: 
+
+\begin{quote}
+``We have with us a very special ticket. Its value will also be determined by a chance process. Given any possible value of $B$, the chance that this special ticket will be worth twice as much as $B$ is $\frac{3}{7}$, and given any value of $B$ the chance that this special ticket will be worth half what $B$ is worth is $\frac{4}{7}$. The only exception occurs is if $B$ is worth $1$; in that case this ticket is worth $2$. Do you want to give us ticket $B$ and $0.01$ in exchange for this very special ticket?"
+\end{quote}
+
+
+
+\begin{exer}
+What is the expected value of exchanging? Should Bill accept the deal?
+\end{exer}
+
+
+Bill accepts the deal again and gives the officials $B$ and $\$ 0.01$. To his astonishment the Dutch officials then give him ticket $A$ back, and say that this concludes the deal.
+
+\begin{exer}
+Show that the Dutch officials are right: $A$ is indeed such a special ticket.
+\end{exer}
+
+
+\end{document}

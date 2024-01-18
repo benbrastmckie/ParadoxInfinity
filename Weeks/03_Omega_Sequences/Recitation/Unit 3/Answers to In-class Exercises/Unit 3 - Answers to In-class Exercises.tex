@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $3$: Omega-Sequence Paradoxes}
+
+
+
+\begin{center}
+{\LARGE \bf Answers to In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Yablo's Button}
+
+\begin{exer}
+Suppose\footnote{This paradox is from Andrew Bacon, ``A paradox for supertask decision makers".} time has no beginning and there is no first day. More precisely, suppose that time forms a reverse $\omega$-sequence: $..., d_4, d_3, d_2, d_1, d_0$. On each day, a man (who has always existed) must choose whether or not to press \textit{Yablo's Button}. Yablo's Button is designed such that it dispenses a chocolate on it's first pressing (let's assume that the man loves chocolate), and a painful zapping on subsequent pressings (let's say the button has some mechanism that records whether it has been pressed before). 
+
+If the man is rational on day $n$ he would behave as follows:
+\begin{enumerate}[\indent(1)]
+\item Press the button if it has not been pressed on any earlier day.
+\item Leave the button alone if it has been pressed on an earlier day.
+\end{enumerate}
+
+Show that the man cannot be rational on every day: in particular, there has to be some day when he violates one of the rules.
+\end{exer}
+
+\begin{proof}[Answer]
+Suppose for reductio that the man follows the two rules every day. Then it cannot be that he has never pressed the button, since otherwise he would behave against rule (1) on $d_0$, say, for this is a day before which he has never pressed the button. So he must have pressed the button on some day, say, $d_n$. If he is following rule (2) then $d_n$ would be the first day he pressed the button, since otherwise he would have pressed the button on a day before which the button has been pressed. But then $d_{n-1}$ is day before which the button has never been pressed, and the man, by assumption does not press the button on $d_{n-1}$, which means that he behaves irrationally on $d_{n-1}$.
+
+\end{proof}
+
+\section{The Knave}
+
+\begin{exer}
+Jack the Knave is a liar. Before today, all the sentences Jack has ever uttered have been lies (let's just assume a lie is a sentence that is false.) Today, Jack uttered:
+$$\text{Every sentence I have uttered is a lie, including this one.}$$
+Is the sentence Jack uttered today true? Or is it a lie?
+\end{exer}
+
+\begin{proof}[Answer]
+It is paradoxical. Let $A$ be the sentence that Jack uttered today. Suppose A is true. Then Jack has uttered something that is not a lie, namely $A$. But then it is not the case that everything Jack has uttered is a lie, and hence $A$ is false. Suppose on the other hand that $A$ is false. Then some sentence Jack has uttered has to be true. But we have assumed that all sentences Jack has uttered before $A$ are lies, and hence the only sentence Jack has uttered that can be true is $A$. And hence $A$ is true, contradicting our assumption.
+
+\end{proof}
+
+\section{Yablo Once Again}
+
+\begin{exer}
+Consider the following infinite sequence of sentences:
+\begin{itemize}
+    \item [] $A_1$: For some $k > 1$,  $A_k$ is not true.
+    \item [] $A_2$: For some $k > 2$,  $A_k$ is not true.
+    \item [] ...
+    \item [] $A_n$: For some $k > n$, $A_k$ is not true.
+    \item [] ...
+\end{itemize}
+Show that for every $n$, $A_n$ is paradoxical.
+\end{exer}
+
+\begin{proof}[Answer]
+Let $A_n$ be any sentence in the sequence. Suppose $A_n$ is true. Then for some $k > n$, $A_k$ is not true. Pick such a $k$. Since $A_k$ is not true, for every $m > k$, $A_m$ is true. Now consider $A_{k+1}$. It is true and every sentence after it is also true. But this is impossible, since $A_{k+1}$ is true means that some sentence after it is not true. Suppose on the other hand $A_n$ is false. Then for every $k > n$, $A_k$ is true. Hence $A_{n+1}$ is true. But $A_{n+1}$ says that some sentence after it is not true, which is impossible, because every sentence after it is also after $A_n$ and hence should be true.
+
+\end{proof}
+
+\begin{exer}
+Consider the following infinite sequence of sentences:
+\begin{itemize}
+    \item [] $B_1$: There are infinitely many $k > 1$ such that $B_k$ is not true.
+    \item [] $B_2$: There are infinitely many $k > 2$ such that $B_k$ is not true.
+    \item [] ...
+    \item [] $B_n$: There are infinitely many $k > n$ such that $B_k$ is not true.
+    \item [] ...
+\end{itemize}
+Show that for every $n$, $B_n$ is paradoxical.
+\end{exer}
+
+\begin{proof}[Answer]
+Let $B_n$ be any sentence in the sequence. Suppose $B_n$ is true. Then there are infinitely many sentences after $B_n$ that are not true. Let $k$ be any number $> n$. There can only be finitely many sentences between $B_n$ and $B_k$, and since there are infinitely many non-true sentences after $B_n$, there have to be infinitely many non-true sentences after $B_k$. And as a result $B_k$ is true. But we can apply the same reasoning to any $B_k$ with $k > n$, and hence every sentence after $B_n$ is true, contradicting that there are infinitely many sentences after $B_n$ that are not true. Suppose on the other hand that $B_n$ is false. Then there are at most finitely many sentences after $B_n$ that are not true. Since there are at most finitely many, there has to be a biggest $k>n$ such that $B_k$ is not true. Hence $B_{k+1}$ has to be true. But $B_{k+1}$ says that there are infinitely many sentences after it that are not true, contradicting that $B_k$ is the last sentence that is not true.
+
+\end{proof}
+
+
+\end{document}

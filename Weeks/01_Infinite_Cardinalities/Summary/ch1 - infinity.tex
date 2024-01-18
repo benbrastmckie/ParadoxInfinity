@@ -1,0 +1,135 @@
+
+\documentclass[12pt]{extarticle}
+\usepackage{summary-intro}
+
+
+
+
+\newcommand{\re}{\rotatebox[origin=c]{90}{$=$}}
+
+
+
+\begin{document}
+
+\sumintro{Infinite Cardinals}{Spring 2023}
+
+
+
+\vspace{-15mm}
+
+\section{Basic Definitions}
+
+\begin{description}
+\item[Cardinality] $|A|$ is the ``size'' of set $A$ (allegedly)
+
+\item[Bijection Principle]
+$|A| = |B|$ iff there is a bijection from $A$ to $B$.
+
+\item[Injection Principle]
+$|A| \leq |B|$ iff there is an injection $A$ to $B$.
+
+\textit{Aside}: for the purposes of the PSets (where we are \#normcore), we'll treat cardinality as `size,' but in lecture we will occasionally call this terminological choice into question. 
+
+\end{description}
+
+
+
+%\vspace{10mm}
+\section{Extended Definitions}
+
+
+
+\begin{center}
+\begin{tabular}{ccc} \hline
+\textbf{Notation} &  \textbf{How it's defined} & \textbf{Informal notion}  \\ \hline
+$|A| = |B|$ &  {\small bijection from $A$ to $B$} & {\small just as many members in $A$ as in $B$}  \\ \hline
+ $|A| \leq |B|$ & {\small injection from $A$ to $B$} & {\small at most~as many members in $A$ as in $B$}\\
+$|A| < |B|$ & {\small $|A| \leq~|B|$ and $|A| \neq |B|$} & {\small fewer members in $A$ than in $B$} \\ \hline
+$|A| \geq |B|$ &  {\small $|B| \leq |A|$} & {\small at least as many members in $A$ as in $B$} \\
+$|A| > |B|$ & {\small $|A| \geq |B|$ and $|A| \neq |B|$} & {\small more members in $A$ than in $B$}\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\vspace{1mm}
+\section{Properties of $\leq$}
+
+
+\begin{description}\label{gloss:partial-order}
+
+\item[Reflexivity]
+$|A|\leq |A|$
+
+\item[Anti-symmetry] If $|A|\leq
+|B|$ and $|B|\leq |A|$, then $|A|= |B|$
+
+
+\item[Transitivity] If $|A|\leq
+|B|$ and
+$|B|\leq
+|C|$, then
+$|A|\leq |C|$
+\item[Totality]\hspace{-2.2mm}\footnote{One can only prove Totality if one assumes a controversial set-theoretic axiom: the Axiom of Choice. We'll come across this axiom again. Stay tuned!} 
+For any sets $A$ and $B$, either
+$|A|\leq |B|$ or $|B|\leq |A|$
+\end{description}
+
+\section{Infinity v. Countability}
+
+\begin{description}
+\item[$\bm A$ is infinite:]  $|\mathbb{N}| \leq |A|$
+
+\item[$\bm A$ is countable:] $|A| \leq |\mathbb{N}|$
+\end{description}
+
+
+
+\section{A Little Lemma}
+
+
+\begin{description}
+\item[No Countable Difference Principle:] 
+\(|I| = |I \cup C|\), for $I$ infinite and $C$ countable.
+
+\end{description}
+
+
+
+\section{Sets with the same size as $\mathbb{R}$}
+
+
+\begin{center}
+\begin{tabular}{ccc} \hline
+\textbf{Set} & \textbf{Also known as} & \textbf{Members} \\ \hline
+{\small $[0,1)$}  & {\small unit interval (half closed)} & \begin{tabular}{@{}c@{}}{\small real numbers larger or equal} \\ {\small to 0 but smaller than 1}\end{tabular} \\ \hline
+{\small $(0,1)$}  & {\small unit interval (open)} & \begin{tabular}{@{}c@{}}{\small real numbers larger} \\ {\small than 0 but smaller than 1}\end{tabular} \\ \hline
+{\small $[0,1]$}  & {\small unit interval (closed)} & \begin{tabular}{@{}c@{}}{\small real numbers larger or equal}  \\ {\small to 0 but smaller or equal to 1}\end{tabular} \\ \hline 
+{\small $[0,a]$}  & {\small arbitrarily sized interval} & \begin{tabular}{@{}c@{}}{\small real numbers larger or equal to $0$}  \\ {\small  but smaller or equal to $a$ ($a>0$)}\end{tabular} \\ \hline 
+{\small $[0,1] \times [0,1]$}  & {\small unit square} & \begin{tabular}{@{}c@{}}{\small pairs of real numbers larger or} \\ {\small equal  to 0 but smaller or equal to 1}\end{tabular} \\ \hline
+{\small $\underbrace{[0,1] \times \dots \times [0,1]}_{\text{$n$ times}}$}  & {\small $n$-dimensional hypercube} & \begin{tabular}{@{}c@{}}{\small $n$-tuples of real numbers larger or }  \\ {\small equal to 0 but smaller or equal to 1}\end{tabular} \\ \hline
+{\small $\mathbb{R}$}  & {\small real line} & \begin{tabular}{@{}c@{}}{\small real numbers}\end{tabular} \\ \hline
+{\small $\powerset(\mathbb{N})$}  & {\small powerset of $\mathbb{N}$} & \begin{tabular}{@{}c@{}}{\small sets of natural numbers}\end{tabular} \\ \hline
+\end{tabular}
+\label{gloss:interv-1}
+\end{center}
+
+\section{Summary of Cardinality Comparisons}
+
+\vspace{3mm}
+
+\[
+\begin{array}{ccccccccc}
+|\mathbb{N}| &<  &|\powerset (\mathbb{N})| &< &|\powerset(\powerset (\mathbb{N}))| &< &|\powerset(\powerset(\powerset (\mathbb{N})))| &< &\dots \\
+\re & \ & \re \\
+|\mathbb{Z}| & \ & |\mathbb{R}|\\
+\re & \ & \re \\
+|\mathbb{Q}| & \ & |[0,1]|\\
+\ & \ & \re \\
+\ & \ & |\underbrace{[0,1] \times \ldots \times [0,1]}_{\text{$n$ times}}|\\
+\end{array}
+\]
+
+
+
+\end{document}

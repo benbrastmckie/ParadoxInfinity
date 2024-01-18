@@ -1,0 +1,443 @@
+Title: 24.118: Gödel’s Theorem, Part 1
+Author: Damien Rochford (based on notes by Agustín Rayo)
+
+* [Gödel’s Theorem][section_into]
+	* [First Incompleteness Theorem Stated] [section_stated]
+	* [Philosophical Importance] [section_importance]
+* [The Language of Arithmetic][section_language]
+	* [Introducing \(L\)][section_L]
+	* [Symbols in \(L\)][section_symbols]
+		* [Arithmetical Terms][section_arithmetical]
+		* [Identity][section_identity]
+		* [Logical Operators][section_logical]
+		* [Variables and Quantifiers][section_variables]
+		* [Formulas, Sentences, Binding and Substitution][section_substitution]
+	* [Simple Yet Mighty][section_mighty]
+		* [Defining New Vocabulary in \(L\)][section_defining]
+* [Talking About Turing Machines in \(L\)][section_machines]
+	*  [Sequences][section_sequences]
+		* [Pairs][section_pairs]
+		* [One More Useful Formula][section_onemore]
+	* [Turing Machines][section_TMs]
+		* [Command Lines][section_command]
+		* [Programs][section_programs]
+		* [The Tape][section_tape]
+	* [Running the Machine][section_running]
+		* [Turing Machine Moments][section_moments]
+		* [Special Moments][section_moments]
+		* [Step By Step][section_step]
+		* [\(\mbox{Validate}(x_1,x_2)\)][section_validate]
+* [Gödel’s First Incompleteness Theorem Proved][section_proved]
+	* [Using \(L\) to talk about \(L\)][section_using]
+	* [Overview of the Proof][section_overview]
+	* [The Gödel Sentence][section_sentence]
+		* [Substitution Coded][section_coded]
+		* [The Quine Sentence][section_quine]
+		* [The Proof Completed][section_completed]
+	
+#Gödel’s Theorem [section_intro]
+
+Gödel’s Incompleteness Theorems are the most important results in all of logic. They are extraordinarily beautiful. They also have significant philosophical and mathematical implications. They were first proved by Austrian logician [Kurt Gödel][1], in 1931.
+
+[1]:https://en.wikipedia.org/wiki/Kurt_G%C3%B6del
+
+##First Incompleteness Theorem Stated [section_stated]
+
+We will mostly discuss Gödel’s First Incompleteness Theorem; we will say some things about Gödel’s Second Incompleteness Theorem towards the end of this unit.
+
+There are many equivalent ways of stating Gödel’s First Incompleteness Theorem. We will be working with this formulation:
+
+>**Gödel’s First Incompleteness Theorem (Turing Machine Version)**
+>It is impossible to construct a Turing Machine that outputs a “\(1\)” if and only if it is given a true sentence of arithmetic as input.
+
+You can think of this formulation of the the theorem as saying that mathematical truth is too complex to be captured in the programming of a Turing Machine, and, hence, in any finite way (assuming the Church-Turing thesis).
+
+Later, we’ll say more about other ways of formulating Gödel’s First Incompleteness Theorem.
+
+##Philosophical Importance [section_importance]
+
+Gödel’s Theorem is important for many reasons. Firstly, it shows that we are able to frame questions about mathematics that we are *not* able to answer.
+
+*Maybe* it shows those questions don’t have answers; *maybe* it shows that there is a difference between being true and being provable, even in principle.
+
+Maybe it also shows that, even in the realm of mathematics, we can never be completely certain of our results.
+
+Some people even think it shows that human minds are, fundamentally, non-computational!
+
+We will discuss all of these possibilities once we are clear on why the theorem is true.
+
+#The Language of Arithmetic [section_language]
+
+##Introducing \(L\) [section_L]
+
+We will be proving that no Turing Machine outputs all and only true **arithmetical sentences**. But what is an arithmetical sentence? We could say: it is a sentence, in any normal language like English, that is about arithmetic. But it is hard to prove things about “arithmetical sentences” defined in that way, because it is hard to be precise about which strings of symbols, exactly, count as normal sentences, and which ones, exactly, are about arithmetic. Also, normal languages like English are *extremely complicated*, so even if we could get precise about what exactly would count as the sentences we are interested in, proving things about them would be *hard*.
+
+To make life easier, we are going to invent a special language — one that is *much, much* simpler than English, or any other normal language. This language is going to have only one job: to say things about arithmetic. By “arithmetical sentence”, we will just mean a sentence in our invented language. We will call our language \(\mathbf{L}\).
+
+We need to pick a particular language to prove Gödel’s Theorem, but, happily, Gödel's Theorem is a pretty robust result, which doesn't depend on the details of our language much.
+
+## Symbols in \(L\) [section_symbols]
+
+\(L\) contains the following symbols:
+
+Symbol	Type of Symbol	Meaning
+\(0\)	arithmetical term	“\(0\)” names the number zero
+\(1\)	arithmetical term	“\(1\)” names the number one
+\(+\)	arithmetical term	“\(+\)” expresses addition
+\(\times\)	arithmetical term	“\(\times\)” expresses multiplication
+\(\hat{\mkern6mu}\)	arithmetical term	“\(\hat{\mkern6mu}\)” expresses exponentiation
+\(=\)	logical relation	‘\(=\)’ expresses identity
+\(\neg\)	logical operator	‘\(\neg\)’ expresses negation
+\(\&\)	logical operator	‘\(\&\)’ expresses conjunction
+\(\forall\)	quantifier	‘\(\forall\)’ expresses universal quantification
+a variable \(x_n\), for each natural number \(n\)	variable	[A variable works like the English word ‘it’: it refers to an object, but one has to look elsewhere to determine which object. I’ll say more about this later]
+(	parenthesis	[nothing]
+)	parenthesis	[nothing]
+
+Let me explain how each of these symbols is used.
+
+### Arithmetical Terms [section_arithmetical]
+
+The arithmetical terms ‘\(0\)’, ‘\(1\)’, ‘\(+\)’, ‘\(\times\)’ and ‘\(\hat{\mkern6mu}\)’ work exactly as you’d expect: ‘\(0\)’ and ‘\(1\)’ name the numbers zero and one, respectively, and ‘\(+\)’, ‘\(\times\)’ and ‘\(\hat{\mkern6mu}\)’ express addition, multiplication and exponentiation, respectively. (To improve readability, I will sometimes write ‘\(n^m\)’ instead of ‘\(n\hat{\mkern6mu}m\)’.)
+
+As it turns out, you don’t strictly need the exponentiation symbol to be in the language to prove the theorem. It make life a bit simpler in proving the Lemma below. So we’ll keep it in the language to make things easy on ourselves.
+
+Using “\(0\)”, “\(1\)”, “\(+\)”, together with the parenthesis-symbols, we can form an expression to name any natural number we like. In particular:
+* “\(0\)” names the number zero
+* “\(1\)” names the number one
+* “\(1+1\)” names the number two
+* “\((1+1)+1\)” names the number three
+* “\(((1+1)+1)+1\)” names the number four
+* etc.
+
+To avoid clutter, we will introduce the following abbreviations:
+
+* “\(2\)” is an abbreviation for “\(1+1\)”,
+* “\(3\)” is an abbreviation for “\((1+1)+1\)”,
+* “\(4\)” is an abbreviation for “\(((1+1)+1)+1\)”,
+* and so forth.
+
+The parenthesis-symbols could have been avoided above. But it’s good practice to use them, because they’re sometimes needed to eliminate ambiguities. For instance, we want to distinguish between \[(2+2)\times 2\] and \[2+(2\times 2)\]
+
+###Identity [section_identity]
+
+The arithmetical terms we’ve discussed so far allow us to name numbers in all sorts of interesting ways. For instance, we can name the number two by saying “\(2\)”, or “\(1+1\)” or “\(2 \times 1\)”. But we can’t make any arithmetical claims, that can be true or false, using just these terms.
+
+In order to make claims, we need the symbol “\(=\)”, which expresses identity. Once we have “\(=\)”  \(L\) is able to express true claims like \[2\times 1 = 1\times 2\] or \[2\times(2+2)=(2\times 2 )+ (2\times 2)\] and false claims like \[2=3\]
+
+###Logical Operators [section_logical]
+
+The symbols ‘\(\neg\)’ and ‘\(\&\)’ express the logical operations of negation and conjunction, respectively.
+
+You can read ‘\(\neg\)’ as ‘It is not the case that’. Accordingly, \(L\) can express claims like
+
+\(\neg (1=2)\) 
+(Read: ‘It is not the case that one equals two’)
+
+You can read ‘\(\&\)’ as ‘and’. Accordingly, \(L\) can express claims like
+
+\((1+2=3) \ \& \ (2+1=3)\) 
+(Read: ‘One plus two equals three, and two plus one equals three’).
+
+###Variables and Quantifiers [section_variables]
+
+None of the symbols we have discussed so far enables us to express generality. For instance, we are unable to state the commutativity of multiplication:
+
+>for all numbers \(n\) and \(m\), the product of \(n\) and \(m\) equals the product of \(m\) and \(n\)
+
+The quantifier “\(\forall\)” and the variables “\(x_1\)”,  “\(x_2\)”, “\(x_3\)”, etc. can be used to express general claims of this kind.
+
+“\(\forall\)” means something like “For all numbers”. A variable, like “\(x_0\)”, is kind of like the word “it” in English. It’s a place-holder, where, if you didn’t use the “\(\forall\)”, you could substitute a name for a particular thing.
+
+Together, you can use “\(\forall\)” and a variable to say something like: \[\forall x_0 (x_0 = x_0)\] You can read this as “for all numbers \(x_0\), \(x_0\) equals \(x_0\)” — i.e., all numbers are such that they equal themselves.
+
+The advantage of having variables with different indices is that we can have different “it”s in a single sentence without losing track of what refers to what.  For instance, we can express the commutativity of multiplication as \[\forall x_1\forall x_2(x_1\times x_2 = x_2\times x_1)\]
+
+which you can read as:
+
+>For all numbers \(x_1\) and for all numbers \(x_2\), \(x_1\)) times \(x_2\)) equals it \(x_2\)) times \(x_1\).
+
+— i.e., all pairs of numbers are such that the first times the second equals the second times the first.
+
+###Formulas, Sentences, Binding and Substitution [section_substitution]
+
+It will be helpful in what follows for you to know a little bit of terminology to speak about strings of symbols of \(L\).
+
+A **formula** is any old string of symbols of \(L\). “\())0+\forall+” is a formula of \(L\), and so is “\(1=2 \& 2=1\)”. Some formulas make sense and some don’t. You can specify rules for making sentences of \(L\) that guarantee that they make sense, but we won’t bother here; we’ll just assume, for the most part, that we’re talking about formulas that make sense.
+
+A **sentence** of \(L\) is a formula of \(L\) that is either true or false.
+
+All sentences are formulas, but not all formulas are sentences. Even some formulas that make perfect sense aren’t sentences. Here is an example: \[x_1 + x_1 = 1 + 1\]
+
+That formula makes sense — it makes sense to say that a number has the property that this formula is talking about, for instance. But this formula can’t be true or false. Here is a formula that *can* be true or false: \[\forall x_1(x_1 +x_1 = 1+1)\]
+
+Moral: a formula can only be a sentence if each variable in the formula has a corresponding “\forall” somewhere in the formula. Otherwise, the formula, while making some sense, cannot be true or false.
+
+When a variable has a corresponding “\forall”, that variable is said to be **bound**. When a variable *doesn’t* have a corresponding “\forall”, the variaeel is **free**.
+
+Here is another example: \[\forall x_1 (x_1 \times x_2 = x_2 \times x_1\] This is *not* a sentence: the “x_2” is free. One way to make it a sentence would be to do this: \[\forall x_1 \forall x_2 (x_1 \times x_2 = x_2 \times x_1)\]
+
+The last thing you need to know about is **substitution**. If you have a formula with an free variable in it, like \[\forall x_1 (x_1 \times x_2 = x_2 \times x_1\] you can turn it into a sentence by *substituting* a name for a number in the place where the unbound variable is. So if we used the name \((1+1)\), and substituted that for the variable x_2, the above formula would become the following sentence: \[\forall x_1 (x_1 \times (1+1) = (1+1) \times x_1\]
+
+## Simple Yet Mighty [section_mighty]
+
+\(L\) is very simple. But it is mighty! We can say a lot, using \(L\). We can make relatively mundane arithmetical claims, like \(2 + 3 = 5\). We can also make interesting, complicated claims, that have taken hundreds of years to prove, like [Fermat’s Last Theorem][Fermat]. We can even express things such that nobody knows whether they are true or false, like [Goldbach’s Conjecture][Goldbach].
+
+[Fermat]:https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem
+[Goldbach]:https://en.wikipedia.org/wiki/Goldbach%27s_conjecture
+
+How is it we can say so much? It is easier to see how it can be done if you allow yourself to define some new vocabulary, using the basic \(L\) symbols.
+
+###Defining New Vocabulary in \(L\) [section_defining]
+
+When we define a new symbol, using the basic symbols of \(L\), all we are doing is establishing a convention for abbreviating some string of \(L\) symbols in a convenient way.
+
+Even though that’s all we’re doing, this is extremely helpful, because sometimes certain strings of \(L\) are very natural translations of English, and the kind of thing we want to be able to say over and over again.
+
+For instance, we can introduce the notation “\(exists x_0\)”, and define that as just an abbreviation for “\(\neg\forall x_0 \neg\)”. That is very helpful, because the string “\(\neg\forall x_0 \neg\)” is a good translation of the phrase “there exists a number \(x_0\) such that…”, though you have to think about it a little bit to see that is true. 
+
+We want to be able to say that “there exists a number \(x_0\) such that…” all the time. Now we have the newly defined symbol “\(exists x_0\)”, we can go ahead and use it whenever we want to say “there exists a number \(x_0\) such that…”, without having to think through the fact that we could use “\(\neg\forall x_0 \neg\)” instead every time.
+
+Here is a list of other very convenient things we can define in terms of the symbols of \(L\):
+
+New Symbol	Read	Abbreviates
+2	two	\(1 + 1\)
+3	three	\((1+1)+1\)
+4	four	\(((1+1)+1) + 1\)
+etc.	etc.	etc.
+\(\exists x_i\)	there is a number \(x_i\) such that	\(\neg \forall x_i \neg\)
+\(A \vee B\)	\(A\) or \(B\)	\(\neg(\neg A \ \& \ \neg B)\)
+\(A \supset B\)[^fn_conditional] 	if \(A\) then \(B\)	\((\neg A) \vee B\)
+\(x_i < x_j\)	\(x_i\) is smaller than \(x_j\)	\(\exists x_k ((x_j = x_i + x_k) \ \& \ \neg(x_k = 0))\)
+
+[^fn_conditional]: We’re using “\(A \supset B\)” as an abbreviation for \(\neg(\neg A \ \& \ \neg B)\). I say, above, that you can think of this string as a translation of the English “if A then B”. But actually, this is a very poor translation of that phrase in English. It is close enough, however, for our purposes; all that matters, for us, is that “\(A \supset B\)” means that it can’t be that A is true and B is false, which is close enough to what we mean by “If A then B”, when it comes to mathematics.]
+
+That, of course, is just the beginning. We can keep defining stuff in terms of other stuff. We can define something that means “\(x_0\) is prime”. We can use that to express, for instance, Goldbach’s conjecture, or the twin prime conjecture. There’s no end of interesting things we can say in \(L\).
+
+The fact that \(L\) is such an expressive language guarantees that if we were able to construct a Turing Machine that outputted every truth of \(L\) (and no falsehoods), we would have succeeded in concentrating a huge wealth of mathematical knowledge in a finite list of lines of code. Implicit in our program would be not just all the arithmetic we learned in school, but also remarkable mathematical results. If we had a machine that outputted all and only the true sentences in \(L\), then — since we can express, for example, Goldbach’s Conjecture in \(L\) — we would have a way of knowing for certain whether Goldbach’s Conjecture is true.
+
+Alas, Gödel’s Theorem shows that the dream of constructing such a machine is not to be…
+
+#Talking About Turing Machines in \(L\) [section_machines]
+
+Here is an amazing fact. You can use \(L\) to talk about Turing Machines! For instance, you can write down a sentence of \(L\) that is true if and only if a certain Turing Machine computes a certain function.
+
+How on Earth is that possible? \(L\) doesn’t have any symbols that refer to Turing Machines, or tapes, or anything like that!
+
+It’s possible because one can use numbers to *code* information about Turing Machines.
+
+I’ll tell you all about the relevant coding tricks in this subsection, and we’ll prove the following Lemma:
+
+>Lemma
+>We can define a formula \(\mbox{Validate}(x_1,x_2)\), which is true if and only if Turing Machine \(x_1\), when given input \(x_2\), eventually halts with a “\(1\)” on the tape, and nothing else.
+
+Proving this lemma is the hardest part of proving Gödel’s Theorem. We won’t do it in full detail; I’ll just tell you enough to give you the idea. Don’t sweat these details too much, if you find it hard. The really interesting part of Gödel’s Theorem is what comes after the Lemma; make sure you have *that* part down.
+
+##Sequences [section_sequences]
+
+The key to it all, it turns out, is to be able to express claims about *sequences of numbers*, in \(L\).
+
+Specifically, we need a formula, which we can call \[\mbox{Sequence}(c,n,a,i)\] which is true if and only if a number \(c\) encodes a sequence of numbers length \(n\) of which \(a\) is the \(i\)-th member.
+
+What do we mean, when we say \(c\) encodes a sequence of numbers? We need to pick some particular way of encoding sequences of numbers as a particular number. We talked about one such way in Topic 8; we will do so again here, briefly.
+
+Anyway, once we’re equipped with our \(\mbox{Sequence}(c,n,a,i)\) formula, it’ll be very easy to use \(L\) to say things about Turing Machines because we’ll be able to represent Turing Machines as number-sequences of a particular sort.
+
+Before plunging into the details, though, I want you to get a feel for how \(\mbox{Sequence}(c,n,a,i)\) works.
+
+### Pairs [section_pairs]
+
+Let us start with the relatively simple task of using \(L\) to express claims about sequences of length two — that is,  claims about ordered pairs. In other words: we’ll see how to use a natural number \(x_0\) to encode an ordered pair of natural numbers \(\langle x_1,x_2\rangle\). And we’ll see how to write down a sentence of \(L\) which is true if and only if \(x_0\) encodes the ordered pair \(\langle x_1,x_2\rangle.\)
+
+Let’s start with the coding scheme. We can use more or less the same coding scheme we used back in Topic 8, when we wanted to encode command lines. That is, we can code \(\langle x_1, x_2\) as \(2^x_1 \times 3^x_2\). (Back in Topic 8, we encoded \(\langle x_1, x_2\) as \(2^{x_1+1} \times 3^{x_2+1}\); we don’t need to add the 1 here, so we won’t.)
+
+So much for our coding-scheme. Let’s now see how facts about which numbers code which pairs can be expressed within \(L\).
+
+On the coding scheme we just discussed, \(12\) is used to code \(\langle 2, 1\rangle\), because \(12 = 2^2\times 3^1\). Suppose that we want to find a sentence of \(L\) that expresses this fact. What we want, in other words, is sentence of \(L\) that is true if and only if \(12 = 2^2\times 3^1\). But that is easily done, since the following is a sentence of \(L\): \[12 = 2^2 \times 3^1 \]
+
+More generally, we can use \[x_0=2^{x_1}\times 3^{x_2}\]to express the fact that \(x_0\) encodes the ordered pair \(\langle x_1,x_2\rangle\).
+
+Let us use ‘\(\mbox{Pair}(x_0,x_1,x_2)\)’ as an abbreviation for  ‘\(x_0=2^{x_1}\times 3^{x_2}\)’. Equivalently:\[\mbox{Pair}(x_0,x_1,x_2) \leftrightarrow_{df} x_0=2^{x_1}\times 3^{x_2}\]
+
+Now that we have \(\mbox{Pair}(x_0,x_1,x_2)\) in place, we can use it to express other claims about pairs. For example, we can define a formula \[\mbox{First}(x_0,x_1)\] that is true if and only if \(x_0\) codes a pair of which \(x_1\) is the first member: \[\mbox{First}(x_0,x_1) \leftrightarrow_{df} \exists x_2 (\mbox{Pair}(x_0,x_1,x_2))\]
+
+We have now seen how to use \(L\) to talk about sequences of length two (that is, ordered pairs).
+
+The same technique can be used for sequences of any *particular* length. So, for instance, one can encode the triple \(\langle a,b,c\rangle\) as \(2^a\times 3^b\times 5^c\) and use the following formula to express the claim that \(x\) encodes the triple \(a,b,c\): \[x = 2^{a}\times 3^{b} \times 5^{c}\]
+
+What we need to prove the theorem, however, is a single formula that allows us to talk about sequences of *any* finite length. We need a formula \(\mbox{Sequence}(c,n,a,i)\) which is true if and only if \(c\) encodes an sequence of length \(n\) (an \(n\)-tuple) of which \(a\) is the \(i\)-th member.
+
+That is actually quite tricky; I won’t go into the details here. But it is within reach, for any of you who have some familiarity with first-order logic. It is an excellent exercise to try to define \(\mbox{Sequence}(c,n,a,i)\)!
+
+###One More Useful Formulas [section_onemore]
+
+The details of how to do this depend on the details of how we define \(\mbox{Sequence}(c,n,a,i)\), but I will just report that we also define the following formula, which will be useful later:
+
+> \(\mbox{Seq}(c, n)\), which is true if and only if number \(c\) encodes a sequence of \(n\) numbers
+
+##Turing Machines [section_TMs]
+
+\(\mbox{Sequence}(c,n,a,i)\) is incredibly powerful. We can say *a lot* with it. Among other things, we can say basically everything there is to say about Turing Machines.
+
+###Command Lines [section_command]
+
+As we know, we can code a command line in a Turing Machine program as a sequence of numbers. So, using \(\mbox{Sequence}(c,n,a,i)\), and also \(\mbox{Seq}(c,n)\), we can write down a sentence of \(L\) that is true if and only if a number encodes a possible command line of a Turing Machine.
+
+It looks like this:
+
+\(\mbox{Seq}(x_1,5) \ \&\)
+
+\(\forall x_3 (\mbox{Sequence}(x_1,5,x_3,2) \supset x_3 \leq 1) \ \&\)
+
+\(\forall x_3 (\mbox{Sequence}(x_1,5,x_3,3) \supset x_3 \leq 1) \ \&\)
+
+\(\forall x_3 (\mbox{Sequence}(x_1,5,x_3,4) \supset x_3 \leq 2) \)
+
+What does this formula say? First, it verifies that \(x_1\) codes a sequence of length 5. Then it verifies that the second element of the sequence is a 0 or 1, that the third element of the sequence is a 0 or 1, and that the fourth element of the sequence is a 0, 1, or 2.
+
+And why do we want the formula to say this? Remember that any command line of a Turing Machine can be expressed as a five-element sequence: The first element is the state the Turing Machine is in, so it can be any natural number. The second element is the symbol the machine reads: in a two-symbol machine, it is either a blank (which we represent as a 0) or a 1. The third element is the symbol with which the machine replaces the symbol it read: again, either a blank (which we represent as a 0) or a 1. The fourth element says in which direction the machine should move: L (left), R (right), and * (do not move) are possible, where L is represented by 0, R is represented by 1, and *  is represented by 2. The fifth element is the state the Turing Machine then enters, which can again be any natural number.
+
+We can call the above formula of \(L\) “\(\mbox{ValidCommand}(x_1)\)”
+
+###Programs [section_programs]
+
+A Turing Machine program is just a sequence of command lines. Each command line can be coded as a number, so an entire Turing Machine program can be coded as a sequence of numbers, each of which encodes a command line. And that sequence of numbers can again be coded as a single number, in exactly the same way you encode any sequence of numbers.
+
+Given all this, it is again relatively easy to write down a sentence \(\mbox{ValidProgram}(x_1)\) that is true if and only \(x_1\) encodes a valid Turing Machine program.
+
+###The Tape [section_tape]
+
+We can use \(L\) to describe a Turing Machine program. So we are very close to being able to use \(L\) to describe a running Turing Machine. All that is missing is the Turing Machine’s input and output — i.e., its tape. But that’s easily fixed; the tape can easily be encoded as a sequence of numbers, just like everything else!
+
+For convenience, we will assume that the tape is infinitely long in only one direction, and that at any one time, there are at most finitely many non-blanks on the tape. We don’t lose any generality assuming this, as anything that can be computed using a two-way infinite tape, with infinite non-blanks, can be computed on our one-way infinite tape with finite non-blanks.
+
+That being so, the state of our tape can straightforwardly be represented as a finite sequence of numbers, with the first number representing the first symbol on the tape, the second number the second symbol, and so forth.
+
+We will need to come up with a scheme for coding symbols on the tape as numbers, but that is easy. We just use a different number for each possible symbol (we’ll assume there are only finitely many possibilities).
+
+So, we can, using the same tricks we already know, encode our sequence as a number, and write down a sentence \(\mbox{ValidTape}(x_1)\) of \(L\) that is true if and only if \(x_1\) encodes a sequence that corresponds to a possible state of a tape.
+
+I will assume below that \(0\) encodes a completely blank tape.
+
+##Running the Machine [section_running]
+
+We have the tools to describe each piece of a Turing Machine. Now we find ways to describe how the Turing Machine *runs* over time.
+
+###Turing Machine Moments [section_moments]
+
+The first step is to define a formula \(\mbox{MachineMoment}(x_0)\) which represents the exact status of a Turing Machine at a particular moment in time.
+
+We want \(\mbox{MachineMoment}(x_0)\) to be true just in case \(x_0\) codes a sequence of numbers \(\langle x_1,x_2,x_3,x_4 \rangle\) such that:
+
+* \(\mbox{ValidProgram}(x_1)\) (i.e. \(x_i\) encodes a valid Turing Machine program),
+* \(x_2\) is an arbitrary number (which will be used to represent a Turing Machine state),
+* \(\mbox{ValidTape}(x_3)\) (i.e. \(x_3\) encodes a valid Turing Machine tape), and
+* \(x_4\) is an arbitrary number (which will be used to represent a position of the reader on the tape)
+
+###Special Moments [section_special]
+
+We now define two formulas \(\mbox{InitialMoment}(x_0, x_1, x_2)\) and \(\mbox{HaltingMoment}(x_0)\).
+
+\(\mbox{InitialMoment}(x_0, x_1, x_2)\) is true iff
+* \(\mbox{MachineMoment}(x_0)\) (i.e. \(x_0\) encodes a Turing Machine moment),
+* the machine moment encoded by \(x_0\) is the sequence \(\langle x_1, 0, x_2, 0\rangle\) (i.e. \(x_0\) represents a machine moment corresponding to a machine with program \(x_1\) in state 0, with initial tape encoded by \(x_2\) and with the reader at the beginning of the tape).
+
+\(\mbox{HaltingMoment}(x_0)\) is true just in case:
+
+* \(\mbox{MachineMoment}(x_0)\) (i.e. \(x_0\) encodes a Turing Machine moment), and
+* the Turing Machine moment encoded by \(x_0\) is such that the machine is in a state and reading a symbol for which it has no command line.
+
+###Step By Step [section_step]
+
+Now for something magical: a formula \(\mbox{Step}(x_1,x_2)\) which is true if and only if:
+
+* \(\mbox{MachineMoment}(x_1)\), 
+* \(\mbox{MachineMoment}(x_2)\), and
+* the Turing Machine moment encoded by \(x_2\) is exactly the Turing Machine moment you would get if you advanced one step from the Turing Machine moment encoded by \(x_1\).
+
+Suppose, for instance, that \(x_1\) encodes a Turing machine moment whereby a machine which includes command line
+
+4 _ _ r 6
+
+is in state 4, and reading a blank on position 17 of the tape. Then \(\mbox{Step}(x_1,x_2)\) can only be true if \(x_2\) encodes a Turing Machine moment whereby that same machine with that same tape is in state 6, on position 18 of the tape.
+
+Once we have \(\mbox{Step}(x_1,x_2)\) in place, we can use it to define a formula \(\mbox{RunSequence}(x_1,x_2,x_3\) which is true just in case:
+
+* \(x_1\) encodes a finite sequence of Turing moments \(m_0,m_1,\ldots,m_k\),
+* \(\mbox{InitialMoment}(m_0,x_2,x_3)\) (i.e. \(m_0\) encodes a machine moment consisting of a Turing Machine with program \(x_2\), in state 0, at the begining of the tape encoded by \(x_3\)). 
+* \(\mbox{Step}(m_i,m_{i+1})\) holds for each \(i < k\)
+* \(HaltingMoment(m_k)\)
+
+##\(\mbox{Validate}(x_1,x_2)\) [section_validate]
+
+And now, the pièce de résistance. All the pieces are in place. We can define a formula \(\mbox{Validate}(x_1,x_2)\), which is true if and only if Turing Machine \(x_1\), when given input \(x_2\), eventually halts with a “\(1\)” on the tape, and nothing else.
+
+It is defined thus:
+* \exists x_3 (RunSequence(x_3, x_1, x_2), and
+* the last Turing Machine-moment encoded by \(x_3\) has a “\(1\)” on the tape, and nothing else.
+
+#Gödel’s First Incompleteness Theorem Proved [section_proved]
+
+##Using \(L\) to talk about \(L\) [section_using]
+
+In the course of the arduous proof-sketch of our lemma above, we said that we needed a code for the stuff on the tape. Something that can appear on the tape is formulas of \(L\). We could as easily code up a formula of \(L\) as any other string of symbols that can appear on our tape. This means we can use \(L\) *to talk about sentences of \(L\)*. We don’t do it directly; instead, we use numbers that encode sentences of \(L\).
+
+We’re going to combine our powers to talk about Turing Machines in \(L\), and to talk about \(L\) in \(L\), to prove Gödel’s First Incompleteness Theorem
+
+##Overview of the Proof [section_overview]
+
+The idea is to create a sentence \(G\) in the language of arithmetic which is true if and only if it is *not* the case that our Turing Machine outputs a “\(1\)”, when given \(G\) as input. We will call this the **Gödel sentence**.
+
+The existence of the Gödel sentence, together with the assumption that our magical Turing Machine outputs a “\(1\)” if and only if given a true sentence of \(L\) as input, entails a contradiction .
+
+How? Well suppose the Gödel sentence is true. Then, our magic Turing Machine should return a “\(1\)”, when given \(G\) as a input. But the Gödel sentence is true only if the magic Turing Machine *doesn’t* return a “\(1\)”, when given \(G\) as an input. Contradiction!
+
+So suppose it is false. Then, if the magic Turing Machine should *not* return a “\(1\)” when given \(G\) as an input. But that’s what the Gödel sentence says, which means it is true. Contradiction!
+
+So either way, there’s a contradiction.
+
+So our assumption that there is a Turing Machine that returns a “\(1\)” for all and only the true sentences of \(L\) cannot be true.
+
+Now I’ll show you how to define the Gödel sentence.
+
+##The Gödel Sentence [section_sentence]
+
+What we’d *like* to do is define the Gödel sentence as something like this: \[\neg\mbox{Validate}(m, k)\] where \(m\) is the number of the magic Turing machine, and \(k\) is the number that encodes the sentence “\neg\mbox{Validate}(m, k)” itself. The problem with this strategy is that there is no guarantee that we can find a \(k\) that makes that work.
+
+What we’ll do below is find a kind of *indirect* way for a sentence to refer to itself, which is guaranteed to work.
+
+###Subsitution Coded [section_coded]
+
+Remember substitution? That is a way of turning a formula with an unbound variable in it into a sentence. We’re going to use \(L\) to talk about that. 
+
+More specifically, we’re going to define a formula \(\mbox{Sub}(x_1, x_2, x_3) which is true iff: 
+	1. \(x_2\) encodes a formula of \(L\) with one free variable in it;
+	2. \(x_3\) encodes a sentence of \(L\); and
+	3. the sentence \(x_3\) encodes is what you get by substituting the L-name of \(x_1\) into the free variable in the formula encoded by \(x_2\).
+
+(I don’t offer a proof that (\mbox{Sub}(x_1, x_2, x_3)\) can be defined, but just because it’s tedious, not because its hard. If you’re keen, give proving it a go!)
+
+Note that nothing stops us from considering cases like \(\mbox{Sub}(x_1, x_1, x_2)\) — that is, cases in which \(x_1\) encodes an open formula of \(L\), and the result of substituting the \(L\)-name of that very number, \(x_1\), into that formula, is \(x_2\). (Did I just blow your mind?)
+
+###The Quine Sentence [section_quine]
+
+Now, suppose there exists a Turing Machine that returns a “\(1\) if and only if given a true sentence of \(L\) as input — or, as I’ll say, that *validates* all and only true sentences of \(L). Say it is Turing Machine number \(m\).
+
+We can define a formula we’ll call \(\mbox{Quine}(x_1, x_2)\)[^fn_Quine] which is true iff it is *not* the case that \(\mbox{Validate}(m, x_1) and \(\mbox{Sub}(x_2, x_2, x_1)\) — that is, the magical turing machine does *not* validate the sentence encoded by \(x_1\), and that sentence is the result of substituting the name for the number \(x_2\) in \(L\) into the formula that \(x_2\) encodes.
+
+[^fn_Quine]: Willard Van Orman[Quine][Quine] was one of the most important 20th Century philosophers; I mentioned him way back that the beginning of the class, when we divided paradoxes into veridical paradoxes,  falsidical paradoxes and antinomies. This sentence is named in his honour because it has some relation to [Quine’s paradox][Q-paradox].)
+
+[Quine]:https://en.wikipedia.org/wiki/Willard_Van_Orman_Quine
+[Q-paradox]:https://en.wikipedia.org/wiki/Quine%27s_paradox
+
+###The Proof Completed [section_completed]
+
+Now consider the formula \(\mbox{Gödel}(x_1) = \forall x_2 (\mbox{Quine}(x_2, x_1)) — i.e., for all numbers, it is not the case that both the magic Turing Machine validates the sentence encoded by that number, and that number is the result of substituting the name for \(x_1\) into the sentence \(x_1\) encodes. 
+
+\(\mbox{Gödel}(x1)\) has a its own code number. Call it “\(k\)”.
+
+Consider \(\mbox{Gödel}(k)\). \(\mbox{Gödel}(k)\) is our Gödel sentence.
+
+\(\mbox{Gödel}(k)\) says: it is not the case that the magic Turing Machine validates the sentence encoded by (the formula encoded by \(k\), with the name for number \(k\) substituted into that formula). But \(k\) encodes \(\mbox{Gödel}(x_1)\). So the name of \(k\) substituted into the formula encoded by \(k\) is \(\mbox{Gödel}(k)\)! So \(\mbox{G}(k)\), in effect, says: the magic Turing Machine doesn’t validate *me*!
+
+That entails a contradiction. That proves Gödel’s First Incompleteness Theorem.

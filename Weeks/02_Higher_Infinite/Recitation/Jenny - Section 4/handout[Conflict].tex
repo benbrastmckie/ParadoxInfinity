@@ -1,0 +1,117 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE Ordinals  \normalsize \\[.3cm]
+\noindent  \textsc{24.118 Recitation Section $\bullet$ Matthias Jenny\\  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927 $\bullet$ Hours: Thu 11:30-12:30} \hfill{October 3, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+\section{Some definitions}
+
+\noindent A relation $R$ on a set $A$ is \emph{anti-symmetrical} iff: \underline{\hspace{9.95cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A relation $R$ on a set $A$ is \emph{transitive} iff: \underline{\hspace{11cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A relation $R$ on a set $A$ is \emph{total} iff: \underline{\hspace{11.7cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A relation $R$ on a set $A$ is a \emph{linear order} (or \emph{total order}) iff: \underline{\hspace{8.3cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A relation $R$ on a set $A$ is a \emph{well order} (or \emph{total order}) iff: \underline{\hspace{8.5cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A set $A$ is \emph{transitive} iff: \underline{\hspace{13.3cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent A set $A$ is an \emph{ordinal} iff: \underline{\hspace{13.2cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\noindent For two ordinals $\alpha$ and $\beta$, $\alpha<_O\beta$ iff \underline{\hspace{11.2cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\section{Pset 5, problem 4}
+
+\begin{enumerate}[label=\roman*.]
+\item $\alpha+1_O=\alpha\cup\{\alpha\}$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $1_O+3_O=3_O+1_O$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $1_O\times 3_O=3_O\times 1_O$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $\omega\times 3_O=\omega+(\omega+\omega)$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $\omega\times\omega<_O\omega\times(2_O\times\omega)$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $1_O+\omega=\omega+1_O$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $(\omega+2_O)+\omega<(\omega+\omega)+3_O$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $3_O\times\omega=(\omega+\omega)+\omega$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $\omega\times 2_O$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item $\alpha+1_O=\alpha\cup\{\alpha\}$\marginnote{{\large$\square$} True  {\large$\square$} False}
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+\end{enumerate}
+
+
+
+
+\end{document}

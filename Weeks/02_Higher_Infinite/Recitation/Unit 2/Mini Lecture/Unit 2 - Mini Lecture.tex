@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity }
+\rhead{Recitation $2$: The Higher Infinite}
+
+
+
+\begin{center}
+{\LARGE \bf Zermelo–Fraenkel Set Theory}
+\end{center}
+
+\smallskip
+
+\section{History of Set Theory}
+\begin{itemize}
+\item (1874) Georg Cantor established set theory.
+\item (1900) Russell's paradox was discovered: naive theory theory contains a contradiction.
+\item (1908 - 1922) Zermelo and Fraenkel proposed an axiomatic system in order to formulate a theory of sets free of paradoxes.
+\item Today, Zermelo–Fraenkel set theory, with the historically controversial axiom of choice included, is the standard form of axiomatic set theory and as such is the most common foundation of mathematics.
+\end{itemize}
+
+\section{Axioms of ZFC}
+
+\begin{enumerate}
+\item (Axiom of Extensionality) $\forall x \forall y (\forall z (z \in x \leftrightarrow z \in y) \rightarrow x = y)$
+
+For any $x, y$, if they have the same members, then they are the same.
+
+\item (Axiom of the Empty Set) $\exists x \forall y (y \notin x)$
+
+There is a set with no elements (denoted by $\emptyset$).
+\item (Axiom of (Unordered) Pairs) $\forall x \forall y \exists z \forall w (w \in z \leftrightarrow w = x \lor w = y)$
+
+For any $x, y$, there is a set, $\{x, y\}$, that contains exactly $x$ and $y$.
+
+\item (Axiom of Union) $\forall x \exists y \forall z (z \in y \leftrightarrow \exists w (z \in w \land w \in x))$
+
+For any $x$, there is a set, $\bigcup x$, whose members are exactly the members of the members of $x$.
+
+\item (Axiom of Power Set) $\forall x \exists y \forall z (z \in y \leftrightarrow z \subseteq x)$
+
+For any $x$, there is a set, $\wp(x)$ ,whose members are exactly the subsets of $x$.
+
+\item (Axiom of Infinity) $\exists x (\emptyset \in x \land \forall y (y \in x \rightarrow y \cup \{y\} \in x))$
+
+There is a set that contains $\emptyset$, and for any $y$, if $y$ is in it, then the union of $y$ and $\{y\}$ is in it.
+
+\item (Axiom of (Restricted) Comprehension) $\forall x \exists y \forall z (z \in y \leftrightarrow z \in x \land \phi(z))$
+
+Let $\phi$ be a condition. For any $x$, there is a set, $\{z \in x \, \, | \, \, \phi(z) \}$, whose members are exactly those members of $x$ that satisfy $\phi$.
+
+\item (Axiom of Replacement) $\forall x (\forall y (y \in x \rightarrow \exists ! z \phi(y, z)) \rightarrow \exists w \forall u (u \in w \leftrightarrow \exists v (v \in x \land \phi(v, u))))$
+
+For any $x$, the image of $x$ under any function $\phi$ is also a set.
+
+\item (Axiom of Foundation) $\forall x (x \neq \emptyset \rightarrow \exists y (y \in x \land x \cap y = \emptyset))$
+
+Every non-empty set has a member which is disjoint from it.
+
+\item (Axiom of Choice) $\forall x (\forall y \forall z (y \in x \land z \in x \land y \neq z \rightarrow y \cap z = \emptyset) \land \forall u (u \in x \rightarrow u \neq \emptyset) \rightarrow \exists c \forall w (w \in x \rightarrow \exists v(c \cap w = \{v\})))$
+
+Given any set $x$ of mutually disjoint non-empty sets, there exists a choice set of $x$, that is, a set that contains exactly one element in common with each of the non-empty sets in $x$.
+
+\end{enumerate}
+
+
+
+\end{document}

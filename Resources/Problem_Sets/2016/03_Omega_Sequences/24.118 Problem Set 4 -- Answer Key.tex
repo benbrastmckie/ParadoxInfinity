@@ -1,0 +1,97 @@
+
+
+
+
+
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+%\usepackage{setspace}
+%\usepackage{endnotes} \let\footnote=\endnote %Remember to update below
+
+% Bibliography Packages
+%\usepackage{linquiry}
+\usepackage{natbib}
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+%\usepackage{latexsym}
+%\usepackage{amsfonts}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+\usepackage{enumerate}
+
+%Diagram packages
+%\usepackage{bar}
+%\usepackage{curves}
+%\usepackage{pst-plot}
+
+%Tree packages
+%\usepackage{ecltree}
+%\usepackage{eclbip}
+%\usepackage{eepic}
+%\usepackage{epic}
+
+
+\begin{document}
+
+\begin{center} {\large 24.118x -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 5: Answer Key \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+
+\subsection*{Problems:}
+
+
+\begin{enumerate}
+
+\item \begin{enuemrate}[(a)]
+	\item Yes, trivially, the empty set is well ordered by $\in$.
+	\item \begin{itemize}
+		\item $\mathcal{P}(\varnothing)=\{\{\}\}$
+		\item $\mathcal{P}(\mathcal{P}(\varnothing))=\{\{\}\}$
+\item That is not a valid argument. The red line changes position infinitely many time before noon, so whatever direction it is facing at noon is not going to be because, at some time prior to noon, it was facing that position. That being so, the fact that, for every time between 11 and noon, the red line is not at the twelve o'clock position, does not mean that at noon the red line is not at the twelve o'clock position
+
+This is just like the arguments about Thomson's Lamp. For every time before noon, there is a later time, also before noon, when the lamp is off. That tells you something about how things are before noon; but it doesn't tell you how things are at noon, given the infinity of on and off states before noon.
+
+\item Argument 1 is the sound argument. Every red line is on the wheel at every moment between when they get drawn and 2p.m. Assuming nothing weird happens, there is nothing to stop the wheel having the red lines it had just before 2p.m. at 2p.m.
+
+On the other hand, the other argument is unsound. In particular, the inference from this:
+\begin{quote}
+For all $n$, position $n$ is blank after $n + 1$ rotations, and remains blank.
+\end{quote}
+\ldots to this:
+\begin{quote}
+So at 2 p.m., position $n$ is blank for all $n$.
+\end{quote}
+\ldots is not valid, for exactly the same reasons the inference in question 2 is not valid. Similarly, the inference from
+\begin{quote}
+No rotation ever takes a red line to a radius other than position $n$, for some $n$.
+\end{quote}
+\ldots to this:
+\begin{quote}
+At 2p.m. every non-position is also blank.
+\end{quote}
+\ldots is also invalid.
+
+\item You will have no money at midnight.
+
+To see this, suppose otherwise.  Then you are left with one or more bills at midnight. Let $k$ be the serial number of one of them. After the time at which you received bill $k$ infinitely many burnings took place, but there are at most $k-1$ bills you could have burned before burning bill $k$. So you must have burnt bill $k$ after all.
+
+\item  There is such a strategy. There are many, in fact. One strategy is to always give back one of the bills Fool just gave you. That way, if you don't give back a bill immediately, you never give it back. So after Fool gives you two dollars, and you give one back, the one you keep you will never give back; after fool gives you four dollars, and you give one of those back, the three you keep you will never give back, and so on. If you follow that strategy, you will have infinitely many dollar bills at midnight. (You can, in fact, arrange to have any natural number of bills at midnight, too. Think about how!)
+
+\end{enumerate}
+
+\end{document}
+

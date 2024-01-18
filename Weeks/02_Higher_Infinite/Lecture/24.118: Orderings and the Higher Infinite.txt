@@ -1,0 +1,598 @@
+Title: 24.118: Orderings and the Higher Infinite
+Author: Damien Rochford (based on notes by Agustín Rayo)
+
+* [Living Large] [section_large]
+	* [Power Sets][section_power]
+	* [Unions][section_unions]
+	* [Keeping Track][section_track]
+* [Orderings and Well-Orderings][section_orderings]
+	* [Linear Orderings][section_linear]
+	* [Well Orderings][section_well]
+* [Order Types][section_types]
+	* [The Shapes of Well-Orderings][section_shapes]
+	* [The Well-Orderings are Well-Ordered][section_wellwell]
+* [Ordinals][section_ordinals]
+	* [Representatives][section_representatives]
+	* [How the Ordinals are Ordered][section_how]
+	* [Which Well-Ordering Does an Ordinal Represent?][section_which]
+	* [The Official Definition][section_official]
+* [Ordinal Arithmetic][section_arithmetic]
+	* [Ordinal Addition][section_addition]
+	* [Ordinal Mutliplication][section_multiplication]
+
+
+#Living Large [section_large]
+
+We’re going to talk about different sizes of infinity again. We are well familiar, now, with two sizes: \(|\mathbb{N}\|), and \(\mathbb{R}\). We also know that, for every set, there is a bigger one. But how big can you go, exactly?
+
+You can go really, really, really big. We will only get started on how big you can go, in this unit; we won’t even get up to what are called the “small” large cardinals. But our glimpse of how big things can get will blow your mind.
+
+We will need to develop a new tool to keep track of how enormously big we are getting; that tool is called an *ordinal*. But before we get to doing that more formally, let me first give you a sense of where we’re going.
+
+##Power Sets [section_power]
+
+Recall Cantor’s Theorem:
+
+\(|S| < |\mathcal{P}(S)|\)
+
+…where \(S\) is an arbitrary set and \(\mathcal{P}(S)\) is the *power set* of \(S\) — i.e., the set of all subsets of \(S\). 
+
+It is an immediate consequence of Cantor’s Theorem that for any set, there is a bigger one — namely, its power set.
+
+From Cantor’s Theorem it follows that there is a hierarchy of infinite cardinalities. You start with the cardinality of the natural numbers, take the power set of that, then the power set of that, and so on:
+
+\[|\mathbb{N}| < |\mathcal{P}(\mathbb{N})| < |\mathcal{P}(\mathcal{P}(\mathbb{N}))| < |\mathcal{P}(\mathcal{P}(\mathcal{P}(\mathbb{N})))| < \ldots\]
+
+We can define recursively define \(\mathcal{P}^n(S) the following way: \[\mathcal{P}^0(S) = S\], and for \(n>0\), \[\mathcal{P}^n(S)=\mathcal{P}(\mathcal{P}^{n-1}(S))\]
+One way of getting bigger and bigger infinities is to choose bigger and bigger \(n\)s to make \(|\mathcal{P}^n(\mathbb{N})\)
+
+Just to give you a sense of what these sets are like:
+
+* \(\mathcal{P}^0(\mathbb{N})\) contains no sets; just natural numbers.[^fn_numbers]
+* \(\mathcal{P}^1(\mathbb{N})\) contains sets the empty set, and sets of natural numbers, like this: \[{3}, \{0, 2987498000898, 32\}, \{0, 2, 4, 8, \ldots\}\]
+* \(\mathcal{P^2}(\mathbb{N})\) contain the empty set, the set containing the empty set, and sets of sets of natural numbers, like this: \[\{\{0\}\}, \{\{1, 3\}, \{0, 2, 4, 8,\ldots\}\}, \{\{27\}, \{2987498000898, 34, 25\}, \{1, 4, 9, 16,\ldlots\}\}\]
+* And so on.
+At each stage \(n\), the nesting of sets is equal to \(n\).
+
+##Unions [section_unions]
+
+That gets us *pretty* big — much, much bigger than the cardinality of the natural numbers. But what if we get sick of just using larger and larger \(n\)s for \(\mathcal{P}^n(\mathbb{N})\). Can we get bigger than \(\mathcal{P}^n(\mathbb{N})\) for any \(n\)?
+
+How about \(\mathcal{P}^\mathbb{N}(\mathbb{N})\)? Sadly, no; that is not well defined. Each \(\mathcal{P}^n(\mathbb{N})\) is defined in terms of \(P^{n-1}(\mathbb{N}\), all the way back to \(P^0(\mathbb{N})\). But there is no \(\mathbb{N}-1\) to define \(\mathcal{P}^\mathbb{N}(\mathbb{N})\) in terms of.
+
+But there *is* a trick to get a bigger set than any \(\mathcal{P}^n(\mathbb{N})\): we can take the *union* of all the \(\mathcal{P}^n(\mathbb{N})\)s — i.e., the set that contains all the elements of each (\mathcal{P}^n(\mathbb{N})\). That is written as: \[\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\]
+
+How do we know that \(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\) is bigger than \(\mathcal{P}^n(\mathbb{N})\) for all \(n\)? Because it contains every set in  \(\mathcal{P}^n+1(\mathbb{N})\), which is bigger than \(\mathcal{P}^n(\mathbb{N})\).
+
+(Incidentally: unions are not generally bigger than the sets they are unions of. For example, as you know from problem set 3, the union of natural-numbers-many sets with cardinality \(\mathbb{N}\) is \(|\mathbb{N}|\). But in special cases like the one we are considering, where there is an infinite sequence of bigger and bigger sets, their union is always bigger than each member of the sequence.)
+
+##Keeping Track [section_track]
+
+Here is a list of the sets we have constructed so far, with each item on the list bigger than everything that comes earlier. 
+
+A set we can construct	How that set is defined
+\(\mathbb{N}\)	\(\{x : x \mbox{ is a natural number}\}\)
+\(\mathcal{P}(\mathbb{N})\)	\(\{x : x \mbox{ is a subset of } \mathbb{N}\}\)
+\(\mathcal{P}^2(\mathbb{N})\)	\(\mathcal{P}(\mathcal{P}(\mathcal{\mathbb{N}}))\)
+\(\mathcal{P}^3(\mathbb{N})\)	\(\mathcal{P}(\mathcal{P}^2(\mathcal{\mathbb{N}}))\)
+\(\ldots\)	\(\ldots\)
+\(\mathcal{P}^{k+1}(\mathbb{N})\)	\(\mathcal{P}(\mathcal{P}^k(\mathcal{\mathbb{N}}))\)
+\(\ldots\)	\(\ldots\)
+\(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\)	\(\{x : x \in \mathcal{P}^n(\mathbb{N}) \mbox{ for some } n\in \mathbb{N}\}\)
+
+
+Could we construct even bigger sets? Of course we could!
+
+We can start with the last item from the list above, apply the power set operation infinitely many times, then apply the union operation, then apply the power set operation, and so forth. In other words:
+
+A set we can construct	How that set is defined
+\(\mathcal{P}\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)	\(\left\{x : x \mbox{ is a subset of } \bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right\}\)
+\(\mathcal{P}^2\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)	\(\mathcal{P}\left(\mathcal{P}\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\right)\)
+\(\ldots\)	\(\ldots\)
+\(\bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)	\(\{x : x \in \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right) \mbox{ for some } m\in \mathbb{N}\}\)
+\(\mathcal{P}\left(\bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\right)\)	\(\left\{x : x \mbox{ is a subset of } \bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right) \right\}\)
+\(\ldots\)	\(\ldots\)
+
+
+The general procedure is clear enough: we can get bigger and bigger sets by combining applications of the power set operation with applications of the union operation. But if we want to specify really big sets, writing them out like above is going to be both confusing and completely impractical. We need better tools, to name really really big sets.
+
+The main objective of this topic is to show you those better tools, by introducing you to one of the most beautiful ideas in mathematics: ordinals. 
+
+Ordinals have to do with how sets are ordered; it turns out that there is a deep connection between how a set can be ordered and how to specify a big set. Let me explain.
+
+#Orderings and Well-Orderings [section_orderings]
+
+##Linear Orderings [section_linear]
+
+An ordering of a set is a way of ordering the elements of that set.
+
+Generally speaking, there are many different ways of ordering the elements of a set. Take the set of my friends, for example. Its elements could be ordered by birth-date, or by telephone number, or by height.
+
+Here we will be interested in orderings of a particular kind. They are sometimes called linear orderings (or total orderings). A linear ordering is just what you would expect: if a set of things is linearly ordered, the ordering defines a line of those things, with each one either before or after the others.
+
+The usual ordering \(<_I\) of the integers is a good example of a linear ordering:
+
+\[ \ldots\ <_I -2 <_I -1 <_I 0 <_I 1 <_I 2 <_I 3 <_I \ldots\]
+
+Any two integers are such that one of them is bigger than the other (and therefore such that one of them is ‘ahead’ of the other, according to \(<_I\)). 
+
+Not every ordering is a linear ordering. Suppose we were to order people according to ancestry. In other words, we say that  \(x <_A y\) just in case \(y\) is an ancestor of \(x\).  The relation \(<_A\) is not a linear ordering because there are people — me and my brother, for instance — such that neither is an ancestor of the other (and therefore such that neither of them is ‘ahead’ of the other, according to \(<_A\)).
+
+Here is how to define orderings a linear orderings formally (though this won’t matter so much for our purposes, so don’t worry if you don’t find this helpful).
+
+An **ordering** of a set \(A\) is a relation on the elements of \(A\) such that:
+
+1. **Anti-Symmetry**
+For any \(a,b\in A\),  if \(a<b\) , then not-(\(b<a\)).
+
+2. **Transitivity**
+For any \(a,b,c\in A\), if \(a<b\) and \(b<c\), then \(a<c\).
+
+You need to add one more condition to make an ordering a **linear ordering**; it is this:
+
+3. **Totality**
+For any \(a,b\in A\), if \(a\neq b\), then either \(a<b\) or \(b<a\).
+
+##Well-Orderings [section_well]
+
+We just narrowed down the range of orderings we are interested in to the linear orderings. Now we will narrow down things even further, to a special sub-set of the linear orderings: the well-orderings.
+
+A well-ordering of \(A\) is a linear ordering of \(A\) with the additional property that every non-empty subset of \(A\) has a smallest element. 
+
+Formally:
+
+\(A\) is well-ordered by \(<\) (or \(<\) is a well-ordering of \(A\)) if and only if:
+
+* \(<\) is a linear ordering of \(A\); and
+* for every non-empty subset \(S\) of \(A\), there is some element \(x \in S\) such that, for every \(y \in S\), if \(x \neq y\), then \(x<y\). 
+ 
+The usual ordering of the natural numbers, for example, is a well-ordering, since every non-empty set of natural numbers has a smallest element. But the usual ordering of the integers is not a well-ordering, since there are sets of integers with no smallest element (the set of all integers, for example).
+
+#Order Types [section_types]
+
+##The Shapes of Well-Orderings [section_shapes]
+
+There are *lots* of ways of well-ordering the natural numbers. There is, of course, the usual ordering (which we indicate as ‘\(<_\mathbb{N}\)’): \[0<_\mathbb{N}1<_\mathbb{N}2<_\mathbb{N}3<_\mathbb{N}\ldots\]
+
+But here’s another well-ordering: it’s just like the usual ordering, except that 0 and 1 get flipped around: \[1<_a0<_a2<_a3<_a4<_a5<_a\ldots\]
+
+Although \(<_\mathbb{N}\) and \(<_a\) correspond to different ways of ordering the natural numbers, the two well-orderings They have the “same shape”:
+
+| | | | | …
+
+Another way of putting this: the two orderings are *isomorphic* to one another. A little more precisely: two well-orderings are isomorphic to one another when the following is true: you can get from one ordering to the other by switching around which elements are in which positions, but without changing the way in which the positions themselves are arranged.
+
+(Formally: two orderings \(<_1\) and \(<_2\) are **isomorphic** to one another if and only if there exists a bijection \(f\) between the domain of \(<_1\) and the domain of \(<_2\) such that, for every \(x\) and \(y\) in the domain of \(<_1\), we have \(x<_1y\) if and only if \(f(x)<_2f(y)\).)
+
+If you have a finite set, all well-orderings of that set will be isomorphic to one another. But things are different when we are ordering infinite sets. To see this, let consider a further well-ordering of the natural numbers: the well-ordering \(<_0\). That is the ordering in which zero is counted as bigger than every positive integer but the remaining numbers are ordered in the usual way: \[1<_02<_03<_04<_0\ldots<_00\]
+
+\(<_0\) generates a well-ordering the following shape:
+
+| | | | | … |
+
+
+which is different from the shape generated by \(<_\mathbb{N}\):
+
+| | | | | …
+
+
+So \(<_0\) is not isomorphic to \(<_\mathbb{N}\). There is no way of getting from one well-ordering to the other by switching around numbers that get assigned to particular positions in the ordering but without changing the way in which the positions themselves are arranged.
+
+In this topic we won’t be interested in particular orderings, such as \(<_\mathbb{N}\) or \(<_0\). Instead, we will be focusing on *types* of well-orderings, or **order types**. Different order types are represented by different shapes.
+
+For instance, we will be interested in the order type of \(<_\mathbb{N}\), which might be represented by the shape:
+
+| | | | | …
+
+and in the order type of \(<_0\), which might be represented by the shape:
+
+| | | | | … |
+
+##The Well-Orderings are Well-Ordered [section_wellwell]
+
+We start with the order types of finite sets. Those are easy. The first one is the ordering of the empty set, which has the following shape:
+
+
+— i.e., not shape at all. The next is the ordering of sets with one element in them. It looks like this:
+
+|
+
+Then the ordering of the set with two-elements:
+
+||
+
+and so on, for every natural number. THen you have the standard ordering the set of natural numbers:
+
+|||…
+
+Then that one plus another place at the end:
+
+|||…|
+
+and another…
+
+|||…||
+
+and so on…
+
+|||…|||…
+
+and then
+
+|||…|||…|
+
+…and so on. 
+
+Here is something to notice about the order types we’ve described so far; each earlier one is an *initial segment* of a later one. I is and initial segment of II, which is an initial segment of |||||||||, which is an intitial segment of |||…, which is an initial segment of |||…||, and so on. And this is true in general, for all well-order types. That is: for any two well-orderings, one is an initial segment of the other.
+
+That means we can *order* the well-orderings, by the initial segment relation. In fact, that ordering is a well-ordering! That is super nice, because it means we can go through the well-orderings without missing any, and in a way where it is clear which is further along than which. That will be helpful, later, when we use the well-orderings to keep track of infinities.
+
+
+#Ordinals [section_ordinals]
+
+The last well-ordering we got up to was
+
+|||…|||…|
+
+I.e., an omega sequence, followed by a second omega-sequence, 
+
+We can keep going, obviously:
+
+|||…|||…|||…
+
+And we can do that as long as we like:
+
+|||…|||…|||…|||…|||…|||…
+
+But then maybe we get sick of that trick, and we go to a well-ordering past all of the ones like those above. At this point it gets a little tricky to draw with lines and dots, but here is an attempt, using parentheses.
+
+(|||…|||…|||…|||…)…
+
+In this one, there is as many omega sequences as natural numbers, one after another.
+
+Of course we can keep gong! We can add one more poisition after that:
+
+(|||…|||…|||…|||…)…|
+
+and we can keep re-iterating all the way up:
+
+(|||…|||…|||…|||…)…(|||…|||…|||…)…(||||…|||…|||…)
+
+This one has an omega sequence of omega sequences, followed by and omega sequence of omega sequences, followed by a third omega sequence of omega sequences.
+
+But now we’re getting sick of this, so we do this:
+
+((|||…|||…|||…|||…)…(|||…|||…|||…)…(||||…|||…|||…))…
+
+i.e., we form an omega sequence of omega sequences of omega sequences
+
+And then at one more:
+((|||…|||…|||…|||…)…(|||…|||…|||…)…(||||…|||…|||…)…)…|
+
+You see how this goes, maybe, but you also see how this is getting out of hand. If we want to get very far in describing ordinals in the above hierarchy, then lines and dots, though an improvement on describing well-order types in English, are not going to cut it. That’s why we use ordinals.
+
+##Representatives [section_representative]
+
+And what is an ordinal? It is just a set, of a certain kind, which we use to *represent* a well-ordering. You’ll get the basic idea by looking at this table:
+
+The well-order type with shape…	is represented by the ordinal…	which we shall call…
+\(\{\}\)	\(0_o\)
+|	\(\{0_o\}\)	\(1_o\)
+| |	\(\{0_o,1_o\}\)	\(2_o\)
+| | |	\(\{0_o,1_o,2_o\}\)	\(3_o\)
+| | | |	\(\{0_o,1_o,2_o,3_o\}\)	\(4_o\)
+etc.	etc.	etc.
+| | | | …	\(\{0_o,1_o,2_o,3_o,\ldots\}\)	\(\omega\)
+| | | | … |	\(\{0_o,1_o,2_o,3_o,\ldots,\omega\}\)	\((\omega+1_o)\)
+| | | | … | |	\(\{0_o,1_o,2_o,3_o,\ldots,\omega,(\omega+1_o)\}\)	\((\omega+2_o)\)
+etc.	etc.	etc.
+
+The best way to understand the hierarchy of ordinals is to think of it as built in stages, in accordance with the following principle:
+
+>**Construction Principle**
+>At each stage of the process, introduce a new ordinal, which is the set of all ordinals that have been introduced at previous stages of the process.
+
+Consider the initial stage of the process. Our principle tells us to introduce the set of every ordinal that’s been introduced so far. But at this point nothing has been introduced. So our principle tells us to introduce the set with no members (i.e., the empty set, \(\{\}\)). We call this ordinal ‘\(0_o\)’, and use it to represent the empty well-order type.
+
+At the next stage of the process, our principle tells us to introduce the set of every ordinal that’s been introduced so far. But the only ordinal that has been introduced so far is \(0_o\). So our principle tells us to introduce the set \(\{0_o\}\) (i.e., the set \(\{\{\}\}\), read ‘the set containing the empty set’). We call this ordinal ‘\(1_o\)’, and use it to represent the well-order type that we had previously represented as ‘|’ .
+
+At the next stage of the process, our principle tells us to introduce the set of every ordinal that’s been introduced so far. What we’ve introduced so far is \(0_o\) and \(1_o\). So our principle tells us to introduce the set \(\{0_o,1_o\}\) (i.e., the set \(\{\{\},\{\{\}\}\}\)). We call this ordinal '\(2_o\)', and use it to represent the well-order type that we had previously represented as ‘| |’ .
+
+We then carry on this process, once for each natural number. That gives us the sets \(0_o,1_o,2_o,\ldots\). And we again apply the principle! As usual, the principle tells us to introduce the set of everything that’s been introduced so far. So we introduce the set \(\{0_o,1_o,2_o,\ldots\}\). We call this ordinal ‘\(\omega\)’ (pronounced ‘omega’), and use it to represent the well-order type that we had previously represented as ‘| | | ...’ .
+
+And we carry on. At the next stage of the process, our principle tells us to introduce the set of everything that’s been introduced so far. So we introduce the set \(\{0_o,1_o,2_o,\ldots,\omega\}\). We call this ordinal \(\omega+1_o\) (pronounced ‘omega plus one’), and use it to represent the well-order type that we had previously represented as ‘| | | … |’ .
+
+And so on.
+
+##How the Ordinals are Ordered [section_how]
+
+We already know that the well-orderings are well-ordered. So, just as you expect, their representatives are also well-ordered. But they are well-ordered in an especially nice and transparent way. Let me explain.
+
+As you can see, given the construction principle, every ordinal contains every ordinal that came before it. So if an ordinal is lower in the hierarchy than another, it is a member of another.
+
+That means that the ordinals are well-ordered by the set membership relation. That is:
+
+>\(\alpha<_O\beta\) iff \(\alpha\in\beta\)
+…where \(\alpha,\beta\) are ordinals, and \(<_O\) is the ordering of the ordinals.
+
+Cool!
+
+##Which Well-Ordering Does an Ordinal Represent? [section_which]
+
+I said earlier that ordinals were intended as ways of representing types of well-orderings. How do we know which well-order type a given ordinal represents?
+
+Since each ordinal is the set of its predecessors, and since any set of ordinals is well-ordered by \(<_o\), each ordinal is itself well-ordered by \(<_o\). The order-type of the ordinal itself is the well-ordering it represents!
+
+For instance, \(\omega\) is the set \(\{0_o,1_o,2_o,\ldots\}\), and its elements are well-ordered as follows: \[0_o <_o 1_o<_o2_o<_o\ldots\] So \(\omega\) represents well-orderings with the shape:
+
+| | | ...
+
+i.e., what we were calling an \(\omega\)-sequence. Now you know why.
+
+##The Official Definition [section_official]
+
+Here is the official definition of an ordinal. You don’t need to know it; this is just for the curious.
+
+We have seen that, for every ordinal \(\alpha\), \(\alpha\) is well-ordered by \(\in\).
+
+Another important property of ordinals is that they are **set-transitive**: if \(\alpha\) is an ordinal, then every element of an element of \(\alpha\) is an element of \(\alpha\).
+
+To see that all the ordinals are set-transitive, recall that every ordinal is built by pooling together the ordinals that were introduced at previous stages of the construction process. So suppose that \(\alpha\) and \(\beta\) are ordinals and that \(\beta \in \alpha\). If \(\beta\) has an element \(\gamma\), \(\gamma\) must be an ordinal which was introduced earlier than \(\beta\). But since \(\beta \in \alpha\), \(\beta\) must have been introduced earlier than \(\alpha\). So \(\gamma\) was introduced earlier than \(\alpha\). So \(\gamma \in \alpha\).)
+
+So: ordinals are set-transitive and well-ordered by \(\in\).
+
+As it turns out, everything important about ordinals follows from these two properties. So set theorists define an ordinal as follows:
+
+>An **ordinal** is a set that is set-transitive and well-ordered by \(\in\).
+
+(This assumes that we restrict our attention to what are called **pure sets**: sets such that all their members are sets, all the members of their members are sets, all the members of their members of their members are sets, and so forth.)
+
+Thinking of ordinals in this way may seem unintuitive at first, but it turns out to be extraordinarily useful. You would have to go deeper than we will in this unit to see why. If you’re not keen to go deeper, don’t worry about it; you can just think of ordinals as sets created via the Construction Principle.
+
+#Ordinal Arithmetic [section_arithmetic]
+
+The fact that the ordinals are themselves well-ordered means that they have a structure similar to that of the natural numbers. In fact, the natural numbers can be *identified* with the ordinals up to \(\omega\).
+
+That being so, the arithmetical operations that work on the natural numbers can be extended, so that they apply across ordinals generally.
+
+Let me show you how.
+
+##Ordinal Addition [section_addition]
+
+We can define an addition operation for ordinals.
+
+In general, the order type represented by \((\alpha+\beta\)) is the result of starting with the type of ordering that \(\alpha\) represents and appending the type of ordering that \(\beta\) represents at the end of it.
+
+Consider, for example, the ordinal \((\omega+1_o)\). We get to it by starting with the type of ordering that \(\omega\) represents:
+
+| | | | …
+
+and appending the type of ordering that \(1_o\) represents to the end. 
+
+Since \(1_o\) represents this kind of ordering:
+
+|
+
+what we get is this:
+
+| | | | … |
+
+Now consider the ordinal \((\omega+\omega)\). It is the result of appending an ordering of the type that \(\omega\) represents:
+
+| | | | …
+
+to the end of itself. So what we get is this:
+
+| | | | … | | | | …
+
+An important fact about ordinal addition is that, unlike normal addition, it is not commutative. For example: \[(1_o+\omega )\neq (\omega+1_o)\]
+
+For whereas \((\omega+1_o)\) represents an order type of the form
+
+| | | | … |
+
+
+\((1_o+\omega)\) represents an order type of the form
+
+| | | | …
+
+So, actually, \((1_o +\omega )=\omega\).
+
+##Ordinal Multiplication [section_multiplication]
+
+There is also a multiplication operation defined for ordinals.
+
+In general, the order type represented by \((\alpha\times\beta\)) is the result of starting with the type of ordering that \(\beta\) represents and replacing each position in that order type with a full ordering of the type that \(\alpha\) represents.
+
+Consider, for example, the ordinal \(\omega\times 2_o\). We get to it by starting with the type of ordering that \(2_o\) represents:
+
+| |
+
+and replacing each position in that order type (here represented by ‘|’)  with an ordering of the type that \(\omega\) represents; namely:
+
+| | | | …
+
+
+So what we get is this:
+
+| | | | … | | | | …
+
+
+In other words: \((\omega\times 2_o) = (\omega+\omega)\).
+
+Notice, however, that \((\omega\times 2_o)\neq(2_o\times\omega)\), since the result of starting with an ordering of the type that \(\omega\) represents:
+
+| | | | …
+
+and replacing each position ‘|’ with an ordering of the type that \(2_o\) represents (namely ‘| |’) is still:
+
+| | | | …
+
+
+In other words: \((2_o\times\omega)=\omega\).
+
+As a final example, consider the ordinal \(\omega\times\omega\), which we get by starting with an ordering of the type that \(\omega\) represents:
+
+| | | | … 
+
+and replacing each position ‘|’ with an ordering of the type that \(\omega\) represents. When we get to ordinals like \((\omega\times\omega)\) it starts becoming difficult to draw perspicuous diagrams. I tried to do so earlier, using this:
+
+(| | | | … | | | | … | | | | … | | | | …)  …
+
+I won’t show you how to do it here, but we can define an ordinal version of exponentiation, too. And we can go further than that!
+
+#How to Build Cardinals Using Ordinals
+
+What does a well-ordering have to do with cardinalities? Well, you can think of each well-ordering as a *blueprint* for building a very large set. To explain how to get from the well-ordering to the set, I’ll first need to tell you about the distinction between successor ordinals and limit ordinals.
+
+A **successor ordinal** is an ordinal with an immediate predecessor. In other words, it is an ordinal \(\alpha\) such that \(\alpha = \beta + 1_o\) for some \(\beta\). For instance: \(7_o\) is a successor ordinal, since its immediate predecessor is \(6_o\). And so is \(\omega + \omega + 37_o\), since its immediate predecessor is \(\omega + \omega + 36_o \) .
+
+A **limit ordinal** is an ordinal with no immediate predecessor. In other words, it is an ordinal \(\alpha\) such that \(\beta + 1_o <_o \alpha\) for any \(\beta <_o \alpha\). For instance: \(\omega\) is a limit ordinal, since it has no immediate predecessor. And so is \(\omega \times \omega\). And so is \(0_o\).
+
+Okay, now here’s how you get from an ordinal \(\alpha\) to a big set, \(S_\alpha\)
+
+The first step is to consider the sequence of ordinals smaller than or equal to \(\alpha\). Suppose, for example, that \(\alpha = (\omega + \omega) \). Then the sequence of ordinals we shall consider is:
+
+\[\langle 0_o, 1_o, 2_o, \ldots, \omega, (\omega+1_o), \ldots, (\omega + \omega) \rangle\]
+
+Next, we determine whether each member of the sequence is a limit ordinal or a successor ordinal. In our example, I have marked out limit ordinals by underlining them:
+
+\[\langle \underline{0_o}, 1_o, 2_o, \ldots, \underline{\omega}, (\omega+1_o),  \ldots, \underline{(\omega + \omega)} \rangle\]
+
+Now imagine placing an empty box on top of each element of the sequence:
+
+\[\langle \underbrace{[\quad]}_{\underline{0_o}}, \underbrace{[\quad]}_{1_o}, \underbrace{[\quad]}_{2_o}, \ldots, \underbrace{[\quad]}_{\underline{\omega}}, \underbrace{[\quad]}_{\omega+1_o},  \ldots, \underbrace{[\quad]}_{\underline{\omega + \omega}} \rangle\]
+
+and filling the boxes in accordance with the following recipe:
+
+* Fill the box corresponding to \(0_o\) with the set of natural numbers, \(\mathbb{N}\). 
+* Fill the box corresponding to a successor ordinal with the result of applying the power set operation to whatever is in the box corresponding to the preceding member of the sequence.
+* Fill the box corresponding to a limit ordinal (other than \(0_o\)) with the union of everything that's been placed in a box so far. 
+
+In our example, this yields the following result:
+
+\[\left\langle \underbrace{[\mathbb{N}]}_{\underline{0_o}}, \underbrace{[\mathcal{P}(\mathbb{N})]}_{1_o}, \underbrace{[\mathcal{P}(\mathcal{P}(\mathbb{N}))]}_{2_o}, \ldots, \underbrace{\left[\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right]}_{\underline{\omega}}, \underbrace{\left[\mathcal{P}\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\right]}_{\omega+1_o},  \ldots, \underbrace{\left[\bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\right]}_{\underline{\omega + \omega}} \right\rangle\]
+
+Once our sequences of boxes has been filled out, it is easy to define our target set \(S_\alpha\). \(S_\alpha\)  is just the set contained in the box which is at the very end of our sequence. So, in our example, 
+\[S_\alpha = S_{\omega+\omega} = \bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\]
+
+Here is a longer list of examples:
+
+
+
+Ordinal \(\alpha\):	Set \(S_\alpha\) generated from \(\alpha\):
+\(0_o\)	\(\mathbb{N}\)
+\(1_o\)	\(\mathcal{P}(\mathbb{N})\)
+\(2_o\)	\(\mathcal{P}^2(\mathbb{N})\)
+\(\ldots\)	\(\ldots\)
+\(\omega\)	\(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\)
+\(\omega + 1_o\)	\(\mathcal{P}\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)
+\(\omega + 2_o\)	\(\mathcal{P}^2\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)
+\(\ldots\)	\(\ldots\)
+\(\omega + \omega\)	\(\bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\)
+\((\omega + \omega) + 1_o\)	\(\mathcal{P}\left(\bigcup_{m \in \mathbb{N}} \mathcal{P}^m\left(\bigcup_{n \in \mathbb{N}} \mathcal{P}^n(\mathbb{N})\right)\right)\)
+\(\ldots\)	\(\ldots\)
+
+# Two Different Senses of “\(<\)”
+
+The nice thing about the bove procedure for building \(S_\alpha\) on the basis of \(\alpha\) is that it is absolutely general: it can be applied to any ordinal \(\alpha\). And the procedure is guaranteed to deliver bigger and bigger outputs as you chooses ordinals that are farther and farther along in the hierarchy of ordinals. So the set \(S_{\beta}\) will always have more elements than the set \(S_{\alpha}\), if \(\alpha < _o \beta\). 
+
+Another way of putting this:
+
+> If \(\alpha <_o \beta\),  then \(|S_\alpha| < |S_\beta|\). 
+
+It is important to keep in mind, though, that '\(<_o\)' and '\(<\)' in the above statement are different relations.
+
+“\(<_o\)” is used to describe the standard way of ordering the ordinals. As we said above, when \(\alpha\) and \(\beta\) are ordinals, \(\alpha <_o \beta\) is defined as \(\alpha \in \beta\).
+
+“\(<\)” is used to say that one set has a bigger cardinality than the other.
+As we noted in Topic 3, when \(A\) and \(B\) are arbitrary sets, \(|A| < |B|\)  is defined as \(|A| \leq |B|\) and \(|A| \neq |B|\) (i.e. there is an injection from \(A\) to \(B\), but no bijection from \(A\) to \(B\)).)
+
+Thus, whereas \(\alpha <_o \beta\) tells us that \(\alpha\) comes earlier than \(\beta\) on the standard way of ordering ordinals, \(|S_\alpha| < |S_\beta|\) tells us that \(S_\beta\) has more elements than \(S_\alpha\).
+
+Consider, for example, the ordinals \(\omega\) and \(\omega + \omega\). We know that \(\omega <_o \omega + \omega\). But all this means is that \(\omega\) comes earlier than \(\omega + \omega\) on the standard way of ordering ordinals. It does not mean that \(\omega\) has more members than \(\omega+\omega\). In fact, each of these two sets have precisely as many members as there are natural numbers:
+
+\[|\omega| = |\omega + \omega| = |\mathbb{N}|\]
+
+In contrast, \(S_{\omega + \omega}\) is *much* bigger than \(S_\omega\):
+
+\[|\mathbb{N}| < |S_{\omega}| < |S_{\omega + \omega}|\]
+
+#How Far Can You Go?
+
+##A Good Start
+
+Now we have a very powerful way to build larger and larger sets: we name larger and larger ordinals. Let’s start with \(\omega\), and, hence, \(S_\omega\).
+
+To give you a sense of how big we’re talking, bear in mind that \(S_{2_o}\) is to the set of the reals as the set of the reals is to the set of the natural numbers. And that is just *two steps* past the natural numbers. So \(S_\omega) is unfathomably big. The relationship between \(S_\omega) and the set of the natural numbers is something like the relationship between the natural numbers and 1.
+
+But we can already do so much better than that. We know about ordinal arithmetic. The whole point of ordinal arithmetic is that it enables us to name really large ordinals.
+
+Consider \(S_{\omega\times 2_o}\). That’s as many steps past \(S_\omega\) as \(S_\omega\) is past the natural numbers. The natural numbers are but a distant, miniscule memory, when you’re as big as \(S_{\omega\times 2_o}\)/.
+
+But that’s nothing! How about \(S_{\omega\times\omega}\)? \(S_{\omega\times\omega}\) is to  \(S_\omega\) as, again, the natural numbers are to 1.
+
+We want to go as big as we can. How about something like this::
+
+\[\underbrace{\omega \times \omega \times \ldots \times \omega}_{10^{100} times}\]
+
+That set blows out of the water anything we’ve discussed so far.
+
+We’re just getting started. If we want, we can define an exponentiation function on ordinals; it is more or less what you would expect. Then consider \(\omega^\omega\). The picture in the top right of this page is a valiant effort to draw the well-ordering represented by \(\omega^\omega\) (stare at it a while and you’ll get the idea). \(S^\omega^\omega\) is vastly, vastly, vastly larger than the set named above, with all the multiplication.
+
+We can easily go bigger: consider this ordinal:
+
+\[\omega^{\omega^{\omega^{\omega}}}\]
+
+ and hence: \(S_{\omega^{\omega^{\omega^{\omega}}}}\). That’s a much, much bigger size of infinity than anything we’ve talked about so far.
+ 
+##Non-Recursive Orderings
+ 
+We can, of course, go way past \(S_{\omega^{\omega^{\omega^{\omega}}}}\). When we get sick of exponentiation, we can start using  [tetration][https://en.wikipedia.org/wiki/Tetration], which is sometimes written like this: \[^\beta\alpha]
+
+What that means is: \[\alpha^{\alpha^{\alpha^{\iddots}}}\] …with \(\beta\) many \(\alpha\)s in the exponentiation tower.
+
+Then you can make ordinals like this: \[^{^{^{\omega}\omega}\omega}\], and use that to make a truly ginormous set.
+
+And then you can define [pentation][[https://en.wikipedia.org/wiki/Pentation], and hexation, and more and more [hyperoperations][[https://en.wikipedia.org/wiki/Hyperoperation], at they are called. When you get sick of doing that, you can define something like this: 
+* let \(\alpha \uparrow^1 \beta\) equal \(\alpha^\beta\)
+* let \(\alpha\uparrow^2\beta\) equal \(^\beta\alpha\)
+* …and so on 
+
+…and make ordinals like this: \[\omega\uparrow^\omega\omega\]
+…and use that as a blueprint to make this set: \[S_{omega\uparrow^\omega\omega\\]
+…which is untold vast eternities bigger than anything discussed so far.
+
+But this isn’t big enough!
+
+As we’ve been considering more and more crazy orderings, they have been getting more and more complicated. But something all of these orderings have in common so far is that they are all *recursive*. What that means, basically,[^fn_recursive] is that you could write a (perhaps very long) computer program that could do the following: you input two elements of the ordering, and it outputs which one is bigger.
+
+[^fn_recursive] We will get more precise about what exactly that means when we talk about *computability*, latter in this course.
+
+Now, it turns out that there are orderings that are *not* recursive — they are so complicated that no computer program could possibly, even in principle, be written that can always tell you which of any two elements comes first in that ordering. The smallest such ordering is called “\(\rho\)” (usually written in English as “rho”; it’s pronounced like “row”). \(S_\rho\) blows everything we’ve talked about so far completely out of the water. Not to mention \(S_{\rho\uparrow^\rho \rho}\).
+
+##Ordinals with Uncountable Cardinalities
+
+We’ve gotten pretty big. But we can go bigger.
+
+Every ordinal we’ve talked about so far has the cardinality of the natural numbers. Even \(\rho\uparrow^\rho \rho\), as unimaginably wild as it is, is an ordinal with the cardinality of the natural numbers, and it represents a really crazy way of ordering natural-numbers-many things.
+
+If you want to go *really* big, you need to start talking about ordinals with bigger cardinalities.
+
+The **well-ordering theorem** says that every set can be well-ordered. The theorem is, in fact, equivalent to our old friend the Axiom of Choice. If it is true, then there are well-orderings beyond any of the orderings gestured at above. Past all of those is the first well-ordering of a set with the cardinality of the real numbers, for instance. Hence, there is a first ordinal with the cardinality of the real numbers.
+
+Ordinals that are the first to have their cardinality are called “initial ordinals”. Sometimes the hebrew symbol “\beth” (pronounced “beth”) is used to refer to an initial ordinal with an infinite cardinality.
+
+The \(\beth\)s are subscripted, to indicate their order. \(\beth_0\) is the first infinite initial ordinal — i.e., \(\omega\), the first ordinal with the cardinality of the natural numbers.
+
+If the well-ordering theorem is true, then there is an ordinal \(\beth_1\), which is the first ordinal with the cardinality of the real numbers.
+
+Incidentally, the \(beth\)s are also used to represent a particular cardinality, and are themselves sometimes called “cardinals”. So, for instance, the cardinality of the real numbers can be written as “\(\beth_1\)”, and the following sentence is true \[|\mathbb{R}|=\beth_1\]
+
+Now, \(S_{\beth_1}\) — the set you get by using \(\beth_1\) as your blueprint — is utterly gargantuan; everything we’ve talked about until now is the merest speck upon a speck compared to \(S_{\beth_1}\).
+
+But again, we can do much, much better. We have a bootstrapping procedure in place: we can use the ordinals to build sets with really huge cardinalities, and then use those cardinalities to specify enormous ordinals, which we can use as enormous blueprints to build even more gargantuan sets, which give us more gargantuan ordinals, which…and so on.
+
+So there is a \(beth_omega\), and a \(S_{\beth_omega}\). And \(|S_{\beth_omega}|=\beth_\beth_omega\). So there is a \(S_{\beth_{\beth_omega}}\). And \(|S_{\beth_{\beth_omega}}|=\beth_{\beth_{\beth_omega}}\). And so on.
+
+You can keep going and going like this, applying more tricks, until eventually you get to an 

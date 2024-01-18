@@ -1,0 +1,47 @@
+%trying to figure out how to get to 100 points
+
+10 points each for the five part II questions (?) [some seem more trivial?] 
+
+fix last short answer part a
+
+incorporate halting problemesque questions into part ii?
+
+automate anything? or not worth the effort (probs the latter)
+
+In principle, to make grading easier, I could eliminate 6b (where student does reductio to show the turing machine is impossible), and increase point values in Part 1. 
+
+bailing on 6b, so need to add in 8 points to other problems:
+
+
+
+Part I: 16, 18 (could do more?), 8 = 38 + 4 = 42
+
+Part 2: 8, 16 (could do more?), 16, 18 = 62 - 8 +1 + 3 = 58 (8 points each except last two) i.e. 8*6 +10 =58 
+
+
+Part I: 12, 18 (could do more?), 8 = 38
+
+Part 2: 7, 16 (could do more?), 16, 15 = 62-8 
+
+
+
+
+
+Part I: 12, 18 (could do more?), 8 = 38
+
+Part 2: 8, 16 (could do more?), 24, 14 = 62 (8 points each except last two)
+
+
+Part I: 14, 18 (could do more?), 8 = 40
+
+Part 2: 6, 16 (could do more?), 24, 14 =  60
+
+
+Part I: 14, 15 (could do more?), 8 = 37
+
+Part 2: 7, 16 (could do more?), 24, 16 = 63 
+
+
+Part I: 12, 18 (could do more?), 8 = would need 36
+
+Part 2: 7, 16 (could do more?), 24, 16 = 64 (8 points each)

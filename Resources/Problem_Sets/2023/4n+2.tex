@@ -1,0 +1,13 @@
+\begin{verbatim}
+0 0 0 r 0 ; get to end (move to right if see a 0 on the tape)
+0 1 1 r 0 ; get to end (move to right if see a 1 on the tape)
+0 _ 1 r 1 ; adjoin a 1 to the end, multiplies by 2 and adds 1 (i.e. 2n+1)
+1 _ 0 * halt; adjoin a 0 as last digit, which multiples by 2 in binary 
+
+Or the following, not using the wildcard and halt notations:
+
+0 0 0 r 0 ; get to end
+0 1 1 r 0 ; get to end
+0 _ 1 r 1 ; adjoin a 1 to the end
+1 _ 0 r 2; adjoin a 0 as last digit
+\end{verbatim}

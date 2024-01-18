@@ -1,0 +1,100 @@
+Title: 24.118 Syllabus
+
+* [General Information][section_general]
+	* [Grading][section_grading]
+* [Class Schedule][section_schedule]
+	0. [Introduction][section_introduction]
+	1. [Time Travel][section_time]
+	2. [Newcomb’s Problem][section_newcomb]
+	3. [Infinite Cardinalities][section_infinite]
+	4. [Omega Sequences][section_omega]
+	5. [Orderings and the Higher Infinite][section_orderings]
+	6. [What is Probability?][section_probability]
+	7. [Non-Measurable Sets][section_measure]
+	8. [Computability][section_computability]
+	9. [Gödel’s Theorem][section_gödel]
+___
+
+#General Information [section_general]
+
+In this class we will study a cluster of puzzles, paradoxes and intellectual wonders — from the higher infinite to Gödel's Theorem — and discuss their philosophical implications. The class aims to be an introduction to the highlights of the more technical side of philosophy.
+
+###Staff
+
+| Instructor/TAs | Recitation Date and Time | Recitation Room Number | Office Hours | Office Room Number |
+ | :==: | :==: | :==: | :==: | :==: |
+
+###Academic Integrity [section_integrity]
+
+You are free to talk with anyone you like about your problem sets. But when the time comes to write up your answers, you must do so alone.
+
+You are **not** free to talk with anyone about the end-of-term assignment, though you may consult published materials on your own. The answers you submit must be entirely your own work.
+
+Any suspicion that the above has not been adhered to, or that you have in some other way failed to meet [MIT’s expectations with regard to academic integrity][integrity], will be **aggressively pursued**. If academic dishonesty is proven, at the very least you will fail this course and a letter will be sent to the [Committee on Discipline][cod] documenting your dishonesty. At most, you will face a COD hearing and, possibly, be expelled from MIT.
+
+If you are tempted to breach academic integrity because you are in crisis, it is always better to speak to your TA, the instructor, your advisor, the academic deans, the counselling centre, or another trusted authority on campus who can help you handle the situation. Help is always at hand! The earlier you ask for it, the better for everyone.
+
+[cod]:http://cod.mit.edu/
+[integrity]:http://integrity.mit.edu/
+
+###Laptop Policy
+
+You may not use laptops or any other electronic device in this class. Why? Glad you asked! There is substantial evidence that this helps create a better environment for discussion and learning in general.  So we’ll be going old school: please bring along a pen and some paper to lectures. 
+
+If you’re curious about the evidence, you can have a look, for instance, [here][laptop1], [here][laptop2], [here][laptop3], [here][laptop4], and [here][laptop5].
+
+(There is, of course, an exception to this rule if you need a phone/laptop as part of a disability related accommodation.)
+
+[laptop1]:https://teachingcommons.stanford.edu/teaching-talk/class-multitasking-how-laptops-hurt-learning
+[laptop2]:http://link.springer.com/article/10.1007%2FBF02940852
+[laptop3]:https://www.washingtonpost.com/news/morning-mix/wp/2014/04/28/why-students-using-laptops-learn-less-in-class-even-when-they-really-are-taking-notes/
+[laptop4]:https://www.psychologytoday.com/blog/mental-wealth/201402/gray-matters-too-much-screen-time-damages-the-brain
+[laptop5]:https://www.winona.edu/psychology/media/friedlaptopfinal.pdf
+
+##Accommodations
+
+If you want an academic accomodation for this course, you need to provide me with a Accommodation Letter prepared by Disabilities Services as soon as possible. See [here][accomodation] about obtaining such a letter.
+
+[accomodation]:http://web.mit.edu/uaap/sds/students/procedures.html
+
+##Grading [section_grading]
+
+The class will be graded as follows:
+	* 50% Problem Sets
+	* 45% End-of-Term Assignment
+	* 5% Section Attendance and Participation
+
+###Problem Sets
+
+Problem sets will be linked to from the [class schedule][section_schedule]. If there are N assignments in class, we will only take into account your (N-1) best scores. Problem sets are due most Fridays by 10am, and must be uploaded onto Stellar. With the exception of extraordinary circumstances — typically involving a medical problem — late assignments will not be accepted.
+
+**Late assignments will not be accepted.** (I just thought you might have missed that from the previous paragraph.)
+
+It is okay to discuss problem sets with other students taking the class, and to consult published materials. But each student must complete the problem set on his or her own. If you are thinking of doing otherwise see [above][section_integrity].
+
+###End-of-Term Assignment
+
+The end-of-term assignment will due on Thursday May 12 by 11:05 am, and will be posted by Thursday May 5.
+
+Although individual consultation of published materials is okay, discussing the end-of-term assignment before the due-date with anyone—whether or not they are taking the class—is **strictly prohibited**. All work on the assignment must be the student's own.
+
+###Regrading of Assignments
+If you feel like you got the wrong grade on your assignment and you’re not able to sort things out with your TA, you’re welcome to send it to me for regrading. Please keep in mind, however, that this can cause your grade to go down rather than up. I am not as tenderhearted as some of my TAs.
+
+#Class Schedule [section_schedule]
+Note that this schedule is subject to revision.
+
+##0. Introduction [section_introduction]
+Lecture: Tuesday, February 2
+
+##1. Time Travel [section_time]
+
+##2. Newcomb’s Problem [section_newcomb]
+
+##3. Infinite Cardinalities [section_infinite]
+
+##4. Omega Sequences [section_omega]
+
+##5. Orderings and the Higher Infinite [section_orderings]
+
+##6. What is Probability [section_probability]

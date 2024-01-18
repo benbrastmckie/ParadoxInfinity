@@ -1,0 +1,95 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE Newcomb's Problem \& Probability \normalsize \\[.3cm]
+\noindent  \textsc{24.118 Recitation Section $\bullet$ Matthias Jenny\\  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927 $\bullet$ Hours: Thu 11:30-12:30} \hfill{September 26, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+\section{Three simple cases}
+
+\begin{enumerate}
+\item Suppose you get to class and there's a pop quiz with one simple `yes' or `no' question. You haven't looked at this week's lecture material. What should you do? Try to answer using the concepts of Expected Value Maximization and the Principle of Indifference.\end{enumerate}
+
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Suppose you're in a Newcomb situation with an 80\% percent accurate predictor. How would you defend the option of TwoBoxing.
+\end{enumerate}
+
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Suppose you're in a repeated Newcomb situation and every time you decide whether to OneBox or to TwoBox you flip a coin to make your decision. Is it possible for the predictor to be 80\% accurate?
+\end{enumerate}
+
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\section{Pset 3, Problem 1}
+
+\begin{quote}
+Suppose that we live an a deterministic world, and that I am about to toss an ordinary coin. What is the objective probability that the toss will land heads?
+\end{quote}
+
+\noindent\emph{Reminder:} The Objective-Subjective Connection says that the objective probability of an event at time $t$ is the subjective probability that a perfectly rational agent would assign to that event, if she had access to all evidence which is admissible at $t$.\\
+
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+\section{Pset 3, Problems 3 \& 4}
+
+\begin{quote}
+You are offered a chance to play a game that works as follows. A coin will be tossed until it lands heads. (If it never lands heads, the game is off.) If the coin lands heads on the $n^\mathrm{th}$ toss, you receive $\frac{2^n}{4}$.
+
+\begin{itemize}\item What is the expected value of playing the game?
+\item How much should one be willing to pay for the privilege of playing the game?\end{itemize}
+\end{quote}
+
+\noindent Notes:  \underline{\hspace{15.75cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.88cm}}\\
+
+
+\end{document}

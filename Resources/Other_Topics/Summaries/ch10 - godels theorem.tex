@@ -1,0 +1,560 @@
+
+
+\documentclass[12pt]{extarticle}
+
+\usepackage{summary-intro}
+
+
+
+
+
+\begin{document}
+\sumintro{G\"{o}del's Theorem}{Spring 2023}
+
+
+
+
+\section{The Theorem}
+
+Let $\mathcal{L}$ be a (rich enough) arithmetical language:
+
+\begin{description}
+\item[G\"odel's Incompleteness Theorem (V1)]   No Turing Machine can do the following: when given an arbitrary sentence of $\mathcal{L}$ as input, it outputs ``1" if the sentence is true and ``0'' if the sentence is false. 
+
+%\item[G\"odel's Incompleteness Theorem (V1)]   No Turing Machine can do the following: when given a sentence of $\mathcal{L}$ as input, it outputs ``1" if the sentence is true and ``0'' if the sentence is false. 
+
+\item[G\"odel's Incompleteness Theorem (V2)] No Turing Machine can:
+\begin{enumerate}
+\item run forever, outputting sentences of $\mathcal{L}$;
+\item eventually output each true sentence of $\mathcal{L}$; and
+\item never output a false sentence of $\mathcal{L}$.
+\end{enumerate}
+%You might think this second version is better because it does not reference our ability to feed in arbitrary sentences to a Turing machine. You might think that incompleteness arises in the first case because of some failure on our part to feed in sentences.
+
+
+\item[G\"odel's Incompleteness Theorem (V3)] No axiomatization of $\mathcal{L}$ is both consistent and complete. 
+
+\end{description}
+
+
+\section{What the Theorem Teaches Us}
+
+\begin{itemize}
+
+\item \emph{Mathematically:} 
+
+Arithmetical truth is too complex to be finitely specifiable.
+
+\item \emph{Philosophically:}
+
+Interesting mathematical theories can never be established beyond any possibility of doubt.
+
+
+\end{itemize}
+
+
+
+
+\section{A Simple Arithmetical Language, $\bm{L}$}
+
+\begin{itemize}
+\item An \textbf{arithmetical language} is a language to talk about the natural numbers and their basic operations (e.g.~addition and multiplication).
+
+
+
+\item $L$ is an arithmetical language built from the following symbols:\footnote{With some effort, the exponentiation symbol can be defined using ``$+$'' and ``$\times$'', as G\"odel showed. We include it here because it will make proving the theorem much easier.}
+\end{itemize}
+
+\[
+\begin{array}{cc}\label{gloss:exponentiation}
+ \text{{Arithmetical Symbol}} &\text{{Denotes}}   \\
+\hline
+ \text{\footnotesize 0}   & \text{\footnotesize  the number zero}  \\
+  \text{\footnotesize 1}  & \text{\footnotesize  the number one}  \\
+    \text{\footnotesize $+$}  & \text{\footnotesize  addition}  \\
+        \text{\footnotesize $\times$}  & \text{\footnotesize  multiplication}  \\
+            \text{\footnotesize $\wedge$}  & \text{\footnotesize  exponentiation} 
+\end{array}
+\]
+\vspace{2mm}
+\[
+\begin{array}{cc}\label{gloss:logica-symb}
+ \text{{Logical Symbol}}  &\text{{Read}}   \\
+\hline
+  \text{\footnotesize $=$}  & \text{\footnotesize  \dots is identical to \dots}  \\
+ \text{\footnotesize $\neg$} & \text{\footnotesize  it is not the case that \dots}  \\
+\text{\footnotesize $\&$}  & \text{\footnotesize  it is both the case that \dots and \dots}  \\
+\text{\footnotesize $\forall$} & \text{\footnotesize  every number is such that \dots} \\
+\text{\footnotesize $x_n$ (for $n \in \mathbb{N}$)} & \text{\footnotesize it} 
+\end{array}
+\]
+\vspace{2mm}
+
+\[
+\begin{array}{cc}
+ \text{{Auxiliary Symbol}} & \text{{Meaning}}  \\
+\hline
+ \text{\footnotesize $($} &\text{\footnotesize [left parenthesis]}\\   
+  \text{\footnotesize $)$} &\text{\footnotesize [right parenthesis]}
+\end{array}
+\]
+
+\vspace{2mm}
+
+
+
+
+\subsection{Abbreviations}
+
+An \textbf{abbreviation} is a notational \textit{shortcut} to make it easier for us to keep track of certain strings of symbols on our official list. 
+
+\begin{itemize}
+
+\item \emph{Numerals:}
+
+\[
+\begin{array}{c|c|c}
+\text{{Abbreviation}}  & \text{{Read}} & \text{{Official Notation}}     \\
+\hline
+\text{\footnotesize  $2$} & \text{\footnotesize two} & \text{\footnotesize $(1+1)$}   \\
+\text{\footnotesize  $3$} & \text{\footnotesize three} & \text{\footnotesize $((1+1) +1)$}  \\
+\text{\footnotesize $4$} & \text{\footnotesize four} & \text{\footnotesize $(((1+1) +1) + 1)$}   \\ 
+\text{\footnotesize \vdots} & \text{\footnotesize \vdots} & \text{\footnotesize \vdots} \\
+\end{array}
+\]
+\vspace{2mm}
+
+ \item \emph{Logical Symbols:}
+
+\end{itemize}
+
+\vspace{-4mm}
+
+\[
+\begin{array}{c|c|c}
+ \text{{Abbreviation}}  &\text{{Read}} &\text{{Official Notation}}   \\
+\hline
+\text{\footnotesize $A \vee B$}  & \text{\footnotesize  $A$ or $B$}  & \text{\footnotesize  $\neg(\neg A  \ \& \ \neg B)$} \\
+\text{\footnotesize $A \supset B$}  & \text{\footnotesize  if $A$, then $B$}  & \text{\footnotesize  $\neg A  \vee B$} \\
+\text{\footnotesize $\exists x_i$}  & \text{\footnotesize  some number is such that it}  & \text{\footnotesize  $\neg \forall x_i \neg$} \\
+\end{array}
+\]
+
+
+\begin{itemize}
+
+\vspace{2mm}
+
+\item \emph{Arithmetical Symbols:}
+
+\end{itemize}
+
+\vspace{-4mm}
+
+\[
+\begin{array}{c|c|c}
+ \text{{Abbreviation}}  &\text{{Read}} &\text{{Official Notation}}   \\
+\hline
+\text{\footnotesize $x_i < x_j$}  & \text{\footnotesize  $x_i$ is smaller than $x_j$}  & \text{\footnotesize  \(\exists x_k( (x_j = x_i + x_k) \ \& \ \neg(x_k = 0))\)}\\
+\text{\footnotesize $x_i |  x_j$}  & \text{\footnotesize  $x_i$ divides $x_j$}  & \text{\footnotesize  \(\exists x_k (x_k \times x_i = x_j)\)}\\
+\text{\footnotesize $\text{Prime}(x_i)$}  & \text{\footnotesize  $x_i$ is prime}  & \text{\scriptsize  \((1< x_i) \ \&\ \forall x_j\forall x_k((x_i = x_j\times x_k)\supset(x_i=x_j\vee x_i=x_k))\)}\\
+\end{array}
+\]
+
+
+
+\section{A Rich Enough Language}
+
+$\mathcal{L}$ counts as ``rich enough'' if one can prove:
+
+\begin{description}
+\item[Lemma] $\mathcal{L}$ contains a formula (abbreviated ``\(\mbox{Halt}(k)\)"), which is true if and only if the $k$th Turing Machine halts on input \(k\).
+\end{description}
+
+\noindent
+(As it turns out, even our simple language $L$ satisfies this condition!)
+
+
+
+
+
+
+\section{A Proof of G\"odel's Theorem (V1)}
+
+
+%\subsection{Outline}
+\begin{itemize}
+
+\item {Assume for \emph{reductio}:} \(M\) decides the truth of sentences of $\mathcal{L}$.
+
+\item By the Lemma, we can use $M$'s program to construct a Turing Machine \(M^H\), which computes the Halting Function.
+
+\item Since the Halting Function is not Turing-computable, our assumption must be false.
+
+
+\end{itemize}
+
+
+\com{
+
+\subsection{The Construction of $\bm{M^H}$}
+
+$M^H$ works as follows (on input $k$):
+
+\begin{quote}
+
+
+Run $M$ as a subroutine. Each time $M$ outputs a sentence, proceed as follows:
+
+\begin{itemize}
+\item If the sentence is ``\(\mbox{Halt}(k)\)", output 1. 
+\item If the sentence is ``\(\neg \mbox{Halt}(k)\)", output 0.  
+\item Otherwise, allow $M$ to keep going.
+\end{itemize}
+\end{quote}
+
+
+\subsection{$\bm{M^H}$ Computes the Halting Function}
+
+
+
+\begin{itemize}
+\item \emph{Case 1}: the $k$th Turing Machine halts on input \(k\). 
+
+\begin{itemize}
+
+\item ``\(\mbox{Halt}(k)\)" is true (by Lemma). So:
+
+
+\begin{itemize}
+\item  $M$ will eventually output ``\(\mbox{Halt}(k)\)" (by statement of theorem)
+
+\item $M$ will never output ``\(\neg\mbox{Halt}(k)\)" (by statement of theorem)
+\end{itemize}
+
+\item So: $M^H$ must output 1 (by construction). 
+\end{itemize}
+
+
+\item \emph{Case 2}: the $k$th Turing Machine doesn't halt on input \(k\). 
+
+\begin{itemize}
+
+\item ``\(\neg \mbox{Halt}(k)\)" is true (by Lemma). So:
+
+
+\begin{itemize}
+\item  $M$ will eventually output ``\(\neg\mbox{Halt}(k)\)" (by statement of theorem)
+
+\item $M$ will never output ``\(\mbox{Halt}(k)\)" (by statement of theorem)
+\end{itemize}
+
+\item So: $M^H$ must output 0 (by construction). 
+\end{itemize}
+
+
+\end{itemize}
+}
+
+\vspace{5mm}
+We've proved G\"odel's Thoerem! 
+
+
+\section{Proving the Lemma}
+
+Let's now show that our simple language $L$ counts as a ``rich enough'' language.
+
+
+
+
+\subsection{The key idea}
+
+\begin{itemize}
+
+\item The key is to be able to express claims about \emph{sequences} in \(L\). 
+
+\item We need a formula---abbreviated ``$\mbox{Seq}(c,n,a,i)$''--- which is true if and only if \(c\) encodes a sequence of length \(n\) of which \(a\) is the \(i\)th member.  
+
+\item With that in place, proving the lemma is totally straightforward.
+
+\end{itemize}
+
+\subsection{Warm Up: Pairs}
+
+
+\subsubsection*{Coding System}
+
+\begin{itemize}
+\item To the pair $\seq{n,m}$ ($n,m \in \mathbb{N}$) assign the number $2^n \cdot 3^m$.
+\end{itemize}
+
+\subsubsection*{Implementation in $L$}
+
+
+\begin{itemize}
+\item $\mbox{Pair}(x_i,x_j,x_k) \leftrightarrow_{df} x_i=(2^{x_j}\times 3^{x_k})$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Coding Finite Sequences}
+
+
+\subsubsection*{Coding System}
+
+\emph{Part 1:}
+\begin{itemize}
+\item Let $c$'s unique decomposition into primes be 
+$$p_0^{e_0} \cdot p_1^{e_1} \cdot p_2^{e_2} \cdot \ldots p_k^{e_k}$$
+where $p_i \neq p_j$ whenever $i \neq j$ and $e_i \neq 0$.
+
+
+\item We say that $c$'s \emph{non-trivial exponents} are $e_0, e_1, \dots, e_k$.
+
+
+\item Each number can be thought of as a code for the set of its non-trivial exponents.
+\end{itemize}
+[This is only half the job, because sets are unordered.]
+
+\vspace{8mm}
+\noindent
+\emph{Part 2:}
+\begin{itemize}
+\item Suppose $c$'s non-trivial exponents code {ordered pairs}, and that each such pair has a different natural number as its first component. 
+
+\item Then the first components of the pairs can be used to define an ordering of the pairs' second components.
+
+
+\end{itemize}
+
+
+
+\vspace{6mm}
+\noindent
+\emph{Example:}
+
+
+\begin{itemize}
+
+
+\item \(c= 2^{2^2 \cdot 3^{17}} \cdot 5^{2^1 \cdot 3^7} \cdot 7^{2^3 \cdot 3^{117}}\)
+
+\item \(c\)'s non-trivial exponents: $\{2^2 \cdot 3^{17},2^1 \cdot 3^7,2^3 \cdot 3^{117}\}$. 
+
+
+\item Such a set is code for: \(\{\langle 2,17 \rangle, \langle 1,7 \rangle, \langle 3,117 \rangle\}\).
+
+\item The first components induce the following ordering of the second components: \(\langle 7,17,117\rangle\).
+
+\item $c$ codes the finite sequence  \(\langle 7,17,117\rangle\).
+
+\end{itemize}
+
+
+\subsubsection*{Implementation in $L$}
+
+We'll divide the problem into two components:
+\begin{enumerate}
+
+
+\item Define ``$\text{Seq}(c,n)$'' [read: $c$ codes an $n$-sequence].
+\[
+\begin{array}{ccl}
+\text{Seq}(c,n)  &\leftrightarrow_{df}  &\forall x_i ((1 \leq x_i \ \& \ x_i \leq n) \supset\\
+& & \exists ! x_j (\exists x_k (x_j = 2^{x_i} \times 3^{x_k})\ \& \ \exists x_k (\text{Prime}(x_k) \, \& \, x_k^{x_j} \, |\, c \,\&\, \neg(x_k^{x_j+1} \, |\, c))) 
+
+
+\end{array}
+\]
+[Read: For each \(i\) \((1 \leq i \leq n)\), $c$'s non-trivial exponents include the code for exactly one pair of the form \(\langle i,b\rangle\).]
+
+
+
+\item Define  ``\(\mbox{Seq}(c,n,a,i)\)" [read: \(c\) encodes an \(n\)-sequence of which the \(i\)th member is \(a\)].
+\[
+\begin{array}{ccl}
+\text{Seq}(c,n,a,i)  &\leftrightarrow_{df}  &\mbox{Seq}(c,n) \ \& \\
+& &  (1 \leq i \ \& \ i\leq n) \ \&\\
+& &\exists x_j \big(\mbox{Prime}(x_j) \ \&\ (x_j^{(2^{i} \times 3^{a})} \, | \, c) \ \& \ \neg(x_j^{(2^{i} \times 3^{a})+1} \, | \, c)\big)
+\end{array}
+\]
+[Read: \(\mbox{Seq}(c,n)\) and \((1 \leq i \ \& \ i\leq n)\) and \(c\)'s non-trivial exponents include a code for \(\langle i, a\rangle\).]
+
+
+\end{enumerate}
+
+
+\section{G\"odel's Theorem (v3)}
+
+
+
+\subsection{Axiomatization}
+
+
+\begin{itemize}
+\item An \textbf{axiom} is a sentence that is taken to require no proof.
+
+\item A \textbf{rule of inference} is a rule for inferring some sentences from others.
+
+\item An \textbf{axiomatization} for $\mathcal{L}$ is a (Turing Computable) list of axioms and rules of inference for $\mathcal{L}$.
+
+\end{itemize}
+
+
+\subsection{Provability, completeness, and consistency}
+
+For $\mathcal{A}$ an axiomatization of $\mathcal{L}$:
+\begin{itemize}
+
+\item A sentence \(S\) of  $\mathcal{L}$ is \textbf{provable} in  $\mathcal{A}$ if there is a finite sequence of sentences of  $\mathcal{L}$ such that:
+\begin{itemize}
+\item Every member of the sequence is either an axiom of  $\mathcal{A}$, or results from previous members of the sequence by applying a rule of inference of  $\mathcal{A}$.
+
+\item The last member of the sequence is \(S\).
+
+\end{itemize}
+
+\item  $\mathcal{A}$ is \textbf{complete} if every true sentence of  $\mathcal{L}$ is provable in  $\mathcal{A}$.
+
+\item  $\mathcal{A}$ is \textbf{consistent} if it is never the case that both a sentence of  $\mathcal{L}$ and its negation are provable in  $\mathcal{A}$.
+
+
+\end{itemize}
+
+
+\subsection{Proving the Theorem}
+
+
+\begin{itemize}
+
+
+\item For \emph{reductio}:  $\mathcal{A}$ is a consistent and complete axiomatization of $L$.
+
+\item Since $L$ can talk about finite sequences, it can talk about sentences (i.e.~finite sequences of symbols) and proof (which are finite sequences of sentences).
+
+\item One can program a Turing Machine $M$ to output all and only the sentences of $L$ that are provable in $\mathcal{A}$.
+
+\item If $\mathcal{A}$ is consistent and complete, $M$ outputs all and only the true sentences of $L$, which contradicts G\"odel's Theorem (v2).
+
+
+\end{itemize}
+
+
+
+
+
+
+\section{Hilbert's Program}
+
+
+\begin{description}
+\item[Mathematical Hypothesis]
+  There is an algorithmic method capable of establishing, once and for
+  all, whether a set of axioms is consistent.
+\item[Philosophical Hypothesis]
+  All it takes for a set of axioms to count as a true description of
+  some mathematical structure is for it to be consistent.
+\end{description}
+
+\noindent
+\emph{The two together:} it is possible to establish whether a set of axioms is true
+by applying an algorithm that tests for consistency.
+
+
+\subsection{G\"odel's Bad News}
+
+G\"odel undermined Hilbert's mathematical hypothesis by proving:
+
+\begin{enumerate}
+
+\item  \begin{description}\item[Arithmetization of Turing Machines]
+If a problem can be solved by a Turing Machine, it can be proved to be true or false on the basis of the standard axiomatization of arithmetic, PA.
+\end{description}
+
+\item \begin{description}
+\item[G\"odel's Second Theorem]
+If an axiomatic system is at least as strong as PA, it is unable to prove its own consistency (unless it is inconsistent, in which case it can prove anything, including its own consistency).
+
+\end{description}
+
+
+\end{enumerate}
+
+\noindent
+\emph{The two together:} if PA consistent, its consistency cannot be established by an algorithmic method.
+
+\subsection{G\"odel's Theorem: From Truth to Proof}
+
+\begin{itemize}
+
+\item \emph{We have seen:} there is a formula of $L$---abbreviated ``$\text{Computes}(n,i,o)$''---that is true if and only if the $n$th Turing Machine yields output $o$ given input $i$.
+
+\item \emph{G\"odel also showed:} ``$\text{Computes}(n,i,o)$'' is \textbf{provable} in $PA$ if and only if the $n$th Turing Machine yields output $o$ given input $i$. In symbols:
+$$\vdash_{PA} \text{Computes}(n,i,o) \Leftrightarrow \text{ $n$th TM yields output $o$ given input $i$.}$$
+
+
+\end{itemize}
+
+\subsubsection*{G\"odel's Theorem G\"odel's Way}
+
+\begin{enumerate}
+
+\item There is a formula of $L$---abbreviated ``$\text{P}_{PA}(n)$''---that expresses provability in $PA$:
+$$\vdash_{PA} \text{P}_{PA}(n) \Leftrightarrow \text{ the formula coded by $n$ is provable in $PA$.}$$
+
+\item There is a formula of $L$---abbreviated ``$\mathcal{G}$''---that says that it is not provable in $PA$:\footnote{Here and below, $\overline{\phi}$ is a number that codes the formula $\phi$.}
+$$\vdash_{PA} \mathcal{G} \leftrightarrow \neg\text{P}_{PA}(\overline{\mathcal{G}})$$
+
+
+\item If $PA$ is consistent,\footnote{The notion of consistency that's required to show that the negation of $\mathcal{G}$ is not provable is $\omega$-consistency, which says that you can't prove each of the following for some $F$: $F(0), F(1), \dots, \exists x_0 \neg F(x_0)$. One can, however, show that there are other sentences of $L$ such that neither they nor their negations are provable in $PA$ assuming ordinary consistency: $\nvdash_{PA} 0 = 1$.
+} neither $\mathcal{G}$ nor its negation is provable in $PA$. In particular:
+$$\nvdash_{PA} 0 = 1 \quad \Rightarrow \quad \nvdash_{PA} \mathcal{G}$$
+
+
+\item G\"odel's proof can be formalized in $L$ and proved in $PA$. In particular:
+$$\vdash_{PA} \neg\text{P}_{PA}(\overline{0=1}) \supset \neg\text{P}_{PA}(\mathcal{\overline{G}})$$
+
+\end{enumerate}
+
+
+\subsubsection*{G\"odel's Second Theorem}
+If an axiomatization of arithmetic at least as strong as PA is consistent, it can't prove its own consistency. In particular:
+
+$$\nvdash_{PA} 0 = 1 \quad \Rightarrow \quad \nvdash_{PA} \neg \text{P}_{PA}(\overline{0 =1})$$
+%\newpage
+\emph{Proof:}
+
+\begin{itemize}
+
+\item $\nvdash_{PA} 0 = 1 $ (assumption)
+
+\item $\nvdash_{PA} \mathcal{G}$ (by 3 above).
+
+\item $\nvdash_{PA} \neg\text{P}_{PA}(\mathcal{\overline{G}})$ (by 2 above).
+
+\item $\nvdash_{PA} \neg \text{P}_{PA}(\overline{0 =1})$ (by 4 above).
+
+
+
+\end{itemize}
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+

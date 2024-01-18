@@ -1,0 +1,45 @@
+%9-4-22:
+
+Useful commands for lecture slides 
+
+\begin{block}<1->{blah blah }
+
+A \quad is a horizontal space equal to the current font size
+The \qquad gives twice that amount
+
+
+\begin{itemize}[<+->]
+
+\item<2->
+
+ \item[]
+
+ \centerline{} blah blah 
+
+\textcolor{highlightA}{blah blah}
+
+
+\textcolor{highlightB}{blah blah} %teal color
+
+\textcolor{red}{bad choice} 
+
+\textcolor{OGlyallpink}{bad choice} 
+
+\textbf{\textcolor{OGlyallpink}{at least one}} %DON'T FORGET DOUBLE }}
+
+When not using items but want sequential reveal:
+
+ \uncover<2->{blah blah } 
+
+really fancy \opaqueness stuff in 2-lecture for computing truth values slide. along with uncovers and alerts
+
+Center a line: 
+\makebox[\textwidth]{blah blah }
+works with stuff in math mode too! 
+
+single turnstile (assertion symbol): \vdash
+with a slash through it: \nvdash
+
+double turnstile w/ slash through it: \nentails 
+
+\vdash{}\bot

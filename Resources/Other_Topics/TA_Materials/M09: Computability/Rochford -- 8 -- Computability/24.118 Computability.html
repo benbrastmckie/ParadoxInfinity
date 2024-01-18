@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>24.118: Computability</title>
+	<meta name="author" content="Damien Rochford (based on notes by Agustín Rayo)"/>
+	<link rel="stylesheet" type="text/css" href="philosstyle.css">
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body>
+
+<em class="philosophysmall"> 24.118:</em> <em
+ class="titlesmall">Computability</em> <img style="padding-right:60px" src="http://www.worldofcomputing.net/wp-content/uploads/2013/01/turingMachine.gif" alt=
+"An artist's rendition of a Turing Machine" width="40%" align="right">
+
+<ul>
+<li><a href="#section_machines">Turing Machines</a>
+
+<ul>
+<li><a href="#section_hardware">Hardware</a></li>
+<li><a href="#section_software">Software</a></li>
+<li><a href="#section_running">Running and Halting</a></li>
+<li><a href="#section_example">An Example</a></li>
+<li><a href="#section_simulator">A Simlulator</a></li>
+</ul></li>
+<li><a href="#section_computability">Computability</a>
+
+<ul>
+<li><a href="#section_function">Computing a Function</a></li>
+<li><a href="#section_church-turing">The Church-Turing Thesis</a></li>
+</ul></li>
+<li><a href="#section_numbering">Numbering Turing Machines</a>
+
+<ul>
+<li><a href="#section_two-symbol">Two-Symbol Machines</a></li>
+<li><a href="#section_scheme">Our Scheme</a></li>
+</ul></li>
+<li><a href="#section_non-computable">Non-Computable Functions</a>
+
+<ul>
+<li><a href="#section_halting">The Halting Function</a>
+
+<ul>
+<li><a href="#section_proofhalting">The Proof</a></li>
+</ul></li>
+<li><a href="#section_busy">The Busy Beaver Function</a>
+
+<ul>
+<li><a href="#section_proofbusy">The Proof</a></li>
+</ul></li>
+<li><a href="#section_universal">The Universal Turing Machine</a></li>
+</ul></li>
+<li><a href="#section_pnp">P=NP?</a>
+
+<ul>
+<li><a href="#section_tractability">Tractability</a></li>
+<li><a href="#section_measuring">Measuring Complexity</a></li>
+<li><a href="#section_exponential">Exponential Time</a></li>
+<li><a href="#section_polynomial">Polynomial Time</a></li>
+<li><a href="#section_pvsnp">P vs. NP</a></li>
+</ul></li>
+</ul>
+
+<p>In this topic we’ll be talking about <em>computability</em>. Computability is a property of functions — specifically, of functions from natural numbers to natural numbers. Some of them are computable, and some of them aren’t. That sounds a bit abstract, but it has very practical consequences. Every program that any actual computer runs can be thought of as a function. So the fact that some functions are incomputable means that there are some programs that <em>no</em> computer could run — not a pocket calculator (does anyone have those any more?) not your laptop, not 天河&#8211;2 (the Tianhe&#8211;2), which can perform 33.86 quadrillion operations per second, and not any computer anyone could even in principle build.</p>
+
+<p>If you want to know about computability, the first thing you need to know about is Turing Machines.</p>
+
+<br>
+
+<h1 id="section_machines">Turing Machines</h1>
+
+<p><a href="https://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> was a British mathematician and perhaps the person most responsible for the existence of computer science. He was the first to describe Turing Machines, which are idealised models of computers.</p>
+
+<p>Turing Machines are particularly simple. Let me describe them for you.</p>
+
+<ul>
+
+<h2 id="section_hardware">Hardware</h2>
+
+<p>A Turing Machine’s hardware consists of two components: </p>
+
+<ol>
+<li>A memory tape</li>
+</ol>
+
+<p>You can think of the tape as a long strip of paper:</p>
+
+<br>
+<center>
+<img src="TMTape.png" alt="A long strip of paper, divided into cells." type="saveimage" target="[object Object]" style="line-height: 1.6;" height="42" width="630">
+</center>
+<br>
+
+<p>The strip has been divided into cells; each cell can hold, at most, one symbol in it. We may assume that our strip of paper is, in effect, infinite in both directions, because an assistant is ready to add paper to either end, if needed.</p>
+
+<ol start="2">
+<li>A tape-reader</li>
+</ol>
+
+<p>At any given time, the reader sits on a particular cell of the memory tape. We will indicate the position of the reader by placing arrow beneath the cell at which the reader is positioned:</p>
+<br>
+<center>
+<img src="TMTapeArrow.png" alt="Same image as above, with an arrow pointing at one of the cells." type="saveimage" target="[object Object]" style="line-height: 1.6;" height="82" width="639">
+</center>
+<br>
+<p>The reader is able to perform any of the following functions: </p>
+
+<ul>
+<li>read the symbol which is written on the reader’s current location;</li>
+<li>replace that symbol with a new one;</li>
+<li>move one cell to the left;</li>
+<li>move one cell to the right.</li>
+</ul>
+
+<p>The reader is also able to be in a variety of internal states. How many states depends on the Turing Machine, but it is always some finite amount.</p>
+
+<p>That’s it! That’s all there is, when it comes to hardware.</p>
+
+<br>
+
+<h2 id="section_software">Software</h2>
+
+<p>What about software? Each Turing Machine has exactly one program. A Turing Machine program consists of a finite list of command lines. Each command line is a sequence of the following form:
+
+<center>
+&lang;current state&rang; &lang;current symbol&rang; &lang;new symbol&rang; &lang;direction&rang; &lang;new state&rang;</p>
+</center>
+
+and is interpreted as the following instruction:
+
+<blockquote>
+If you are in &lang;current state&rang; and your reader sees &lang;current symbol&rang; written on the memory tape, replace &lang;current symbol&rang; with &lang;new symbol&rang;. Then move one step &lang;direction&rang;, and go to &lang;new state&rang;.
+</blockquote></p>
+
+<p>The &lang;current state&rang; and &lang;new state&rang; parameters should be filled with numerals (&ldquo;0&rdquo;, &ldquo;1&rdquo;, &ldquo;2&rdquo;, etc.), and the &lang;direction&rang; parameter should be filled with &ldquo;l&rdquo; (for &ldquo;left&rdquo;), &ldquo;r&rdquo; (for &ldquo;right&rdquo;), or &ldquo;*&rdquo; (for &ldquo;don’t move&rdquo;). For instance,
+<blockquote>
+7 <tt>0</tt> <tt>1</tt> r 2
+</blockquote>
+
+means:
+<blockquote>
+<p>If you are in state 7 and your reader sees <tt>0</tt> written on the memory tape, replace the <tt>0</tt> with a <tt>1</tt>. Then move one step to the right, and go to state 2.
+</blockquote></p>
+
+<br>
+
+<h2 id="section_running">Running and Halting</h2>
+
+<p>A Turing Machine always starts out in state 0, and runs in steps. At each step, the machine performs the instruction corresponding to the command line that matches its current state and the symbol which it is currently reading. (Or the first such command line, if there is more than one.) Then it goes on to the next step.</p>
+
+<p>If at any stage the machine is unable to find a command line that matches its present state and the symbol which it is reading, the machine halts. If not, it keeps running.</p>
+
+<p>(To make Turing Machine programs easier for humans to understand, programmers sometimes use “halt” as a name for a non-existing state.)</p>
+
+<br>
+
+<h2 id="section_example">An Example</h2>
+
+<p>Consider the Turing machine whose program consists of the following two commands:</p>
+
+<blockquote>
+0 <tt>_</tt> <tt>k</tt> * 1
+<br>
+<br>
+0 <tt>a</tt> <tt>o</tt> r 0
+</blockquote>
+
+and suppose that the tape starts out as follows:
+
+<br>
+
+<center>
+<img src="TMTapeA.png" alt="The same strip and arrow as above, except the arrow has a '0' subscript, and the cell the arrow is pointing to contains a letter &ldquo;a&rdquo;." type="saveimage" target="[object Object]" style="line-height: 1.6;" height="90" width="649">
+</center>
+
+<br>
+
+This is what will happen:
+<ul>
+<li><p><strong>Step 1</strong>: <br>
+
+When the machine is switched on, it will be in state 0, and the reader will be reading symbol <tt>a</tt>. So the machine will follow the instructions in command line: “0 <tt>a</tt> <tt>o</tt> r 0”. In other words, it will replace the <tt>a</tt> with an </tt>o</tt>, move one cell to the right, and remain in state 0:</p>
+
+<img src="TMTapeO.png" type="saveimage" target="[object Object]" alt="A long strip divided into cells. In one cell, there is a letter 'o'. An arrow points to the cell immediately to the right. The arrow as a '0' subscript." height="88" width="634" />
+</li>
+
+<li><p><strong>Step 2</strong>: </br>
+
+The machine is still in state 0 but now it is reading a blank. So it follows the instructions in command line: “0 <tt>_</tt> <tt>k</tt> * 1”. In other words, it replaces the blank with a <tt>k</tt>, remains in its current position, and switches to state 1:</p>
+
+<img src="TMTapeOK.png" type="saveimage" target="[object Object]" alt="Same strip as above, except the cell to which the arrow is pointing contains a 'k'. The arrow is subscripted with a '1'." height="89" width="642" />
+</li>
+
+<li><p><strong>Step 3</strong>: <br>
+The machine is now in state 1, reading a <tt>k</tt>. But it has no command line that starts with “1 <tt>k</tt>”. So the machine halts.</p>
+
+</ul>
+
+<br>
+
+<h2 id="section_simulator">A Simulator</h2>
+
+<p>You can find a Turing Machine simulator <a href="http://morphett.info/turing/turing.html">here</a> (it was written by Anthony Morphett, a mathematician at the University of Melbourne). The best way to learn about Turing Machines is to play with them. Start learning by using the simulator to complete the following exercises:</p>
+
+<ol>
+<li>Suppose the machine starts out with a blank tape. Design a Turing Machine that writes a <tt>1</tt> on two consecutive cells, and halts.</li>
+<li>Suppose the tape starts out with a finite sequence of zeroes and ones (followed by blanks), and that the reader is positioned at the first member of the sequence. Design a machine that replaces the zeroes with ones and the ones with zeroes, and halts.</li>
+<li>Suppose the tape starts out with a finite sequence of ones, and that the reader is positioned at the first member of the sequence. Design a machine that doubles the length of the string of ones, and halts.</li>
+<li>Suppose the tape starts out with a sequence of \(n\) ones, and that the reader is positioned at the first member of the sequence. Design a machine that replaces the sequence of \(n\) ones with a sequence of zeroes and ones that corresponds to \(n\) in binary notation.</li>
+</ol>
+
+</ul>
+<br>
+
+<h1 id="section_computability">Computability</h1>
+
+<ul>
+
+<h2 id="section_function">Computing A Function</h2>
+
+<p>Suppose \(f\) is a function from natural numbers to natural numbers. Say that an ordinary computer (running an ordinary computer program) computes \(f\) if and only if the following holds for each natural number \(n\):</p>
+
+<blockquote>
+<p>If you give the ordinary computer \(n\) as input, you’ll get \(f(n)\) as output.</p>
+</blockquote>
+
+<p>We can define a version of this idea for Turing Machines. We can think of a Turing Machine as taking number \(n\) as input if it starts out with a tape that is completely blank except for a sequence of \(n\) ones (with the reader positioned at the left-most one). And we can think of it as delivering number \(f(n)\) as output if it halts with a tape that is completely blank except for a sequence of \(f(n)\) ones (with the reader positioned at the left-most one).</p>
+
+<p>Accordingly, a Turing Machine <strong>computes function \(f\)</strong> if and only if the following holds for each natural number \(n\):</p>
+
+<blockquote>
+<p>If the Turing Machine starts out with a tape that is completely blank except for a sequence of \(n\) ones (with the reader positioned at the left-most one), the machine will halt with a tape that is completely blank except for a sequence of \(f(n)\) ones (with the reader positioned at the left-most one).</p>
+</blockquote>
+
+<p>We can extend this definition to functions that take more than one number as input. So, for instance a Turing Machine computes a two-place function \(f\) iff </p>
+
+<blockquote>
+<p>When the tape starts out with a sequence of \(n\) ones, followed by a blank, followed by a sequence of \(m\) ones (and when the reader starts out at the beginning of all that), the Turing Machine halts with a tape that is completely blank except for a sequence of \(f(n,m)\) ones (with the reader positioned at the left-most one).</p>
+</blockquote>
+
+<p>Now, each Turing Machine can be identified with its program, which is some finite list of command lines, each of which is a tuple of five symbols. There are countably many such programs, so there are countably many Turing Machines.</p>
+
+<p>On the other hand, there are uncountably many functions from the natural numbers to the natural numbers, as you proved back in Topic 3.</p>
+
+<p>So we know there’s got to be functions from the natural numbers to the natural numbers that are not computable by any Turing Machine — there aren’t enough Turing Machines to compute them all.</p>
+
+<br>
+
+<h2 id="section_church-turing">The Church-Turing Thesis</h2>
+
+<p>You might think: who cares if a function isn’t Turing computable? Turing Machines are so simple; you wouldn’t expect them to be able to do very much. There are lots of ways of making a Turing Machine more fancy, and you might have the hope that one of these fancier machines can compute functions that a Turing Machine can’t. Instead of a linear tape, you might use a two-dimensional grid. Instead of a single tape-reader, you might use many readers. You might use many tapes, working in parallel. You might give each cell on the tape an address, and the reader the ability to go to an address without going through other cells first (i.e., you might use a machine with RAM). You might even try to use a machine that takes advantage of quantum physics in some way, or models a neural net, or whatever.</p>
+
+<p>Here is an amazing fact. No more fancy machine that anyone has ever thought of can do better than a plain old Turing Machine. That is: nobody has ever figured out a way of computing functions that a Turing Machine cannot compute.</p>
+
+<p>This fact is some evidence for the following thesis, which most computer scientists believe:</p>
+
+<blockquote>
+<p><strong>The Church-Turing Thesis</strong>
+A function is computable in any way whatsoever iff it is computable by a Turing machine.
+That is: Turing computability just is computability.</p>
+</blockquote>
+
+<p>(The “Church” of the “Church-Turing Thesis” is <a href="https://en.wikipedia.org/wiki/Alonzo_Church">Alonzo Church</a>, an American logician, who came up with his own way of characterising computability, called the “<a href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>”, which turned out to be equivalent to the Turing-Machine way. The lambda calculus is great in its own right; in some ways it is a more beautiful way of understanding computability than the Turing-Machine way, though its relationship to physical computers is less obvious.)</p>
+
+<p>Because Turing Machines are so simple, writing an interesting program in Turing-Machine code is very complicated. It would take a <em>long</em> time to write Windows in Turing-Machine code. But if you don’t want to <em>write</em> a program, but rather <em>prove</em> things about programs, then Turing Machines are you beast. The fact that Turing-computability is the same as computability by a normal computer (and all possible computers, as far as we know) means that all results you obtain about Turing-computability hold for computability more generally. The fact that Turing machines are so simple means that it is much easier to prove things about computability by considering Turing Machines than by considering normal computers.</p>
+
+</ul>
+<br>
+
+<h1 id="section_numbering">Numbering Turing Machines</h1>
+
+<p>We know that there are countably many Turing Machines. So we know that there is a way of assigning a different natural number to each Turing Machine.</p>
+
+<p>We can, in fact, <em>describe</em> a particular way of assigning numbers to Turing Machines. What’s more, we can describe a way of doing this in enough detail that two things are true:
+	<ol type="a">
+		<li>were you to give me the specifications of a random Turing Machine, I could tell you which number is assigned to it, and, more importantly,</li>
+		<li>if you were to give me a number, I could tell you if that number corresponds to a Turing Machine, and, if so, which.</li>
+	</ol>
+ In short, we can describe a way of <em>coding</em> Turing Machines as natural numbers. Our code will allow you to recover the Turing Machine from a given natural number.
+ This is an important fact that we will use in proofs to come. Let’s pick a particular coding scheme and look at the details, to get clear on how it can be done.</p>
+
+ <ul>
+
+<h2 id="section_two-symbol">Two-Symbol Machines</h2>
+
+<p>Before describing the coding scheme in detail, it will be useful to make a simplifying assumption. We will focus our attention on &ldquo;two-symbol&rdquol Turing Machines, that is, on Turing Machines in which the tape is only allowed to contain ones and blanks. </p>
+
+<p>As it turns out, this restriction is no restriction at all, because every function that can be computed on a many-symbol Turing Machine can also be computed on a two-symbol Turing Machine. There will be a question about this on your problem set.</p>
+
+<br>
+
+<h2 id="section_scheme">Our Scheme</h2>
+
+<p>Recall that each command line in a Turing Machine is a five-tuple of symbols:
+<center>
+&lang;current state&rang; &lang;current symbol&rang; &lang;new symbol&rang; &lang;direction&rang; &lang;new state&rang;
+</center></p>
+<p>By making a few simple substitutions we can code such a sequence as a sequence of five natural numbers:</p>
+
+<ul>
+<li> &lang;current state&rang; and &lang;new state&rang; are natural numbers already, so we can leave them as they are.</li>
+<li> &lang;current symbol&rang; and &lang;new symbol&rang; are either &ldquo;<tt>1</tt>&rdquo; or &ldquo;<tt>_</tt>&rdquo;. (Remember that we are working with two-symbol Turing machines.) So all we need to do is substitute “0” for “<tt>_</tt>“.</li>
+<li> &lang;direction&rang; is “l”, “r” or “*”, which we can substitute &ldquo;0&rdquo;, &ldquo;1&rdquo; and &ldquo;2&rdquo; for, respectively.</li>
+</ul>
+
+<p>So, for example, the command line:
+<blockquote>
+0 <tt>_</tt> <tt>1</tt> r 1</p>
+</blockquote>
+becomes the following sequence of natural numbers:
+<blockquote>
+0 0 1 1 1
+</blockquote></p>
+
+<p>Now consider a Turing Machine’s entire program. We can code it as a sequence of natural numbers in two steps: (1) code each line of the program as a sequence of five numbers, and (2) write out each of the resulting five-number sequences, one after the other. So, for instance, the program:
+<blockquote>
+0 <tt>_</tt> <tt>1</tt> * 0 <br> <br>
+0 <tt>1</tt> <tt>1</tt> r 1
+</blockquote>
+gets coded as:
+<blockquote>
+0 0 1 2 0 0 1 1 1 1
+</blockquote></p>
+
+<p>What we have succeeded in doing so far is represent a Turing Machine as a sequence of natural numbers, but remember that our objective is to code a Turing Machine as a single natural number. So what we need now is a method for coding each sequence of natural numbers as a unique natural number.</p>
+
+<p>There are many ways of doing this. But the method we will consider here is due to Kurt Gödel, about whom you’ll be hearing more soon. It works like this:
+<blockquote>
+Code the sequence \(n_1, n_2, \ldots, n_k\) as the number: \[p_1^{n_1+1}\times p_2^{n_2+1}\times\ldots\times p_k^{n_k+1}\] where \(p_1\ldots p_k\) are the first \(k\) prime numbers.</p>
+</blockquote>
+
+<p>For instance, the sequence 
+<blockquote>
+	0 0 1 1 1 
+</blockquote>
+gets coded as: \[2^{0+1}\times 3^{0+1}\times 5^{1+1}\times 7^{1+1}\times 11^{1+1} = 2\times 3\times 25\times 49\times 121 = 889,350\]</p>
+
+<p>To verify that this gives us what we want, imagine that I have a particular two-state Turing Machine, and that I want to use a natural number to tell you which one it is. I proceed in two stages. First I represent the Turing Machine as a sequence of natural numbers. I then use Gödel’s method to code the sequence as a single natural number, and send you that number.</p>
+
+<p>When you receive the number, will you be able to figure out which Turing Machine I started with? Yes! For consider the Fundamental Theorem of Arithmetic, which states that every positive integer greater than 1 has a unique decomposition into primes. This means if you factor the number I gave you into primes and look at the exponents, you’ll be able to recover the sequence of numbers I used in my coding. And once you have the sequence, you’ll have no trouble recovering the Turing Machine I started with. </p>
+
+<p>So we’re done: we’ve found a way to code Turing Machines as natural numbers.</p>
+
+</ul>
+<br>
+
+<h1 id="section_non-computable">Non-Computable Functions</h1>
+
+<p>We know there are non-computable functions. Can we describe any, in any detail? Surprisingly, the answer is yes! Obviously, we can’t describe them in <em>complete</em> detail — we can’t describe such a function in a way that would enable to you to compute the output for every input. But we can describe the function in enough detail for you to get the idea. In the section we’ll describe two important non-computable functions.</p>
+
+<ul>
+
+<h2 id="section_halting">The Halting Function</h2>
+
+<p>Suppose we give a Turing Machine a certain input, and we press “start”, and the Turing Machine sets to work, computing. It goes on for a while, calculating, calculating… After a while, we start to wonder: is it ever going to halt? Has out Turing Machine got stuck in some loop, or something? Or, if we keep waiting, will we eventually get the answer we want? That’s an important question, when it comes to using Turing Machines, or any other computer, for that matter. We would like to know whether our computers, given their input, are going to halt, because a computer that doesn’t halt is useless.</p>
+
+<p>The <strong>Halting Function</strong>, \(H(n,m)\), is a function from pairs of natural numbers to natural numbers, and is defined as follows:
+
+<ul>
+<li>\(H(n,m)=1\) if the \(n\)th Turning Machine halts when given input \(m\);</li>
+<li>\(H(n,m)=0\) otherwise.</li>
+</ul>
+(Here we must assume a particular scheme for numbering Turing Machines. To fix ideas, I shall assume the scheme we characterised in the subsection above.)</p>
+
+<p>Consider, for example, the Turing Machine whose program is the following:
+<blockquote>
+0 <tt>_</tt> <tt>_</tt> r 0
+</blockquote>
+This is the \(16170^\text{th}\) Turing Machine according to our scheme, because: \[2^{0+1}\times 3^{0+1}\times 5^{0+1}\times 7^{1+1}\times 11^{0+1} = 2\times 3\times 5\times 49\times 11 = 16170\] When given input 0 (i.e. the empty string), this machine will start moving to the right and never stop. So the the \(16170\)th Turing Machine does not halt on input 0. So \(H(16170,0)=0\).</p>
+
+<p>Is \(H(n,m)\) computable? That is: is there a Turing Machine we can use to check if any given Turing Machine, on a given input, will halt or not? Tragically, the answer is “no”.</p>
+
+<ul>
+
+<h3 id="section_proofhalting">The Proof</h3>
+
+<p>The proof is by <em>reductio</em>. We will assume that \(H(n,m)\) is Turing-computable, and prove a contradiction.</p>
+
+<p>A little more specifically, we will proceed as follows. We will show that if \(H(n,m)\) were Turing-computable, then its program could be used to build an Evil Turing Machine which halts if and only if it does‘t. But no Turing Machine can halt if and only if it doesn‘t. So the Evil Machine can‘t really exist. So \(H(n,m)\) can‘t really be Turing-computable.</p>
+
+<p>Let’s get to work!</p>
+
+<p>Let us assume that Turing Machine \(M^H\) computes the Halting Function. Consider \(M^H\)’s programme — i.e., the finite sequence of command lines. We can use those command lines as a subroutine in other Turing Machine programs. We will use that observation to describe the Evil Turing Machine, \(M^E\).</p>
+
+<p>\(M^E\) works like this. When given input \(k\), it proceeds as follows:
+<ol>
+<li>It takes input \(k\) and outputs \(k\) <tt>1</tt>s, followed by a blank, followed by \(k\) <tt>1</tt>s.</li>
+<li>It runs the \(M^H\) program, with \(\langle k, k\rangle\) as input — that is, it determines whether the \(k^\text{th}\) Turing Machine halts when given input \(k\).</li>
+<li>If it gets the answer “yes” — i.e., if its tape is left with a “1” after performing the above subroutine — it goes into an infinite loop.</li>
+<li>Otherwise, it halts.</li>
+</ol>
+
+<p>It isn’t too hard to show that a Turing Machine can perform steps 1, 3 and 4. Exercise for the reader: show it!</p>
+
+<p>Okay, so that’s the Evil Machine. Now, let \(e\) be the code-number that our coding scheme assigns to \(M^E\), and consider the question of whether \(M^E\) halts given input \(e\). </p>
+
+<p>Suppose, first, that \(M^E\) does halt on input \(e\). This means that \(H(e,e)=1\). So the construction of \(M^E\) guarantees that when \(M^E\) is given \(e\) as input, it’ll go on an infinite loop (and therefore never halt). So if \(M^E\) halts, it doesn't. Contradiction! That's no good.</p>
+
+<p>Now suppose that \(M^E\) doesn’t halt. This means that \(H(e,e)=0\) . So the construction of \(M^E\) guarantees that when \(M^E\) is given \(e\) as input, it’ll halt. Contradiction!
+
+<p>So \(M^E\) halts if and only if it doesn’t halt. That's impossible. So, \(M^E\) can’t really exist. So \(M^H\) can’t really exist. So the Halting Function isn’t Turing-computable.</p>
+
+</ul>
+
+<br>
+
+<h2 id="section_busy">The Busy-Beaver Function</h2>
+
+<p>Let me define the <strong>productivity</strong> of a Turing Machine as follows:
+	<ul>
+<li>If, given an empty input, a Turing Machine halts with output \(k\), we shall say that the machine’s productivity is \(k\).</li>
+<li>If, given an empty input, the Turing Machine does anything other than halt with output \(k\), we shall say that its productivity is zero.</li>
+</ul>
+</p>
+
+<p>The <strong>Busy Beaver Function</strong>, \(BB(n)\), is a function from natural numbers to natural numbers defined as follows:
+
+<blockquote>
+\(BB(n)\) is the productivity of the most productive Turing Machine with \(n\) states or fewer.
+</blockquote></p>
+
+<p>It is known that \(BB(1)=1\), \(BB(2)=4\), \(BB(3)=6\) and \(BB(4)=13\), but for \(n\ge 5\), the exact value of \(BB(n)\) is not known (although certain bounds are known to exist). </p>
+
+<p>The Busy Beaver Function, like the Halting Function, is not Turing-computable.</p>
+
+<ul>
+
+<h3 id="section_proofbusy">The Proof</h3>
+
+<p>As in the case of the Halting Function, we’ll show that the Busy Beaver Function is not Turing-Computable by <em>reductio</em>. We’ll assume that there is a Turing Machine \(M^{BB}\) that computes the Busy Beaver function, and show that that would allow us to construct an evil Turing Machine \(M^E\). We will then use the evil Turing Machine to prove a contradiction.</p>
+
+<p>Here is how the evil Turing Machine works, when given an empty tape as input:</p>
+
+<ul>
+<li><p><strong>Step 1</strong><br>
+For a particular number \(k\) (to be specified below), \(M^E\) starts by printing a sequence of \(k\) <tt>1</tt>s on the tape, and then brings the reader to the beginning of the resulting sequence.</p></li>
+<li><p><strong>Step 2</strong><br>
+\(M^E\) duplicates the initial sequence of \(k\) <tt>1</tt>s, and brings the reader to the beginning of the resulting sequence of \(2k\) ones.</p></li>
+<li><p><strong>Step 3</strong><br>
+\(M^E\) applies \(M^{BB}\) as a subroutine, which results in a sequence of \(BB(2k)\) <tt>1</tt>s.</p></li>
+<li><p><strong>Step 4</strong><br>
+\(M^E\) adds an additional “1” to the sequence of (BB(2k)) “1”s, returns to the beginning of the sequence, and halts, yielding (BB(2k)+1) as output.</p></li> 
+</ul>
+
+<p>The way we’re going to prove that our evil machine, \(M^E\) leads to contradiction is by using it to show that (when \(k\) is large enough) both of the following evil inequalities must be true, even though they’re mutually inconsistent:
+<blockquote>
+[E1] \(BB(s^E)\ge BB(2k)+1\)
+</blockquote>
+<blockquote>
+	[E2] \(BB(s^E)&lt;BB(2k)+1\)
+</blockquote>
+where \(s^E\) is the number of states in \(M^E\).</p>
+
+<ul>
+
+<h4>Proof of [E1]</h4>
+
+<p>The construction of \(M^E\) guarantees that it delivers an output of \(BB(2k)+1\), given an empty input. So we know that the productivity of \(M^E\) is \(BB(2k)+1\). </p>
+
+<p>By definition, \(BB(s^E)\) is the productivity of the most productive Turing Machine with \(s^E\) states or less. But \(M^E\) has \(s^E\) states or less, and its productivity is \(BB(2k)+1\). So it must be the case that \(BB(s^E)\ge BB(2k)+1\) (which is [E1]).</p>
+
+<br>
+
+<h4>Proof Of [E2]</h4>
+
+<p>We will now show that, when \(k\) is a large enough number, [E2] must be true.</p>
+
+<p>Let \(a_k\) be the number of states required by <strong>Step 1</strong>.</p>
+
+<p>It is possible to build a Turing Machine that prints a sequence of \(k\) <tt>1</tt>s using no more than \(k\) states. (Exercise: show that this is so!). And it is possible to bring the reader to the beginning of the sequence using one additional state. (Again, prove it!) So we may assume that \(a_k\le k+1\).</p>
+
+<p>Let \(b\) be the number of states required by <strong>Step 2</strong>.</p>
+
+<p>Since a fixed number of states can be used to duplicate sequences of <tt>1</tt>s of any length, (you will prove this in your problem set) \(b\) can be assumed to be a constant independent of \(k\).</p>
+
+<p>Let \(c\) be the number of states required by <strong>Step 3</strong>.</p>
+
+<p>\(c\) is simply the number of states in \(M^{BB}\), and is therefore a constant, independent of \(k\).</p>
+
+<p>Let \(d\) be the number of states required by <strong>Step 4</strong>.</p>
+
+<p>A fixed number of states can be used to add an extra <tt>1</tt> at the end of a sequence of any length (you will prove this in your problem set too), \(d\) can be assumed to be a constant independent of \(k\).</p>
+
+<p>This allows us to count the number of states that our evil machine requires: \[s^E=a_k+b+c+d \le (k+1)+b+c+d\] where \(b\), \(c\) and \(d\) are independent of \(k\). So as long as we pick \(k\) big enough for it to be the case that \(1+b+c+d \le k\), we will get the result that \(s^E\le 2k\). But this means that \(BB(s^E)\le BB(2k)\), and therefore that \(BB(s^E) &lt; BB(2k)+1\) (which is [E2]).</p>
+
+<br>
+
+<h4>Summary</h4>
+
+<p>By looking at \(M^E\)’s output we showed that [E1] must be true. But by counting the steps in \(M^E\) we came to the contrary conclusion that [E2] must be true. So \(M^E\) cannot exist. So \(M^{BB}\) cannot exist. </p>
+
+</ul>
+
+<p>A similar construction can be used to show that \(BB(n)\) grows faster than any Turing computable function. (That is, if \(f(n)\) is computable, then there is an \(m\) such that, for every (n&gt;m), (BB(n)&gt;f(n)).) So \(BB(n)\) grows incredibly quickly!</p>
+
+</ul>
+
+</ul>
+
+<br>
+
+<h1 id="section_universal">The Universal Turing Machine</h1>
+
+<p>Consider the <strong>Universal Computation Function</strong> \(U(m,n)\). \(U(m,n)=f_m(n)\), when \(f_m(n)\) exists, where \(f_m\) is the function computed by Turing Machine \(m\). So \(U(m,n)\) outputs what Turing Machine \(m\) outputs, when given input \(n\), if it in fact outputs anything. Otherwise, if Turing Machine \(m\) given input \(n\) doesn’t halt, then \(U(m,n)\) is undefined.</p>
+
+<p>Is the Universal Computation Function Turing-computable? That is, is there a Turing Machine that outputs \(U(m,n)\), when it exists, and doesn’t halt otherwise? The answer is “yes”! Sometimes, the logic gods are kind.</p>
+
+<p>The fact that the Universal Computation Function is computable is the reason why the software industry exists. Every computer that can run an indefinite number of programs, like your laptop, is computing something like the Universal Computation Function.</p>
+
+<p>The Turing Machine that calculates the Universal Computation Function is called the <strong>Universal Turing Machine</strong>; I’ll use “\(M^U\)” to denote it. How does it work?</p>
+
+<p>The basic idea is very simple: when \(M^U\) is given \(m\) and \(n\) as input it uses its tape to create a <em>simulation</em> of the behavior of Turing Machine \(m\) on input \(n\).</p>
+
+<p>In slightly more detail: </p>
+
+<p>First, our machine extracts Turing Machine \(m\)’s program from \(m\), and prints out a version of it on the tape. The extraction will involve factorising \(m\) into primes (assuming the coding scheme we used above), which is a computable thing to do.</p>
+
+<p>On the tape, to the right of the program, our machine places a couple of markers. The space between the markers will serve as its “state memory”, with the number of <tt>1</tt>s between the markers representing the state of the simulated machine. (We start out by putting nothing between the two markers to represent the fact that our simulated machine starts out in state 0.)</p>
+
+<p>To the right of the state memory, our machine prints out a sequence of \(n\) <tt>1</tt>s, preceded by a special symbol. The sequence of <tt>1</tt>s represents the fact that the simulated machine starts out with input \(n\), and the special symbol represents the position of the reader of the simulated machine on its tape. (The special symbol starts out at the beginning of the sequence of \(n\) ones to represent the fact that our simulated machine starts out with its reader at the beginning of its input.)</p>
+
+<p>The machine then gets to work on the simulation. At each stage of the simulation, it determines whether the “reader” of the simulated machine is on a <tt>1</tt> or a <tt>0</tt>, and then uses the “state memory” to find the command from the simulated program that corresponds to that symbol and that state number. The machine then carries out the action determined by that command, and repeats.</p>
+
+<br>
+
+<h1 id="section_pnp">P=NP?</h1>
+
+<p>One of the most important open questions in mathematics today is the question of whether a certain class of Turing-computable functions — the P functions — are the same as another class of functions — the NP functions.</p>
+
+<p>This problem is, in fact, one of the Clay Mathematics Institute’s “<a href="http://www.claymath.org/millennium-problems">Millennium Problems</a>”. Those are a set of seven problems deemed to be especially important by the mathematics community; if you solve one of them, you can claim a million dollar prize!</p>
+
+<p>The list was compiled in 2000; thus far, only one of the problems has been solved: Grigoriy Perelman, a Russian mathematician, proved the Poincaré conjecture in 2010. (He refused the prize money!) P=NP remains unsolved.</p>
+
+<ul>
+
+<h2 id="section_tractability">Tractability</h2>
+
+<p>Some functions are computable, and some are not. That is somewhat sad news; it would be nice to be able to compute everything. But it’s not <em>so</em> sad, because it turns out that most things you can think to try to compute are, in fact, computable. Nobody has ever had to abandon writing a software update for Windows because it turned out that they were trying to do something non-computable.</p>
+
+<p>But computing something takes <em>resources</em>. It takes time — a Turing Machine will take a certain number of steps before it halts, when it does. And it takes space — a Turing Machine will use a certain amount of tape, in the process of calculating. And the amount of resources it takes to compute something varies a lot, among computable functions. Sometimes it is not practical to compute a computable function, because it takes too much time or space to do it. </p>
+
+<p>Something that <em>does</em> happen, all the time, is that you’d like to compute something, but the only way you know how to do it takes much, much too long. For example, it would be nice to be able to factorise really large numbers — if we could do that, we could break the most common form of encryption used today, which would be cool. But a number doesn’t have to be very large before it gets very computationally expensive to factorise it. The stars would have grown cold before our best algorithms, running on the most powerful computers, factorised a fifteen digit number.</p>
+
+<p>So, for practical purposes, it is helpful to be able to distinguish between those computable functions that we can compute in a reasonable amount of time, and those that we can’t. That is what the field of computational complexity is all about.</p>
+
+<br>
+
+<h2 id="section_measuring">Measuring Complexity</h2>
+
+<p>We want to measure the complexity of a function in terms of the resources it takes to compute it. Now, we could, for instance, just count the number of steps it takes a Turing Machine to compute the function. The problem with that is that exactly how many steps it takes a Turing Machine to compute something depends very delicately on its architecture. If you change the Turing Machine a little bit, so that you use two tapes rather than one, or use a two-dimensional grid, or use RAM, that has a huge effect on how many steps it takes to compute the relevant function.</p>
+
+<p>What we want is a measure of complexity that is robust across many different ways of computing things. We want to get at a property of the function, rather than a property of the thing computing the function. It turns out that a good way to do that is to talk about how the resources required to compute a function <em>scales</em> with the size of the input. </p>
+
+<br>
+
+<h2 id="section_exponential">Exponential Time</h2>
+
+<p>For example, for a certain class of functions, the time it takes to calculate the function grows <em>exponentially</em> with the size of the input. Here is an example of such a function. Take a map with a certain number of regions. You want to know how to colour it with four colours in such a way that no two adjacent regions get the same colour. This isn’t exactly right, but roughly speaking: for every extra region you add to the map, the time it takes to calculate this function, using the best mthod we know of, doubles.</p>
+
+<p>Problems that take exponential time to solve often involve some large, combinatorial space of possibilities that you need to search through to find your answer. Minesweeper or Candy Crush or Sudoku all require exponential time algorithms to solve.</p>
+
+<p>It is bad news if the best way you can find to calculate a function takes exponential time. It means that the input does not have to be too large before you have to wait completely impractical amounts of time for your machine to give you an answer.</p>
+
+<br>
+
+<h2 id="section_polynomial">Polynomial Time</h2>
+
+<p>On the other hand, for some functions, we can find ways of calculating them grows as a polynomial function of the size of the input. For example, if you give the best pallindrome-verifying Turing Machine a input \(n\) symbols long, and ask it to determine whether the input is a pallindrome or not, the time it will take to do that, in the worse case, is roughly \(n^2\).</p>
+
+<p>If your problem can be solved with a polynomial time function, that is good news! That generally means that you can get an answer in a reasonable amount of time, even for large inputs. So it is important for us to determine which are the polynomial-time functions, and which aren't.</p>
+
+<p>The set of polynomial-time functions is called “P”.</p>
+
+<br>
+
+<h2 id="section_pvsnp">P vs. NP</h2>
+
+<p>NP is the set of functions such that, if I tell you what the output is, for a given input, you can verify that I’m right using a polynomial time function.</p>
+
+<p>For example: if I tell you that the prime factors of some large number are \(x\) and \(y\), then you can easily verify this fact by multiplying \(x\) and \(y\) together, which can be done with a polynomial time function. (You can also check that those numbers are indeed prime in polynomial time.)</p>
+
+<p>All functions in P are in NP, obviously — you can verify the answer in polynomial time just by running the function and getting the answer, when the function is in P. But are all NP functions P functions? That’s the question.</p>
+
+<p>Almost all computer scientists and mathematicians think the answer is “no”. But we don’t have a proof!</p>
+
+</body>
+</html>

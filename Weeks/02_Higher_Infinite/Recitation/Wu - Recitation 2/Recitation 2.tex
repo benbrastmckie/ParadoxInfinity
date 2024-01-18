@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{setspace}
+\usepackage{enumitem,linegoal}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{Xinhe Wu (xinhewu@mit.edu)}
+\rhead{$24.118$ Paradox and Infinity $|$ Recitation $2$}
+
+
+
+\begin{center}
+{\Large \bf The Continuum Hypothesis and More}
+\end{center}
+
+\smallskip
+
+\section{Review}
+
+\begin{theorem}
+ [No Countable Difference Principle]
+Let $I$ be infinite and $C$ be countable. $|I| = |I \cup C|$.
+\end{theorem}
+
+\begin{theorem}
+$|\mathbb{R}|=|\wp (\mathbb{N})|$.
+\end{theorem}
+
+\begin{proof}
+We prove the theorem in three steps.
+\begin{enumerate} [leftmargin=2.5cm]
+\item Show $|[0,1]|=|\wp (\mathbb{Z}^+)|$.
+
+And we do this in four mini-steps.
+\begin{enumerate}
+\item[a)] Every $x \in [0,1]$ has a binary expansion. $x = \sum^{\infty}_{i=1} \frac{x_i}{2^i}$.
+\item [b)] An injection from $[0,1]$ to $\wp(\mathbb{Z}^+)$: $f(x)=\lbrace i \: \vert \: x_i =1\rbrace$.
+\item [c)] An injection from $\wp(\mathbb{Z}^+)$ to $[0,1])$: $g(S) = \sum^{\infty}_{i=1} \frac{y_i}{2^i}$, where $y_i=0$ if $i \notin S$, and $y_i=1$ if $i \in S$.
+\item [d)] Our old friend Schr\"{o}der–Bernstein.
+\end{enumerate}
+\item Show $|[0,1]| = |(0,1)| = |\mathbb{R}|$ and $|\wp (\mathbb{Z}^+)| = |\wp (\mathbb{N})|$.
+\item Show $|\mathbb{R}|=|\wp (\mathbb{N})|$.
+\end{enumerate}
+\end{proof}
+
+\section{Schr\"{o}der–Bernstein}
+
+\begin{theorem}
+For any two sets $A$ and $B$, if $|A| \leqslant |B|$ and $|B| \leqslant |A|$, then $|A| = |B|$.
+\end{theorem}
+
+\section{The Continuum Hypothesis}
+
+\begin{conj} [Continuum Hypothesis]
+There is no set with cardinality intermediate between those of $\mathbb{N}$ and $\mathbb{R}$.
+\end{conj}
+
+\begin{conj} [Generalized Continuum Hypothesis]
+For any infinite set $I$, there is no set with cardinality intermediate between those of $I$ and $\wp(I)$.
+\end{conj}
+
+
+
+\end{document}

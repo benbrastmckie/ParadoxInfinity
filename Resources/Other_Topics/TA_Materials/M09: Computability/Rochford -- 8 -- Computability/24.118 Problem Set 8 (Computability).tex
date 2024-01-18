@@ -1,0 +1,123 @@
+
+
+
+\documentclass[12pt,a4paper]{article}
+
+
+%Spacing Packages
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+\usepackage[lf]{venturis} %% lf option gives lining figures as default; 
+			  %% remove option to get oldstyle figures as default
+\usepackage[T1]{fontenc}
+
+
+%Other Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\begin{document}
+
+\begin{quote}
+
+\begin{center} {\large 24.118x -- Paradox and Infinity \\ \vspace{1mm}}
+ {\large Problem Set 8: Computability \\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+
+\noindent How these problems will be graded:
+
+\begin{itemize} 
+
+\item Assessment will be based on both whether you give the correct answer and on the \emph{reasons} you give in support of your answers. (Note that not every question has a single correct answer.) Even if it is unclear whether your answer is correct, it can be clear whether or not the reasons you have given in support of your answer are good ones. 
+
+\item  \emph{No answer may consist of more than 250 words}. Words after the first 250 will be ignored. Showing your work in a calculation does not count towards the word limit.
+
+
+\end{itemize} 
+
+These two constraints are often in competition: it may sometimes seem to you that you can't argue for your answer properly in 250 words or less. Learning to deal with this problem is a skill you will acquire with practice. The ability to distill what is essential about a point in a few words requires clear thinking, and it is clear thinking that we are after.
+
+\begin{itemize}
+
+
+\item Although you should feel free to experiment with different Turing Machine simulators (which are widely available on the web), answers to problems 2b and 2c will only be given credit if the code is written in such a way that it can be copied and pasted into the simulator here:
+\begin{center}
+http://morphett.info/turing/turing.html
+\end{center}
+(It's okay to use as many symbols as you like in designing your Turing Machines.)
+
+\end{itemize} 
+\end{quote}
+
+\subsection*{Problems:}
+
+\begin{enumerate}
+
+\item Give an informal description of how one might transform a Turing Machine program that uses three symbols (say, a blank, a ``0'', and a ``1'') into a Turing machine program that uses only two symbols (say, a blank and a ``1''). (5 points)
+
+\item Consider the proof in the notes that the Busy Beaver Function is not computable. This question is aimed at helping you better understand that proof.
+\begin{enumerate}
+
+\item For a given $k$, explain how you might design a Turing Machine that does the following: when given an empty input, it produces a sequence of $k$ ones (on an otherwise blank tape). It then brings the reader to the beginning of the sequence, and halts. Say how many states would be used by your machine, as a function of $k$. (5 points)
+
+\item Design a Turing Machine that does the following: when given a string of $n$ ones as input (on an otherwise blank tape), it yields a sequence of $2n$ ones as output (and an otherwise blank tape). It then brings the reader to the beginning of the sequence, and halts. Say how many states your machine uses. (5 points)
+
+\item Design a Turing machine that does the following: when given a string of $n$ ones as input (on an otherwise blank tape), it yields a sequence of $n+1$ ones as output (and an otherwise blank tape). It then brings the reader to the beginning of the sequence, and halts. Say how many states your machine uses. (5 points)
+
+\item Have a look at the a proof that the Busy Beaver function is not computable in the lecture notes. For fixed $k$ and $c$, say how many states $M^E$'s program would have if it used the programs you designed in answer to questions (a)--(c) as subroutines.  (5 points)
+
+\end{enumerate}
+
+\item When people characterise Turing Machines, they sometimes assume that the tape is ``infinitely long,'' or that it can be ``extended indefinitely.'' The purpose of the following two questions is get you to see what that's all about. 
+\begin{enumerate}
+
+\item Find a (total\footnote{A total function is a function has a well-defined output for any input in the relevant domain.}) function $f(n)$ from natural numbers to natural numbers which is Turing-computable, and which is such that, for any number $m$, there exists a number $k$ such that a Turing Machine would need a tape with more than $m$ cells to compute $f(k)$. (5 points)
+
+$[$You can think of this as a particular kind of challenge. You first pick a Turing Machine. I then give you a number $m$, and you need to find an input such that when you run your machine on that input the resulting computation uses more than $m$ cells on the tape. The challenge is for you to find a machine that allows you to succeed in this task regardless of the number $m$ that I pick. Note that although the machine you pick shouldn't depend on $m$, the input $k$ you choose to feed into your machine to run the computation may depend on $m$.$]$
+
+\item Let $f(n)$ be whatever function you used to answer the previous question, and suppose that Turing Machine $M$ computes $f(n)$. Is there some number $k$ such that $M$ must use an infinite amount of tape to compute $f(k)$? (5 points)
+\end{enumerate}
+
+\item Imagine a Turing Machine that has been equipped with a ``halting oracle'': a primitive operation that allows it to instantaneously determine whether an ordinary Turing Machine would halt on a given input. (A bit more precisely: the machine has a special state $h$, such that if the machine enters state $h$ when the reader is positioned at the beginning of a sequence of $m$ ones, followed by a blank, followed by a sequence of $n$ ones, the sequences are instantaneously replaced by a ``1'' if the $m$th Turing Machine
+halts on input $n$, and with a blank if it doesn't.)
+
+Give an informal argument showing that a machine equipped with such an oracle could ``compute'' the Busy Beaver function. (5 points)
+
+\item \textbf{Extra Credit}:
+\begin{enumerate} 
+\item What, if anything, is wrong with the following argument? (5 points)
+\begin{quote}
+Suppose there we could equip Turing Machines with a halting-oracle-operation as above. Consider a Turing Machine $M^O$ that works as follows: when given input $k$, $M^O$ uses its oracle to check whether Turing Machine $k$ halts on input $k$. If it does halt, then $M^O$ goes on an infinite loop. If it doesn't halt, then $M^O$ halts. 
+
+Now, suppose $M^O$ is the $n^\text{th}$ Turing Machine. What does $M^O$ do when given input $n$? Suppose it halts. Then, when $M^O$ consults the oracle, it will get the answer ``yes'' (i.e., a ``1'' on the tape), and then go off on an infinite loop -- i.e., it will not halt. So if it halts, it doesn't halt. Contradiction! Similarly, you show that if $M^O$ doesn't halt, then it halts. Also a contradiction. Hence, the supposition that we can equip a Turing Machine with a halting-oracle-operation leads to contradiction, and is therefore logically impossible.
+\end{quote}
+
+\item Consider what is called ``Knuth's Up-arrow Notation'' (we talked about it a bit in Topic Four, on ordinals). 
+\begin{itemize}
+\item $n\uparrow^1 m = n^m$ 
+\item $n\uparrow^2 m = \underbrace{ n \uparrow^1 n \uparrow^1 \ldots \uparrow^1 n}_{m\text{ copies of } n} = \underbrace{n^{n^{\ldots^n}}}_{m\text{ copies of }n}$
+\item And so on. In general, $n\uparrow^k m = \underbrace{n\uparrow^{k-1} n \uparrow^{k-1} \ldots}_{m\text{ copies of }n}$
+\end{itemize}
+(Note that $\uparrow$ is associative.)
+\vspace{3mm}
+
+The \textbf{$n^\text{th}$ Ackermann Number} equals $n\uparrow^n n$. So
+\begin{itemize} 
+\item the first Ackermann number is $1\uparrow^1 1 = 1$;
+\item the second Ackermann number is $2\uparrow^2 2 = 2\uparrow^1 2 = 2^2 = 4$;
+\item the third Ackermann number is $3\uparrow^3 3 = \underbrace{3^{3^{\ldots^3}}}_{7,625,597,484,987\text{ copies of ``3''}}$.
+\end{itemize}
+(Ackermann numbers get big quickly).
+\vspace{3mm}
+
+Give an informal description of a Turing machine that does the following: when given a string of $n$ ones it produces a string of $m$ ones as output, where $m$ is
+the $n^\text{th}$ Ackermann Number. (5 points)
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

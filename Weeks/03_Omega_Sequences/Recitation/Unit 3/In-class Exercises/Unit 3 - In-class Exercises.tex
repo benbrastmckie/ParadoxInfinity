@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity }
+\rhead{Recitation $3$: Omega-Sequence Paradoxes}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Yablo's Button}
+
+\begin{exer}
+Suppose\footnote{This paradox is from Andrew Bacon, ``A paradox for supertask decision makers".} time has no beginning and there is no first day. More precisely, suppose that time forms a reverse $\omega$-sequence: $..., d_4, d_3, d_2, d_1, d_0$. On each day, a man (who has always existed) must choose whether or not to press \textit{Yablo's Button}. Yablo's Button is designed such that it dispenses a chocolate on it's first pressing (let's assume that the man loves chocolate), and a painful zapping on subsequent pressings (let's say the button has some mechanism that records whether it has been pressed before). 
+
+If the man is rational on day $n$ he would behave as follows:
+\begin{enumerate}[\indent(1)]
+\item Press the button if it has not been pressed on any earlier day.
+\item Leave the button alone if it has been pressed on an earlier day.
+\end{enumerate}
+
+Show that the man cannot be rational on every day: in particular, there has to be some day when he violates one of the rules.
+\end{exer}
+
+\section{The Knave}
+
+\begin{exer}
+Jack the Knave is a liar. Before today, all the sentences Jack has ever uttered have been lies (let's just assume a lie is a sentence that is false.) Today, Jack uttered:
+$$\text{Every sentence I have uttered is a lie, including this one.}$$
+Is the sentence Jack uttered today true? Or is it a lie?
+\end{exer}
+
+\section{Yablo Once Again}
+
+\begin{exer}
+Consider the following infinite sequence of sentences:
+\begin{itemize}
+    \item [] $A_1$: For some $k > 1$,  $A_k$ is not true.
+    \item [] $A_2$: For some $k > 2$,  $A_k$ is not true.
+    \item [] ...
+    \item [] $A_n$: For some $k > n$, $A_k$ is not true.
+    \item [] ...
+\end{itemize}
+Show that for every $n$, $A_n$ is paradoxical.
+\end{exer}
+
+\begin{exer}
+Consider the following infinite sequence of sentences:
+\begin{itemize}
+    \item [] $B_1$: There are infinitely many $k > 1$ such that $B_k$ is not true.
+    \item [] $B_2$: There are infinitely many $k > 2$ such that $B_k$ is not true.
+    \item [] ...
+    \item [] $B_n$: There are infinitely many $k > n$ such that $B_k$ is not true.
+    \item [] ...
+\end{itemize}
+Show that for every $n$, $B_n$ is paradoxical.
+\end{exer}
+
+
+\end{document}

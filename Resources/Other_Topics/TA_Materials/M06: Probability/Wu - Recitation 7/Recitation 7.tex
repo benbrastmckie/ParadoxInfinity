@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amscd}
+
+\usepackage{amsthm}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{setspace}
+\usepackage{enumitem,linegoal}
+
+\usepackage{amssymb}
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\newtheorem{theo}{Theorem}[section] 
+
+\theoremstyle{definition}
+\newtheorem{defin}[theo]{Definition} 
+\newtheorem{lema}[theo]{Lemma} 
+\newtheorem{cor}[theo]{Corollar}
+\newtheorem{prop}[theo]{Proposition}
+\newtheorem{exer}{Exercise}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{Xinhe Wu (xinhewu@mit.edu)}
+\rhead{$24.118$ Paradox and Infinity $|$ Recitation $7$}
+
+\begin{center}
+{\Large \bf Chance: Objective Probability}
+\end{center}
+
+\smallskip
+
+\section{The Chance-Credence Connection}
+
+\begin{itemize}
+\item (\textbf{The Objective-Subjective Connection}) The objective probability of $A$ at time $t$ is equal to the subjective probability that a perfectly rational agent would assign to $A$, if she had perfect information about events before or at $t$ and no information about events after $t$.
+\item Your credence in $p$ is the degree in which you believe in $p$. The credence function of a \textit{fully rational} agent has to (a) be a probability function; (b) update by conditionalization; (c) satisfy Bayes' Law; and (d) perhaps satisfy (some good version of) Principle of Indifference.
+\end{itemize}
+
+\begin{exer}
+Let $H$ be some proposition about the past. (e.g. It rained in Paris yesterday) Show that according the the above principles, the objective probability of $H$ has to be extreme.
+\end{exer}
+
+\section{What is Chance?}
+
+\subsection{Finite Frequentism}
+
+\begin{description}
+\item[Finite Frequentism] The objective probability of an outcome $A$ in a finite reference class $B$ is the frequency of actual occurrences of (outcomes of the same type as) $A$ within $B$.
+\end{description}
+
+\begin{enumerate}
+\item Problems of the single case: unrepeatable events.
+\item Problems of the reference class: what should be the reference class?
+\end{enumerate}
+
+
+\subsection{Hypothetical Frequentism}
+\begin{description}
+\item[Finite Hypothetical Frequentism] The objective probability of an outcome $A$ in a finite reference class $B$ (of hypothetical events) is the frequency of occurrences of (outcomes of the same type as) $A$ within $B$.
+\end{description}
+\begin{enumerate}
+\item Problems of undesirable frequencies
+\item Problems of reference class
+\end{enumerate}
+
+\begin{description}
+\item[Infinite Hypothetical Frequentism] The objective probability of an outcome $A$ in an infinite reference class $B$ (of hypothetical events) is the frequency of occurrences of (outcomes of the same type as) $A$ within $B$.
+\end{description}
+\begin{enumerate}
+\item Problems of undefined frequencies
+\item Problems of re-ordering
+\item Problems of reference class
+\end{enumerate}
+
+\subsection{Rationalism}
+\begin{description}
+\item[Rationalism] The objective probability of a proposition $A$ \textit{just is} the subjective probability that a perfectly rational agent would assign to $A$, if she had perfect information about events before at $t$ and no information about events after $t$.
+\end{description}
+
+\begin{enumerate}
+\item Problems from premissivism
+\item Problems from explanatory loss
+\end{enumerate}
+
+\subsection{The Best-System Account}
+
+\begin{description}
+\item[The Best System Account] The objective probability of a proposition $A$ is the objective probability of $A$ under our best theory for the relevant phenomenon.
+\end{description}
+
+\begin{itemize}
+\item A theory is best when (1) it is `fit' with the actual phenomenon; (2) it delivers an optimal combination of simplicity and strength.
+\end{itemize}
+
+\begin{enumerate}
+\item Problems from its dependence upon human psychology
+\item Problems from its dependence upon human language
+\end{enumerate}
+
+
+\subsection{Primitivism}
+\begin{description}
+\item[Primitivism] The notion of objective probability is primitive and cannot be further analyzed.
+\end{description}
+
+\begin{enumerate}
+\item Problems from explanatory loss
+\end{enumerate}
+
+
+
+\end{document}

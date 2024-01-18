@@ -1,0 +1,460 @@
+
+
+
+\documentclass[12pt]{extarticle}
+
+\usepackage{summary-intro}
+
+
+
+\begin{document}
+
+
+
+\sumintro{Probability}{Spring 2023}
+%possible that andreas version corrected some typos?
+
+\vspace{-3em} 
+
+\section{Two Kinds of Probability}
+
+\label{probability-subjective-and-objective}
+
+
+\begin{description}
+
+\item[Subjective Probability] A person's subjective probability in $p$ is the degree to which she is confident in $p$ (we will often refer to this as an agent's \textit{credence} in $p$)
+
+\emph{Example:} Jones's subjective probability that it'll rain tomorrow is 0.3 because she is $30\%$ confident that it'll rain tomorrow.
+
+\item[Objective Probability] The objective probability of an event is meant to be a feature of the world that does not depend on the beliefs of any particular subject. (We will often refer to objective probabilities as \textit{chances}). 
+
+\emph{Example:} the objective probability that a particle of $^{256}\mbox{Sg}$ will decay in the next 8.9 seconds is 50\%.
+
+\end{description}
+
+
+\section{How are they related?}
+
+
+\begin{description}
+\item[The Objective--Subjective Connection]
+The objective probability of $A$ at time \emph{t} equals the subjective probability that a perfectly rational agent would assign to $A$ if she were to have perfect information about the way the world is before $t$ (and without relying on any information about the way the world is \textit{after} $t$).\footnote{Here, we tacitly presuppose that a perfectly rational agent is always certain about the objective probabilities at $t$, given full information about how the world is before $t$. So, in particular, for each complete history of the world up to $t$, $H_t$, there is a specification $P_t$ of the objective probabilities at $t$ such that the agent treats $H_t$ and $H_tP_t$ as equivalent. (This assumption is potentially controversial but simplifies our discussion.)}
+
+\item In this way, the credences of a perfectly rational agent serve as a guide to determining the chances
+
+%The objective probability of $A$ at time \emph{t} is the subjective probability that a perfectly rational agent would assign to $A$, if she had perfect information about the world at times $\leq t$ and did not rely on any information about the world at times $> t$.
+
+\end{description}
+
+\section{Subjective Probability (a.k.a. `Credence')}
+
+A \textbf{credence function} for subject $S$ is a function that assigns to each proposition a real number between $0$ and $1$, representing $S$'s degree of confindence in that proposition
+
+\vspace{3mm}
+
+What does it take for a credence function to be rational? Some popular constraints:
+
+
+\begin{enumerate}
+\item internal coherence (necessity and additivity);
+
+\item update by conditionalization; 
+
+\item Bayes' Law;
+
+\item the Principle of Indifference.
+
+\end{enumerate}
+
+
+\subsection{Internal Coherence}
+
+For a credence function to be \textbf{internally coherent} is for it to constitute a probability function.
+
+\vspace{3mm}
+\noindent
+A \textbf{probability function}, $p(\ldots)$, is an assignment of real numbers between $0$ and $1$ to propositions that satisfies the following two coherence conditions:\label{gloss:prob-fun}
+\begin{description}
+\item[Necessity]  $p(A) = 1$ whenever $A$ is a necessary truth 
+
+\item [Additivity]  $p(A \text{ or } B) = p(A) + p(B)$ whenever $A$ and $B$ are incompatible propositions
+
+\end{description}
+
+
+\subsection{Update by Conditionalization}
+
+\begin{itemize}
+\item[]
+If $S$ is rational, she will update her credences as follows upon learning that $B$:
+$$p^{new}(A) = p^{old}(A|B)$$
+where  $p^{old}$ is the function describing $S$'s credences before she learned that $B$, and $p^{new}$ is the function describing her credences after she learned that $B$.
+\end{itemize}
+
+
+\subsection{Bayes' Law}
+
+
+\begin{quote}
+
+$p(AB) = p(A)\cdot p(B|A)$
+
+Often we write this in the following form, where $H$ can be interpreted as some hypothesis, and $E$ is an event that may or may not provide evidence for $H$ ($E$ may help confirm or disconfirm the hypothesis): 
+
+$$p(H|E) = \frac{p(HE)}{p(E)} = \frac{p(HE)}{p(H) p(E|H) + p(\overline{H}) p(E|\overline{H})}$$
+
+\end{quote}
+
+\subsection{The Principle of Indifference}
+
+Here's what we'd \emph{like} to have in place:
+
+
+\begin{description}
+\item[Principle of Indifference]
+Consider a set of propositions and suppose one knows that exactly one of them is true. Suppose, moreover, that one has no more reason to believe any one of them than any other. Then, insofar as one is rational, one should assign equal credence to each proposition in the set.
+
+\end{description}
+Unfortunately, this principle leads to inconsistency as stated. For instance:
+\begin{quote}
+A factory produces cubes with a side-length $l \leq 1$. What is the probability
+that $l \in (0,\frac{1}{2}]$?
+
+
+
+\emph{Argument 1} (length):
+\begin{itemize}
+
+\item There is just as much reason to think that $l \in (0,\frac{1}{2}]$ as there is to think that $l \in (\frac{1}{2},1]$. 
+
+\item By the Principle of Indifference, $p(l \in (0,\frac{1}{2}]) = p(l \in (\frac{1}{2},1])$. 
+
+\item So $p(l \in (0,\frac{1}{2}]) = \frac{1}{2}$.
+
+
+\end{itemize}
+
+
+\emph{Argument 2} (area):
+\begin{itemize}
+
+\item There is just as much reason to think that $a \in (0,\frac{1}{2}]$ as there is to think that $a \in (\frac{1}{2},1]$. 
+
+\item By the Principle of Indifference, $p(a \in (0,\frac{1}{2}]) = p(a \in (\frac{1}{2},1])$. 
+
+\item So $p(a \in (0,\frac{1}{2}]) = \frac{1}{2}$.
+
+
+\end{itemize}
+But wait! $l \in (0,\frac{1}{2}] \leftrightarrow a \in (0,\frac{1}{4}]$.
+
+\end{quote}
+
+
+\section{Objective Probability}
+
+By the Objective-Subjective Connection, our conclusions about rational subjective probability deliver tell us that the objective probabilities: 
+
+
+\begin{enumerate}
+\item constitute a probability function;
+
+\item update by an analogue of conditionalization; 
+
+\item satisfy Bayes' Law;
+
+\item {[satisfy a Principle of Indifference?]}.
+
+\end{enumerate}
+
+\section{Yes, but what \emph{is} objective probability? (a.k.a. `chances')}
+
+\subsection{Frequentism}
+
+
+What is it for the objective probability of a coin's landing Heads\footnote{Think of a ``coin toss'' as the result of observing a particle of $^{256}\mbox{Sg}$ for 8.9 seconds. If the particle decays within that period, our ``coin'' is said to have landed Heads; otherwise it is said to have landed Tails. } to be 50\%?
+
+\begin{itemize}
+
+\item According to \textbf{frequentism},  it is for 50\% of coin tosses to land Heads.
+
+\item According to \textbf{hypothetical frequentism}, it is for the following subjunctive conditional to be true: if sufficiently many coin tosses took place, 50\% of them would land Heads.
+
+
+\end{itemize}
+\subsection{The Law of Large Numbers}
+
+Upon reflection, frequentism is obviously incorrect. What is true is this:
+
+\begin{quote}
+If the coin were tossed a sufficiently large number of times, then it would
+\emph{with very high probability} land Heads approximately 50\% of the
+time.
+\end{quote}
+More generally and precisely:
+\begin{description}
+\item[Law of Large Numbers]
+Suppose that events of type $T$ have a probability of $p$ of resulting in outcome $O$. Then, for any real numbers $\epsilon$ and $\delta$ larger than zero, there is an $N$ such that the following will be true with a probability of at least $1-\epsilon$:
+
+\begin{quote}
+If $M \textgreater{} N$ events of type
+$T$ occur, the proportion of them that
+result in outcome $O$ will be $p \pm \delta$.
+\end{quote}
+\end{description}
+
+\subsection{Chance Primitivism}
+
+
+\begin{itemize}
+
+\item \textbf{Chance Primitivism}: part of a full specification of the world is to list the objective chances of fundamental events
+
+\item These objective chances are \textit{brute}: they simply are the case
+
+\item[] -- There is no further or deeper explanation of these chances
+
+\item The chances of non-fundamental events are determined by the chances of fundamental events plus the laws of nature
+
+\end{itemize}
+
+\subsection{Chance Rationalism}
+
+\begin{itemize}
+
+\item  According to \textbf{rationalism}, there is nothing more to objective probability than the Objective--Subjective Connection.
+
+\item The objective chances simply ARE the credences that a perfectly rational agent with the relevant information about the past would have. 
+
+\item A \textbf{localist} agrees with rationalism and adds that the the objective probabilities are only well-defined in certain special circumstances; in particular, circumstances in which there is an unproblematic way of deploying a Principle of Indifference.
+
+\item[] -- In these cases, we might think that it is indeterminate which credences a perfectly rational agent ought to have. Hence, there is no fact of the matter regarding the objective chances. 
+
+
+\end{itemize}
+
+
+\end{document}
+
+
+\section{The Principle of Countable Additivity}
+
+\begin{description}
+
+\item [(Finite) Additivity]  $p(A \text{ or } B) = p(A) + p(B)$ 
+
+whenever $A$ and $B$ are incompatible propositions
+
+\item[Countable Additivity] $p\left(A_1 \mbox{\,or\,} A_2 \mbox{\,or\,} 
+\ldots\right) = p(A_1) + p(A_2) + \ldots$
+
+whenever $A_1,A_2,\dots$ are countably many propositions with
+$A_i$ and $A_j$ incompatible for $i \neq j$.
+
+\end{description}
+
+
+
+\subsection{Against Countable Additivity}
+
+
+\begin{itemize}
+\item God has selected a positive integer, and that you have no idea which. 
+
+\item For $n$ a  positive integer, what credence should you assign to the proposition, $G_n$, that God selected $n$? 
+
+
+\end{itemize}
+Countable Additivity entails that your credences \emph{should remain undefined} (unless you're prepared to give different answers for different choices of $n$).
+
+\begin{quote}
+\emph{Proof:} suppose otherwise. Then $p(G_n) = r$, for $r \in [0,1]$. 
+
+
+\begin{itemize}
+\item Suppose $r =0$. By Countable Additivity:
+\[
+\begin{array}{ccc}
+p(G_1 \text{ or } G_2 \text{ or } G_3 \text{ or } \ldots) &= &p(G_1) + p(G_2) + p(G_3) + \ldots\\
+&= &\parbox{30mm}{\vspace{3mm}$\underbrace{0 + 0 + 0 + \ldots}_{\text{\tiny once for each integer}}$} \\
+&= &\parbox{30mm}{\vspace{3mm}$0$}
+\end{array}
+\]
+
+
+\item Suppose $r>0$. By Countable Additivity:
+\[
+\begin{array}{ccc}
+p(G_1 \text{ or } G_2 \text{ or } G_3 \text{ or } \ldots) &= &p(G_1) + p(G_2) + p(G_3) + \ldots\\
+&= &\parbox{30mm}{\vspace{3mm}$\underbrace{r + r + r + \ldots}_{\text{\tiny once for each integer}}$} \\
+&= &\parbox{30mm}{\vspace{3mm}$\infty$}
+\end{array}
+\]
+
+
+\end{itemize}
+
+
+
+\end{quote}
+\emph{Moral:} Countable Additivity entails that there is no way of distributing probability {uniformly} across a countably infinite set of (mutually exclusive and jointly exhaustive) propositions.
+
+
+
+
+\subsubsection{Infinitesimals to the rescue?}\label{sec:infinitesimals}
+
+What if we had an infinitesimal value $\iota$ with the following property?
+$$\underbrace{\iota + \iota + \iota + \dots}_{\tiny \text{once for each positive integer}} = 1$$ 
+Then:
+
+\[
+\begin{array}{ccc}
+p(G_1 \text{ or } G_3 \text{ or } G_5 \text{ or } \ldots) &= &p(G_1) + p(G_3) + p(G_5) + \ldots\\
+&= &\parbox{30mm}{\vspace{3mm}$\underbrace{\iota + \iota + \iota + \ldots}_{\text{\tiny once for each positive integer}}$} \\
+&= &\parbox{30mm}{\vspace{3mm}$1$}
+\end{array}
+\]
+and 
+\[
+\begin{array}{ccc}
+p(G_2 \text{ or } G_4 \text{ or } G_6 \text{ or } \ldots) &= &p(G_2) + p(G_4) + p(G_6) + \ldots\\
+&= &\parbox{30mm}{\vspace{3mm}$\underbrace{\iota + \iota + \iota + \ldots}_{\text{\tiny once for each positive integer}}$} \\
+&= &\parbox{30mm}{\vspace{3mm}$1$}
+\end{array}
+\]
+So, by (finite) Additivity: $$p(G_1 \text{ or } G_2 \text{ or } G_3 \text{ or } \ldots)  = 2 \ (!)$$
+
+
+
+\subsection{For Countable Additivity}
+
+\begin{itemize}
+
+\item $X, Y \subseteq \mathbb{Z}^+$
+
+\item $p(X)$ is the probability that God selects a number in $X$.
+
+\item $p(X|Y)$ is the probability that God selects a number in $X$ given that She selects a number in $Y$.
+
+\end{itemize}
+Here is a natural way of characterizing $p(X)$ and $p(X|Y)$:
+\[
+\begin{array}{ccc}
+p(X|Y) &=_{df} &\lim \limits_{n \to \infty}\dfrac{|X\cap Y \cap \{1,2,\ldots,n\}|}{|Y\cap\{1,2,\ldots,n\}|}\\
+p(X) &=_{df} &\parbox{50mm}{\vspace{4mm}$p(X|\mathbb{Z}^+)$}
+\end{array}
+\]
+\begin{itemize}
+
+\item $p(X)$ is finitely additive but not countably additive. 
+
+\item $p(X)$ is not well-defined for arbitrary sets of integers.\footnote{For instance, when $X$ consists of the integers $k$ such that $2^m \leq k < 2^{m+1}$, for some even $m$.}
+
+
+\end{itemize}
+Also, there is a set $S$ and a partition $E_i$ of $\mathbb{Z}^+$ such that:
+
+\begin{itemize} 
+
+\item $p(S) = 0$ 
+
+\item $p(S|E_i) \geq 1/2$ for each $E_i$. 
+
+\end{itemize}
+
+\begin{quote}
+\emph{Example:}
+
+$S = \set{1^2, 2^2, 3^2, \dots}$; $E_i$ be the set of powers of $i$ (whenever $i$ which is not a power of any other positive integer). In other words:
+\[
+\begin{array}{ccc}
+S  &=   &\{1, 4, 9, 16, 25, \dots\}   \\
+ E_1 &=   &\{1\}   \\
+E_2  &=   &\{2, 4, 8, 16, 32, \dots\}\\   
+E_3  &=   &\{3, 9, 27, 81, 243, \dots\}\\  
+\text{[No $E_4$, since $4 = 2^2$]} \\
+E_5  &=   &\{5, 25, 125, 625, 3125, \dots\}\\   
+&\vdots
+\end{array}
+\]
+
+\end{quote}
+
+
+\subsubsection{Is this really so bad?}
+
+Yes. There is a sequence of bets $B_{E_1}, B_{E_2}, B_{E_3}, B_{E_5},\dots$ such that:
+
+
+\begin{itemize} 
+
+\item you are confident that you ought to take each of the bets, 
+
+\item  you are 100\% confident that you will lose money if she takes them all. 
+
+\end{itemize}
+\begin{description}
+\item[$\bm{B_{E_i}:}$] Suppose God selects a number in $E_i$. Then you'll receive \$2 if the selected number is in $S$ and you'll be forced to pay \$1 if the selected number is not in $S$. (If the selected number is not in $E_i$, then the bet is called off and no money exchanges hands.)
+\end{description}
+Problems of this general form are inescapable: \emph{they will occur whenever a probability function on a countable set of possibilities fails to be countably additive}.
+
+
+\section{The Two-Envelope Paradox}
+
+
+\begin{itemize}
+\item Two envelopes:
+\begin{itemize}
+
+\item one contains $\$n$, for $n$ chosen at random from $\mathbb{Z}^+$.
+
+\item the other contains $2n$.
+
+\end{itemize}
+\item You are handed one of the envelopes, but don't know which. 
+
+\item Then you are offered the chance to switch. Should you switch?
+
+\end{itemize}
+
+\vspace{1mm}
+\begin{quote}
+\emph{An argument for switching:}
+
+Say that your envelope contains $\$k$. If $k$ is odd, you should switch. If $k$ is even, there's a 0.5 chance that the other envelope has $\$2k$ and a 0.5 chance that the other envelope has $\$k/2$. So:
+
+\[
+\begin{array}{ccccc}
+ EV(\text{switch}) &= &\$k/2\cdot 0.5 + \$2k\cdot 0.5 &= &5/4 \cdot \$k\\
+ \ \\
+  EV(\text{not switch}) &= & \$k
+\end{array}
+\]
+
+\end{quote}
+
+
+\subsection{Broome's Variant of the Paradox}
+
+
+\begin{itemize}
+\item Two envelopes:
+\begin{itemize}
+
+\item Toss a die until it lands One or Two. If the die first lands One or Two on the $k$th toss, place $2^{k-1}$ in the first envelope.
+
+\item Place twice that amount in the other envelope.
+
+\end{itemize}
+
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+

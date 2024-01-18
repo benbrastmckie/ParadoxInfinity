@@ -1,0 +1,482 @@
+%really the 2021 version 
+\documentclass[12pt,a4paper]{article}
+%\usepackage{pset-2018}
+\usepackage{pset-2023}
+
+\newcommand{\test}[1]{#1}
+
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{qa}
+
+
+\begin{document}
+
+\psintro{Problem Set 9: Computability}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fbox{\parbox{150mm}{\emph{Important:} Answers that call for a Turing Machine program will only be given credit if they are submitted as part of a PDF document with code that can be copied and pasted onto the following simulator: \url{morphett.info/turing/turing.html}.
+Please {test} your PDF {using Adobe's Acrobat Reader} before submitting it, by making sure your code works as intended after being copied and pasted into the simulator. (\LaTeX \ users might consider using the ``verbatim'' environment, or an environment intended for computer code.)}}
+
+
+% Idea for next time: something that gets students to see the basic point behinds Rice's Theorem. (For example, something to do with the informal proof (in the Wikipedia page for Rice's Theorem) that the function ascertaining whether a given machine computes the squaring function is not computable.) One idea would be to guide the student through the proof I sent Michele on 5/20/2021.
+
+\subsection*{Part I} 
+
+
+\begin{enumerate}
+
+
+\item The aim of this problem is to get you to think about how to code Turing Machines as natural numbers. Please use the coding system described in the course materials.
+
+
+
+\begin{enumerate}
+
+\item 
+
+\begin{enumerate}
+
+\item \question{Which natural number codes the following Turing Machine?  (3~points)
+\vspace{1mm}
+\input{short-TM-1}
+\vspace{1mm}
+}
+
+\answer{
+In the relevant coding system, ``\ub'' is coded as 0, and``$l$" is coded as 2. So our Turing Machine corresponds to the sequence \(\langle 0,0,0,2,1\rangle\), which gets coded as 
+\[2^{0+1} \cdot 3^{0+1} \cdot 5^{0+1} \cdot 7^{2+1} \cdot 11^{1+1} = 1,245,090\]
+}
+
+\item \question{Give an informal description of the behavior of that Turing Machine, when run on an empty input. (2~points)}
+
+\answer{When this Turing Machine runs on an empty input, it goes leftward for one step and halts, leaving the tape unchanged.
+}
+
+
+\end{enumerate}
+
+\item 
+
+\begin{enumerate}
+\item \question{Which Turing Machine is coded by the number 11,550? (3~points)
+}
+
+\answer{The Turning Machine: 0 \_ 1 r 0
+
+In the relevant coding system, ``\ub'' is coded as 0, ``1'' is coded as 1, and ``$r$" is coded as 0. the Machine above gets assigned the sequence \(\langle 0,0,1,0,0\rangle\), which is coded as 
+\[
+2^{0+1} \cdot 3^{0+1} \cdot 5^{1+1} \cdot 7^{0+1} \cdot 11^{0+1} = 11,550
+\]}
+
+
+\item \question{Give an informal description of the behavior of that Turing Machine, when run on an empty input. (2~points)}
+
+\answer{It goes right forever, replacing blanks with ones.}
+\end{enumerate}
+
+
+
+\item   \question{Could there be a function \(f\) such that, for distinct numbers \(n\) and \(m\), \(n\) and \(m\) both code Turing Machines that compute \(f\)? (3~points)
+}
+       
+\answer{  Yes. One way to see this is to note that if a Turing Machine \(M\) with two or more command lines computes \(f\), then any Turing Machine that results from changing the order of \(M\)'s command lines will also compute \(f\), and is assigned a code different from the code  assigned to \(M\).
+}
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+% LEFT OUT, FOR VARIETY
+\com{
+
+\item \question{Give an informal description of the behavior of the following Turing Machine, when run on an empty input. (Try to be as succinct as possible.) (5 points)
+\[
+\begin{array}{ccccc}
+0 &\ub &1 &r &1\\
+1 &\ub &1 &l &2\\
+2 &1 &\ub &r &3\\
+3 &1 &\ub &l &0
+\end{array}
+\]
+
+}
+
+\answer{A succinct---and correct---answer might say something like ``It goes back and forth forever, changing blanks to ``1"s and ``1"s to blanks''.
+
+A longer one is also acceptable. For instance: ``This Turing Machine starts in state 0, enters a ``1" in the blank cell, goes right, and enters state 1. It now again enters a ``1" in the blank cell, but then goes left. So now it is back at the cell at which it began. It changes the ``1" back to a blank, and moves right, where it enters state 3. It then changes the second ``1" it wrote back to a blank, goes left, and starts the whole process over again. So it goes right changing blanks into ``1"s, left changing ``1"s into blanks, over and over."}
+}
+
+
+% LEFT OUT, FOR VARIETY
+\com{
+\item \question{For each Turing Machine on the list below, say whether it halts when run on an empty input. (5~points each)}
+
+\begin{enumerate}
+
+\item 
+\question{
+\(
+\begin{array}{ccccc}
+0 &\ub &\ub &r &0
+\end{array}
+\)
+}
+
+\answer{Doesn't halt. (This machine just goes right indefinitely.)}
+\vspace{3mm}
+
+\item
+\question{
+\(
+\begin{array}{ccccc}
+0 &\ub &1 &r &1
+\end{array}
+\)
+}
+
+
+\answer{Halts. (This machine writes a ``1" and then halts, since it goes to state 1 but there are no instructions for state 1.)}
+
+
+\vspace{3mm}
+
+
+\item
+\question{
+\(
+\begin{array}{ccccc}
+0 &\ub &1 &r &1\\
+1 &\ub &1 &r &2\\
+2 &\ub &1 &r &3\\
+3 &\ub &1 &r &4
+\end{array}
+\)
+}
+
+
+
+\answer{Halts. (This machine writes four ``1"s and then halts, since it goes to state 4 but there are no instructions for state 4.)}
+
+\vspace{3mm}
+
+
+\item 
+\question{
+\(
+\begin{array}{ccccc}
+0 &\ub &1 &r &1\\
+1 &\ub &1 &r &2\\
+2 &\ub &1 &r &3\\
+3 &\ub &1 &r &0
+\end{array}
+\)
+}
+
+
+\answer{Doesn't halt. (This machine writes ``1"s indefinitely, since after writing four ``1"s it goes back to state 0 and starts again.)}
+
+\end{enumerate}
+}
+
+
+
+
+\item The following two problems are meant to give you some practice coding Turing machines. (10~points each)
+
+\begin{enumerate}
+
+\item \question{
+Ternary notation is to 3 what decimal notation is to 10 and what binary notation is to 2. In other words: one works with the digits ``0'', ``1'', and ``2'', and lets the string ``$d_k\dots d_1 d_0$'' refer to the number $d_0 \cdot 3^0 + d_1 \cdot 3^1 \cdot \dots \cdot d_k \cdot 3^k$.
+
+Design a Turing Machine that does the following: when given as input a natural number $n \geq 1$ in ternary notation, followed by a blank, followed by natural number $m \geq 1$ in ternary notation, it halts with the number $n + m$ in ternary notation on an otherwise blank tape.
+
+Here is an example, to illustrate how your Turing Machine ought to work. Suppose $n = 47$ and $m = 64$. In ternary notation, ``1202'' refers to the number 47 and ``2101'' refers to the number 64. So your machine should start out with the following string of symbols on an otherwise blank tape:
+$$1202\ 2101$$
+Since $47 + 64 = 111$ (and since, in ternary notation, ``11010'' refers to the number 111), your Turing Machine should halt with the following string of symbols on an otherwise blank tape:
+$$11010$$
+And, of course, you want this to work for arbitrary $n$ and $m$.  You may use auxiliary symbols, if you need them. 
+
+}
+
+\answer{
+There are many different ways of getting the job one. Here is a machine that is inefficient to run but is based on a simple idea:
+
+\input{ternary-addition}
+
+}
+
+
+
+\item \question{
+Design a Turing-machine that does the following: when given as input a string of $n$ ones, followed by a blank, followed by a string of $m$ ones, it outputs a string of $n\times m$ ones. You may assume that $n$ and $m$ are greater than zero and use auxiliary symbols, if you need them. 
+}
+
+\answer{There are many different ways to do it, but this one will do:
+
+\input{mutliplication-machine}
+
+}
+
+\end{enumerate}
+ 
+
+
+\item \question{Suppose you're interested in minimizing the number of states required by your Turing Machine. One strategy is to come up with a clever algorithm. Another strategy is to start with an algorithm that requires many states and bring down the number of states by increasing the number of auxiliary symbols that your Turing Machine is allowed to print on the tape. Use either of these strategies (or a combination of the two) to solve the following problems. Your Turing Machines are allowed to use as many auxiliary symbols as they need. (8~points each)}
+
+\begin{enumerate}
+
+
+\item \question{Design a Turing Machine that has no more than two states and behaves as follows: whenever it is given a sequence of $n$ ones as input ($n > 0$), it halts with a sequence of $n$ ones, followed by a blank, followed by a one, with the reader positioned at the left-most one of the initial sequence. 
+}
+
+\answer{The following will do:
+\input{2-state}
+}
+
+\item \question{Design a Turing Machine that has no more than two states and behaves as follows: for some $n \geq 20$, when run on an empty input, it halts with $n$ cells of the tape containing non-blanks. (No need to worry about where the reader ends up.)
+}
+
+\answer{The following will do:
+\input{2-state-20}
+}
+
+\item \question{Design a Turing Machine that has no more than two states and behaves as follows: when given as input a natural number $n \geq 1$ in binary notation, it halts with the number $4n +3$ in binary notation on an otherwise blank tape. (No need to worry about where the reader ends up.)
+
+}
+
+\answer{The following will do:
+\input{4n+3}
+}
+
+
+
+\end{enumerate}
+
+
+
+  \item \question{The course materials include a proof that the Busy Beaver function is not Turing-computable. The following problems are aimed at getting you to think about that proof.
+  }
+
+\begin{enumerate}
+
+\item  \label{first}
+\question{For $k$ an arbitrary positive integer, design a (one-symbol) Turing Machine with exactly $k$ states that does the following, given an empty input: it produces a sequence of $k$ ones, brings the reader to the beginning of the sequence, and halts. (4~points)}
+
+\answer{An example of such a machine is supplied in the answers to the exercises in Section~9.2.2:
+
+\[
+\begin{array}{ccccc}
+0 &\ub &1 &l &1 \\
+1 &\ub &1 &l &2 \\
+\ldots \\
+(k-1) &\ub &1 &* &\text{halt} \\
+\end{array}
+\]
+[This machine has $k$ states.]
+}
+
+\item \label{doubler} \question{Design a (one-symbol) Turing machine that does the following, given a sequence of $n$ ones as input: it produces a sequence of $2n$ ones, brings the reader to the beginning of the sequence, and halts. \label{second} (4~points)}
+
+
+\answer{An example of such a machine is supplied in the answers to the exercises in Section~9.1 of the book:
+
+\[
+\begin{array}{ccccc}
+0 &1 &\ub &r &1\\
+1 &1 &1 &r &1\\
+1 &\ub &\ub &r &2\\
+2 &1 &1 &r &2\\
+2 &\ub &1 &r &3\\
+3 &\ub &1 &l &4\\
+4 &1 &1 &l &4\\
+4 &\ub &\ub &l &5\\
+5 &1 &1 &l &5\\
+5 &\ub &\ub &r &6\\
+6 &1 &\ub &r &1\\
+6 &\ub &\ub &r &\text{halt}
+\end{array}
+\]
+
+
+[This machine has seven states.]
+}
+
+
+\item \label{last} \question{Design a (one-symbol) Turing machine that does the following, given a sequence of $n$ ones as input: it produces a sequence of $n+1$ ones, brings the reader to the beginning of the sequence, and halts. (4~points)}
+
+\answer{
+
+\[
+\begin{array}{ccccc}
+0 &\ub &1 &* &\text{halt}\\
+0 &1 &1 &l &1\\
+1 &\ub &1 &* &\text{halt}
+\end{array}
+\]
+
+
+[This machine has two states.]
+}
+
+
+
+
+
+
+
+\item \label{construction}
+ \question{The proof in the course materials works with a hypothetical Turing Machine $M^I$. The characterization of $M^I$ presupposes a Turing Machine $M^{BB}$, which computes the Busy Beaver Function. Since the Busy Beaver Function is not Turing-Computable,  $M^{BB}$ doesn't actually exist (and so neither does $M^I$). For the purposes of this exercise, however, I'd like you to pretend that $M^{BB}$ does exist, and has the following program:
+
+\input{fake-bb}
+Let $k=b + c + d$, where $b$ is the number of states in your answer to \ref{doubler}, $c$ is the number of states in your answer to \ref{last}, and $d$ is the number of states in the fake version of $M^{BB}$ described above. 
+
+Explicitly write out a program for $M^I$ by using  your answers to problems $(\ref{first})$--$(\ref{last})$ as subroutines and by pretending that the fake version of $M^{BB}$ above really does compute the Busy Beaver Function. Make sure you annotate your program so as to make it easy for your TA to understand which part of your  code corresponds to each of your answers to problems $(\ref{first})$--$(\ref{last})$ and which corresponds to the fake version of $M^{BB}$ above. (4~points)
+}
+
+\answer{
+On the answers supplied above, $b = 7, c = 2$. And everyone should agree that $d = 2$. So we'll work with $k = 11$.
+
+
+\input{bb-complete}
+
+
+}
+
+
+
+
+
+
+\item \question{Let $k$ be as in your answer to problem~\ref{construction}. If the two-state machine I supplied in problem~(\ref{construction}) had really computed the Busy Beaver Function, then your answer to (\ref{construction}) would have computed the function $BB(2k) + 1$. So your code would have been more productive---by one---than the most productive Turing Machine with $2k$ states or fewer.
+How many states does your answer to (\ref{construction}) have? Please give your answer as a function of $k$. (1~point)
+}
+
+\answer{$2k$.
+}
+
+
+\end{enumerate}
+
+  \item \question{When people characterize Turing Machines, they usually assume that the tape is ``infinitely long,'' or that it can be ``extended indefinitely.'' The purpose of the following two questions is get you to think about that. (4~points each)}
+\begin{enumerate}
+
+\item \question{Find a (total) function $f(n)$ from natural numbers to natural numbers which is Turing-computable, and which is such that, for any number $m$, there exists a number $k$ such that a Turing Machine would need a tape with more than $m$ cells to compute $f(k)$. }
+
+\answer{Let $f$ be the identify function. In order to compute $f(n)$ a Turing Machine must print $n$ ones as output, and therefore use at least $n$ many cells on the tape. So for arbitrary $m$, one can let $k = m+1$.}
+
+
+\item \question{Let $f(n)$ be whatever function you used to answer the previous question, and suppose that Turing Machine $M$ computes $f(n)$. Is there some number $k$ such that $M$ must use an infinite amount of tape to compute $f(k)$? }
+
+\answer{ There can be no such number because $M$ can only compute $f(k)$ if it halts after a finite number of steps.}
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection*{Part II} 
+
+\begin{enumerate}
+  \setcounter{enumi}{5}
+  
+
+
+
+  
+  
+  \item \question{The following questions are meant to get you to think about the Halting Function.}
+  
+  \question{For each of the descriptions below, determine whether there could be a Turing Machine satisfying that description.  (6~points each; don't forget to justify your answers)
+}
+
+\begin{enumerate}
+
+\item \question{A Turing Machine $M$ that behaves as follows when given the code of a Turing Machine $M'$ as input:
+
+\begin{itemize}
+\item If $M'$ halts when run on an empty input, $M$ halts.
+\item If $M'$ doesn't halt when run on an empty input, $M$ doesn't halt 
+\end{itemize}
+}
+
+\answer{Yes. All one needs is a Universal Turing Machine.}
+
+\item \question{A Turing Machine $M$ that behaves as follows when given the code of a Turing Machine $M'$ as input:
+
+\begin{itemize}
+\item If $M'$ halts when run on an empty input, $M$ outputs a $1$
+\item If $M'$ doesn't halt when run on an empty input, $M$ outputs a 0 
+\end{itemize}
+}
+
+\answer{No, since such a machine would allow us to compute the halting function, which we know not to be Turing computable.
+
+To see this, we will suppose for reductio that $M$ exists and use it to prove the existence of a Turing machine $M^H$, which computes the (one-place) halting function $H(n)$.
+
+Here's one way to define $M^H$, given input $n$:
+
+\begin{itemize}
+
+\item The first thing $M^H$ does is use its input to print out a representation of the Turing machine with code number $n$ on its tape. (Whether or not this can be done depends on the coding system one is presupposing, but it definitely can be done for the coding system provided in the course materials: one factors $n$ into primes and uses the exponents to write out command lines, using an easy translation method.)
+
+\item Next, $M^H$ modifies the code represented on its tape by adding an initial subroutine that prints out n ones, returns the reader to the first one, and then runs the program originally on the tape. (That's easy to do: it's just a matter of adding n additional command lines, using up the first $n$ states, and then relabelling the original command lines so that each state $k$ becomes state $k+n$.)
+
+\item $M^H$ now represents on its tape the code for some Turing machine $M^*$. The next thing $M^H$ has to do is use the information on its tape to find the number $m^*$ that codes $M^*$ on our coding scheme. (Again, whether or not that's possible depends on one's coding scheme. But it can definitely be done with the coding scheme in the course materials. $M^H$ starts by turning each of the command-line symbols on its tape into numbers, and use the resulting numbers as the exponents of a big multiplication of consecutive prime numbers.)
+
+\item Finally, $M^H$ uses $M$ as a subroutine to establish whether the machine encoded by $m^*$ halts on an empty input. If the answer is yes, $M^H$ yields an output indicating that the machine coded by $n$ halts on input $n$; otherwise $M^H$ yields an output indicating that the machine coded by $n$ doesn't halt on input $n$.
+\end{itemize}
+}
+
+\item \question{For a given Turing Machine $M'$, a Turing Machine $M$ that behaves as follows on an empty input:
+
+\begin{itemize}
+\item If $M'$ halts when run on an empty input, $M$ outputs a $1$
+\item If $M'$ doesn't halt when run on an empty input, $M$ outputs a 0 
+\end{itemize}
+}
+
+\answer{Yes. If $M'$ halts on an empty input, $M$ can be $\seq{0,\_,1,*,\text{halt}}$. If $M'$ doesn't halt on an empty input, $M$ can be $\seq{0,\_,0,*,\text{halt}}$.}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  \end{enumerate} 
+
+
+
+\end{document}
+
+
+
+
+
+

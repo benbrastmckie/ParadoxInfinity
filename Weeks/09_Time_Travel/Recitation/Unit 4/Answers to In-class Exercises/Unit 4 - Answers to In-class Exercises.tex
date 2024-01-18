@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0mm}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $4$: Time Travel}
+
+
+
+\begin{center}
+{\LARGE \bf Answers to In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Validity and Soundness}
+
+\noindent
+An argument is a sequence of sentences where there is a conclusion following from a sequence of premises. An argument is \textit{valid} just in case it is impossible for (all of) its premises to be true and its conclusion to be false. An argument is \textit{sound} just in case it is valid and all of its premises are (actually) true. \\
+
+\noindent
+Are the following arguments valid? Are they sound?
+
+\begin{exer}
+\hfill
+\begin{enumerate}
+\item If Agustin is in Cambridge, then Agustin is in Massachusetts. 
+\item Agustin is in Cambridge.
+\item Therefore, Agustin is in Massachusetts. 
+\end{enumerate}
+\end{exer}
+
+\begin{exer}
+\hfill
+\begin{enumerate}
+\item If Agustin is in Cambridge, then Agustin is in Massachusetts. 
+\item Agustin is not in Massachusetts. 
+\item Therefore, Agustin is not in Cambridge. 
+\end{enumerate}
+\end{exer}
+
+\begin{exer}
+\hfill
+\begin{enumerate}
+\item We have tossed this coin fifty million times and each time it has landed heads. 
+\item Therefore, the coin is not fair. 
+\end{enumerate}
+\end{exer}
+
+\begin{exer}
+\hfill
+\begin{enumerate}
+\item A cat is a mammal.
+\item Therefore, the following is not the case: there is a cat in this room and there is no cat in this room. 
+\end{enumerate}
+\end{exer}
+
+\begin{proof}[Answer]
+\hfill
+\begin{enumerate}
+\item Valid and sound.
+\item Valid and unsound.
+\item Invalid and unsound.
+\item Valid and sound.
+\end{enumerate}
+
+\end{proof}
+
+\section{Constructing Arguments}
+
+\begin{exer}
+\hfill
+
+\noindent
+The \textbf{Control Hypothesis} is the following view:
+
+An agent acts freely in doing $X$ if and only if (a) she does $X$ by making a certain decision, and (b) she is in a position to do something other than $X$ by making a different decision.  \\
+
+\noindent
+Construct a valid argument with the Control Hypothesis as one of its premises and incompatibilism as its conclusion. Make your argument as persuasive as possible. \\
+
+\noindent
+Now suppose you are an incompatibilist. Try to argue for your view by rejecting the above argument. Which premise(s) would you deny? And why?
+
+\end{exer}
+
+\begin{proof}[Answer]
+Here's an example:
+\begin{enumerate}
+\item An agent acts freely in doing $X$ if and only if (a) she does $X$ by making a certain decision, and (b) she is in a position to do something other than $X$ by making a different decision.
+\item If determinism is true, then no one is in a position to do something other than what she did by making a different decision.
+\item Therefore, if determinism is true, then no one acts freely in doing anything.
+\end{enumerate}
+
+\end{proof}
+
+\begin{exer}
+\hfill
+
+\noindent
+\textbf{Indeterminism} is the following statement: 
+
+The state of universe at any past time, together with the laws of nature, determine the \textit{probability} that the universe will be in various states later. \\
+
+\noindent
+Construct a valid argument for the conclusion that if indeterminism is true, then no one acts freely. Make your argument as persuasive as possible.
+
+\end{exer}
+
+\begin{proof}[Answer]
+Here's an example:
+\begin{enumerate}
+\item A person acts freely only if she has control over her act.
+\item If indeterminism is true, then every act is a result of pure chance.
+\item If an act is a result of pure chance, then the person who performs the act has no control over this act.
+\item Therefore, if indeterminism is true, no one acts freely.
+\end{enumerate}
+
+\end{proof}
+
+\begin{exer}
+\hfill
+
+\noindent
+The following is a common view on moral responsibility:
+
+A person is morally responsible for doing $X$ only if she acts freely in doing $X$. \\
+
+\noindent
+Construct a valid argument with determinism as one of its premises, the above view on moral responsibility as another of its premises, and the conclusion that no one is morally responsible for anything. Make your argument as persuasive as possible. \\
+
+\noindent
+Try to form an alternative view on moral responsibility such that it is compatible with the negation of the common view.
+
+\end{exer}
+
+\begin{proof}[Answer]
+Here's an example:
+\begin{enumerate}
+\item If someone acts freely in doing $X$, then she could have done otherwise.
+\item If determinism is true, no one can do otherwise than one actually does.
+\item Therefore, if determinism is true, no one acts freely in doing anything.
+\item Determinism is true.
+\item Therefore, no one acts freely in doing anything.
+\item If someone is morally responsible for doing $X$, then she acts freely in doing $X$.
+\item Therefore, no one is morally responsible for anything.
+\end{enumerate}
+
+An example of an alternative view on moral responsibility: a person is morally responsible for doing $X$ just in case her act of doing $X$ induces certain moral reactive attitudes like indignation from a rational third party.
+
+\end{proof}
+
+
+
+
+\end{document}

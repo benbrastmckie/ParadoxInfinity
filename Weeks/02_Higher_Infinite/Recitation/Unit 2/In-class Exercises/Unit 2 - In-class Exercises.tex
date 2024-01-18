@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity }
+\rhead{Recitation $2$: The Higher Infinite}
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Definitions}
+
+\begin{defn}
+A set $x$ is \textit{transitive} just in case any member $y$ of $x$ is a subset of $x$, i.e. for any $y \in x$, if $z \in y$, then $z \in x$.
+\end{defn}
+
+\begin{defn}
+A set $x$ is \textit{connected under $\in$} just in case for any $y, z \in x$, either $y \in z$, or $y = z$, or $z \in y$.
+\end{defn}
+
+\begin{defn} \label{Ordinal}
+A set $x$ is an \textit{ordinal} just in case $x$ is both transitive and connected under $\in$.
+\end{defn}
+
+\begin{defn}
+A set $x$ is a \textit{finite ordinal} just in case $x$ is both finite and an ordinal.
+\end{defn}
+
+\section{Exercises}
+
+Def \ref{Ordinal} is the formal definition of ordinals in set theory. The goal of the following exercises is to show that, in a natural sense, this formal definition, under ZFC, coincides with our informal definition of ordinals using the Open-Endedness Principle and the Construction Principle. Exercise 1 and 2 show that every ordinal is well-ordered by $\in$. 
+
+\begin{exer}
+Show that any ordinal $x$ is totally ordered by $\in$, i.e. the ordering $\in$ on $x$ is asymmetric, transitive and connected. (Hint: Axiom of Foundation.)
+\end{exer}
+
+\begin{exer}
+Show that any ordinal $x$ is well-ordered by $\in$. 
+\end{exer}
+
+\noindent
+Exercise 3 shows that every member of an ordinal is also an ordinal. (Compare: Construction Principle). 
+
+\begin{exer}
+Let $x$ be an ordinal and $y \in x$. Show that $y$ is an ordinal.
+\end{exer}
+
+\noindent
+Exercise 4 shows that $\emptyset$ is an ordinal and every ordinal has a successor. (Compare: Open-Endedness Principle)
+
+\begin{exer}
+Show that $\emptyset$ is an ordinal. And if $x$ is an ordinal, $x \cup \{x\}$ is an ordinal.
+\end{exer}
+
+\noindent
+Exercise 5 and 6 show that the class of all ordinals is well-ordered by $\in$. 
+
+\begin{exer}
+Let $x, y$ be ordinals such that $x \subseteq y$ and $x \neq y$. Show that $x \in y$.
+\end{exer}
+
+\begin{exer}
+Let $x, y$ be ordinals. Show that either $x \in y$, or $x = y$, or $y \in x$. (Hint: consider $x \cap y$ and use Exercise 5.)
+
+\end{exer}
+
+\noindent
+Exercise 7 shows that $\omega$ is an ordinal.
+
+\begin{exer}
+Let $\omega = \{ x \, \, | \, \, x \, \, \text{is a finite ordinal} \}$. Show that $\omega$ is an ordinal.
+\end{exer}
+
+
+\end{document}

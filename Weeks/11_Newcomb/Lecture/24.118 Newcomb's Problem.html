@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format" content="complete">
+	<title>24.118: Newcomb’s Problem</title>
+	<meta name="author" content="Damien Rochford (based on notes by Agustín Rayo)">
+	<link rel="stylesheet" type="text/css" href="philosstyle.css">
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body>
+
+<em class="philosophysmall"> 24.118:</em> <em
+ class="titlesmall">Newcomb&rsquo;s Problem</em> <img style="padding-right:60px" src="Newcomb.jpg" alt=
+"An illustration of the two options in Newcom&rsquo;s Problem, in a charmingly naïve style." width="40%" align="right">
+
+
+<ul>
+<li><a href="#section_problem">The Problem</a></li>
+<li><a href="#section_fortwo">For Two-Boxing: Dominance</a>
+
+<ul>
+<li><a href="#section_dominance">The Dominance Principle</a></li>
+<li><a href="#section_domnewc">Dominance and the Newcomb Problem</a></li>
+</ul></li>
+<li><a href="#section_forone">For One-Boxing: Expected Value</a>
+
+<ul>
+<li><a href="#section_principle">The Principle of Expected Value Maximisation</a></li>
+<li><a href="#section_bad">A Bad Argument</a></li>
+<li><a href="#section_pevm">The PEVM and Newcomb’s Problem</a></li>
+</ul></li>
+<li><a href="#section_evidential">Evidential Dependence</a>
+
+<ul>
+<li><a href="#section_fallacy">The Fallacy of the Bad Argument</a></li>
+<li><a href="#section_fallnewc">The Fallacy and Newcomb’s Problem</a></li>
+</ul></li>
+<li><a href="#section_causal">Causal Dependence</a>
+
+<ul>
+<li><a href="#section_mathematosis">Mathematosis</a></li>
+<li><a href="#section_causalnewc">Evidential and Causal Dependence in Newcomb’s Problem</a></li>
+</ul></li>
+<li><a href="#section_decision">Causal Decision Theory</a>
+
+<ul>
+<li><a href="#section_conditional">Two Kinds of Conditionals</a></li>
+<li><a href="#section_conditionalsnewc">Conditionals and Newcomb’s Problem</a></li>
+<li><a href="#section_causalev">Causal Expected Value</a></li>
+</ul></li>
+<li><a href="#section_tickledefence">The Tickle Defense</a>
+
+<ul>
+<li><a href="#section_tickle">The Tickle</a></li>
+<li><a href="#section_screening">Screening Off</a></li>
+</ul></li>
+<li><a href="#section_empirical">Empirical Evidence?</a></li>
+<li><a href="#section_nature">The Nature of Your Relationship to Your Acts</a></li>
+</ul>
+
+<h1 id="section_problem">The Problem<sup><small><a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">1</a></small></sup></h1>
+
+<p>Two boxes are before you. One is transparent; you can see that inside is a thousand dollars in cash. The other box is opaque; you don’t know what’s in there. But you <em>do</em> know that it is either a million dollars in cash, or nothing.</p>
+
+<p>You have two choices. You can take the opaque box only, and hence get either nothing or a cool million. Or you can take <em>both</em> boxes, and hence get either a thousand dollars or one million, one thousand dollars.</p>
+
+<p>Seems like an easy choice, right? Take both! There seems to be <em>no reason at all</em> to take just one.</p>
+
+<p>Here is the twist: you have some information about how it was decided whether or not to put a million dollars in the opaque box. A couple of weeks ago, a personality expert was summoned, and was handed as much information about you as could be gathered. The expert was then asked to determine, on the basis of that information, whether you are a <strong>one-boxer</strong> (i.e. the kind of person who would only take the opaque box), or a <strong>two-boxer</strong> (i.e. the kind of person who would take both boxes). If the expert concluded that you are a one-boxer, the opaque box was filled with a million dollars. If she concluded that you are a two-boxer, the opaque box was left empty. </p>
+
+
+<p>Both boxes have been sealed since last night, and will remain sealed until you make your decision. So if the large box was filled with a million dollars last night, it will continue to hold a million dollars, regardless of what you decide. And if it was left empty last night, it will remain empty, regardless of what you decide.</p>
+
+<p>One final point: the expert is known to be highly reliable. She has participated in many thousands of experiments of this kind, and has made accurate predictions 99% of the time. There is nothing special about your case, so you should think that the expert is 99% likely to correctly predict whether you will <strong>one-box</strong> or <strong>two-box</strong> (as the options are called). </p>
+
+<p>How should you proceed now that you know about the procedure that was used to fill the boxes? Is it still obvious that you should two-box?</p>
+
+<p>(Keep in mind that the expert knows that you’ll be told about how the experiment works, and about how method that was used to decide how to fill the boxes. So she knows that you’ll be engaging in just the kind of reasoning that you are engaging in right now!)</p>
+
+<h1 id="section_fortwo">For Two-Boxing: Dominance</h1>
+
+<ul>
+
+<h2 id="section_dominance">The Dominance Principle</h2>
+
+<p>What should you do, when you are faced with a situation with uncertain outcomes? </p>
+
+<p>Suppose you need to decide how to get to New York. You can take the train or the plane. Both are equally convenient, given your final destination, and they are about the same price. Your main concern is to minimise time.</p>
+
+<p>How much time you will take depends on things you don’t know. There is a blizzard brewing; it may or may not strike while you are in transit. Here is a matrix representing the <strong>outcome</strong> for each possibility.</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>Blizzard</th> <th>No Blizzard</th> </tr>
+		<tr> <th style="text-align:right">Take the Plane</th> <td style="text-align:center"> Journey takes 2 hours</td> <td style="text-align:center"> Journey takes 1 hour</td> </tr>
+		<tr> <th style="text-align:right">Take the Train</th> <td style="text-align:center">Journey take 6 hours</td> <td style="text-align:center">Journey take 4 hours</td> </tr>
+	</table>
+</center>
+
+<p>The cells at the left hand side of the matrix represent the possible <strong>acts</strong> among which you are choosing. The cells at the top of the matrix represent what are called the <strong>states</strong>. How good an act is depends on which state the world is in.</p>
+
+<p>(In general: specifying a decision problem involves specifying the acts, the states, and the outcome for each act-state pair. We will, in general, specify a decision problem using a table like this:
+ 
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>State 1</th> <th>State 2</th> <th>&hellip;<th> </tr>
+		
+		<tr> <th style="text-align:right">Act 1</th> <td style="text-align:center">Outcome 1,1</td> <td style="text-align:center">Outcome 1,2</td> <td style="text-align:center">&hellip;</td></tr>
+		
+		<tr> <th style="text-align:right">Act 2</th> <td style="text-align:center">Outcome 2,1</td> <td style="text-align:center">&hellip;</td> <td></td></tr>
+		
+		<tr> <th style="text-align:right">&hellip;</th> <td style="text-align:center">&hellip;</td> <td></td> <td></td> </tr>
+	</table>
+</center>
+
+This table is called a <strong>decision matrix</strong>)</p>
+
+<p>Let us assign a number to each outcome, representing how much you want each outcome to occur:</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>Blizzard</th> <th>No Blizzard</th> </tr>
+		<tr> <th style="text-align:right">Take the Plane</th> <td style="text-align:center">4</td> <td style="text-align:center">5</td> </tr>
+		<tr> <th style="text-align:right">Take the Train</th> <td style="text-align:center">0</td> <td style="text-align:center">2</td> </tr>
+	</table>
+</center>
+
+<p>These numbers are called <strong>values</strong> (or sometimes “utilities”). The exact number you give to each outcomes don&rsquo;t matter; what is important is the <em>ratios</em> among the values in a given decision problem.</p>
+
+<p>What should you do? Take the plane, obviously! It is the better choice if there’s a blizzard, and it’s the better choice if there <em>isn’t</em> a blizzard. Either way, it’s the better choice. So it’s the better choice.</p>
+
+<p>When an act A is better then an act B, whatever the state, act A is said to <strong>dominate</strong> act B. </p>
+
+<p>The <strong>Dominance Principle</strong> is the following rule for how to make decisions under uncertainty:</p>
+
+<blockquote>
+<p>If an act A dominates all other options, choose A!</p>
+</blockquote>
+
+<p>Seems like a pretty good principle, right?</p>
+
+<br>
+
+<h2 id="section_domnewc">Dominance and the Newcomb Problem</h2>
+
+<p>The main argument for two-boxing is a dominance argument.</p>
+
+<p>Consider the decision matrix for Newcomb’s Problem.</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>A Million in the Opaque Box</th> <th>Nothing in the Opaque Box</th> </tr>
+		<tr> <th style="text-align:right">One-Box</th> <td style="text-align:center">Get $1,000,000</td> <td style="text-align:center">Get Nothing</td> </tr>
+		<tr> <th style="text-align:right">Two-Box</th> <td style="text-align:center">Get $1,001,000</td> <td style="text-align:center">Get $1,000</td> </tr>
+	</table>
+</center>
+
+<p>Assuming that you want a thousand dollars more than nothing, and $1,001,000 more than a thousand, then two-boxing dominates one-boxing. So, by the Dominance Principle, you should two-box!</p>
+
+</ul>
+
+<h1 id="section_forone">For One-Boxing: Expected Value</h1>
+
+<ul>
+
+<h2 id="section_principle">The Principle of Expected Value Maximisation</h2>
+
+<p>What should you do, when you are faced with a situation with uncertain outcomes? </p>
+
+<p>Consider again your train/plane decision above. Let’s suppose you can make some estimate about how likely this blizzard is; .3 chance of a blizzard, let’s say, so a .7 chance of no blizzard.</p>
+
+<p>With those numbers, we can calculate the <em>expected value</em> of taking the plane, and the expected value of taking the train. The expected value of taking the plane is the weighted average of the value if there’s a blizzard, and the value if there isn’t one. The weights are the probability of blizzard and no-blizzard, respectively. So the expected value of taking the plane is: \[5\times 0.7 + 4\times 0.3 = 4.7\]</p>
+
+<p>Similarly, the expected value of taking the train is: \[2\times 0.7 + 0\times0.3 = 1.4\]</p>
+
+<p>What should you do? Take the plane, obviously! That’s the outcome that you can expect to do best by taking.</p>
+
+<p>In general, the <strong>expected value (version 1)</strong> of an act \(A_j\) is \[EV(A_j)=\sum_i v(O_{j,i}) \times P(S_i)\] where \(v(O_{j,i})\) is the value of \(O_{j,i}\) (that is, the value of the \(i\)<sup>th</sup> outcome along act \(A_j\)&rsquo;s row in the matrix), and \(P(S_i)\) is the probability of state \(S_i\).</p>
+
+<p>(Why “version 1”? Stay tuned…)</p>
+
+<p>The <strong>Principle of Expected Value Maximisation (PEVM)</strong> is the following rule for how to make decisions under uncertainty:</p>
+
+<blockquote>
+<p>Always make the choice with the highest expected value!</p>
+</blockquote>
+
+<p>Compare this principle to the Dominance Principle. It is more general; it tells you what to do in <em>every</em> decision under uncertainty, not just what to do when one choice dominates all the others. But it requires more inputs; you need to supply some probabilities as well as values, whereas the Dominance Principle requires only values. </p>
+
+<p>Seems like a pretty good principle, right? </p>
+
+<br>
+
+<h2 id="section_bad">A Bad Argument</h2>
+
+<p>You have a heart condition. Without treatment, you are likely to die young. But there is a very safe surgical procedure that can significantly reduce the chance that you will die young. It isn’t perfect; in some cases, it makes no difference, and the patient dies young anyway. But usually, people with your condition who have the treatment go on to have long, healthy lives.</p>
+
+<p>You are considering: should you have the surgery? Let’s draw up the decision matrix…</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>Live Long and Propsper</th> <th>Die Young</th> </tr>
+		<tr> <th style="text-align:right">Have Surgery</th> <td style="text-align:center"> Surgery and Life</td> <td style="text-align:center">Surgery and Death</td> </tr>
+		<tr> <th style="text-align:right">Don't Have Surgery</th> <td style="text-align:center">No Surgery and Life</td> <td style="text-align:center">No Surgery and Death</td> </tr>
+	</table>
+</center>
+
+<p>How do you value the outcomes here? Well, of course, you really would rather not have surgery than have it, all else equal — who likes having surgery? But you really, <em>really</em> would prefer to live a long, healthy life then to die young. So the way you value the outcomes, in this scenario, is something like this:</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>Live Long and Propsper</th> <th>Die Young</th> </tr>
+		<tr> <th style="text-align:right">Have Surgery</th> <td style="text-align:center"> 95</td> <td style="text-align:center">0</td> </tr>
+		<tr> <th style="text-align:right">Don&rsquo;t Have Surgery</th> <td style="text-align:center">100</td> <td style="text-align:center">5</td> </tr>
+	</table>
+</center>
+
+<p>But notice this: in the above matrix, <em>No Surgery</em> dominates <em>Surgery</em>. So, by the dominance principle, you should not have the surgery. Does that sound right?</p>
+
+<p>No it does not! And it doesn’t sound right because it <em>isn’t</em> right; the Dominance Principle is giving you bad advice, in this case.</p>
+
+<p>Does the PEVM do any better? To use the PEVM, we first need to supply some probabilities &mdash; in particular, the probability that you die young versus the probability that you live long and prosper. But if you think about it for a moment, you’ll see there is something strange about coming up with those probabilities. How likely it is that you die young depends on how likely it is that you have the surgery. And you are trying to figure out whether to have the surgery or not right now; it seems strange to rate how likely it is that you will have surgery as part of your deliberation about whether or not to have surgery. It’s not clear it even makes <em>sense</em> to do that.</p>
+
+<p>We can change the way we calculate expected values to take care of this. We can calculate using the <em>conditional</em> probabilities of the states, on the condition that we act a certain way, instead of the absolute probabilities of the states. The formula for <strong>expected value (version 2)</strong> is this: \[EV(A_j)=\sum_i v(O_{j,i}) \times P(S_i|A_j)\] where \(P(S_i|A_j)\) is the conditional probability that the world is in state \(S_i\), given that you perform act \(A_j\).</p>
+
+<p>To use <em>this</em> formula we need to know the probability that you live long, given that you have the surgery, the probability that you die young, given that you have the surgery, the probability that you live long, given you don’t have the surgery, and the probability that you die young given that you don’t have the surgery. Let’s make some estimates: \[P(\text{Surgery and Life }|\text{ Surgery})=0.7, P(\text{Surgery and Death }|\text{ Surgery})=0.3, P(\text{No Surgery and Life }|\text{ No Surgery})=0.05, P(\text{No Surgery and Death }|\text{ No Surgery})=0.95\]</p>
+
+<p>We then make the calculation… \[EV(\text{Surgery}) = v(\text{Surgery and Life})\times P(\text{Surgery and Life }|\text{ Surgery}) + v(\text{Surgery and Death})\times P(\text{Surgery and Death }|\text{ Surgery}) = 950\times 0.7 + 0 \times 0.3 = 665\] \[EV(\text{No Surgery}) = v(\text{No Surgery and Life})\times P(\text{No Surgery and Life }|\text{ No Surgery}) + v(\text{No Surgery and Death})\times P(\text{No Surgery and Death }|\text{ No Surgery}) = 1,000\times 0.05 + 50\times 0.95 = 97.5\] </p>
+
+<p>And lo and behold, we get the sensible answer. So this round, PEVM wins.</p>
+
+<br>
+
+<h2 id="section_pevm">The PEVM and Newcomb’s Problem</h2>
+
+<p>Let us look again at the decision matrix for Newcomb’s problem.</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>A Million in the Opaque Box</th> <th>Nothing in the Opaque Box</th> </tr>
+		<tr> <th style="text-align:right">One-Box</th> <td style="text-align:center">Get $1,000,000</td> <td style="text-align:center">Get Nothing</td> </tr>
+		<tr> <th style="text-align:right">Two-Box</th> <td style="text-align:center">Get $1,001,000</td> <td style="text-align:center">Get $1,000</td> </tr>
+	</table>
+</center>
+
+<p>We have some information on the conditional probability of the states, given your acts; it follows from the accuracy of the predictor. The probability of the predictor predicting you one-box, given that you one-box, is 99%, and so the probability that there&rsquo;s a million dollars in the opaque box, given that you one-box, is 99%; similarly, the probability that she predicts that you two-box, given that you one-box, is 1%, and so the probability that there is nothing in the opaque box, given that you one-box, is 1%. And so on.</p>
+
+<p>Let us suppose that the value of an outcome, for you, is equal to the number of dollars you get in that outcome. Then the expected value of one-boxing is… \[1,000,000\times 0.99 + 0\times 0.01 = 990,000\] and the expected value of two-boxing is… \[1,001,000\times 0.01 + 1,000\times 0.99 = 11,000\]</p>
+
+<p>So, clearly, by the PEVM, you should one-box!</p>
+
+</ul>
+
+<h1 id="section_evidential">Evidential Independence</h1>
+
+<ul>
+
+<h2 id="section_fallacy">The Fallacy of the Bad Argument</h2>
+
+<p>Consider again the bad argument for not having surgery. The fan of the PEVM has a diagnosis of what went wrong: we were dealing with a situation in which the states were not <em>evidentially independent</em> of the acts. Dominance arguments are no good in such situations.</p>
+
+<p>What does that mean? Let me explain.</p>
+
+<p>In decision problems, when we are talking about the “probability” of a state, we mean something like the confidence of the person making the decision that that state obtains. (We will talk more about what <em>exactly</em> we mean in Topic 6 of this course.) That the probability of a state is a certain number is a fact about the agent, and how things seem to her, given the information she has.</p>
+
+<p>Similarly, the <em>conditional</em> probability of a state \(B\) on an act \(A\) is (roughly) the confidence the agent <em>would</em> have in \(B\) if she were to learn \(A\).</p>
+
+<p>When the conditional probability \(P(B|A)\) is equal to \(P(B)\), then \(B\) is said to be <strong>evidentially independent</strong> of \(A\). That means: learning that \(A\) would have no effect on how confident the agent is that \(B\).</p>
+
+<p>The train versus plane example is a good example of evidential independence. This isn’t <em>necessarily</em> true, but in any realistic case, the agent will have no reason to change her confidence that a blizzard will occur if she learns that she will take the plane. Those two propositions are evidentially independent for the agent (and for basically any agent).</p>
+
+<p>When the states are evidentially independent of the acts, version 1 and version 2 of the expected value calculation are the same. It is only when the states are <em>not</em> evidentially independent of the acts that they differ. Similarly, the only time that the Dominance Principle gives conflicting advice with the PEVM is when the states are not evidentially independent of the acts. (Fun exercise: prove this.)</p>
+
+<p>What the above example, with the surgery, seems to show is that in these cases, where the states are <em>not</em> evidential independent of the acts, the PEVM gets things right, and the Dominance Principle gets things wrong.</p>
+
+<br>
+
+<h2 id="section_fallnewc">The Fallacy and Newcomb’s Problem</h2>
+
+<p>For the one-boxer, the two-boxer is making the same mistake as the person who argues that you should avoid the surgery; they are using dominance reasoning in a case where the states are not evidentially independent of the acts. But just as that reasoning gives bad verdicts in the surgery case, it gives bad verdicts in Newcomb’s problem.</p>
+
+</ul>
+
+<h1 id="section_causal">Causal Independence</h1>
+
+<p>The two-boxer has a retort. You are indeed correct, says the two-boxer, about the surgery case; that is a bad application of the Dominance Principle. But you have misdiagnosed the problem. The problem is not that the states are <em>evidentially</em> dependent on the acts. The problem is that the states are <em>causally</em> dependent on the acts. Dominance reasoning does not work when the states are causally dependent on the acts, but it <em>does</em> work otherwise, even in cases involving evidential dependence without causal dependence.</p>
+
+<p>Let me (says the two-boxer) show you why.</p>
+
+<ul>
+
+<h2 id="section_mathematosis">Mathematosis</h2>
+
+<p>Suppose there is a gene that has two different effects:</p>
+
+<ol>
+<li>It increases the likelihood that you will study mathematics.</li>
+<li>It increases the likelihood that you will suffer a terrible disease: mathematosis.</li>
+</ol>
+
+<p>As a result of this, the disease is more prevalent amongst people who study mathematics than in the population at large. But this is not because studying mathematics causes the disease (or because having the disease causes you to study mathematics). It is because studying mathematics and having the disease have a common cause: they are both caused by the gene.</p>
+
+<p>(Compare: wet roads are more likely at times when people are using umbrellas, but that’s not because umbrella use causes wet roads (or because wet roads cause umbrella use); it is because wet roads and umbrella use have a common cause: they are both caused by rain.)</p>
+
+<p>This mathematosis case is a case where there is evidential dependence between states and acts but no causal dependence between states and acts.</p>
+
+<p>Now, suppose you would like to study mathematics, but you really, really don’t want to have mathematosis (the symptoms are truly horrible, though they strike later in life). Should you study mathematics?</p>
+
+<p>The decision matrix is something like this:</p>
+
+<center>
+	<table style="width:40%">
+		<tr> <td> </td> <th>Have Mathematosis</th> <th>Don&rsquo;t Have Mathematosis</th> </tr>
+		<tr> <th style="text-align:right">Study Mathematics</th> <td style="text-align:center">1</td> <td style="text-align:center">100</td> </tr>
+		<tr> <th style="text-align:right">Don&rsquo;t Study Mathematics</th> <td style="text-align:center">0</td> <td style="text-align:center">99</td> </tr>
+	</table>
+</center>
+
+<p>And let us say that you know something about the prevalence of mathematosis. It is pretty common in people who study mathematics — say, 30% of people who study mathematics have it. But it is very rare in the population at large — maybe .01% of people in general have mathematosis.</p>
+
+<p>The Dominance Principle says: study! If you do the math, you&rsquo;l see that the PEVM says: don’t study! Which is right?</p>
+
+<p>The Dominance Principle, obviously! If you carry the gene, you’re likely to get the disease, but there is nothing you can do about it now. So better to study mathematics, and enjoy life while you are still healthy. And if you don’t carry the gene, there is no need to worry: you won’t get the disease, regardless of whether you study mathematics or not. So, again, there’s no reason to refrain from enjoying yourself. Either way: you should study mathematics!</p>
+
+<p>(Compare: Suppose you don’t want the roads to be wet. Should you refrain from using an umbrella? Of course not! If rain is on the way, the roads will get wet regardless of whether you use your umbrella or not. So better to use it and stay dry. And if rain is not on its way, there is no need to worry: the roads will remain dry regardless of whether or not you open your umbrella.)</p>
+
+<br>
+
+<h2 id="section_causalnewc">Causal and Evidential Dependence in the Newcomb Problem</h2>
+
+<p>To summarise the mathematosis case:</p>
+
+<p>Having mathematosis is evidentially dependent on studying mathematics, because the assumption that you study mathematics increases the likelihood that you have the disease.</p>
+
+<p>Having the disease is causally independent from studying mathematics, because studying mathematics does not cause the disease. (What we have instead is a common cause: the gene causes both the disease and a desire to do mathematics.)</p>
+
+<p>Something similar happens in the case of Newcomb’s Problem:</p>
+
+<p>Whether or not the large box contains a million dollars is evidentially dependent on your choice to one-box or two-box, because the assumption that you one-box increases the likelihood that the large box contains the money.</p>
+
+<p>Whether or not the large box contains a million dollars is causally independent from your choice to one-box or two-box, because your action doesn’t cause the box to have the money in it; the box is, after all, already sealed by the time you act. (Here too we have a common cause: your psychological constitution causes both your decision and the predictor’s prediction.)</p>
+
+<p>The reason that the Principle of Expected Value Maximisation recommends one-boxing rather than two-boxing is that it uses evidential dependence, rather than causal dependence, to determine how much weight to give each of the possible outcomes of your actions. (Notice, in particular, that in calculating the expected value of an action \(A\) you assigns weights to the possible outcomes of \(A\) by using the conditional probability \(P(S|A)\), which tracks evidential dependence between \(S\) and \(A\), rather than causal dependence.)</p>
+
+<p>The two-boxer thinks that that is precisely where the PEVM goes wrong. Our decision making, she thinks, should be guided by causal dependence, not by evidential dependence.</p>
+
+</ul>
+
+<h1 id="section_decision">Causal Decision Theory</h1>
+
+<p><em>Decision theory</em> is a theory about what to do in decision problems. All versions of decision theory endorse the PEVM. But different versions use different ways of calculating expected value.</p>
+
+<p>The first rigorous version of decision theory used version 1, above, of the expected value formula. Clearly, given cases like surgery, we want to do better than that, but how? One way is the one-boxer way, which uses version 2 of the expected value formula. The version of decision theory that uses that formula is called <strong>evidential decision theory</strong>, because the formula uses the conditional probability P(S|A), which tracks evidential dependence.</p>
+
+<p>The two-boxer also has a way of calculating expected value. Rather than using conditional probabilities, it uses the probability of a certain conditional claim, called a “counterfactual conditional”. The kind of decision theory you get, if you calculate things the two-boxer way, is called <strong>causal decision theory</strong>. Let me explain.</p>
+
+<ul>
+
+<h2 id="section_conditionals">Two Kinds of Conditionals</h2>
+
+<p>The easiest way of getting a handle on causal decision theory is to start by considering the difference between <strong>indicative conditionals</strong> and <strong>counterfactual conditionals</strong>. Here is an example of an indicative conditional, and a corresponding counterfactual conditional:</p>
+
+<blockquote>
+
+<p>[Indicative Conditional]<br>
+If you start working on Friday, you’ll be done by Monday.</p>
+
+<p>[Counterfactual Conditional]<br>
+Had you started working on Friday, you would have been done by Monday.</p>
+
+</blockquote>
+
+<p>These two conditionals have something important in common: they both claim that there is some sort of connection between your working on Friday and your being done by Monday. There is, however, an important difference between them.</p>
+
+<p>I can say the counterfactual conditional even if it is now Tuesday, and I know that, as a matter of fact, you didn’t start working on Friday. Even if that is so, it might still be true that <em>had</em> you started working on Friday, you <em>would have been</em> done on Monday. In asserting the counterfactual conditional, I am considering a counterfactual alternative to the actual world — an alternative in which you <em>did</em> start working on Friday — and saying something about what that alternative world would have been like. </p>
+
+<p>In contrast, it would be very strange for me to assert the indicative conditional on Tuesday, when I know that you didn’t start work on Friday. The indicative conditional is much more normal to assert when it is before Friday, and I don’t know yet whether you will start working on Friday or not. In asserting the indicative conditional, I am considering the hypothesis that you will, in fact, in the actual world, start work on Friday, and saying something about what the world must actually be like, if that hypothesis is correct.</p>
+
+<p>(In general, indicative sentences are expressed in English in the indicative mood, and counterfactual sentences in what passes for the subjunctive mood, in English. So words like “were”, “would” and “had” are pretty reliable indicators of a counterfactual, rather than indicative, conditional.)</p>
+
+<p>Here’s another pair of conditionals, to help make the contrast clear:</p>
+
+<ol>
+<li><p>If Oswald didn’t kill Kennedy, somebody else did.</p></li>
+<li><p>If Oswald hadn’t killed Kennedy, somebody else would have.</p></li>
+</ol>
+
+<p>Is sentence (1) true? Yes! <em>Somebody</em> shot Kennedy; if it wasn’t Oswald, it was someone else. That’s something we know about the actual world. </p>
+
+<p>Is sentence (2) true? Assuming that Oswald did, in fact, kill Kennedy, and he was acting alone, then probably not. There is no particular reason to think that in an alternative scenario in which, contrary to fact, Oswald didn’t shoot Kennedy, then some other person would have done it.</p>
+
+<br>
+
+<h2 id="section_conditionalsnewc">Conditionals and Newcomb’s Problem</h2>
+
+<p>There is often an important correlation between the truth of an indicative conditional and the truth of the corresponding counterfactual conditional.</p>
+
+<p>Consider again our pair of conditionals:</p>
+
+<blockquote>
+
+<p>[Indicative Conditional]<br>
+If you start working on Friday, you’ll be done by Monday.</p>
+
+<p>[Counterfactual Conditional]<br>
+Had you started working on Friday, you would have been done by Monday.</p>
+
+</blockquote>
+
+<p>Suppose, first, that today is Thursday, and that you have a problem set due on Monday. Suppose, moreover, that the indicative conditional above is true: if you start working on Friday, you’ll be done by Monday.</p>
+
+<p>Now suppose that Friday comes and goes and that you don’t, in fact, do any work. What does the truth of the indicative conditional on Thursday tell us about the truth of the subjunctive conditional on Monday morning? It is natural to think that it <em>guarantees</em> that the counterfactual conditional will be true on Monday. In other words: it is true on Monday that had you started working on Friday, you would have been done by Monday.</p>
+
+<p>One of the things that make Newcomb scenarios weird, is that indicative and counterfactual conditionals about the Newcomb scenario don’t follow this pattern.</p>
+
+<p>If you one-box, the predictor will almost certainly have predicted that you will one-box. So that the following indicative conditional will be true at a time before you make your choice:</p>
+<blockquote>
+<p>[Indicative Conditional]<br>
+If you one-box, you’ll almost certainly find a million dollars in the large box.</p>
+</blockquote>
+
+<p>Now suppose that you nonetheless decide to two box, and that — as expected — you find the large box empty. Will the corresponding counterfactual conditional be true after you’ve made your choice?</p>
+<blockquote>
+<p>[Counterfactual Conditional]<br>
+Had you one-boxed, you would have almost certainly found a million dollars in the large box.</p>
+</blockquote>
+
+<p>No! We now know that the large box was empty from the start, and your decision to one-box wouldn’t have changed that.</p>
+
+<p>In general, indicative conditionals track evidential relationships, and are closely related to conditional probabilities;<sup><a href="#fn:2" id="fnref:2" title="see footnote" class="footnote">2</a></sup> whereas counterfactual conditionals track causal relationships. Usually, if A causes B, then “If A were to happen, B would happen” is true, and if A does not cause B, then “If A were to happen, B would happen” is false.<sup><a href="#fn:3" id="fnref:3" title="see footnote" class="footnote">3</a></sup></p>
+
+<p>The indicative and the counterfactual conditionals come apart, in the Newcomb problem, because the evidential and the causal relationships come apart.</p>
+
+<br>
+
+<h2 id="section_causalev">Causal Expected Value</h2>
+
+<p>According to the two-boxer, you should calculate the expected value of an act using the <strong>expected value formula, version 3</strong>: \[EV(A_j)=\sum_i v(O_{i,j})\times P(A_j\rightarrow S_i)\]</p>
+
+<p>The &ldquo;\(A\rightarrow B\)&rdquo; there represents the counterfactual conditional “If \(A\) were to happen, \(B\) would happen”. (There is a cooler symbol specifically for the counterfactual conditional, but I can't figure out how to make it appear in html.)</p>
+
+<p>It is straightforward to define conditional probabilities, like the ones used in version 2 of the expected value formula, in terms of the probabilities of \(A\) and \(B\). It is <em>not</em> straightforward to define the probability of a counterfactual conditional in terms of the probabilities of \(A\) and \(B\). It is, in fact, quite complicated to say exactly how you should think of the probability of \(A\rightarrow B\). We won’t get into the details here. Just rest assured that there is an alternative way of thinking about expected value: the causal way. And, on the causal way of calculating expected value, the PEVM agrees with the Dominance Principle, in the Newcomb case.</p>
+
+</ul>
+
+<h1 id="section_tickledefence">The Tickle Defence</h1>
+
+<p>The mathematosis case, and cases like it, look like pretty definitive counterexamples to the evidential version of the PEVM. Does the evidential decision theorist have any reply?</p>
+
+<p>Yes she does! It’s called the “tickle defence”.<sup><a href="#fn:4" id="fnref:4" title="see footnote" class="footnote">4</a></sup> The idea of the tickle defence is to explain why it <em>seems</em> like your intuitive judgments about the mathematosis case are in conflict with the evidential version of the PEVM, though in fact (it is claimed) they are not.</p>
+
+<p>The reason, roughly, is that, when you imagine the case, you are assuming a little more than is given explicitly, in describing the case; in particular, you are assuming that you have more evidence then the setup says you have. Once we make these extra details explicit, you’ll see that the evidential PEVM accords with the intuitive results.</p>
+
+<p>Let me explain.</p>
+
+<ul>
+
+<h2 id="section_tickle">The Tickle</h2>
+
+<p>Let’s think about how this mathematosis gene is supposed to make it more likely that people who have it study mathematics. Here is one way it might work: via some kind of feeling &#8212; some distinctive tickle, if you will. This tickle is an urge to study mathematics.</p>
+
+<p>Now, you cannot <em>choose</em> to feel the tickle or not. You either feel it or you don’t. If you feel it, then it’s too late to do anything about it; you’ve already got the evidence that you have the gene. Studying mathematics is not going to provide you with any more evidence. And if you don’t feel the distinctive tickle of the mathematosis gene, then studying mathematics is not going to suddenly make you feel it, so again you don’t get any evidence that you have the gene from doing mathematics.</p>
+
+<p>To put things in probability terms: maybe it is true that the probability of getting mathematosis, given that you study mathematics, is higher than the probability that you getting mathematosis given that you don’t. But the probability that you get mathematosis, given that you study mathematics and <em>feel the tickle</em> is the <em>same</em> as the probability that you get mathematosis, given that you don’t do mathematics but still feel the tickle. Similarly, the probability that you get mathematosis, given that you don’t feel the tickle and you study mathematics is the same as the probability that you get mathematosis, given that you don’t feel the tickle and don’t study mathematics.</p>
+
+<p>In symbols: let \(T\) be proposition that you feel the tickle; let \(M\) be the proposition that you get mathematosis; let \(S\) be the proposition that you study mathematics. Then: \[P(M|S)&gt;P(M|\neg S)\] but
+\[P(M|T\&amp;S) = P(M|T\&amp;\neg S)\] and \[P(M|\neg T\&amp;S)=P(M|\neg T\&amp;\neg S)\]</p>
+
+<p>So once you figure out the probabilities, given all of your relevant evidence &#8212; i.e., taking into account whether you feel the tickle or not &#8212; you’ll find it makes no difference whether or not you study mathematics, probability-wise. So, if you enjoy mathematics, the PMEV says: go do it!</p>
+
+<p>The reason why it seems so intuitive to you (says the tickle-defender) that you should go ahead and study mathematics, in the mathematosis case, is that in a realistic case, there would be some evidence available to you that screens off the evidence you get when you actually go ahead and take a course in mathematics. It might be a tickle, or it might be persistent dreams of doing mathematics, or it might be the fact that you find yourself on the verge of pre-registering for maths classes, or <em>something</em> — something that is not an act, but rather a piece of information you get without having any say in the matter. </p>
+
+<p>But what if we stipulate that the mathematosis gene doesn’t work like that? What if it is far more subtle? What if you can be in the position of having to decide whether you going to study mathematics without acquiring any evidence that screens off actually studying mathematics?</p>
+
+<p>If that is really how the gene works, then the fan of the evidential version of the PEVM has to bite the bullet, and say: in that case, you really shouldn’t study mathematics. But maybe that’s not as implausible as it first seemed. In so far as the original case seemed plausible, the one-boxer will say, it is because you had in mind something like the tickle.</p>
+
+<p>Does that seem right?</p>
+
+
+<br>
+
+<h2 id="section_screening">Screening Off</h2>
+
+<p>When the probabilities are like in the above equations, \(T\) is said to <strong>screen off</strong> \(S\) — i.e., it makes the evidence provided by \(S\) irrelevant. It is a general strategy of the fan of evidential decision theory, when faced with seeming counterexamples, to try to find an equivalent of \(T\) that screens off the original evidence.</p>
+
+<p>(You’ll get a chance to apply that strategy to the Newcomb Problem on the problem set.)</p>
+
+</ul>
+
+<h1 id="section_empirical">Empirical Evidence?</h1>
+
+<p>Imagine that a billionaire comes to town, and offers everyone the chance to participate in a Newcomb scenario. After the first day, your one-boxer friends are absolutely delighted. They have each found a million dollars in the large box, and they have spent the night celebrating with caviar and champagne.</p>
+
+<p>Your two-boxer friends, on the other hand, are all crestfallen. They all found the large box empty, and although there’s nothing wrong with getting a thousand dollars, it’s not quite the same as a million.</p>
+
+<p>Now it’s your turn. What are you doing to do?</p>
+
+<p>Don’t you have lots of empirical evidence that one-boxing is better? Wouldn’t is be <em>stupid</em> to two-box, given this evidence? A one-boxer will say: yes!</p>
+
+<p>But a two-boxer will say: no. What I have evidence of is that people who one-box tend to be people who have, in front of them, when they make their decision: a box with a thousand dollars in it and a box with a million dollars in it. They were wrong to one-box; had they two-boxed, they would have made an extra thousand dollars. They left money on the table for no reason.</p>
+
+<p>I also have evidence that people who two-box are people who had in front of them, when they made their decision, a box with a thousand dollars in it and a box with nothing in it. They were <em>right</em> to two-box, in that situation; the alternative was end up with nothing.</p>
+
+<p>Empirical evidence is relevant to decision making, says the two-boxer, in so far as it is relevant to determining what you are in a position to <em>make happen</em>. And the evidence does <em>not</em> show that I could make things go better by one-boxing then by two-boxing.</p>
+
+<p>True, says the two-boxer, you are more fortunate, in this situation, if you are a one-boxing kind of person. But we’re not talking about who is more fortunate; we’re talking about what the right decision is. You are fortunate because you got rewarded for being inclined to make the wrong decision; that doesn’t make the wrong decision right.</p>
+
+<p>That’s all very interesting, says the one-boxer; I’ll go reconcile myself to having made the wrong decision by eating gold-foiled foie gras.</p>
+
+<br>
+
+<h1 id="section_nature">The Nature of Your Relationship to Your Acts</h1>
+
+<p>The deepest issue that Newcomb’s Problem raise is, for me, the issue of the relationship between an agent an her own acts. </p>
+
+<p>As Professor Stalnaker pointed out, an outside observer, who is watching you, and wants the best for you, is hoping that you one-box, when you are in the Newcomb situation. She hopes that because she wants to get the news that there is a million dollars in the opaque box, and she knows that she is much more likely to get that news if you one-box.</p>
+
+<p>Are you, as you consider how to act, just like that outside observer? Is your relationship to your acts more-or-less the same as that of the observer — your acts are sources of news, which you can be happy or unhappy to learn about, the same way you can be happy or unhappy to learn about the actions of others? Or is there a <em>different</em>, special relationship you have with your own acts? Are your acts expressions of your own efficacy, in a way that the acts of others are not? Do <em>you</em> make things happen, when you act?</p>
+
+<p>This question is closely related to old debates about the nature of free will in a deterministic universe, though it is not exactly the same question. Many people have thought there being a distinctive, first personal relationship between an agent and her own actions is incompatible with a deterministic universe. If the universe is determinstic, the thought goes, then nothing, including my own “acts”, are up to me at all, as they are the result of causes beyond my control.</p>
+
+<p>It’s not clear that the culprit here, though, is determinism, in particular. Suppose that the world is indeterminstic, as it in fact appears to be, and that your acts are not determined by what the world is like at a particular moment, plus the laws of physics. Suppose it is determined by what the world is like, the laws of physics, and some random quantum events. That still looks like a problem. There seems to be just as much reason in this case to think your acts are the result of causes beyond your control, and hence, it seems, not your own.</p>
+
+<p>For me, the question of whether you should one-box or two-box is a question of whether there is some way to make sense of the idea that there is something identifiable as the place that <em>you</em> occupy, in the causal web, and, hence, that your acts are yours in a way they are not anyone elses. I think that is a challenge whether or not determinism is true; I also think that neither possibility rules out that we can make sense of that idea.</p>
+
+<p>I think it is a presupposition of the very idea of decision and action that you <em>can</em> make sense of the place an agent occupies in the causal web.<sup><a href="#fn:5" id="fnref:5" title="see footnote" class="footnote">5</a></sup> And for that reason, I think that, if any decision theory is right, causal decision theory is right.</p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn:1">
+<p>The place where all this stuff started, in the philosophy literature, is Robert Nozick’s “Newcomb’s Problem and Two Principles of Choice”. The problem was first thought up by physicist named William A. Newcomb. <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+<li id="fn:2">
+<p>Some philosophers think that indicative conditionals are, in a sense, expressions of conditional probabilities, in fact. To learn more about this, and about indicative conditionals in general, you should read <a href="http://plato.stanford.edu/entries/conditionals/">this excellent article</a> by Dorothy Edgington. <a href="#fnref:2" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+<li id="fn:3">
+<p>Usually, but not always. The relationship between counterfactual conditionals and causation is actually quite complicated; but the above is true to a first approximation. <a href="#fnref:3" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+<li id="fn:4">
+<p>I <em>believe</em> the first occurrence of the tickle defence in the literature is in Terry Horgan’s “Counterfactuals and Newcomb’s Problem”. <a href="#fnref:4" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+<li id="fn:5">
+<p>This is something like the view of <a href="https://en.wikipedia.org/wiki/Immanuel_Kant">Immanuel Kant</a>, 18<sup>th</sup> Century German philosopher, and without doubt one of the most important philosophers of all time. Kant would not have liked putting things in terms of finding a place for the agent in the &ldquo;causal web&rdquo;, though; he thought that the only way to find a place for the agent was to remove her from the web entirely. (Or, perhaps more accurately: to put the web inside her &mdash; there&rsquo;s no easy way to describe Kant&rsquo;s view!) <a href="#fnref:5" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+</body>
+</html>

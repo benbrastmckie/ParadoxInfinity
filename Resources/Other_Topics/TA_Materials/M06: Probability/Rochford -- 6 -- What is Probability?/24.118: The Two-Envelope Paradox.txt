@@ -1,0 +1,208 @@
+Title: 24.118: The Two-Envelope Paradox
+Author: Damien Rochford
+
+* [The St. Petersburg Paradox][section_petersburg]
+	* [An Offer][section_offer]
+	* [Expected Value][section_expected]
+	* [Upper Limit to Values?][section_upper]
+	* [Realism][section_realism]
+* [The Two-Envelope Paradox][section_envelope]
+	* [Another Offer][section_another]
+	* [Countable Additivity][section_countable]
+	* [Problem Solved?][section_solved?]
+	* [Problem Not Solved][section_notsolved]
+	* [The St. Petersburg Two-Envelope Paradox][section_ peterenvelope]
+
+One of the reasons we are interested in subjective probability is that it is the kind of probability relevant to decision making. The kind of probability that featured in *decision problems*, in the sense of topic 2, was subjective probability. A decision problem is a problem of determining what the rational thing to do is, *given* your credences and your preferences.
+
+In this lecture, I’m going to talk about two paradoxes involving decision problems, and hence, probability. Besides that, the two paradoxes will seem to not have much of a connection; but it will turn out that they do!
+
+#The St. Petersburg Paradox [section_petersburg]
+
+##An Offer [section_offer]
+
+I have an offer for you. 
+
+Consider the following game: I flip a fair coin. I’m going to keep flipping until it lands heads. If I get a head on the first flip, I’ll give $2. If I get a head on the second flip, I’ll give you $4. In general, if I get a head on flip \(n\), I’ll give you \(\$2^n\).
+
+How much are you willing to pay me to play my game?
+
+A standard way of calculating how much you *should* be willing to pay to play a game like this is to calculate the expected value of playing. Let’s work out the expected *dollar* value, first; we’ll talk more about expected value more generally later.
+
+The different possible outcomes are: 
+* I flip a head on the first flip, with probability \(\frac{1}{2}\); payoff: $2.
+* I flip a tail first, then a head on flip two, with probability \(\frac{1}{4}\); payoff: $4.
+* I flip two tails then a head, with probability \(\frac{1}{8}\); payoff: $8.
+* And so on.
+
+The expected dollar value is the sum of (the probabilities times the payoffs). That is $1 + $1 + $1 + $1 + … one dollar for every natural number. That is: the expected value of playing my game is *infinite*.
+
+So you should consider any finite number of dollars a bargain! Any finite number of dollars is *way less* than the expected value of my game! So, who want to pay me a million dollars to play my game? Because I *will* accept that offer.
+
+I will accept much less, in fact. I’d accept $20,000. Actually, I’d accept $50.
+
+How much are you willing to pay, for the privilege of playing this game? I’m guessing less than $50.
+
+##Expected Value [section_expected]
+
+Something strange is going on. Either you are all irrational, and should be willing to pay vast sums of money to play my game, or the expected dollar value is not a good guide to how good it is to play this game.
+
+Daniel Bernoulli was the first person to write about this paradox (it was invented by his brother Niklaus). His proposed solution involved denying that expected dollar value is a good guide to what to do. He distinguished between the expected *dollar* value and the expected *value*.
+
+How valuable a dollar is to you depends, said Bernoulli, on how many dollars you already have. If you have nothing, then a dollar means a lot. $50 dollars is a huge improvement over nothing — it means you eat today, rather than not. But if you have a billion dollars, 50 more dollars makes very little difference to your life, and has very little value to you.
+
+The principle that the more money you have, the less any extra money is worth to you, is now called “the diminishing marginal utility of money”, and is widely accepted in theories of economic behaviour. Bernoulli was the first to write about this principle, and he did so in response to this paradox.
+
+Bernoulli’s own suggestion was that a realistic value of money, to a person, is the log of the dollar amount. If that’s right then the expected values of each outcome, in the St. Petersburg Paradox, looks like this:
+
+n	P(n)	Prize	Value	Expected Value
+1	1/2	$2	0.301	0.1505
+2	1/4	$4	0.602	0.1505
+3	1/8	$8	0.903	0.1129
+4	1/16	$16	1.204	0.0753
+5	1/32	$32	1.505	0.0470
+6	1/64	$64	1.806	0.0282
+7	1/128	$128	2.107	0.0165
+8	1/256	$256	2.408	0.0094
+9	1/512	$512	2.709	0.0053
+10	1/1024	$1024	3.010	0.0029
+
+…and the expected value overall is about .6, which corresponds to about $4. If these are your values, and you are a maximiser of expected value, you should be willing to spend no more than $4 to play my game.
+
+The principle of the diminishing marginal utility of money definitely seems right. And it definitely helps with the original version of the paradox. But it doesn’t seem to be getting to the real problem, as we can easily change the game in a way that Bernoulli’s suggestion does not help; we just need to increase the payoffs in a way that compensates for the rate at which your marginal value of money decreases. Suppose that, instead of giving you \(\$2^n\) if the coin lands heads on the \(n\)th flip, we give you \(\$10^{2^n}\). Then, assuming Bernoulli’s suggested dollar-to-value function, the expected utility of each outcome is like this:
+n	P(n)	Prize	Utiles of Prize	Expected utility
+1	1/2	$102	2	1
+2	1/4	$104	4	1
+3	1/8	$108	8	1
+4	1/16	$1016	16	1
+5	1/32	$1032	32	1
+6	1/64	$1064	64	1
+7	1/128	$10128	128	1
+8	1/256	$10256	256	1
+9	1/512	$10512	512	1
+10	1/1024	$101024	1024	1
+
+…and again, the overall expected value is infinite.
+
+Now, you would, presumably, be willing to pay much more money to play this last game than to play the original one. But *any* amount of money? A trillion dollars? Many people think there’s still a problem.
+
+##Upper Limit to Values? [section_upper]
+
+Maybe the problem is that there is an upper limit to value. You can only want things so much. After some point, you just have no preference for one thing over another.
+
+That would certainly mean that there is an upper limits to how high a cost the St. Petersburg game can have and still have positive expected value. Exactly how high the cost can be would depend on what your upper limit on value is, and on how you value money. But it can be made to give plausible results. 
+
+But is it true, in general, that there is an upper limit to how much you can value stuff? Hard to day. Maybe that’s plausible when it comes to money. But suppose that the rewards, in the St Petersburg game, were not dollars, but days in heaven, before you cease to exist. If I flip heads on the first flip, you get 2 days in heaven, then your soul is extinguished. If I get a head on the second flip, you get 4 days, then you are extinguished. And so on. Is there really a point after which you have *no preference* for more days in heaven before you cease to exist? I’m inclined to say no.
+
+##Realism [section_realism]
+
+Here is one response you can have to the St. Petersburg Paradox: it is *correct* that a rational agent should be willing to pay any finite amount to play the St. Petersburg game. But nobody will ever actually get to play the St. Petersburg game, because nobody will ever actually be in a position to be rewarded as the St. Petersburg game requires. There are finite resources in the world; however large those resources are, there is some possible payoff of the St. Petersburg game which is larger than those resources.
+
+This is something we all know. So when we imagine being offered a St. Petersburg-like game, we imagine a situation in which, really, we won’t be given the payoff we’re promised, on the small chance that there is a very long string of tails before a head. Given that fact, it does *not* maximise expected value to pay any finite amount to play a realistic approximation of the St. Petersburg game.
+
+If, for example, we could be confident that we would not get any payoff at all for outcomes where there is more than 19 tails in a row (the payoff for a head on the 20th flip is $1, 048, 576), then you should not be willing to pay more than $20 dollars to play the game. Plausible!
+
+I find this line of reasoning pretty compelling. But I’m still worried. I’m still worried that even in a game where you really could, contrary to fact, get the massive payoffs promised, maybe you should not be willing to pay a billion dollars to play. I just don’t know!
+
+#The Two Envelope Paradox [section_envelope]
+
+##Another Offer [section_another]
+
+I have two-envelopes. Each of them contains money. You don’t know how much. You *do* know that one of them contains twice as much as the other.
+
+The envelopes are identical, as far as you can tell. You have no more reason to suspect one of them contains the larger amount than the other. So, it seems, you have no more reason to pick one envelope than the other.
+
+So you pick one, more-or-less at random. But before you open it, I make you another offer: if you like, you can switch envelopes. Should you?
+
+Argument 1: There’s no reason to think you do better by switching. Your information is completely symmetrical with regards to the envelopes. So switch or stay — it doesn’t matter, as far as you can tell.
+
+Argument 2: There is some number of dollars in your envelope. Call it \(k\). If \(k\) is odd, you should definitely switch, because the other envelope will have more money in it. So just consider the possibility where \(k\) is even. In that case, the other envelope contains either \(2k\) or \(\frac{k}{2}\) dollars. It is equally likely to be either. So the expected value of the money in the other envelope is \[\frac{1}{2}\times\$2k + \frac{1}{2}\times\$\frac{k/2}= \$(k+\frac{k}{4})\]
+The expected value of staying, on the other hand, is \(\$k\), which is lower than \(\$(k+\frac{k}{4})\), whatever \(k\) is. So you should switch.
+
+So if \(k\) is odd, you should switch, and if \(k\) is even you should switch. So whatever \(k\) is, you should switch. So switch!
+
+These arguments can’t both be right. What’s gone wrong?
+
+##Countable Additivity [section_countable]
+
+A key part of Argument 2 is the part where we say that the probability — i.e., the rational subjective probability, in this situation — that the other envelope contains \(2k\) is equally likely to the probability that it contains \(\frac{k}{2}\). If that is true *whatever* \(k\) is, then that means that we regard the amount in our envelope as equally likely to be any one number as any other.
+
+That would mean that our credence function would violate a principal called “Countable Additivity”:
+
+>**Countable Additivity**
+>Let \(S\) be a set of a countably many, mutually exclusive propositions. The probability that (some member of \(S\) is true) equals \[\sum_{\forall p\in S} P(p)\]
+
+This principle is a generalisation of a principal I earlier called “Finite Additivity”. Finite additivity is equivalent to Countable Additivity whenever \(S\) contains finitely many propositions. But Finite Additivity doesn’t put any constraints on the probability of a disjunction of (countably) *infinitely* many propositions. Countable Additivity does.
+
+Why must our credence function violate Countable Additivity, if we regard any number of dollars as equally likely to be in our envelope as any other? Consider the following propositions:
+* \(p_0\): The envelope contains $0.
+* \(p_1\): The envelope contains $1.
+* \(p_2\): The envelope contains $2.
+* And so on.
+Our credence in the disjunction of all of these propositions is 1, because we are certain that there is *some* number of dollars in our envelope. So, by Countable Additivity, \(C(p_0)+C(p_1)+\ldots\) equals 1. But there is no real number that we can assign to each of \(p_0, p_1, \ldots\) such that they all add up to 1. If we assign them all 0, then \(C(p_0)+C(p_1)+\ldots\=0\). If we assign them all anything more than 0, then \(C(p_0)+C(p_1)+\ldots\>1\). So if we’re assigning each of these propositions the same credence, and we’re assigning their disjunction 1, then we are not respecting Countable Additivity.
+
+How bad is it for our credence function to not respect Countable Additivity? Well, you can give a Dutch Book argument (a new one — the old ones won’t work) for the claim that an agent’s credences should respect Countable Additivity (you’ll get the chance in your problem set). If the Dutch-Book argument works for other principles, then presumably it works here too.
+
+So here is the most common response you’ll see to the Two-Envelope Paradox: you should *not* regard it as equally likely that the other envelope contains \(\frac{k}{2}\) as that it contains \(2k\), for whatever \(k\) is, because that involves violating Countable Additivity. You must have some *other* credence function concerning what number of dollars is in your envelope; when you have a proper one, that will make the problem go away.
+
+##Problem Sovled? [section_solved?]
+
+Now, it is certainly true that *some* credence functions across the natural numbers that respect countable additivity *do* make the problem go away. For example, suppose you have reason to believe that the way I put money into the envelopes was as follows. I flipped a coin until I got a head. If I flipped a head on the first flip, a put a dollar in one envelope, and I put two dollars in the other one. If I flipped a head on the second flip, I put two dollars in one envelope, and four dollars in the other. In general, if I flipped a head on flip \(n\), then I put \(n\) dollars in one envelope, and \(2n\) dollars in the other.
+
+Now, suppose, for example, that the envelope you pick contains $8. Should you switch? There are two relevant options. The first is that I flipped a head on the fourth flip, so the other envelope contains $4. The second option is that I flipped a head on the eighth flip, and the other envelope contains $16. But these two options are not equally probable. 
+
+The probability that I first flipped a head on the 4th flip is \(\frac{1}{2^4}\). The probability that I first flipped a head on the 8th flip is \(\frac{1}{2^8}\). These are mutually exclusive events, so the probability that I flipped my first head on either the fourth or the eighth flip is \[\frac{1}{2^4}+\frac{1}{2^8}=\frac{2^4+1}{2^8}=\frac{17}{265}\]
+Now the probability that I flipped a head on flip four, and, hence, there is $4 in the other envelope, *given* that I either flipped a head on flip four or flip eight, is \[(\frac{\frac{1}{2^4}{\frac{17}{256}} = \frac{16}{17}\] and the probability that I flipped a head on flip eight, and, hence, the other envelope contains $16, is \[\frac{\frac{1}{2^8}}{\frac{17}{256}}= 1/17\] So the envelope on the right is much more likely to contain $4 than it is to contain $16. The result is that the expected value of switching is \[\frac{16}{17}\times 4 + \frac{1}{17}\times 16\approx 4.7\] which is significantly less than the expected value of not switching = 8.
+
+This means that there are values of \(n\) for which you should *not* switch, if you have the credence function. (There are also, of course, values for which you should switch, such as odd values). In fact, it turns out you should not switch for any even value of \(n\) greater than 2. 
+
+This means you can’t know before you look at what’s in your envelope whether you should switch or not. So you have no particular reason to switch, before you open your envelope; your information regarding what’s in each envelope before you open one of them is symmetrical, as you would expect. Hooray!
+
+##Problem Not Solved [section_notsolved]
+
+Unfortunately, there are perfectly good credence functions that obey countable additivity for which the problem does *not* go away.
+
+Suppose that you know that I decided how much money to put into my envelopes *this* way: I rolled a dice until I got either a One or a Two. If I rolled a One or a Two on the first roll, I put $1 in one envelope and $2 in the other. If I rolled a One or a Two on the second roll, I put $2 in one envelope and $4 in the other. In general, if my first One or Two was on roll \(n\), I put $\(2^n-1\) in one envelope and $\(2^n\) in the other.
+
+If this is how I did it, and your credence function is adjusted accordingly, then for every value of \(n\), you maximise expected utility by switching! (This result is in a paper by John Broome, linked from the syllabus.)
+
+Proof: Pick an envelope, and assume it contains $\(2^k\). You should definitely switch if \(k=0\), because that means that I got a one or a two on the first role, and you have the $1 envelope and the other envelope is the $2 envelope. What about when \(k>0\).
+
+There are two possible ways things could have gone, compatible with there being $\(2^k\) in your envelope:
+* (\(A\)) The die landed One or Two on the \(k^\text{th}\) toss. So your envelope contains $\(2^{k}\), and the other contains $\(2^{k-1}\).
+* (\(B\)) The die landed One or Two on the \((k+1)^\text{th}\) toss. So your envelope contains $\(2^k\), and the other contains $\(2^{k+1}\).
+
+The probability that things went the \(A\) way is the probability of rolling something other than a One or a Two \(k-1\) times, then rolling a One or a Two: \[P(A)=\frac{2^{k-1}}{3^{k-1}}\times\frac{1}{3} = \frac{2^{k-1}}{3^k}\] The probability that things went the \(B\) way is the probability of rolling something other than a One or a Two \(k\) times, then rolling a One or a Two: \[P(B)=\frac{2^k}{3^k}\times\frac{1}{3}=\frac{2^k}{3^{k+1}}\]
+
+So the probability that things went either the \(A\) way or the \(B\) way (given that these are mutually exclusive) is: \[P(A\vee B) = \frac{2^{k-1}{3^k} + \frac{2^k}{3^{k+1}} = \frac{\frac{2^{k-1}\times 3 + 2^k}{3^{k+1}} = \frac{2^{k-1}(3+2)}{3^{k+1}} = \frac{2^{k-1}\times 5}{3^{k-1}}\]
+
+So the probability that \(A\) happened, given \(A\vee B\) happened, is \[\frac{P(A)}{P(A\vee B)} = \frac{\frac{2^{k-1}}{3^k}}{\frac{2^{k-1}\times 5}{3^{k+1}}} = \frac{2^{k-1}\times 3^{k+1}}{3^k \times 2^{k-1}\times 5}=\frac{3}{5}\] and the probability that \(B\) happened, given \(A\vee B\) happened, is \[\frac{\frac{2^k}{3^{k+1}}}{\frac{2^{k-1}\times 5}{3^{k+1}}}=\frac{2^k\times 3^{k+1}}{3^{k+1}\times 2^{k-1}\times 5} = \frac{2}{5}\]
+
+Now we can calculate the expected value of switching: \[\frac{3}{5}\times 2^{k-1} + \frac{2}{5}\times 2^{k+1}\] \[=\frac{3\times 2^k}{5\times 2}+\frac{2\times2\times2^k}{5} = 2^k (\frac{3}{10} + \frac{4}{5}) = 2^k \times \frac{11}{10}\]
+
+— i.e., the expected value of switching is *greater* than the expected value of staying, which is \(2^k\).
+
+So the expected value of switching is always better than the expected value of staying. Paradox!
+
+##The St. Petersburg Two-Envelope Paradox [section_peterenvelope]
+
+Here is a response to all of this due to David Chalmers (the paper is linked from the syllabus). He asks you to consider a hybrid paradox: the Two-Envelope St. Petersburg Paradox.
+
+You are presented with two envelopes. The amount of money places in each envelope was determined by the following procedure. For envelope A, we flipped a fair coin until it landed heads; if it landed heads on flip \(n\), we put $\(2^n\) in the envelope. For envelope B, we flipped a second, independent, fair coin until *it* landed heads. If it landed heads on flip \(m\), we put $\(2^m\) in the envelope.
+
+You have chosen an envelope, but haven’t looked inside yet. You are given the opportunity to switch. Should you? You reason in the following way (this comes directly from Chalmers’ paper):
+ 
+0. Before opening the envelopes, the expected value of taking either envelope is infinite. 
+1. For any \(x\), if I knew that \(A\) contained \(x\), then the expected value of taking \(B\) would still be infinite. So 
+2. For all \(x\), if I knew that \(A\) contained \(x\), I would have an expected gain in switching to \(B\). So
+3. I should switch to B. 
+
+But this is clearly wrong, as my information about A and B is symmetrical.
+
+Chalmers says that the argument is correct up until the step from (2) to (3). When a distribution over finite amounts has an infinite expected value, any specific result will be disappointing. It will then always be in your interests to do things over, if given the opportunity. But it does not follow from this that before knowing the result, you should do things over.
+
+The moral, says Chalmers, is that a seemingly plausible principle of expected value is not, in general true. The principle is this: if the expected value of an act is positive, given each of countably many propositions \(p_1, p_2,p_3\ldots\), then the expected value of that act given \(p_1\vee p_2\vee p_3\vee\ldots\) is positive. But this is false. The counterexample is the act of switching in the two-envelope paradox, where the \(p_1, p_2,p_3,\ldots\) are the proposition that coin A landed heads on the first flip, the proposition that it landed heads on the second flip, and so on.
+
+Now, there is a similar principle at work in argument for switching in the original two-envelope paradox. You start from the premise that, for any particular value, of the countably many possible value, you find in the envelope, the expected value of switching will be positive. You conclude that, in the absence of any information about the value inside the envelope, the expected value of switching is positive. But that does not follow, says Chalmers.
+
+What do you think? (You should check out the paper if you’re interested; it’s very short.)

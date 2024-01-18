@@ -1,0 +1,278 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\Large Section 10, Computability \large \\[.3cm]
+\noindent  David Boylan \hfill{5.4.17}
+
+\noindent\HRule
+\end{fullwidth}
+
+\section{Turing Machines}
+
+\begin{itemize}
+
+\item Turing machines are very simple machines. Here are the necessary ingredients:
+
+\begin{itemize}
+
+\item infinite tape divided into cells;
+
+\item finite number of states;
+
+\item finite number of inputs (blanks and 1's);
+
+
+\item finite number of actions (print a 1, print a blank, move a step left, move a step right, stay put).
+
+
+\end{itemize}
+
+Machines are given a tape as input; they can scan one cell at a time.
+
+\item Our command lines for the machine are of the following form: 
+
+\begin{quote}
+
+If you're in state \emph{1}  and scanning a square with \emph{a blank} printed on it, then print \emph{a 1}, move \emph{left} and go into state \emph{2}.
+ 
+\end{quote}
+
+We can simplify this by writing our command lines as sequences of symbols like $\langle 1,-, 1, L, 2\rangle$.
+
+
+Turing machines halt whenever they get to some state and input and there's no rule for what to do next.  
+
+Note that Turing machines have \emph{finitely many} command lines.
+
+
+\item We can write Turing machines which will compute functions for us. 
+
+We represent the input of the function, $n$, by putting $n$ 1's on an otherwise blank tape and starting the machine on the leftmost 1.
+
+The machine outputs $k$ if it finishes with $k$ 1s on an otherwise blank tape while scanning the leftmost 1.
+
+The machine computes $f$ just in case when given input $n$ it outputs $f(n)$.
+
+
+
+\item Exercises: 
+
+
+\begin{itemize}
+
+\item Design a Turing machine that computes the addition function.
+
+
+\item Design a Turing machine that computes $f(n) =2n$. 
+
+\item Design a Turing machine that computes the function $min(x,y)$.
+
+\item Design a Turing machine that computes the function $max(x,y)$.
+
+\end{itemize}
+
+
+\end{itemize}
+
+
+
+\section{Busy Beaver function}
+
+\begin{itemize}
+
+\item Many functions are computable by Turing machines. But not all of them.
+
+First we'll focus on giving a concrete example of a non-computable function. We will consider one of them, the Busy Beaver functions.
+
+\item Productivity:
+
+\begin{itemize}
+
+\item Suppose that when fed a blank input a Turing machine prints $k$ strokes and ends scanning the leftmost stroke; in this case its productivity is zero.
+
+\item If it does anything else, its productivity is zero.
+
+\end{itemize}
+
+Say that $BB(n)$ is the productivity of the most productive\marginnote{Or \emph{a} most productive Turing machine, if there is more than one.} Turing machine with $n$ states. 
+
+
+\vspace{.2cm}
+
+\noindent As it turns out, $BB$ is \emph{not} computable.
+
+
+\item We show this by reductio. Suppose $BB$ is Turing compatible and that $M^{BB}$ computes it.
+
+\vspace{.2cm}
+
+\noindent We design a new machine $M^I$ which exists if $M^{BB}$ exists. Then we show $M^I$ does not exist.
+
+
+\item $M^I$ works as follows for an empty input: 
+
+\begin{itemize}
+
+\item On empty input it prints $k$ 1's (for some $k$ yet to be chosen).
+
+
+\item It then doubles the strip of $k$ 1's.
+
+\item It then runs the Busy Beaver machine on the input of $2k$.
+
+\item It then adds a 1 to the resulting sequence and returns to the leftmost 1.
+
+\end{itemize}
+
+\noindent Apart from $M^{BB}$, each step here can be performed by a Turing machine.
+
+\vspace{.2cm}
+
+\noindent Moreover, composing Turing machines gives you a Turing machine; so if $M^I$ is not a Turing machine $M^{BB}$ is the culprit.
+
+\item $M^I$ is a Turing machine with some number of states; call that number $s^I$. 
+
+\noindent We can show two contradictory things about $M^I$:
+
+\begin{itemize}
+
+\item $BB(s^I) \geq BB(2k)+1$
+
+\item $BB(2k)+1 > BB(s^I)$
+
+
+\end{itemize}
+
+\item $BB(s^I) \geq BB(2k)+1$: We know that, when given a blank, the output of $M^I$ is $BB(2k)+1$. The most productive Turing machine with $s^I$ states would have to be at least as productive as this. 
+
+
+\item $BB(2k)+1 > BB(s^I)$: first we find some way of expressing how many states $M^I$ has. We can do this by noting how many states the machine will need to use for each procedure.
+
+\begin{itemize}
+
+\item Since it's possible to design a Turing machine that prints $k$ 1's using no more than $k$ states and possible to bring the machine back to the beginning of the strip with just one state, we know that the first step will take no more than $k+1$ states; call that number $a_k$
+
+
+\item Doubling can be done by a machine with a fixed number of states; call that number $b$;
+
+\item If $M^{BB}$ is a Turing machine then it has some fixed number of states; call it $c$;
+
+\item We can design a machine with a fixed number of states to add an extra 1 at the end; call it $d$.
+
+
+\end{itemize}
+
+We can see that the number of states $M^I$ will be $a_k +b+ c+ d$.
+
+
+\item Now suppose that $k = 1+ b+c+d$. We can then see that $s^I \leq 2k$.
+
+\vspace{.2cm}
+
+\noindent But then we can see that $BB(s^I)\geq BB(2k)$: the most productive Turing machine with $2k$ states must be \emph{at least} as productive as $M^I$. 
+
+\vspace{.2cm}
+
+\noindent From which it follows that $BB(s^I)<BB(2k)+1$.
+
+\end{itemize}
+
+
+\section{Numbering Turing Machines}
+
+\begin{itemize}
+
+
+\item First note that we can identify Turing machines with their programs, sets of strings. 
+
+In fact, we can identify them with one long string: suppose we have some ordering of the instructions, itself a string; we can simply concatenate them.
+
+
+\item Now we can replace our string of numerals with a sequence of numerals. Some elements of the string are already numerals i.e. the "1" input and the state numbers. 
+
+We replace the rest of the elements like this:
+
+\begin{itemize}
+
+\item ``-'' $\rightarrow$ ``0''
+
+\item ``r" $\rightarrow$ ``0"
+
+\item ``*"$\rightarrow$ ``1"
+
+\item ``l" $\rightarrow$ ``2"
+
+
+\end{itemize}
+
+
+\item Now we have a string of numerals. It's easy to get a string of numbers from this: simply replace each numeral with the number it names. 
+
+\item Now we can turn this sequence into a single number; where $n_i$ is the $i$-th number in the sequence, the number of our Turing machine is: 
+
+\ex.[] $p_1^{n_1+1}.p_2^{n_2+1}.....p_k^{n_k+1}$
+
+
+We know that each Turing machine will be assigned a unique number because every positive integer greater than 2 has a unique decomposition into primes.
+
+
+\item Note that this alone is enough to show that not all functions can be Turing-computable: there are more functions from naturals to naturals than there are natural numbers! Moreover, there are \emph{lots} of non-computable functions.
+
+And if the Church-Turing thesis is correct, this is even more interesting: not every function can be associated with an algorithm for deriving the output!
+
+
+\end{itemize}
+
+
+
+
+
+\end{document}
+a
+

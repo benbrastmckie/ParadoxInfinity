@@ -1,0 +1,126 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, fitch, natbib, qtree}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+\renewcommand{\labelitemi}{$\triangleright$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\triangleright$}
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\begin{fullwidth}
+\noindent\LARGE More on Ordinals and Cardinals  \normalsize \\[.3cm]
+\noindent  \textsc{24.118 Recitation Section $\bullet$ Matthias Jenny\\  {\texttt{\href{mailto:mjenny@mit.edu}{mjenny@mit.edu}}} $\bullet$ Office:  32-D927 $\bullet$ Hours: Thu 11:30-12:30} \hfill{October 17, 2014}
+\noindent\HRule
+\end{fullwidth}
+
+
+\section{Pset 5, problem 2}
+
+\noindent A relation $R$ on a set $A$ is a \emph{linear order} (or \emph{total order}) iff: \underline{\hspace{8.5cm}}\\\\\underline{\hspace{16.88cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+
+\begin{enumerate}[label=\alph*.]
+\item Is $\mathcal{P}(\mathcal{P}(\mathcal{P}(\emptyset)))$ linearly ordered by $\in$?\marginnote{{\large$\square$} Yes  {\large$\square$} No}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+\item Is $\mathcal{P}(\mathcal{P}(\mathcal{P}(\emptyset)))-\{\{\{\emptyset\}\}\}$ linearly ordered by $\in$?\marginnote{{\large$\square$} Yes  {\large$\square$} No}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\
+
+
+\end{enumerate}
+
+
+\section{More on the Continuum Hypothesis}
+
+Recall this table from the online notes:
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+Ordinal & 	Corresponding set & 	Name for that set  \\ \hline\hline
+$0_O$ & $\mathbb{N}_O$ & $\beth_0$\\
+$1_O$ & $\mathcal{P}(\mathbb{N}_O)$ & $\beth_1$\\
+$2_O$ & $\mathcal{P}^2(\mathbb{N}_O)$ & $\beth_2$\\
+\dots & \dots & \dots\\
+$\omega$ & $\bigcup\limits_{n\in\mathbb{N}_0}\mathcal{P}^n(\mathbb{N}_O)$ & $\beth_\omega$\\
+$\omega+1_O$ & $\mathcal{P}(\bigcup\limits_{n\in\mathbb{N}_0}\mathcal{P}^n(\mathbb{N}_O))$ & $\beth_{\omega+1}$\\
+$\omega+2_O$ & $\mathcal{P}^n(\bigcup\limits_{n\in\mathbb{N}_0}\mathcal{P}^n(\mathbb{N}_O))$ & $\beth_{\omega+2}$\\
+\dots & \dots & \dots\\
+$\omega+\omega$ & $\bigcup\limits_{m\in\mathbb{N}_0}\mathcal{P}^m(\bigcup\limits_{n\in\mathbb{N}_0}\mathcal{P}^n(\mathbb{N}_O))$ & $\beth_{\omega+\omega}$\\
+\dots & \dots & \dots
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+\noindent And recall that we've defined $\aleph_0$ as the cardinality of $\mathbb{N}$ and $\aleph_{n+1}$ as the least cardinal number larger than $\aleph_{n}$.
+
+\begin{enumerate}[label=\roman*.]
+\item True or false? $\beth_0=\aleph_0$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? There's no cardinality strictly between $\aleph_0$ and $\aleph_1$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? The cardinality of $\mathbb{Q}$ is $\aleph_1$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? The cardinality of $\mathbb{R}$ is $\beth_1$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? $\beth_1=2^{\beth_0}$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? $\aleph_1=2^{\aleph_1}$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\item True or false? For any ordinal $\alpha$, $\aleph_\alpha=\beth_\alpha$.\marginnote{{\large$\square$} True  {\large$\square$} False}\\
+
+\noindent \emph{Notes:}  \underline{\hspace{15.4cm}}\\\\\underline{\hspace{16.43cm}}\\
+
+\end{enumerate}
+
+\end{document}

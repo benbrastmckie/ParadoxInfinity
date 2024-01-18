@@ -1,0 +1,13 @@
+First, imagine that you have before you a series of colour swatches. There are many — 10 000, let’s say. They form a horizontal line. The left-most swatch, which we can call ‘swatch 0’ is clearly orange, like a ripe fruit of the same name. As you go along the sequence, up through swatch 1, swatch 2, etc., each swatch gets *slightly* more red, until, at the far right, swatch 10,000 is a very obvious blood red.
+
+Or so it seems! Here is an argument that swatch 10,000 is *not* red, despite how it seems:
+
+1. Swatch 0 is not red.
+2. If swatch *n* is not red, swatch *n+1* is not red.
+3. Therefore: swatch 10,000 is not red.
+
+Definitely seems like a valid argument! And premise 1 seems impossible to deny; swatch 0 is, by hypothesis, orange, and not red. But the conclusion is equally impossible to accept! We stipulated swatch 10,000 was red, and there is surely nothing to stop us actually creating such a sequence with a truly red swatch at the end.
+
+What about premise 2? 10,000 swatches is a lot of swatches. If each swatch is more red than it’s previous swatch, but less red then the next swatch, then the difference between neighbouring swatches is going to be *minute* — far too small for the human eye to detect. If two swatches look *identical* to the human eye, how can one be orange, and the other red? That line of thought makes premise 2 very hard to reject.
+
+Basically everyone working on this in philosophy agrees that there has got to be *some* sense in which premise 2 is false. But it is very tricky to find a satisfying way of denying premise 2. (We can talk about that more some other time, if you like).

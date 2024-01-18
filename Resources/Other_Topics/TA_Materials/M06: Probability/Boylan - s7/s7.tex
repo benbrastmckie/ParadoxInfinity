@@ -1,0 +1,237 @@
+\documentclass[justified]{tufte-handout} 
+\usepackage{amsfonts, amssymb, stmaryrd, natbib, qtree, amsxtra}
+\usepackage{linguex, color, setspace, graphicx}
+\usepackage{enumitem}
+\usepackage{bussproofs}
+\usepackage{turnstile}
+\usepackage{phaistos}
+\usepackage{protosem}
+\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[super]{nth}
+\thispagestyle{plain}
+\definecolor{darkred}{rgb}{0.7,0,0.2}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\input xy
+ \xyoption{all}
+
+%New Symbols
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{128}
+\DeclareMathSymbol{\Diamondright}{\mathrel}{symbolsC}{132}
+\DeclareMathSymbol{\Diamonddotright}{\mathrel}{symbolsC}{134}
+\DeclareMathSymbol{\Diamonddot}{\mathord}{symbolsC}{144}
+
+
+%New commands
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\lang}{$\langle$}
+\newcommand{\rang}{$\rangle$}
+\newcommand{\back}{$\setminus$}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+\newcommand{\llm}[2][]{$\llbracket${#2}$\rrbracket^{#1}$}
+\newcommand{\ul}{$\ulcorner$}
+\newcommand{\ur}{$\urcorner\ $}
+\newcommand{\urn}{$\urcorner$}
+\newcommand{\sub}[1]{\textsubscript{#1}}
+\newcommand{\sups}[1]{\textsuperscript{#1}}
+\newtheorem{proposition}{\textbfb{Proposition}}[section]
+\newtheorem{definition}[proposition]{\textbf{Definition}}
+\newcommand{\bfw}{\begin{fullwidth}}
+\newcommand{\efw}{\end{fullwidth}}
+
+\begin{document}
+
+\frenchspacing
+
+\begin{fullwidth}
+\noindent\Large Section 7,  Probability \large \\[.3cm]
+\noindent  David Boylan \hfill{11-12, 66-154}
+
+\noindent\HRule
+\end{fullwidth}
+
+
+\section{Probability Functions}
+
+\begin{itemize}
+
+
+\item Examples of subjective probability:
+
+\ex. I'm very confident it's going to rain.
+
+\ex. I'm 50/50 the coin will come up heads.
+
+
+\item Examples of objective probability: 
+
+
+\ex. It's 70\% likely this atom will decay. 
+
+\ex. It's 100\% likely that this coin will come up heads or 100\% likely it will come up tails. I just don't know which.
+
+
+\item Why do we call both of these things \emph{probabilities}? 
+
+Answer: we use the same kind of mathematical tools to model both. 
+
+
+
+\item Say that $P$ is a probability function iff for all propositions $p$: 
+
+\begin{itemize}
+
+\item For every $p$, $0 \leq P(p) \leq 1$. 
+
+\item If $p$ is a necessary truth, then $P(p)=1$
+
+
+\item If $p$ and $q$ are incompatible then $P(p\vee q)= P(p)+P(q)$.
+
+\end{itemize}
+
+We use probability functions to model both subjective and objective probability.
+
+\item We also define $P(q|p)$, the probability of $q$ \emph{conditional on} $p$:
+
+$P(q|p)= \frac{P(p \& q)}{P(p)}$
+
+
+
+\item Note that, since the formalism is the same in both cases, any mathematical results we prove about one case will carry over to the other. 
+
+For instance, Bayes Law, which says
+
+
+\begin{quote}
+
+$P(A \& B) = P(A) \times P(B|A)$ 
+
+\end{quote}
+
+holds for either kind of probability.
+
+\item \textbf{Exercises}:
+
+\begin{itemize}
+
+
+\item Prove Bayes' Law.
+
+\item We say $A$ and $B$ are probabilistically independent iff $P(A|B) = P(A|\neg B)$ and dependent otherwise.
+
+Give an example of an independent pair of events and of a dependent pair.
+
+
+\item Here are three definitions of independence: 
+
+\begin{itemize}
+
+\item $A$ and $B$ are independent iff $P(A|B) = P(A|\neg B)$
+
+\item  $A$ and $B$ are independent iff $P(A) = P(A|B)$
+
+\item  $A$ and $B$ are independent iff $P(A \&B) = P(A)\times P(B)$
+
+\end{itemize}
+
+Show that these are equivalent.
+
+
+\end{itemize}
+
+
+
+
+\end{itemize}
+
+
+
+
+\section{Subjective Probability}
+
+\begin{itemize}
+
+\item We can be more or less confident about things. We can imagine a function assigning a number to each proposition, where the number represents how confident we are in a given proposition. (We would take 1 to be certainty.)
+
+\item We are rational only if that function is a probability function. The laws of probability then tell us how we should organise our beliefs in order to be rational at a given time.
+
+\item The laws of probability tell us how our beliefs should hang together at any one time. But Bayesians also have a rule for how to change your beliefs over time, the rule of conditionalisation:
+
+\ex. Where $P_p$ is your current probability function updated with $p$: $P_p(q)= P(q|p)$.
+
+
+\item Subjective probabilities are involved in rational decision making. We defined expected utility:
+
+
+\ex.[]$EU(A) = \Sigma_{o\in O} P(o)\times U(o \wedge A)$
+
+and said that you should chose the option with the highest expected utility.
+
+If this is supposed to be a good guide decisions, then the relevant probability is subjective.
+
+
+
+\item Questions:
+
+\begin{itemize}
+
+
+\item Suppose I become fully confident in $p$. Can I then learn anything that will make me less confident? Is this a good result?
+
+
+
+
+\item Suppose I am about to throw a point-sized dart at a dartboard with real many points on it. How likely am I to get a bullseye? What does this mean?
+
+\item Suppose I offer you the following bet: I'm going to flip a going. If it comes up heads, you win \$1m; if you lose you pay me \$.9m. No money changes hands if you decide not to play. 
+
+If you were an expected value maximiser, what would you do here? Is that what you should actually do?
+
+\item Suppose my prior confidence in $p$ is $0.5$ but your prior confidence in $p$ is $0.7$. According to our theory so far, which one of us is rational? Are either of us rational? Are both of us rational?
+
+
+\end{itemize}
+
+
+\end{itemize}
+
+\section{Objective Probability}
+
+\begin{itemize}
+
+\item It's somewhat harder to get a grip on what exactly objective probability is.
+
+
+\item One idea is that is has something to do with frequency. 
+
+But this is difficult to make work. After all, it's possible when flipping three fair coins to get three heads 100 times in a row. But the probability of getting three heads on the next one should still be $\frac{1}{8}$.
+
+\item We know at least this much about objective probability: 
+
+\begin{quote}Objective/subjective connection: The objective probability of an event at time t is the subjective probabilitythat a perfectly rational agent would assign to that event, if she had perfectinformation about events before t and no information about events after t.\end{quote}
+
+Some will suggest that this is all there really is to objective probability.
+
+
+\item Questions: 
+
+\begin{itemize}
+
+\item Suppose determinism is true. Now I am about to flip a coin. What is the objective probability that it comes up heads?
+
+
+\item Does the objective/subjective allow them to come apart? I.e. can you find some proposition $p$ such that its objective probability is different from its subjective probability?
+
+\end{itemize}
+
+\end{itemize}
+
+
+
+
+\end{document}

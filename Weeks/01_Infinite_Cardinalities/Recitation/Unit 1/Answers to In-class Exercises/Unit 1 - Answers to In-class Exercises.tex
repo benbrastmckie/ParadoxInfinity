@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity }
+\rhead{Recitation $1$: Infinite Cardinalities}
+
+
+
+\begin{center}
+{\LARGE \bf Answers to In-class Exercises}
+\end{center}
+
+\smallskip
+
+\section{Exercises}
+
+\begin{exer}
+The composite function $f \circ g: B \rightarrow B$ is the function such that for any $b \in B$, $(f \circ g)(b) = f(g(b))$. Show that $f \circ g$ is also an injection.
+\end{exer}
+
+\begin{proof}[Answer]
+First we need to show that $f \circ g$ is well-defined. This follows immediately from that both $f$ and $g$ are well-defined.
+
+Second we need to show that it is injective. Assume $b_1, b_2 \in B$ and $f \circ g(b_1) = f \circ g(b_2)$. Then $f(g(b_1)) = f(g(b_2))$. Since $f$ is injective, $g(b_1) = g(b_2)$. And since $g$ is injective, $b_1 = b_2$.
+\end{proof}
+
+\begin{exer}
+The range of $g: B \rightarrow A$, in symbols, $g[B]$, is the subset of $A$ such that $a \in g[B]$ if and only if $a = g(b)$ for some $b \in B$. The inverse function of $g$, $g^{-1}$, is the function from $g[B]$ to $B$ such that for any $a \in g[B]$, $g^{-1}(a)$ is the $b \in B$ such that $g(b) = a$. Using that fact that $g$ is an injection, show that $g^{-1}$ is well-defined, i.e. for any $a \in g[B]$, there is exactly one $b \in B$ that $g^{-1}$ assigns to $a$. Also, show that $g^{-1}$ is injective.
+\end{exer}
+
+\begin{proof}[Answer]
+Let $a \in g[B]$. Then there is some $b \in B$ such that $a = g(b)$. Also since $g$ is injective, this $b$ is unique. Hence $g^{-1}$ is well-defined.
+
+Let $a_1, a_2 \in g[B]$ such that $g^{-1}(a_1) = g^{-1}(a_2)$. Then $a_1 = g(g^{-1}(a_1)) = g(g^{-1}(a_2)) = a_2$. Hence $g^{-1}$ is injective.
+
+\end{proof}
+
+\begin{exer}
+Call an element $b \in B$ \textit{lonely} if there is no element $a \in A$ such that $f(a) = b$. Call an element $b_2 \in B$ a \textit{descendant} of an element $b_1 \in B$ if there is a natural number $n$ (including $0$) such that $b_2 = (f \circ g)^n (b_1)$.
+
+Define a function $h: A \rightarrow B$ as follows:
+\[
+h(a) = 
+\begin{cases}
+g^{-1}(a) \; \; \; \; & \text{if} \, \, f(a) \, \, \text{is a descendant of some lonely element of} \, \, B, \\
+f(a) \; \; \; \; & \text{if otherwise}. \\
+\end{cases}
+\]
+
+Show that $h$ is well defined: in particular, for any $a \in A$, if $f(a)$ is a descendant of some lonely element of $B$, then $a \in g[B]$.
+\end{exer}
+
+\begin{proof}[Answer]
+Note that $f(a)$ cannot be lonely itself. Let $a \in A$ and $f(a)$ be a descendant of some lonely element $b$ of $B$. Then for some $n$, $f(a) = (f \circ g)^n(b) = f(g((f \circ g)^{n-1}(b)))$. Since $f$ is injective, $a = g((f \circ g)^{n-1}(b))$. And hence $a \in g[B]$.
+
+\end{proof}
+
+\begin{exer}
+Show that $h: A \rightarrow B$, as defined above, is surjective:
+\begin{enumerate}
+\item[(a)] Step one: show that if $b \in B$ is a descendant of a lonely element, then $b = h(a)$ for some $a \in A$.
+\item[(b)] Step two: show that if $b \in B$ is not a descendant of any lonely element, then $b = h(a)$ for some $a \in A$.
+\end{enumerate}
+\end{exer}
+
+\begin{proof}[Answer]
+\begin{enumerate}
+\item[(a)] Let $b \in B$ be a descendant of some lonely element $b' \in B$. Then for some $n$, $b =  (f \circ g)^n(b')$. Consider $g(b) \in A$. $f(g(b)) = f(g((f \circ g)^n(b'))) = (f \circ g)^{n+1}(b')$, which means that $f(g(b))$ is also a descendant of some lonely element. Hence $h(g(b)) = g^{-1}(g(b)) = b$.
+\item[(b)] If $b \in B$ is not a descendant of any lonely element, then $b$ itself is not lonely. Hence for some $a \in A$, $f(a) = b$. Since $f(a) = b$ is not a descendant of any lonely element, $h(a) = f(a) = b$. 
+\end{enumerate}
+
+\end{proof}
+
+\begin{exer}
+Show that $h: A \rightarrow B$, as defined above, is injective:
+\begin{enumerate}
+\item[(a)] Step one: show that for any $a \in A$, $h(a)$ is a descendant of a lonely element if and only if $f(a)$ is a descendant of a lonely element.
+\item[(b)] Step two: Using the previous step, show that for any two elements $a_1, a_2 \in A$, if $h(a_1) = h(a_2)$, then $a_1 = a_2$. [Hint: consider in turn the case when $f(a_1)$ is a descendant of a lonely element and the case when it is not.]
+\end{enumerate}
+\end{exer}
+
+\begin{proof}[Answer]
+\begin{enumerate}
+\item[(a)] Suppose $h(a)$ is a descendant of a lonely element $b \in B$. Assume for reductio that $f(a)$ is not a descendant of any lonely element, then $h(a) = f(a)$, and hence $f(a)$ is indeed a descendant of the lonely element $b$. Contradiction. Hence $f(a)$ is a descendant of some lonely element. 
+
+For the other direction, suppose $f(a)$ is a descendant of a lonely element $b \in B$. Then $f(a) =  (f \circ g)^n(b) = f(g((f \circ g)^{n-1}(b)))$. Since $f$ is injective, $a = g((f \circ g)^{n-1}(b))$. Hence $h(a) = g^{-1}(a) = g^{-1}(g((f \circ g)^{n-1}(b))) = (f \circ g)^{n-1}(b)$. Hence $h(a)$ is a descendant of the lonely element $b$. 
+\item[(b)] First, if $f(a_1)$ is a descendant of a lonely element, then by the previous step, $h(a_1)$ is a descendant of a lonely element. Since $h(a_1) = h(a_2)$, $h(a_2)$ is a descendant of a lonely element and hence $f(a_2)$ is a descendant of a lonely element. Then $g^{-1}(a_1) = h(a_1) = h(a_2) = g^{-1}(a_2)$. By Exercise 2, $g^{-1}$ is injective, and hence $a_1 = a_2$.
+
+Second, if $f(a_1)$ is not a descendant of any lonely element, then neither is $f(a_2)$ by the same reasoning. Hence $f(a_1) = h(a_1) = h(a_2) = f(a_2)$. Since $f$ is injective, $a_1 = a_2$.
+\end{enumerate}
+
+\end{proof}
+
+\end{document}

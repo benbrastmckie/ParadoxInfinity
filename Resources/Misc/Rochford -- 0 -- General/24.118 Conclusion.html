@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>24.118: Conclusion</title>
+	<meta name="author" content="Damien Rochford"/>
+	<link rel="stylesheet" type="text/css" href="philosstyle.css">
+	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+<body>
+
+<em class="philosophysmall"> 24.118:</em> <em
+ class="titlesmall">Conclusion</em> <img style= "margin: 30px" src="http://cf.chucklesnetwork.com/items/1/3/6/7/0/3/original/the-barber-shaves-all-the-men-who-dont-shave-themselves-who-shav.jpg" alt="A dinosaur, posed and dressed suspiciously like Bertrand Russell, pondering who shaves the barber, if the barber shaves all the people who don't shave themselves." width="30%" align="right">
+
+
+<ul>
+<li><a href="#section_frege">Frege and Analytic Philosophy</a></li>
+<li><a href="#section_logicism">Logicism</a></li>
+<li><a href="#section_law">Basic Law V</a></li>
+<li><a href="#section_comprehension">Naïve Set Comprehension</a></li>
+<li><a href="#section_russell">Russell’s Paradox</a></li>
+<li><a href="#section_godel">Gödel’s Theorem</a></li>
+<li><a href="#section_zfc">ZFC</a></li>
+<li><a href="#section_neo">Neo-Logicism</a></li>
+<li><a href="#section_morals">Some Morals</a>
+	<ul>
+		<li><a href="#section_moral1">Moral 1: Gödel&rsquo;s Theorem and Philosophy of Mathematics</a></li>
+		<li><a href="#section_moral2">Moral 2: We&rsquo;re All in This Together</a></li>
+	</ul>
+</li>
+</ul>
+
+<h1 id="section_frege">Frege and Analytic Philosophy</h1>
+
+<p>Let me tell you a story that starts with the foundation of analytic philosophy, and ends with Gödel’s Theorem. Actually, maybe it doesn’t end at Gödel’s Theorem; maybe the story is still going.</p>
+
+<p>Philosophy as done here at MIT, and in most English speaking departments, and in some other places too, belongs to a certain philosophical tradition. That tradition is called “analytic philosophy”. Analytic Philosophy began with <a href="https://en.wikipedia.org/wiki/Gottlob_Frege">Friedrich Ludwig Gottlob Frege</a>, a German mathematician and philosopher. His life’s quest was to derive all of arithmetic from logic.</p>
+
+<p>Frege’s attempt to achieve this goal had many wonderful byproducts. For example, he invented what we now call “Predicate Logic”. That quantifier “\(\forall\)”, and variables, which we saw in the language of arithmetic? Frege invented those, and the syntax of languages that contain them. That work, along with work by George Boole, completely revolutionised our understanding of logic. Not a heap of progress had been made in logic since Aristotle, about 3000 years earlier, so this was a big deal.</p>
+
+<p>More generally, Frege was among the first to get very precise about what constituted a good proof, and what made an argument valid. Analytic philosophy, contemporary set theory, mathematical logic, and computer science are all inheritors, in different ways, of that project, which Frege started.</p>
+
+<p>But Frege never achieved his dream of reducing arithmetic to logic.</p>
+
+<br>
+
+<h1 id="section_logicism">Logicism</h1>
+
+<p>The view that arithmetic is reducible to logic is called <em>Logicism</em>.</p>
+
+<p>What exactly is logicism saying? What does it mean for mathematics to be “reducible to” logic? The idea can be made precise in different ways. Here is the way Frege thought of it.</p>
+
+<p>Some languages are <em>purely logical</em>. It is hard to say what that means with any generality, but the idea is that a purely logical language is a language that has form, but no content. It’s not a language that enables you to talk about anything in particular; it is language in which terms for particular things have been abstracted away, leaving only a structure, of a kind that many languages about particular things will have in common. There are no names for particular things, in a purely logical language, or words that describe particular properties.</p>
+
+<p>A paradigm case is propositional logic, if you are familiar with that. That contains symbols like “\(p\)”, “\(q\)”, “\(\vee\)”, “\(\neg\)” and so on. Predicate logic also counts, which has all the symbols of propositional logic in it, and also symbols like “\(\forall\)”, “\(\exists\)” “\(x\)”, "\(a\)” and “\(F\)”.</p>
+
+<p>Now, suppose you pick some special set of sentences in a purely logical language to be your axioms. And suppose you have syntactic rules, which tell you, for a given set of sentences in your purely logical language, how to derive new sentences that are true iff the given set of sentences are true. Frege’s version of logicism is the view that, given suitable definitions (more on that momentarily), you can derive all truths of mathematics from purely logical axioms, using syntactic rules. As mentioned, Frege invented a logical language of his own, and intended to derive mathematics within that language</p>
+
+<br>
+
+<h1 id="section_law">Basic Law V</h1>
+
+<p>Now, at first glance, logicism looks like it’s obviously false. A purely logical language isn’t going to have symbols like “0” and “1” in it — what we earlier described as the language of arithmetic is <em>not</em> a purely logical language. So how could we use a purely logical language to even <em>state</em> mathematical sentences, let alone derive them?</p>
+
+<p>Frege’s solution to this problem was something he called “Basic Law V”. Frege’s way of putting Basic Law V doesn’t have an exact equivalent in modern notation, but it is something like this: \[\{x: \Phi x\} = \{x: \Psi x\} \ \leftrightarrow \ \forall x(\Phi x \leftrightarrow \Psi x)\]</p>
+
+<p>Basic Law V is an axiom schema. The “\(\Phi x\)” and “\(\Psi x\)” are placeholders for strings of symbols in Frege’s formal language that express some constraint on \(x\). You substitute in appropriate strings of symbols, and the result, according to Basic Law V, is an axiom.</p>
+
+<p>For example: let “\(\Phi x\)” be “\(\neg Fx\vee \neg Gx\)” (read: either it is not the case that \(x\) is \(F\), or it is not the case that \(x\) is \(G\)) and let “\(\Psi x\)” be “\(\exists y(Fx\supset Hy)\)” (read: there exists a \(y\) such that, if \(x\) is \(F\), then \(y\) is \(H\)). Then you get the following instance of Basic Law V: \[\{x:\neg Fx \vee \neg Gx\} = \{x: \exists y(Fx\supset Hy)\} \ \leftrightarrow \ \forall x((\neg Fx \vee \neg Gx) \leftrightarrow \exists y(Fx\supset Hy))\]</p>
+
+<p>That is one of the axioms of Frege’s system.</p>
+
+<p>You read Basic Law V as saying this: the set of all things that meet the constraint expressed by “\(\Phi x\)” is equal to the set of all things that meet the constraint expressed by “\(\Psi x\)” if and only if (something meets the constraint expressed by “\(\Phi x\)” iff it meets the constraint expressed by “\(\Psi x\)”).</p>
+
+<p>Basic Law V is a statement of the individuation conditions for sets; it lets you know when two sets are the same, and when they are different. You can think of Basic Law V as providing an implicit definition of what a set <em>is</em>.</p>
+
+<p>Basic Law V seems <em>pretty</em> plausible. It seems like it is just a <em>stipulation</em>, about how you are going to use the “\(\{\)“ and “\(\}\)”, rather than some substantial thesis. It appears to be the kind of trivial definition that makes it appropriate to include among axioms in a purely logical language. At least, that’s what Frege thought.</p>
+
+<br>
+
+<h1 id="section_comprehension">Naïve Set Comprehension</h1>
+
+<p>Here’s something that follows from Basic Law V: for any constraint you can express in Frege’s language, there is a set of things that satisfy that constraint (possibly the empty set). To see this, consider what a substitution instance of Basic Law V would look like if “\(\Phi x\)” were the same as “\(\Psi x\)”: \[\{x: \Phi x\} = \{x: \Phi x\} \leftrightarrow \forall (\Phi x \leftrightarrow \Phi x)\] The right-hand side would be a logical truth, in Frege’s system &mdash; that is, somethign you can derive from the empty set of sentences. So the above would be equivalent to \[\{x: \Phi x\} = \{x: \Psi x\}\] …from which it would follow, in Frege’s system, that \[\exists y(y=\{x: \Phi x\})\] …i.e., the set of things that satisfy the constraint expressed by “\(\Phi x\)” exists, whatever you put in for “\(\Phi x\)”.</p>
+
+<p>So it is a consequence of Basic Law V that whenever you have some constraint, there is a set of things that meets that constraint (possibly the empty set). This principle is called naïve set comprehension, these days (&ldquo;naïve&rdquo; for reasons we will see in a moment).</p>
+
+<p>Frege went on to identify numbers like 0 and 1 with certain kinds of sets,<sup><a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">1</a></sup> the existence of which he thought he could prove using Basic Law V (those are the &ldquo;suitable definitions&rdquo; we alluded to earlier). That’s how he was able to use his purely logical language to talk about arithmetic.</p>
+
+<br>
+
+<h1 id="section_russell">Russell’s Paradox</h1>
+
+<p>Bertrand Russell is the second most responsible person for the existence of analytic philosophy. He was a very interesting person. He wrote on most areas of philosophy, and made especially important contributions to logic and philosophy of language. He was a political activist who went to prison for his opposition to British involvement in the First World War. He had a tumultuous personal life. He started an experimental primary school. He won the Nobel prize in literature.</p>
+
+<p>He is also the person who destroyed Frege’s life’s work. </p>
+
+<p>Recall the naïve set comprehension principle, which follows from Basic Law V: \[\exists y(y=\{x: \Phi x\})\]</p>
+
+<p>You get Russell’s Paradox by substituting “\(\neg x\in x\)” for “\(\Phi x\)” in the above (which you can do, because you can define "\(\in\)" in Frege's logical system): \[\exists y(y=\{x: \neg x\in x\})\]</p>
+
+<p>This tells us that there exists a set such that something is a member of that set if and only if it is not a member of itself. Call this set of things that aren’t members of themselves \(R\) (for “Russell set”). Question: is \(R\) a member of \(R\)? The above tells us that \(R\) is a member of \(R\) if and only if it isn’t. Obviously, that leads to contradiction almost immediately. So Basic Law V leads to contradiction. So Frege’s axioms are inconsistent, and you can’t trust anything they say. His project of deriving math from logic is ruined!</p>
+
+<p>Frege got news of Russell’s Paradox just before the publication of his magnum opus on logicism (called the <em>Grundgesetze der Arithmetik</em>). He wrote an afterword just in time for publication that starts with these words:</p>
+
+<p>“Hardly anything more undesirable can befall a scientific writer than to have, at the completion of his work, one of the foundation-stones of his edifice shattered.”</p>
+
+<p>The tragedy of it all!</p>
+
+<br>
+
+<h1 id="section_godel">Gödel’s Theorem</h1>
+
+<p>Russell’s Paradox shows that you aren’t going to be able to derive mathematics out of Frege’s system. But maybe that’s just because it is the wrong system. Maybe, if we keep looking we can find the right system, and logicism can be vindicated after all. Right?</p>
+
+<p>That’s what Russell thought. He wrote a big fat book with Alfred Whitehead called <em>Principia Mathematica</em> trying to derive mathematics from a different logical system. The proof that 1+1=2 is on page 362.</p>
+
+<p>(The <em>Principia Mathematica</em> system was the first incarnation of what is now called the <a href="[http://plato.stanford.edu/entries/type-theory/]">Theory of Types</a>, which is a precursor to contemporary set theory.)</p>
+
+<p><em>Principia Mathematica</em> is an impressive achievement. But we now know that the <em>Principia</em> system fails just like Frege’s. It doesn’t fail because it is inconsistent (as far as we know), but because it is is incomplete. More specifically: there are truths of arithmetic that you cannot prove using the Principia system. That is a consequence of Gödel Theorem, which we know and love in this course. The paper in which Gödel proved his result, in 1931, was about, specifically, the <em>Principia Mathematica</em> system; but it turned out to apply quite generally.</p>
+
+<br>
+
+<h1 id="section_zfc">ZFC</h1>
+
+<p>Since the advent of Gödel’s Theorem, we’ve given up trying to find an axiomatic system that is, arguably, purely logical, and that from which we can derive all of arithmetic. Contemporary set theory is in many ways much nicer than the <em>Principia</em> system — it is much more flexible, for a start. But it had no pretensions at being a purely logical system. Nobody thinks that there is much hope of justifying the standard axioms of set theory, called “ZFC”, on purely logical grounds. One way to see that is that we <em>know</em> that (on the assumption that ZFC is consistent) that there are consistent systems in which some of the axioms are <em>false</em>. ZF + the negation of the Axiom of Choice is one example, but there are many.</p>
+
+<br>
+
+<h1 id="section_neo">Neo-Logicism</h1>
+
+<p>So, you might think that Gödel Theorem shows that Logicism is just wrong. But things are more subtle than that. Gödel’s Theorem definitely shows that the kind of logicism Frege had in mind is wrong. But there are other ways of understanding the claim that arithmetic is part of logic, and maybe these other ways of understanding the claim are true after all.</p>
+
+<p>The neo-logicists are people who still dream Frege’s dream, and think that something close to what Frege had in mind is true, despite Gödel’s Theorem. They like to point out two things:</p>
+
+<ol>
+<li>Though you can’t write down a finite number of sentences from which a Turing Machine could be programmed to derive all and only the arithmetical truths, you <em>can</em> write down a finite number of sentences such that, if they are true, then all of arithmetic is also true (and nothing else is guaranteed to be true by these sentences). That is, these sentences entail all and only the arithmetical truths, though you can’t derive all true sentences of arithmetic from them using syntactic rules of the kind a Turing Machine could follow. (How do we know this? You can prove it!)</li>
+<li>Though Frege’s project failed, he did manage to show something very interesting. He showed that, inside a powerful enough logical system, one simple sentence is enough to entail all of arithmetic. That simple sentence is called Hume’s Principle. It is a bit complicated to write out in logical notation; informally, this is what Hume’s Principle says:
+	<blockquote>
+ The number of the \(\Phi\)s is equal to the number of the \(\Psi\)s if and only if there is a bijection between the \(\Phi\)s and the \(\Psi\)s (where “the \(\Phi\)s&rdquo; means the things that meet the constraint specified by “\(\Phi\)”, and similarly for “the \(\Psi\)s”.</blockquote>
+</li>
+</ol>
+
+<p>Whether neo-logicism is correct or not depends, in part, on whether there’s some sense in which you can derive Hume’s Principle from logic alone. That turns out to be a very complicated question &#8212; too complicated for this course!</p>
+
+<br>
+
+<h1 id="section_morals">Some Morals</h1>
+
+<p>Here are some morals of the story.</p>
+
+<ul>
+
+<h2 id="section_moral1">Moral One: Gödel’s Theorem and Philosophy of Mathematics</h2>
+
+<p>Our first moral is that we have another way in which Gödel’s Theorem is philosophically important: it is relevant to the philosophical questions concerning the status of arithmetic, and mathematics more generally. </p>
+
+<p>The metaphysics and epistemology of mathematics are somewhat mysterious. What are numbers, exactly? Where are they? How do we know about them? Knowing about most stuff involves some kind of causal interaction with the stuff; knowing about numbers doesn’t seem to be like that. So what’s the deal?</p>
+
+<p>Logicism is motivated by trying to answer these questions. On a certain way of understanding logic, the truth of a logical sentence makes <em>no demand whatsoever</em> on the world. It is, in this sense, trivial. This is different to most sentences. To know that a sentence like “grass is green” is true, you need to first understand what it says, and then go check to see if what it says is, in fact, the case. But logic (some people think) is not like that. When you know that a logical sentence is true, what you realise is that the string of symbols you are looking at requires <em>nothing at all</em> from the world to be true.</p>
+
+<p>So if mathematcs is part of logic, this gives us an answer to our question of how we know about math. If logicism is right, then we know about the same way we know about logic. We know the rules about the mathematical language we are using, and we can come to see that certain ways of using that language require <em>nothing</em> from the world to be true.</p>
+
+<p>If logicism <em>isn’t</em> right, as Gödel’s Theorem maybe entails, then we want to know: what <em>is</em> the deal with mathematics? How do we know about math, if it is not trivial in the same sense as logic?</p>
+
+<br>
+
+<h2 id="section_moral2">Moral Two: We’re All in This Together</h2>
+
+<p>As I said at the beginning, the project Frege started, of trying to get precise about what constitutes a valid argument, and a good proof, is, in different ways, inherited by many disciplines. Analytic philosophy is one of them; mathematical logic, set theory, and computer science are others. These disciplines are siblings; they all began in the same place, and share the same heritage.</p>
+
+<p>The word “philosophy” means many different things to different people. If you are mostly exposed to science and math, it is easy to get the impression that philosophy is a foreign land, for people who think very differently from you. One lesson of the story above is that this isn’t so, at least when it comes to analytic philosophy. The mind of an analytic philosophers is often very similar to the mind of a mathematician, or a computer scientist, and the projects each are engaged in are not so far away from each other. That is certainly not the <em>only</em> way to be a philosopher, but it is <em>a</em> way.</p>
+
+<p>More broadly, something I hope you take away from this course is that philosophy is not so far from other subjects you study here at MIT in general. I wanted to be a physicist when I started university; it turned out that the stuff I was really interested in was being best tackled by philosophers. Philosophers are just trying to figure out what is going on, like everyone else. We’re all in this together. </p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn:1">
+<p>That’s not exactly right. This was before the modern notion of a set had been established. The term Frege used is usually translated as “extension”; Frege’s notion of an extension is slightly different to the modern notion of a set. <a href="#fnref:1" title="return to article" class="reversefootnote">&#160;&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+</body>
+</html>

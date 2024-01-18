@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+
+\usepackage[margin=1.5in,headsep=.5in]{geometry}
+
+\usepackage{fancyhdr}
+
+\setlength{\headheight}{20pt}
+
+\usepackage[colorlinks]{hyperref} 
+\usepackage{cleveref}
+
+\usepackage{enumerate}
+
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=0mm}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem*{wo}{The Well-Ordering Principle}
+
+\pagestyle{fancy}
+
+\newcommand{\counterfactual}{\ensuremath{%
+  \Box\kern-1.5pt
+  \raise1pt\hbox{$\mathord{\rightarrow}$}}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\lhead{$24.118$ Paradox and Infinity}
+\rhead{Recitation $7$: Axiom of Choice}
+
+
+
+\begin{center}
+{\LARGE \bf In-class Exercises}
+\end{center}
+
+\smallskip
+
+
+\begin{defn}[Well-Order]
+A well-order $<$ on a set $S$ is an order that satisfies the following properties:
+\begin{enumerate}
+\item Anti-Symmetry and Transitivity;
+\item Total: for any $a \neq b \in S$, either $a < b$ or $b <a$;
+\item Every non-empty subset $X \subseteq S$ has a $<-$smallest element, that is, an element $x \in X$ such that for every other $y \in X$, $x <y$.
+\end{enumerate}
+\end{defn}
+
+\begin{wo}
+Every set is well-orderable, i.e. for every set $S$, there is some ordering $<$ on $S$ that is a well-order.
+\end{wo}
+
+\begin{exer}
+Show that if the Well-Ordering Principle holds, then the Axiom of Choice holds. In particular, let $S = \{S_i \, \, | \, \, i \in I \}$ be a set of non-empty sets (indexed by $I$). Show that there is a choice function $c: S \rightarrow \bigcup S$ on $S$, that is, a function such that for any $i \in I$, $c(S_i) \in S_i$.
+\end{exer}
+
+\begin{exer}
+Show that if the Axiom of Choice holds, then the Well-Ordering Principle holds. In particular, if $S$ is a set, then there is a well-order $<$ on $S$.
+\end{exer}
+
+\noindent
+This proof is harder than the other direction, and uses some technique that we haven't introduced yet. So I will guide you through parts of the proof, and let you fill in the rest of the details. \\
+
+\noindent
+To start with, we consider the powerset $\mathcal{P}(S)$ of $S$. Let $P = \mathcal{P}(S) \setminus \emptyset$, the set of all subsets of $S$ except the empty set. By the Axiom of Choice, there is a choice function $c: P \rightarrow S$ on $P$. \\
+
+\noindent
+Now we define a function $f$ from ordinals to $S$ using a process called transfinite recursion\footnote{For those of you who are familiar with the notion of recursion, this is indeed what you are imagining: transfinite induction is the extension of mathematical induction to ordinals.}. The main idea is the follows: the first step is to stipulate the value of $f(0)$, then for any ordinal $\alpha$, we define the value of $f(\alpha)$ based on the values that has been defined in all of the previous steps, that is, all the $f(\beta)$'s such that $\beta \in \alpha$. In particular, we let $f(0) = c(S)$. And for any $\alpha$, we let $f(\alpha) = c(S \setminus \{f(\beta) \, \, | \, \, \beta \in \alpha \})$, if $S \setminus \{f(\beta) \, \, | \, \, \beta \in \alpha \}$ is not empty, where $S \setminus \{f(\beta) \, \, | \, \, \beta \in \alpha \}$ is the subset of $S$ that contains everything except the $f(\beta)$'s, for $\beta \in \alpha$. When $S \setminus \{f(\beta) \, \, | \, \, \beta \in \alpha \}$ is empty, we end the process (in which case $f(\alpha)$ is undefined).
+
+\begin{exer}
+Show that this function $f$ is injective.
+\end{exer}
+
+\begin{exer}
+Show that the process has to end at some point, in the following sense: $f(\alpha)$ cannot be defined for every ordinal $\alpha$. (Hint: the Burali-Forti paradox)
+\end{exer}
+
+\begin{exer}
+Let $\gamma$ be the least ordinal on which $f(\gamma)$ is undefined. Show that $f: \gamma \rightarrow S$ is a bijection.
+\end{exer}
+
+\begin{exer}
+Using the bijection $f: \gamma \rightarrow S$, show that there is a well order $<$ on $S$.
+\end{exer}
+
+
+
+\end{document}
