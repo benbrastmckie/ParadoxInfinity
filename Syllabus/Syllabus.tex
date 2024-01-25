@@ -57,7 +57,7 @@
 %To add different lines, you will need to create the new command, e.g. \profPhone, in the .cls file c. line 76, and command to create the line in the side bar in the .cls file c. line 186
 
 \classname{Paradox and Infinity} 
-\classnum{24.118, Spring 2024} 
+\classnum{24.118 ~---~ Spring 2024} 
 
 %%%%%%%%%%%%%%% PROF INFO
 \profname{Benjamin Brast-McKie}
@@ -106,22 +106,30 @@
 %to add more questions or remove this section, go to the .cls file and start with lines comment
 %lines 226-250. Also comment out this section as well as line 152(ish), the command \makeSide
 
-\qOne{Is logic math?}
-\aOne{We will use formal symbols as in mathematics, but this does not make logic a type of math any more than it makes physics a type of mathematics. Rather, logic has a subject mater all its own, though saying what this is will require some care.}
+\qOne{What is a Paradox?}
+\aOne{
+  Not any false or contradictory statement is a paradox since it also has to be interesting!
+  An interesting paradox ought to teach us something we didn't know before, suggesting ways to revise our assumptions to avoid that contradiction.
+}
 
-\qTwo{Is logic philosophy?}
-\aTwo{\textit{Philosophical Logic} concerns the philosophy of logic. There are also formal approaches to philosophy which employ methods from proof theory and model theory. \textit{Mathematical Logic} is a sub-discipline that falls considerably closer to mathematics. We will be doing a bit of all of these.}
+\qTwo{But do the paradoxes have anything to show for themselves?}
+\aTwo{
+  To take one example, Russell's paradox played a critical role in driving the development of type theory and set theory, putting mathematics on a solid foundation (ZFC is accepted by most working mathematicians).
+  }
 
-\qThree{Is logic a descriptive science?}
-\aThree{No! Logic is a \textit{normative} science insofar as it aims to regiment how we ought to reason in an artificial language, not merely how we happen to reason in a natural language like English.}
+\qThree{How much math will you need to know?}
+\aThree{
+  Elements of basic set theory will be introduced where some basic familiarity with logical notation will be assumed.
+}
 
-\qFour{Why learn logic?}
-\aFour{Logic seeks to describe an ideal for reasoning. Of course, we are all engaged in reasoning. Learning logic is something akin to upgrading your firmware. It will literally change how you think.}
+\qFour{What are the risks?}
+\aFour{
+  Some philosophers devote their careers to studying paradoxes.
+  Some might consider this a risk!
+}
 
-\qFive{What does logic have to show for itself?}
-\aFive{Logic played a critical role in putting mathematics on a solid foundation (ZFC is accepted by most working mathematicians) and gave birth to the modern theory of computation as well as modern linguistics.}
-
-
+% \qFive{Why care about paradoxes?}
+% \aFive{Logic seeks to describe an ideal for reasoning. Of course, we are all engaged in reasoning. Learning logic is something akin to upgrading your firmware. It will literally change how you think.}
 
 %----------------------------------------------------------------------------------------
 
@@ -138,9 +146,9 @@
 %----------------------------------------------------------------------------------------
 \section{Overview}
 
-During the first three parts of this course, 
-
-In the second three parts of this course, 
+This course will cover a number of important paradoxes from some of the technical topics in philosophy. % including those which have inspired the development of the theories of sets, numbers, and types.
+We will begin by focusing on the infinite and the theories that these paradoxes have inspired.
+We will then move to consider paradoxes raised by the possibility of time travel as well as some decision theoretic paradoxes.
 
 %----------------------------------------------------------------------------------------
 %	 READING MATERIAL
@@ -164,14 +172,17 @@ All of the other required readings will be provided on Canvas.
 %below is the \twentyshort environment - a list with only two inputs. However, there is a \twenty environment, which creates a list with four inputs. You can find/alter details of that table in the .cls file c. lines 320. 
 \begin{twentyshort}
 	%\twentyitemshort{X\%}{Attendance/Participation}
-  \twentyitemshort{25\%}{Problem Sets (5 assignments at \%5 each)}
-  \twentyitemshort{10\%}{Responses (2 assignments at \%5 each)}
-  \twentyitemshort{40\%}{Short Essays (4 assignments at \%10 each)}
-  \twentyitemshort{12\%}{Recitation Attendance (12/14 meetings at \%1 each)}
-  \twentyitemshort{8\%}{Pop Quizzes (4 quizzes at \%2 each)}
+  \twentyitemshort{20\%}{Problem Sets (4/5 assignments at \%5 each)}
+  \twentyitemshort{20\%}{Reading Responses (4/5 assignments at \%5 each)}
+  \twentyitemshort{30\%}{Short Essays (3 assignments at \%10 each)}
+  \twentyitemshort{24\%}{Recitation Attendance (12/14 meetings at \%1 each)}
+  \twentyitemshort{6\%}{Pop Quizzes (3 quizzes at \%2 each)}
 \end{twentyshort}
 
-Grades for the course will be set as follows: A+ = 97-100; A = 93-96; A- = 90-92; B+ = 87-89; B = 83-86; B- = 80-82; C+ = 77-79; C = 73-76; C- = 70-72; D = 60-69; F $<$ 60. Grades will not be curved.
+% Grades for the course will be set as follows: 
+Grades will not be curved.
+A+ = 97-100; A = 93-96; A- = 90-92; B+ = 87-89;\\ 
+B = 83-86; B- = 80-82; C+ = 77-79; C = 73-76; C- = 70-72; D = 60-69; F $<$ 60.
 
 %----------------------------------------------------------------------------------------
 %	 EXTRAS
@@ -180,27 +191,33 @@ Grades for the course will be set as follows: A+ = 97-100; A = 93-96; A- = 90-92
 \vspace{0.5cm}
 \section{Problem Sets}
 
-There will be 5 problem sets and 2 optional problem sets which can be used to replace past problem set grades.
-You are welcome to work through the problem set with at most two other students IN PREPARATION, but when it comes time to submit answers, you must be on your own.
+There will be 5 problem sets where the lowest grade will be dropped.
+Some weeks will split the problem set between a quiz due on Canvas before recitation and a written portion to be submitted as a PDF on Canvas after recitation.
+You are welcome to work with at most two other students \textit{in preparation}, but everything you submit must be your own work.
+You can find others to work with on \href{psetpartners.mit.edu}{\texttt{psetpartners.mit.edu}}.
 
 \vspace{0.5cm}
-\section{Responses and Essays}
+\section{Reading Responses and Short Essays}
 
-There will be 2 responses (500 words) which will provide a warm up for the 4 essays (1000 words) in later weeks.
+There will be 5 reading responses (500 words) where the lowest grade is dropping. 
+There will also be three short essays (1000 words).
+You are encouraged to collaborate with at most two other students, talking through the topics and reading each other's work \textit{in preparation}, but all submitted work must be entirely your own.
 
 \vspace{0.5cm}
-\section{Recitations}
+\section{Recitations and Pop Quizzes}
 
 There will be 14 recitations throughout the term.
-You are expected to attend at least 12 of the 14 recitations, where two absences will be granted in case you get sick or something else comes up.
+You are expected to attend at least 12 of the 14 recitations, both preparing ahead of time and participating during.
 
-\vspace{0.5cm}
-\section{Pop Quizzes}
+There will also be 3 pop quizzes throughout the term.
+Consider these easy points if you are up on your reading and present in class.
 
-Pop quizzes will be easy points if you are up on your reading and present in class.
 
 \vspace{0.5cm}
 \section{Piazza}
+
+Please enroll in Piazza where you can ask and answer questions:\\
+\href{https://piazza.com/mit/spring2024/24118}{\texttt{https://piazza.com/mit/spring2024/24118}}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -214,46 +231,41 @@ Pop quizzes will be easy points if you are up on your reading and present in cla
 % \makeFullPage
 
 \vspace{0.5cm}
-\section{Academic Integrity}
-
-Blindly copying someone else’s solution (written or typed) is cheating.
-By contrast, you are encouraged to talk through a solution step-by-step with a classmate or two where in doing so, everyone involved comes to understand each part.
-However, when it comes time to write up and submit the solutions, it is important that you do this for yourself without consulting others throughout the process.
-
-Doing problem sets is the best way to practice throughout the course.
-Cheating on problem sets will be to your own disadvantage in preparing for the exams.
-If you cheat on an exam, the academic consequences will be severe, so please don't consider it.
-There is more to life than grades; don't let them distract from learning!
-
-Instead of worrying about your grade, I recommend that you focus on mastering logic, doing your best work and feeling good about it.
-Logic is an extremely deep subject, and foundational for this information age that we are all a part of.
-This course should provide you with an important tool kit that I hope you enjoy learning to use and that will serve you well beyond the end of this course.
-% This has certainly been true for me!
-
-\vspace{0.5cm}
-\section{Make-up Policy}
-
-Make-up exams or problem-sets are only permitted for students in the midst of a medical or family emergency.
-Making arrangements IN ADVANCE of the due date is required except in particularly difficult circumstances.
-
-\vspace{0.5cm}
 \section{Learning Objectives}
 
 %use \begin{outline} or \begin{outline}[enumerate] to create a list with subitems. 
 \begin{itemize}
-  \item Practice regimenting a range of natural language sentences into propositional and first-order languages.
-  \item Learn how to assess complex natural language arguments for validity.
-  \item Practice applying the rules of a proof system, regimenting valid reasoning.
-  \item Develop an appreciation for meta-logical proofs about our proof systems and their corresponding semantics.
-  \item Contemplate elements of the philosophy of logic, exploring such questions as: What is logic? What unites it as a discipline? What can logic do, and what are its limits? Do the rules of logic describe something universal or conventional?
+  \item Understand what drives the sense of perplexity or clash of intuitions in each of the paradoxes that we consider though out the course.
+  \item Evaluate the range of responses for each paradox as well as the advantages and disadvantages had by each response.
+  \item Practice closely reading of a number of philosophical papers, presenting the puzzles, arguments, and lessons which they contain in your own words.
 \end{itemize}
+
+\vspace{0.5cm}
+\section{Academic Integrity}
+
+Blindly copying another's answer is cheating.
+By contrast, you are encouraged to talk through the topics covered in this course step-by-step with a classmate or two where in doing so everyone involved comes to understand each part for themselves.
+However, when it comes time to write up and submit the solutions, it is important that you do this for yourself without consulting others throughout the process.
+
+There will be a number of written exercises throughout this course.
+You are not permitted to use ChatGPT (or other LLMs), though these will be of little help anyhow.
+Moreover, do not expect a high grade if what you turn in amounts to little more than a string of grammatical sentences that are loosely related in topic but otherwise fail to contribute to any kind of recognizable argument or analysis.
+
+In writing philosophy papers and responses, you should cut straight to the chase, clearly stating what you will argue for while avoiding rambling introductions filled with platitudes or other loosely related facts.
+At the same time, you should make all necessary assumptions/definitions/implications/etc. completely explicit so that your work can stand on its own and be interpreted without any guess work.
+
+\vspace{0.5cm}
+\section{Make-up Policy}
+
+Extensions for late work will not be granted without the official support of S$^3$ in which case you can assume that you will have my full support.
+Making arrangements IN ADVANCE of the due date is required except in particularly difficult circumstances.
 
 \vspace{0.5cm}
 \section{Diversity and Inclusivity Statement}
 
 In all course-related activities and communications, you will be treated with respect.
 I welcome individuals of all ages, backgrounds, cultures, beliefs, ethnicities, gender identities and expressions, national origins, religious affiliations, abilities, sexual orientations, and other visible and non-visible differences.
-All members of this class are expected to help create a respectful, welcoming, and inclusive environment for every other member of the class.
+All members of this class are expected to help create a respectful, welcoming, and inclusive environment that can be enjoyed and shared by every member of the class.
 
 \vspace{0.5cm}
 \section{Accommodations for Students with Disabilities}
@@ -269,18 +281,20 @@ As someone who has used these services in the past, you can assume that you will
 \newpage
 \makeFullPage
 \section{Class Schedule}
-  \vspace{.1in}
+  \vspace{.2in}
+
+Note: All supplementary readings will be provided on Canvas.\\
 
 \begin{center}
 \begin{tabularx}{\textwidth}{p{2.5cm}p{7.5cm}p{9.5cm}} %change the width of the comments by changing these cm measurements. Add/substract columns by adding/deleting p{} sections. 
 \arrayrulecolor{myCOLOR}\hline
 %%%%%%%%%%%%%%%%%%%%%%%% MODULE 1 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large Part 1: The Infinite}}} \\
+\multicolumn{3}{l}{\textbf{\textcolor{myCOLOR}{\large Part 1: Cantor's Paradise}}} \\
 \hline
 % Week & Topic & Readings \\ \hline 
 %%Alternatively, instead of Week #, you can do Class date for meeting
 
-\textbf{(Week 1)} & Paradox and Infinity & \textit{On the Brink of Paradox}, Ch.~1 \\
+\textbf{(Week 1)} & Infinite Cardinalities & \textit{On the Brink of Paradox}, Ch.~1 \\
 Feb 05, 07 &  & Problem Set 1 Due Friday 02/09\\
 \arrayrulecolor{maingray}\hline
 
@@ -295,35 +309,55 @@ Feb 20, 21 &  & Problem Set 3 Due Friday 02/23 \\
 ~\\
 \arrayrulecolor{maingray}\hline
 %%%%%%%%%%%%%%%%%%%%%%%% MODULE 2 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 2: Cantor's Paradise}}} \\
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 2: Paradox in Paradise}}} \\
 \hline
 
-  \textbf{(Week 4)} & The Metaphysics of Sets & "What is the iterative conception of set" Parsons (1977) \\
+% % %%% THE LIAR
+% \textbf{(Week 4)} & The Liar Paradox & Selected readings \\
+% Feb 26, 28 &  & Response 1 Due Sunday 03/03\\ 
+% \arrayrulecolor{maingray}\hline
+%
+% \textbf{(Week 5)} & Russell's Paradox & Selected readings \\
+% Mar 4, 6 &  & Response 2 Due Sunday 03/10\\
+% \arrayrulecolor{maingray}\hline
+%
+% % \textbf{(Week 6)} & Self Reference & Selected readings \\
+% % Mar 11, 13 &  & Response 3 Due Sunday 03/17\\
+% % \arrayrulecolor{maingray}\hline
+%
+% \textbf{(Week 6)} & The Iterative Conception of Set & Selected readings \\
+% Mar 11, 13 &  & Response 3 Due Sunday 03/17\\
+% \arrayrulecolor{maingray}\hline
+%
+% \textbf{(Week 7)} & Absolute Generality & Selected readings \\
+% Mar 18, 20 &  &  Essay 1 Due Friday 03/22\\
+% \arrayrulecolor{maingray}\hline
+%
+% % \textbf{(Week 7)} & The Iterative Conception of Set & Selected readings \\
+% % Mar 18, 20 &  &  Essay 1 Due Friday 03/22\\
+% % \arrayrulecolor{maingray}\hline
+
+%%% ABSOLUTE GENERALITY
+\textbf{(Week 4)} & Self Reference & Selected readings \\
 Feb 26, 28 &  & Response 1 Due Sunday 03/03\\ 
 \arrayrulecolor{maingray}\hline
 
-  \textbf{(Week 5)} & Absolute Generality & "Speaking of Everything" Cartwright (1994) \\
+\textbf{(Week 5)} & A Theory of Types & Selected readings \\
 Mar 4, 6 &  & Response 2 Due Sunday 03/10\\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 6)} & Iterative Conception of Set & Selected readings \\
+Mar 11, 13 &  & Response 3 Due Sunday 03/17\\
+\arrayrulecolor{maingray}\hline
+
+\textbf{(Week 7)} & Indefinite Extensibility & Selected readings \\
+Mar 18, 20 &  &  Essay 1 Due Friday 03/22\\
 \arrayrulecolor{maingray}\hline
 
 ~\\
 \arrayrulecolor{maingray}\hline
 %%%%%%%%%%%%%%%%%%%%%%%% MODULE 3 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 3: Truth}}} \\
-\hline
-
-  \textbf{(Week 6)} & The Liar & "Outline of a Theory of Truth" Kripke (1975) \\
-Mar 11, 13 &  & Optional Replacement Problem Set Due Friday 03/15 \\ % Problem Set 
-\arrayrulecolor{maingray}\hline
-
-  \textbf{(Week 7)} & Yablo's Paradox & "A Plea for Semantic Localism" Rayo (2013) \\
-Mar 18, 20 &  &  Essay 1 Due Sunday 03/24\\
-\arrayrulecolor{maingray}\hline
-
-~\\
-\arrayrulecolor{maingray}\hline
-%%%%%%%%%%%%%%%%%%%%%%%% MODULE 4 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 4: Time Travel}}} \\
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 3: Time Travel}}} \\
 \hline
 
   \textbf{(Week 8)} & Watch the film "Timecrimes" (2007) over break &  \\
@@ -335,41 +369,35 @@ Apr 1, 3 &  &  Problem Set 4 Due Friday 04/05\\
 \arrayrulecolor{maingray}\hline
 
 \textbf{(Week 10)} & Grandfather Paradox & "The Paradoxes of Time Travel" Lewis (1976) \\
-Apr 8, 10 &  &  Essay 2 Due Sunday 04/14\\
+Apr 8, 10 &  & Response 4 Due Friday 04/12\\
 \arrayrulecolor{maingray}\hline
 
-\newpage
+\textbf{(Week 11)} & Counterfactuals and Causation & Selected readings \\
+Apr 17 &  & Essay 2 Due Sunday 04/21\\
+\arrayrulecolor{maingray}\hline
+
+\pagebreak
 
 ~\\
 \arrayrulecolor{maingray}\hline
-%%%%%%%%%%%%%%%%%%%%%%%% MODULE 5 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 5: Newcomb's Problem}}} \\
+%%%%%%%%%%%%%%%%%%%%%%%% MODULE 4 %%%%%%%%%%%%%%%%%%%%%%%%
+\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 4: Newcomb's Problem}}} \\
 \hline
 
-\textbf{(Week 11)} & Newcomb's Problem & \textit{On the Brink of Paradox}, Ch.~5 \\
-Apr 17 &  &  No Assignment\\
-\arrayrulecolor{maingray}\hline
-
-\textbf{(Week 12)} & One-Boxing & "Counterfactuals and Newcomb's Problem" Horgan (1981) \\
+\textbf{(Week 12)} & Newcomb's Problem & \textit{On the Brink of Paradox}, Ch.~5 \\
 Apr 22, 24 &  & Problem Set 5 Due Friday 04/26 \\
 \arrayrulecolor{maingray}\hline
  
-\textbf{(Week 13)} & Two-Boxing & "Why Take Both Boxes" Spencer and Wells (2019) \\
-Apr 29, May 1 &  & Essay 3 Due Sunday 05/05 \\
+\textbf{(Week 13)} & One-Boxing & "Counterfactuals and Newcomb's Problem" Horgan (1981) \\
+Apr 29, May 1 &  & Response 5 Due Sunday 05/05 \\
 \arrayrulecolor{maingray}\hline
 
-~\\
-\arrayrulecolor{maingray}\hline
-%%%%%%%%%%%%%%%%%%%%%%%% MODULE 6 %%%%%%%%%%%%%%%%%%%%%%%%
-\multicolumn{2}{l}{\textbf{\textcolor{myCOLOR}{\large Part 6: Prisoner's Dilemma}}} \\
-\hline
-
-\textbf{(Week 14)} & Prisoners' Dilemma & "Prisoners' Dilemma is a Newcomb Problem" Lewis (1979) \\
-May 6, 8 &  & Optional Replacement Problem Set Due Friday 05/10 \\
+\textbf{(Week 14)} & Two-Boxing & "Why Take Both Boxes" Spencer and Wells (2019) \\
+May 6, 8 &  & No Assignment \\
 \arrayrulecolor{maingray}\hline
 
-\textbf{(Week 15)} & Natural Deduction (QD) & "Prisoner's Dilemma and Newcomb's problem: Why Lewis's Argument Fails" Berm\'{u}dez (2013) \\
-May 13 & & Essay 4 Due Sunday 05/19 \\
+\textbf{(Week 15)} & Prisoners' Dilemma & "Prisoners' Dilemma is a Newcomb Problem" Lewis (1979) \\
+May 13 &  & Essay 3 Due Sunday 05/19 \\
 \arrayrulecolor{maingray}\hline
 
 \end{tabularx}

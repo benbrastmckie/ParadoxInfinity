@@ -1,7 +1,14 @@
-# TODO 
+# TODO
 
 - [ ] syllabus
     - [ ] finalize readings
+        - [ ] sets
+            - [ ] russell's paradox
+                - [ ] SEP
+                - [ ] VCP wiki
+                - [ ] IEP
+            - [ ] set theory
+            - [ ] absolute generality
 - [ ] assignments
     - [ ] write essay questions
     - [ ] distribute resources

@@ -29,15 +29,18 @@
 %	 COLOURS
 %----------------------------------------------------------------------------------------
 
-\definecolor{white}{RGB}{255,255,255}
+% \definecolor{white}{RGB}{255,255,255}
+\definecolor{white}{HTML}{ebdbb2}
 \definecolor{gray}{HTML}{4D4D4D}
-\definecolor{sidecolor}{HTML}{E7E7E7}
+\definecolor{sidecolor}{HTML}{d5c4a1}%a89984}%928374}%E7E7E7}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{green}{HTML}{66FF66}
+\definecolor{pagecolor}{HTML}{ebdbb2}
+\pagecolor{pagecolor}
 
 %Set the Main Thematic Color here. It is currently green. 
-\definecolor{myCOLOR}{HTML}{046D0B}%05800D}% 06930F}%0E801C}
+\definecolor{myCOLOR}{HTML}{665c54}%581845}%046D0B}%05800D}% 06930F}%0E801C}
 
 %To alternate section header colors (perhaps between green and grey, or your two school colors), define myCOLOR2, and then go to the ColorCounter section below and alternate lines between myCOLOR and myCOLOR2. 
 
@@ -144,8 +147,8 @@
 \newcommand{\aThree}[1]{\renewcommand{\aThree}{#1}}
 \newcommand{\qFour}[1]{\renewcommand{\qFour}{#1}}
 \newcommand{\aFour}[1]{\renewcommand{\aFour}{#1}}
-\newcommand{\qFive}[1]{\renewcommand{\qFive}{#1}}
-\newcommand{\aFive}[1]{\renewcommand{\aFive}{#1}}
+% \newcommand{\qFive}[1]{\renewcommand{\qFive}{#1}}
+% \newcommand{\aFive}[1]{\renewcommand{\aFive}{#1}}
 
 \newcommand{\faqLine}[1]{\renewcommand{\faqLine}{#1}}
 
@@ -282,8 +285,8 @@
             \ifthenelse{\equal{\aThree}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aThree\\}
             \ifthenelse{\equal{\qFour}{}}{}{\textsc{\Large\icon{\faQuestion}} & \Large\qFour\\}
             \ifthenelse{\equal{\aFour}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aFour\\}         
-            \ifthenelse{\equal{\qFive}{}}{}{\textsc{\Large\icon{\faQuestion}} & \Large\qFive\\}
-            \ifthenelse{\equal{\aFive}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aFive\\}         
+            % \ifthenelse{\equal{\qFive}{}}{}{\textsc{\Large\icon{\faQuestion}} & \Large\qFive\\}
+            % \ifthenelse{\equal{\aFive}{}}{}{\textsc{\Large\icon{\faExclamation}} & \aFive\\}         
 		\end{tabular}
 	\end{textblock}
 }
