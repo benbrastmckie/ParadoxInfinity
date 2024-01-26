@@ -1,0 +1,35 @@
+# NOTES -- Module 2
+
+- Week 4: Self Reference
+  - Reading
+    - Russell
+      -
+    - Weyl
+  - Lectures
+    - Monday: Paradoxes
+      - From Cantor to Russell's Paradox
+      - Relations Paradox
+      - Frege's Axiom V
+    - Wednesday: Diagnosis
+      - VCP
+      - RTT
+- Week 5: Type Theory
+  - Monday: Solutions
+  - Wednesday: Criticism
+- Week 6: Iterative Conception of Set
+  - Monday: Iterative Conception
+    - ZFC introduced
+    - Avoids Russell's Paradox only
+      - Sets are never members of themselves
+      - There is no set of all sets
+  - Wednesday: Foundation for Mathematics
+    - Pragmatic
+    - Foundational
+    - Consistent?
+- Week 7: Absolute Generality
+  - Monday: Restricted quantification
+    - Restricted quantification is unintended
+    - What explains restriction
+  - Wednesday: Indefinite Extensibility
+    - Unrestricted quantification
+    - Quantification is indefinitely extensible

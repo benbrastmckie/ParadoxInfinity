@@ -1,26 +1,26 @@
 # TODO
 
 - [ ] syllabus
-    - [ ] finalize readings
-        - [ ] sets
-            - [ ] russell's paradox
-                - [ ] SEP
-                - [ ] VCP wiki
-                - [ ] IEP
-            - [ ] set theory
-            - [ ] absolute generality
+  - [ ] finalize readings
+    - [ ] sets
+      - [ ] russell's paradox
+        - [ ] SEP
+        - [ ] VCP wiki
+        - [ ] IEP
+      - [ ] set theory
+      - [ ] absolute generality
 - [ ] assignments
-    - [ ] write essay questions
-    - [ ] distribute resources
-    - [x] write psets
+  - [ ] write essay questions
+  - [ ] distribute resources
+  - [x] write psets
 - [ ] lectures
-    - [ ] distribute resources
-    - [ ] write lectures
+  - [ ] distribute resources
+  - [ ] write lectures
 - [ ] canvas
-    - [ ] modules
-    - [ ] quizzes
-    - [ ] announcements
-    - [x] files
-    - [x] import
+  - [ ] modules
+  - [ ] quizzes
+  - [ ] announcements
+  - [x] files
+  - [x] import
 - [ ] piazza
 - [ ] read
