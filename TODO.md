@@ -1,26 +1,17 @@
 # TODO
 
-- [ ] syllabus
-  - [ ] finalize readings
-    - [ ] sets
-      - [ ] russell's paradox
-        - [ ] SEP
-        - [ ] VCP wiki
-        - [ ] IEP
-      - [ ] set theory
-      - [ ] absolute generality
-- [ ] assignments
-  - [ ] write essay questions
-  - [ ] distribute resources
-  - [x] write psets
-- [ ] lectures
-  - [ ] distribute resources
-  - [ ] write lectures
-- [ ] canvas
-  - [ ] modules
-  - [ ] quizzes
-  - [ ] announcements
-  - [x] files
-  - [x] import
-- [ ] piazza
+- [x] syllabus
+  - [x] finalize readings
+  - [x] email: respond to Bess
+- [ ] Week 1
+  - [ ] extra
+    - [ ] CSB theorem
+    - [ ] totality and the axiom of choice
+  - [ ] Wednesday lecture
+  - [ ] canvas module
+    - [ ] problem set
+    - [ ] quiz
+    - [ ] announcements
+  - [x] Monday lecture
+- [x] piazza
 - [ ] read

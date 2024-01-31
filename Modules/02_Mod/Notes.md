@@ -1,0 +1,64 @@
+# NOTES -- Module 2
+
+- Week 4: Self Reference
+  - Reading
+    - Russell "Introduction to Mathematical Philosophy"
+      - (p.136) No set of everything
+      - (p.137) Type theory makes x\in x meaningless
+    - Russell "Mathematical Logic as based on the Theory of Types"
+      - (sec.1) Description of the paradoxes to be solved
+      - (sec.4) VCP and hierarchy of types
+      - (sec.5) Axiom of reducibility
+      - (sec.6) Solution to Russell's paradox (p.249)
+    - Russell "Principia Mathematica" (1962)
+      - (ch.2; p.37) Vicious-Circle Principle
+      - (sec.4; p.55) Axiom of Reducibility
+  - Lectures
+    - Monday: Paradoxes
+      - From Cantor to Russell's Paradox
+      - Relations Paradox
+      - Frege's Axiom V
+    - Wednesday: Diagnosis
+      - VCP
+      - RTT
+- Week 5: Type Theory
+  - Reading
+    - Russell "Mathematical Logic as based on the Theory of Types"
+      - (sec.5) Axiom of reducibility
+      - (sec.6) Solution to Russell's paradox (p.249)
+    - Weyl "Mathematics and Logic"
+      - (sec.3) if properties are constructed, their existence should not be assumed
+      - "cured the disease but... imperiled the very life of the patient."
+    - Optional: Ramsey "The Foundations of Mathematics"
+      - Against the axiom of reducibility
+      - Page number?
+  - Monday: Solutions given by Russell
+  - Wednesday: Criticism by Weyl and Dedekind
+    - Dedekind cuts example: quantification over different types
+- Week 6: Iterative Conception of Set
+  - Reading
+    - Felgner "Zermelo 1908b"
+      - (sec.1) Axioms and definitions
+      - (p.197) solution to paradoxes
+    - Boolos "The iterative conception of set"
+    - Menzel (1986) "On the iterative explanation of the paradoxes"
+  - Monday: Iterative Conception
+    - ZFC introduced
+    - Zermelo shows that Russell's Paradox is avoided
+      - Sets are never members of themselves
+      - There is no set of all sets
+      - Boolos (p.217) "proof of the inconsistency of naive set theory"
+  - Wednesday: Foundation for Mathematics
+    - Pragmatic (Menzel, p.38)
+    - Foundational
+    - Consistent (Boolos, p.218)
+- Week 7: Absolute Generality
+  - Reading
+    - Williamson "Everything"
+    - Cartwright "Speaking of Everything"
+  - Monday: Restricted quantification
+    - Restricted quantification is unintended
+    - What explains restriction
+  - Wednesday: Indefinite Extensibility
+    - Unrestricted quantification
+    - Quantification is indefinitely extensible

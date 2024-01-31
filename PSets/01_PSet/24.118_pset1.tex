@@ -11,7 +11,7 @@
 % See this video: https://www.youtube.com/watch?v=pSSsZLTMDq0
 
 %Questions and Answers
-\qa{q} % q ="questions only"; a="answers only";  b="both"
+\qa{b} % q ="questions only"; a="answers only";  b="both"
 \usepackage{../qa}
 
 
@@ -88,7 +88,11 @@ B &= &\mathbb{N}
 \end{array}
 \] }
 
-\answer{The function is injective, since no two elements of \(A\) are mapped to the same element of $B$. It is not surjective, since not every element of \(B\) is hit by an element of $A$. For instance, there is no number in set $A$ whose square is 69 but 69 is an element of set \(B\).  }
+  \answer{
+    The function is injective, since no two elements of \(A\) are mapped to the same element of $B$.
+    It is not surjective, since not every element of \(B\) is hit by an element of $A$.
+    For instance, there is no number in set $A$ whose square is 69 but 69 is an element of set \(B\).
+  }
 }
 
 \com{ %used in 2022 
@@ -289,10 +293,10 @@ For each of the questions below determine which of the following answers is corr
 
 \begin{enumerate}
 
-\item \question{Are $\set{1992, 1993, 2019}$ and $\set{1992, 1993, 2019, 2022}$ of the same size, according to the Proper Subset Principle? Are they of the same size according to the Bijection Principle? (3~points.)
+\item \question{Are $\set{1992, 1993, 2019}$ and $\set{1992, 1993, 2019, 2024}$ of the same size, according to the Proper Subset Principle? Are they of the same size according to the Bijection Principle? (3~points.)
 }
 
-\answer{No: $\set{1992, 1993, 2019} \subsetneq \set{1992, 1993, 2019, 2022}$
+\answer{No: $\set{1992, 1993, 2019} \subsetneq \set{1992, 1993, 2019, 2024}$
 
 No: there is no bijection.}
 
@@ -349,10 +353,10 @@ Every room in Hilbert's Hotel is occupied. New guests show up.
 
 \answer{Yes. There are countably many rational numbers, and the union of two countable sets is countable. Moreover, countably many spaces can be freed up in Hilbert's Hotel by asking guest $n$ to move to room $3n$, so that we can put each new guest who is a child in a room adjacent to their parents.}
 
-\item Initially, you think there'll be one new guest for each real number (and you start feeling a bit overwhelmed). Then you hear what seems like good news! Everyone between $2022$ and $2023$ has decided they have to bail (it's been a rough year). Should this change how you feel? i.e. can all of these new guests be accommodated without asking anyone to share a room? (3~points.)
+\item Initially, you think there'll be one new guest for each real number (and you start feeling a bit overwhelmed). Then you hear what seems like good news! Everyone between $2023$ and $2024$ has decided they have to bail. Should this change how you feel, i.e., can all of these new guests be accommodated without asking anyone to share a room? (3~points.)
  
 
-\answer{No. $\mathbb{R} - [2022, 2023]$ remains an uncountable set. There are only countably many hotel rooms. If we could fit uncountably many guests in the hotel, then there would be a bijection between a countable set (the set of hotel rooms) and an uncountable set (the set of guests). But there is no such bijection. So an uncountable number of guests will not fit.}
+\answer{No. $\mathbb{R} - [2023, 2024]$ remains an uncountable set. There are only countably many hotel rooms. If we could fit uncountably many guests in the hotel, then there would be a bijection between a countable set (the set of hotel rooms) and an uncountable set (the set of guests). But there is no such bijection. So an uncountable number of guests will not fit.}
 
 
 \end{enumerate}
@@ -388,7 +392,7 @@ Say that a sequence of objects is \textbf{dense} if and only if between any two 
 
 \item \question{Describe a set that contains no integers but has the same cardinality as the set of integers. (For this one, no need to provide a justification) (3~points.)}
 
-\answer{There are many such sets. Here is one example: $\{x+\pi : x \in \mathbb{N} \}$. The set of `half-intgers' provides another: $\set{ \dots -5/2, -3/2, -1/2, 1/2, 3/2, 5/2, \dots } = \{ x + 1/2 : x \mathbb{Z} \}$. }
+\answer{There are many such sets. Here is one example: $\{x+\pi : x \in \mathbb{N} \}$. The set of `half-intgers' provides another:\\ $\set{ \dots -5/2, -3/2, -1/2, 1/2, 3/2, 5/2, \dots } = \{ x + 1/2 : x \mathbb{Z} \}$. }
 
 % Left out for variety
 %\com{
@@ -399,7 +403,7 @@ Recall that $f(n) = n^2$ is a bijection from $\mathbb{N}$ to their squares. Henc
 
 One such bijection $d$ maps each non-negative integer $n$ to an even number $2n$, and each negative integer $z$ to an odd number $(-2z -1)$. Note that $d$ is well-defined since if $n\geq 0$, then $2n \in \mathbb{N}$ and likewise if $z < 0$, then $(-2z -1)$ is a positive odd number so in $\mathbb{N}$ as well. 
 
-\textit{Injective}: assume $d(x) = d(y)$. Then we have either   $2x= 2y$ or $(-2x -1) = (-2y -1)$ (since we can't have an even number equal an odd). In either case, simple algebra shows that $x=y$, so the $d$ is injective. 
+\textit{Injective}: assume $d(x) = d(y)$. Then $2x= 2y$ or $(-2x -1) = (-2y -1)$ (since we can't have an even number equal an odd). In either case, simple algebra shows that $x=y$, so the $d$ is injective. 
 
 \textit{Surjective}: consider an arbitrary $b \in \mathbb{N}$. Note that $b$ is either even or odd. If $b$ is even, then $b = 2(b/2) = d(b/2)$ where $b/2 \in \mathbb{Z}$. If $b$ is odd, then $b = -2(-b/2 - 1/2) - 1 = d(-b/2 - 1/2)$ where $-b/2 - 1/2 \in \mathbb{Z}$.
 
@@ -439,12 +443,10 @@ So $f(g^{-1}(n))$ is a bijection from the integers to $\set{7^1,7^2,7^3,\dots}$.
 \item  \question{The Cantor-Schroeder-Bernstein Theorem states that if there is an injection from $A$ to (a subset of) $B$ and an injection from $B$ to (a subset of) $A$, then there is a bijection from $A$ to $B$.}
 \begin{enumerate}
 
-%harder version used in 2023:
-% (we'll show injection from naturals to primes in lecture)
-
-\item \question{Construct an injection from $\mathbb{Z}$ to the set of prime numbers  $\set{2,3,5,7,\dots}$. (10~points) 
-
-(As in lecture, you may assume that whenever $p_1,\dots,p_n$ are primes, there is a smallest prime greater than each of $p_1,\dots,p_n$.) }
+\item \question{
+  Construct an injection from $\mathbb{Z}$ to the set of prime numbers  $\set{2,3,5,7,\dots}$. (10~points) 
+  (You may assume that whenever $p_1,\dots,p_n$ are primes, there is a smallest prime greater than each of $p_1,\dots,p_n$.)
+}
 
 \answer{Solution going through the naturals as an intermediary: in lecture, we constructed both (i) an injection from the integers to the naturals and (ii) an injection from the naturals to the primes. Just compose these injections to have an injection from the integers to the primes (one could of course proceed directly). 
 
@@ -514,9 +516,16 @@ The identity function is an injection from the prime numbers to the natural numb
 
 
 \item \question{
-Let $S$ be the following set: $$\set{f : f \text{ is a function that assigns each natural number to a member of $\set{\Earth,\Sun,\Moon}$}}$$
+Let $S=\set{f : f \text{ is a function from the natural numbers to $\set{\Earth,\Sun,\Moon}$}}$
 where $\Earth$ is the Earth, $\Sun$ is the Sun, and $\Moon$ is the Moon.
-An example of a member of $S$ is the function $g: \mathbb{N} \rightarrow \set{\Earth,\Sun,\Moon}$ such that $$g(n) = \begin{cases}\Earth \text{ if $n$ is a power of seven}\\ \Sun \text{ otherwise}\end{cases}$$
+An example of a member of $S$ is the function $g: \mathbb{N} \rightarrow \set{\Earth,\Sun,\Moon}$ such that: 
+  \[
+    g(n) = 
+      \begin{cases}
+        \Earth \text{ if $n$ is a power of seven}\\ 
+        \Sun \text{ otherwise}
+      \end{cases}
+  \]
 Prove that there cannot be a bijection from the set of natural numbers to $S$. (10~points)
 
 
@@ -630,7 +639,7 @@ Case 2: Assume that $h(D) \notin D$. Then by the definition of the set $D$, ther
 %such that the pre-image elements do not contain those $A$-elements
 
 
-\textit{OG version of this proof} (which Hunt found a bit dense): Suppose otherwise. Then there is some set $A$ such that $|A| \not< |\mathscr{P}^\star(A)|$, which means that either there is no injection from $A$ to $\mathscr{P}^\star(A)$ or there is a bijection from $A$  to $\mathscr{P}^\star(A)$. But $f(x) = \set{x}$ an injection from $A$ to $\mathscr{P}^\star(A)$. So it must be the case that there is a bijection $h'$ from $A$ to $\mathscr{P}^\star(A)$, and therefore a bijection $h$ from $\mathscr{P}^\star(A)$ to $A$.
+\textit{OG version of this proof}: Suppose otherwise. Then there is some set $A$ such that $|A| \not< |\mathscr{P}^\star(A)|$, which means that either there is no injection from $A$ to $\mathscr{P}^\star(A)$ or there is a bijection from $A$  to $\mathscr{P}^\star(A)$. But $f(x) = \set{x}$ an injection from $A$ to $\mathscr{P}^\star(A)$. So it must be the case that there is a bijection $h'$ from $A$ to $\mathscr{P}^\star(A)$, and therefore a bijection $h$ from $\mathscr{P}^\star(A)$ to $A$.
 
 Let $D = \set{a \in A : \exists C \in \mathscr{P}^\star(A) (h(C) = a \wedge a \not\in C)}$. We start by verifying that $D$ is non-empty. Suppose otherwise. Then $D$ is empty, so, in particular, $h(\set{a}) = a$ for each $a \in A$. But $A$ has at least two members, $a$ and $b$ ($a \neq b$). And, since $h$ is injective, the fact that $h(\set{a}) = a$ and $h(\set{b}) = b$ entails that we can have neither $ h(\set{a,b}) = a $ nor $h(\set{a,b}) = b$. So $h(\set{a,b}) \in D$, contradicting our hypothesis.
 
