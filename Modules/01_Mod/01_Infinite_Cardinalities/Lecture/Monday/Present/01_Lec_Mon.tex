@@ -1,0 +1,407 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+% \documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt} %Nice
+%\usetheme{Dresden} %Nice
+% \usetheme{Frankfurt} %Nice
+%\usetheme{Goettingen} %Sidebar
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+% \usecolortheme{albatross}
+% \usecolortheme{beaver}
+% \usecolortheme{beetle}
+% \usecolortheme{crane}
+% \usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+% Custom
+\setbeamercolor{normal text}{fg=white,bg=black!90}
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{alerted text}{fg=red!85!black}
+\setbeamercolor{item projected}{use=item,fg=black,bg=item.fg!35}
+\setbeamercolor*{palette primary}{use=structure,fg=structure.fg}
+\setbeamercolor*{palette secondary}{use=structure,fg=structure.fg!95!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=structure.fg!90!black}
+\setbeamercolor*{palette quaternary}{use=structure,fg=structure.fg!95!black,bg=black!80}
+\setbeamercolor*{framesubtitle}{fg=white}
+\setbeamercolor*{block title}{parent=structure,bg=black!60}
+\setbeamercolor*{block body}{fg=black,bg=black!10}
+\setbeamercolor*{block title alerted}{parent=alerted text,bg=black!15}
+\setbeamercolor*{block title example}{parent=example text,bg=black!15}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+%%% SYMBOLS AND STYLES %%%
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n} 
+\DeclareMathSymbol{\strictif}{\mathrel}{symbolsC}{74}
+\usepackage{multicol}
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\setbeamercovered{transparent}
+\usepackage{graphicx}
+\usepackage{mathabx}
+
+\renewcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+	
+%%% CITATIONS %%%
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep={}}
+\newcommand\citeapl[2][]{\citeauthor{#2}'s#1} %%Use \citeapl is for possessive author name only.
+\newcommand\citea[2][]{\citeauthor{#2}#1} %%Use \citea is for author name only, with optional page numbers.
+\newcommand\citepl[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}%%The command \citepl is for possessive citations.
+\usepackage{bibentry}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Short title]{\LARGE Paradox and Infinity} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{\it Today's Topic: Infinite Cardinalities} % Your name
+\date{} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%%% NOTES %%%
+
+%Recall: \pause for 
+
+%Recall: ITEMIZE
+
+%\begin{itemize}  
+%\item<1-> 
+%\end{itemize}
+
+%\onslide<1->{ SLIDE }
+
+%\begin{itemize}[<+(1)->]
+%\begin{itemize}[<+->]
+
+\begin{frame}
+
+  \textbf{Proper Subset Principle:} $A\subset B \Rightarrow \abs{A}<\abs{B}$.
+  \vspace{.2in}
+  \pause
+
+  \textbf{Bijection Principle:} $A\simeq B \Leftrightarrow \abs{A}=\abs{B}$.
+  \vspace{.2in}
+  \pause
+
+  \textbf{Bijection:} $A\simeq B$ \textit{iff} there is a bijection $f: A \to B$.
+  \vspace{.2in}
+  \pause
+
+  ``There is a one-to-one pairing of $A$s and $B$s with no remainder.''
+
+\end{frame}
+
+
+%%% -------------------------------------------------------
+
+
+\begin{frame}
+
+  \textbf{Ordered Pair:} $\tuple{a,b}\coloneq \set{\set{a},\set{a,b}}$.
+  \vspace{.2in}
+  \pause
+
+  \textbf{Relation:} $A\times B\coloneq \set{\tuple{a,b}:a\in A,\ b\in B}$.
+  \vspace{.2in}
+  \pause
+
+  \textbf{Function:} $f\subseteq A\times B$ is a \textit{function} $f: A\to B$ \textit{iff} every $a\in A$:\\ 
+    \begin{enumerate}
+      \item There is some $b\in B$ where $\tuple{a,b}\in f$; and
+      \item For any $b,c\in B$, if both $\tuple{a,b},\tuple{a,c}\in f$, then $b=c$. 
+    \end{enumerate}
+  \vspace{.2in}
+  \pause
+
+  \textbf{Abbreviation:} `$f(a)=b$' abbreviates `$\tuple{a,b}\in f$' if $f$ is a function. 
+  \vspace{.2in}
+
+\end{frame}
+
+
+%%% -------------------------------------------------------
+  
+
+\begin{frame}
+
+  \textbf{Injective:} $f: A\to B$ is \textit{injective iff} for any $a,b\in A$, if $f(a)=f(b)$, then $a=b$. 
+  \vspace{.2in}
+  \pause
+
+  \textbf{Surjective:} $f: A\to B$ is \textit{surjective iff} for all $b\in B$ there is some $a\in A$ where $f(a)=b$.
+  \vspace{.2in}
+  \pause
+
+  \textbf{Bijection:} $f: A\to B$ is \textit{bijective iff} $f$ is injective and surjective. 
+  \vspace{.2in}
+  \pause
+
+  \textbf{Equinumerous:} $A\simeq B$ \textit{iff} there is a bijection $f: A \to B$.
+  \vspace{.2in}
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+\begin{frame}
+
+  \textbf{Paradox:} There are equinumerous proper subests of infinite sets.
+  \pause
+
+  \begin{itemize}
+    \item $\N_1 \subset \N$ where $\N_i\coloneq\set{x \in \N : i \leq x}$.
+    \item The successor function $x'= x + 1$ is a bijection from $\N$ to $\N_1$. 
+  \end{itemize}
+  \vspace{.2in}
+  \pause
+
+
+  \textbf{Hilbert's Hotel:} Always room for (countably many) more guests.
+  \pause
+
+  \begin{itemize}
+    \item $f_m(n) = n + m$ is a bijection from $\N$ to $\N_m$ .
+    \item $g_m(n) = n \times m$ is a bijection where $\N_{(m)}=\set{k\times m: k \in \N}$.
+  \end{itemize}
+  \vspace{.2in}
+  \pause
+
+  \textbf{Question:} Can Hilbert's Hotel accommodate an infinite number of groups of infinitely many new guests?
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+\begin{frame}
+
+  \textbf{Contradiction:}
+  \pause
+
+    \begin{itemize}
+      \item Both $\abs{\N_1}<\abs{\N}$ and $\abs{\N_1}=\abs{\N}$ by the principles.
+      % \item But $x < y$ \textit{iff} $x \leq y$ and $x \neq y$.
+      \item Totality: $x < y$, $x = y$, or $x > y$ (exclusive).
+      \item Thus $\abs{\N_1}<\abs{\N}$ entails $\abs{\N_1} \neq \abs{\N}$: contradiction.
+    \end{itemize}
+    \vspace{.2in}
+    \pause
+
+  \textbf{Options:}
+  \pause
+
+    \begin{itemize}
+      \item Accept contradictions?
+      \item Give up totality?
+      \item Give up one of the principles above?
+    \end{itemize}
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+\begin{frame}
+
+  \textbf{Abductive Method:}
+  \pause
+
+  \begin{itemize}
+    \item Deductively Closed: $\Gamma \vdash \varphi \Rightarrow \varphi \in \Gamma$.
+    \item Consistent: $\Gamma\nvdash \varphi\wedge\neg\varphi$.
+    \item Simple: finitely axiomatizable in intuitive terms.
+    \item Strong: says more rather than less.
+    \item Practical: has useful applications.
+  \end{itemize}
+  \vspace{.2in}
+  \pause
+
+  \textbf{Metaphysical Aside:} Is theory choice subjective?
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+\begin{frame}
+
+  \textbf{Proper Subset Principle:} $A\subset B \Rightarrow \abs{A}<\abs{B}$.
+  \pause
+
+  \begin{enumerate}
+    \item $\abs{\N}>\abs{\N_{2}}>\abs{\N_{3}}>\ldots$ and $\abs{\N}>\abs{\N_{(2)}}>\abs{\N_{(4)}}>\ldots$
+    \item How are we to compare $\abs{\N_{(2)}}$ and $\abs{\N_{(3)}}$ for size?
+    \item Could PSP be supplemented?
+    \item Finite case: set of people vs. set of seats.
+  \end{enumerate}
+  \vspace{.2in}
+  \pause
+
+  \textbf{Injection Principle:} $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
+  \pause
+
+  \begin{itemize}
+    \item 
+    \item What kind of theory does this give us?
+  \end{itemize}
+
+  % \begin{itemize}
+  %   \item Reflexive: $x \leq x$ for any number $x$.
+  %   \item Transitive: If $x \leq y$ and $y \leq z$, then $x \leq z$.
+  %   \item Anti-Symmetric: If $x \leq y$ and $y \leq x$, then $x = y$.
+  %   \item Total: Either $x \leq y$ or $y \leq x$ for any numbers $x$ and $y$.
+  % \end{itemize}
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+
+
+
+
+%     \end{itemize}
+%   \item[\it Linear Ordering:] Numbers are linearly ordered by $\leq$ and so must satisfy the following.
+%     \begin{itemize}[leftmargin=-.2in]
+%       \item[\tt Reflexive:] $x \leq x$ for any number $x$.
+%       \item[\tt Transitive:] If $x \leq y$ and $y \leq z$, then $x \leq z$.
+%       \item[\tt Anti-Symmetric:] If $x \leq y$ and $y \leq x$, then $x = y$.
+%       \item[\tt Total:] Either $x \leq y$ or $y \leq x$ for any numbers $x$ and $y$.
+%       \item Compare giving a theory of identity where symmetry fails.
+%       \item We wouldn't really be talking about identity.
+%     \end{itemize}
+%   \item[\it Incomplete:] Converse of PSP is false and so PSP does not define $<$.
+%     \begin{itemize}[leftmargin=-.2in]
+%       \item[\bf (?)] Could PSP be supplemented in some way?
+%       \item[\bf (?)] How would we compare the cardinality of two bags of stones?
+%       \item By trying to line them up one-to-one.
+%     \end{itemize}
+%   \item[\it Injection Principle:] $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
+%     \begin{itemize}[leftmargin=-.2in]
+%       \item This assumes \textit{Bijection Principle} (BP) which is in tension with PSP.
+%       \item Restricting the \textit{Injection Principle} (IP) and BP to finite sets is \textit{ad hoc}.
+%       \item Better to take Hilbert's Hotel to be a counterexample to PSP.
+%     \end{itemize}
+% \end{enumerate}
+%
+%
+%
+%
+% \section*{Countable Infinity}
+%
+% \begin{enumerate}
+%   \item[\it Principles:] Given IP and BP, we may show that numbers are linearly ordered.
+%     \begin{itemize}[leftmargin=-.2in]
+%       \item \texttt{Anti-Symmetric} is proven by the Cantor-Schroeder-Bernstein theorem.
+%       \item \texttt{Total} is equivalent to the Axiom of Choice.
+%     \end{itemize}
+%   \item[\it Countable Sets:] A set $A$ is \textit{countably infinite iff} $\abs{A}=\abs{\N}$.
+%   \item[\it Identities:] Bijection Principle makes many sets countably infinite.
+%     \begin{itemize}[leftmargin=-.2in]
+%       \item $\abs{\N} = \abs{\N_m} = \abs{\N_{(m)}}$.  
+%       \item $\abs{\N} = \abs{\Z} = \abs{\Q}$.
+%       \item[\bf (?)] What about $\abs{\N} = \abs{\R}$?
+%     \end{itemize}
+%   \item[\it Next Time:] We will show that there are different sizes of infinity.
+% \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+\nobibliography{Zotero}
+\bibliographystyle{Phil_Review}
+
+\end{document} 

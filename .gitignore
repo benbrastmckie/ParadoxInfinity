@@ -7,3 +7,8 @@
 *.out
 *.docx
 *.rtf
+*.bbl
+*.blg
+*.nav
+*.snm
+*.toc
