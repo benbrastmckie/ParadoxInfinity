@@ -111,6 +111,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\renewcommand{\P}{\mathcal{P}}
 
 	
 %%% CITATIONS %%%
@@ -130,8 +131,9 @@
 
 \title[Short title]{\LARGE Paradox and Infinity} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{\it Today's Topic: Infinite Cardinalities} % Your name
+\author{\it --- Infinite Cardinalities ---\\ \small \today } % Your name
 \date{} % Date, can be changed to a custom date
+
 
 \begin{document}
 
@@ -161,19 +163,69 @@
 
 \begin{frame}
 
-  \textbf{Proper Subset Principle:} $A\subset B \Rightarrow \abs{A}<\abs{B}$.
+  \textbf{Where do theories begin?} 
+  % \pause
+
+  \begin{itemize}
+    \item A theory that is neutral on everything is no theory at all.
+    \item No assumptions, no conclusions.
+    \item Assumptions are only as meaningful as their terms.
+  \end{itemize}
   \vspace{.2in}
   \pause
 
-  \textbf{Bijection Principle:} $A\simeq B \Leftrightarrow \abs{A}=\abs{B}$.
+  \textbf{Where do meanings begin?} 
+
+  \begin{itemize}
+    \item Can't define everything.
+    \item Intuitions and patterns of use.
+    \item Principles encode theoretical roles.
+  \end{itemize}
   \vspace{.2in}
   \pause
 
-  \textbf{Bijection:} $A\simeq B$ \textit{iff} there is a bijection $f: A \to B$.
+  \textbf{Cardinal Numbers}
+
+  \begin{itemize}
+    \item Provide answers to `How many?'-questions.
+    \item Which cardinality principles should we adopt?
+  \end{itemize}
+
+
+\end{frame}
+
+%%% -------------------------------------------------------
+
+
+
+\begin{frame}
+
+  \textbf{Cardinality:} `$\abs{A}$' reads `The number of $A$s'.
   \vspace{.2in}
   \pause
 
-  ``There is a one-to-one pairing of $A$s and $B$s with no remainder.''
+  \textbf{Proper Subset Principle:} $\abs{A}<\abs{B}$ \textit{if} $A\subset B$.
+  \pause
+
+  \begin{itemize}
+    \item Subset: $A\subseteq B$ \textit{iff} for every $x$, if $x \in A$, then $x \in B$.
+    \item Extensionality: $A = B$ \textit{iff} for any $x$: $x \in A$ just in case $x \in B$. 
+    \item Proper Subset: $A\subset B$ \textit{iff} $A \subseteq B$ and $A \neq B$. 
+  \end{itemize}
+  \vspace{.1in}
+  \pause
+
+  \textbf{Bijection Principle:} $\abs{A}=\abs{B}$ \textit{iff} $A\simeq B$.
+  \pause
+
+  \begin{itemize}
+    \item Equinumerous: $A\simeq B$ \textit{iff} there is a bijection $f: A \to B$.
+    \item Bijection: ``A one-to-one pairing with no remainder.'' 
+    \item Can be defined without recourse to the concepts of number.
+  \end{itemize}
+  \vspace{.2in}
+
+  
 
 \end{frame}
 
@@ -185,19 +237,16 @@
 
   \textbf{Ordered Pair:} $\tuple{a,b}\coloneq \set{\set{a},\set{a,b}}$.
   \vspace{.2in}
-  \pause
 
-  \textbf{Relation:} $A\times B\coloneq \set{\tuple{a,b}:a\in A,\ b\in B}$.
+  \textbf{Cartesian Product:} $A\times B\coloneq \set{\tuple{a,b}:a\in A,\ b\in B}$.
   \vspace{.2in}
-  \pause
 
   \textbf{Function:} $f\subseteq A\times B$ is a \textit{function} $f: A\to B$ \textit{iff} every $a\in A$:\\ 
     \begin{enumerate}
       \item There is some $b\in B$ where $\tuple{a,b}\in f$; and
-      \item For any $b,c\in B$, if both $\tuple{a,b},\tuple{a,c}\in f$, then $b=c$. 
+      \item For any $b,c\in B$, if $\tuple{a,b} \in f$ and $\tuple{a,c}\in f$, then $b=c$. 
     \end{enumerate}
   \vspace{.2in}
-  \pause
 
   \textbf{Abbreviation:} `$f(a)=b$' abbreviates `$\tuple{a,b}\in f$' if $f$ is a function. 
   \vspace{.2in}
@@ -212,18 +261,18 @@
 
   \textbf{Injective:} $f: A\to B$ is \textit{injective iff} for any $a,b\in A$, if $f(a)=f(b)$, then $a=b$. 
   \vspace{.2in}
-  \pause
 
   \textbf{Surjective:} $f: A\to B$ is \textit{surjective iff} for all $b\in B$ there is some $a\in A$ where $f(a)=b$.
   \vspace{.2in}
-  \pause
 
   \textbf{Bijection:} $f: A\to B$ is \textit{bijective iff} $f$ is injective and surjective. 
   \vspace{.2in}
-  \pause
+  % \pause
 
   \textbf{Equinumerous:} $A\simeq B$ \textit{iff} there is a bijection $f: A \to B$.
   \vspace{.2in}
+
+  \textbf{Bijection Principle:} $\abs{A}=\abs{B}$ \textit{iff} $A\simeq B$.
 
 \end{frame}
 
@@ -231,8 +280,7 @@
 
 \begin{frame}
 
-  \textbf{Paradox:} There are equinumerous proper subests of infinite sets.
-  \pause
+  \textbf{Paradox:} There are equinumerous proper subsets of infinite sets.
 
   \begin{itemize}
     \item $\N_1 \subset \N$ where $\N_i\coloneq\set{x \in \N : i \leq x}$.
@@ -243,7 +291,6 @@
 
 
   \textbf{Hilbert's Hotel:} Always room for (countably many) more guests.
-  \pause
 
   \begin{itemize}
     \item $f_m(n) = n + m$ is a bijection from $\N$ to $\N_m$ .
@@ -261,19 +308,17 @@
 \begin{frame}
 
   \textbf{Contradiction:}
-  \pause
 
-    \begin{itemize}
+    \begin{enumerate}
       \item Both $\abs{\N_1}<\abs{\N}$ and $\abs{\N_1}=\abs{\N}$ by the principles.
       % \item But $x < y$ \textit{iff} $x \leq y$ and $x \neq y$.
       \item Totality: $x < y$, $x = y$, or $x > y$ (exclusive).
       \item Thus $\abs{\N_1}<\abs{\N}$ entails $\abs{\N_1} \neq \abs{\N}$: contradiction.
-    \end{itemize}
+    \end{enumerate}
     \vspace{.2in}
     \pause
 
   \textbf{Options:}
-  \pause
 
     \begin{itemize}
       \item Accept contradictions?
@@ -287,16 +332,15 @@
 
 \begin{frame}
 
-  \textbf{Abductive Method:}
-  \pause
+  \textbf{Abductive Method:} A good theory $\Gamma$ ought to be\ldots 
 
-  \begin{itemize}
+  \begin{enumerate}
     \item Deductively Closed: $\Gamma \vdash \varphi \Rightarrow \varphi \in \Gamma$.
     \item Consistent: $\Gamma\nvdash \varphi\wedge\neg\varphi$.
     \item Simple: finitely axiomatizable in intuitive terms.
     \item Strong: says more rather than less.
     \item Practical: has useful applications.
-  \end{itemize}
+  \end{enumerate}
   \vspace{.2in}
   \pause
 
@@ -308,14 +352,14 @@
 
 \begin{frame}
 
-  \textbf{Proper Subset Principle:} $A\subset B \Rightarrow \abs{A}<\abs{B}$.
+  \textbf{Proper Subset Principle:} $\abs{A}<\abs{B}$ \textit{if} $A\subset B$.
   \pause
 
   \begin{enumerate}
     \item $\abs{\N}>\abs{\N_{2}}>\abs{\N_{3}}>\ldots$ and $\abs{\N}>\abs{\N_{(2)}}>\abs{\N_{(4)}}>\ldots$
     \item How are we to compare $\abs{\N_{(2)}}$ and $\abs{\N_{(3)}}$ for size?
     \item Could PSP be supplemented?
-    \item Finite case: set of people vs. set of seats.
+    \item Example: $|$set of people$| < |$set of seats$|$.
   \end{enumerate}
   \vspace{.2in}
   \pause
@@ -323,17 +367,40 @@
   \textbf{Injection Principle:} $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
   \pause
 
-  \begin{itemize}
-    \item 
-    \item What kind of theory does this give us?
-  \end{itemize}
+  \begin{enumerate}
+    \item Reflexive: $|A| \leq |A|$.
+    \item Transitive: if $|A| \leq |B|$ and $|B| \leq |C|$, then $|A| \leq |C|$.
+    \item Anti-Symmetric: if $|A| \leq |B|$ and $|B| \leq |A|$, then $|A| = |B|$.
+    \item Total: $|A| \leq |B|$ or $|B| \leq |A|$.
+  \end{enumerate}
 
-  % \begin{itemize}
-  %   \item Reflexive: $x \leq x$ for any number $x$.
-  %   \item Transitive: If $x \leq y$ and $y \leq z$, then $x \leq z$.
-  %   \item Anti-Symmetric: If $x \leq y$ and $y \leq x$, then $x = y$.
-  %   \item Total: Either $x \leq y$ or $y \leq x$ for any numbers $x$ and $y$.
-  % \end{itemize}
+\end{frame}
+
+%%% -------------------------------------------------------
+
+\begin{frame}
+
+  \textbf{Conclusion:} The \textit{Proper Subset Principle} must go!
+  \vspace{.2in}
+  \pause
+
+  \textbf{The Infinite:} A set $A$ is \textit{countably infinite iff} $\abs{A} = \abs{\N}$.
+
+    \begin{itemize}
+      \item $\abs{\N} = \abs{\N_m} = \abs{\N_{(m)}}$.  
+      \item $\abs{\N} = \abs{\Z} = \abs{\Q}$.
+    \end{itemize}
+    \vspace{.2in}
+    \pause
+
+  \textbf{Next Time:} We will show that there are different sizes of infinity.
+
+    \begin{itemize}
+      \item $\abs{\N} \neq \abs{\R}$.
+      \item $\abs{A} \neq \abs{\P(A)}$.
+    \end{itemize}
+
+
 
 \end{frame}
 
@@ -341,51 +408,6 @@
 
 
 
-
-
-%     \end{itemize}
-%   \item[\it Linear Ordering:] Numbers are linearly ordered by $\leq$ and so must satisfy the following.
-%     \begin{itemize}[leftmargin=-.2in]
-%       \item[\tt Reflexive:] $x \leq x$ for any number $x$.
-%       \item[\tt Transitive:] If $x \leq y$ and $y \leq z$, then $x \leq z$.
-%       \item[\tt Anti-Symmetric:] If $x \leq y$ and $y \leq x$, then $x = y$.
-%       \item[\tt Total:] Either $x \leq y$ or $y \leq x$ for any numbers $x$ and $y$.
-%       \item Compare giving a theory of identity where symmetry fails.
-%       \item We wouldn't really be talking about identity.
-%     \end{itemize}
-%   \item[\it Incomplete:] Converse of PSP is false and so PSP does not define $<$.
-%     \begin{itemize}[leftmargin=-.2in]
-%       \item[\bf (?)] Could PSP be supplemented in some way?
-%       \item[\bf (?)] How would we compare the cardinality of two bags of stones?
-%       \item By trying to line them up one-to-one.
-%     \end{itemize}
-%   \item[\it Injection Principle:] $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
-%     \begin{itemize}[leftmargin=-.2in]
-%       \item This assumes \textit{Bijection Principle} (BP) which is in tension with PSP.
-%       \item Restricting the \textit{Injection Principle} (IP) and BP to finite sets is \textit{ad hoc}.
-%       \item Better to take Hilbert's Hotel to be a counterexample to PSP.
-%     \end{itemize}
-% \end{enumerate}
-%
-%
-%
-%
-% \section*{Countable Infinity}
-%
-% \begin{enumerate}
-%   \item[\it Principles:] Given IP and BP, we may show that numbers are linearly ordered.
-%     \begin{itemize}[leftmargin=-.2in]
-%       \item \texttt{Anti-Symmetric} is proven by the Cantor-Schroeder-Bernstein theorem.
-%       \item \texttt{Total} is equivalent to the Axiom of Choice.
-%     \end{itemize}
-%   \item[\it Countable Sets:] A set $A$ is \textit{countably infinite iff} $\abs{A}=\abs{\N}$.
-%   \item[\it Identities:] Bijection Principle makes many sets countably infinite.
-%     \begin{itemize}[leftmargin=-.2in]
-%       \item $\abs{\N} = \abs{\N_m} = \abs{\N_{(m)}}$.  
-%       \item $\abs{\N} = \abs{\Z} = \abs{\Q}$.
-%       \item[\bf (?)] What about $\abs{\N} = \abs{\R}$?
-%     \end{itemize}
-%   \item[\it Next Time:] We will show that there are different sizes of infinity.
 % \end{enumerate}
 
 

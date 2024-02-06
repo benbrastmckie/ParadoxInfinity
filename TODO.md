@@ -4,10 +4,11 @@
   - [ ] extra
     - [ ] CSB theorem
     - [ ] totality and the axiom of choice
-  - [:] Monday lecture
+    - [ ] ordered pair definition
   - [ ] Wednesday lecture
-  - [ ] canvas module
-    - [.] problem set
-    - [.] quiz
-    - [ ] announcements
+  - [x] Monday lecture
+  - [x] canvas module
+    - [x] problem set
+    - [x] quiz
+    - [x] announcements
 - [:] piazza

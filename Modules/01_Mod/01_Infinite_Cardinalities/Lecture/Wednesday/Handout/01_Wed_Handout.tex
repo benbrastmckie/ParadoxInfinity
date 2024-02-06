@@ -1,0 +1,122 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Infinite Cardinalities}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{Cardinality Principles}
+
+\begin{enumerate}
+  \item[\it Bijection Principle:] $\abs{A}=\abs{B}$ \textit{iff} $A\simeq B$. 
+    \begin{itemize}
+      \item[\tt Reflexive:] $A \simeq A$.
+      \item[\tt Symmetric:] if $A \simeq B$, then $B \simeq A$.
+      \item[\tt Transitive:] if $A \simeq B$ and $B \simeq C$, then $A \simeq C$.
+    \end{itemize}
+  \item[\it Injection Principle:] $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
+    \begin{itemize}
+      \item[\tt Reflexive:] $|A| \leq |A|$.
+      \item[\tt Transitive:] if $|A| \leq |B|$ and $|B| \leq |C|$, then $|A| \leq |C|$.
+      \item[\tt Anti-Symmetric:] if $|A| \leq |B|$ and $|B| \leq |A|$, then $|A| = |B|$.
+      \item[\tt Total:] $|A| \leq |B|$ or $|B| \leq |A|$.\\
+        (Equivalent to the Axiom of Choice)
+    \end{itemize}
+\end{enumerate}
+
+
+
+\section*{Cantor-Schroeder-Bernstein}
+
+\begin{enumerate}
+  \item[\it Theorem:] If there are injective functions $f: A \to B$ and $g: B \to A$, then there is a bijective function $h: A \to B$.
+\end{enumerate}
+
+
+\section*{Countable Infinity}
+
+\begin{enumerate}
+  \item[\it Identities:] Bijection Principle makes many sets countably infinite.
+    \begin{itemize}[leftmargin=-.2in]
+      \item $\abs{\N} = \abs{\N_m} = \abs{\N_{(m)}}$.  
+      \item $\abs{\N} = \abs{\Z} = \abs{\Q}$.
+      \item[\bf (?)] What about $\abs{\N} = \abs{\R}$?
+    \end{itemize}
+  \item[\it Next Time:] We will show that there are different sizes of infinity.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
