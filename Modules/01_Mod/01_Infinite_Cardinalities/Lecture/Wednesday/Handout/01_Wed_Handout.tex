@@ -92,11 +92,10 @@
         \begin{itemize}[leftmargin=.5in]
           \item[\it Cantor-Schroeder-Bernstein Theorem:] If there are injective functions $f: A \to B$ and $g: B \to A$, then there is a bijection $h: A \to B$. 
         \end{itemize}
-      \item[\tt Total:] $|A| \leq |B|$ or $|B| \leq |A|$.\\
-        (Equivalent to the Axiom of Choice)
+      \item[\tt Total:] $|A| \leq |B|$ or $|B| \leq |A|$. (Requires the Axiom of Choice)
     \end{itemize}
-  \item[\it Same Number:] $\abs{A} = \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \leq \abs{A}$.
-  \item[\it Strict Order:] $\abs{A} < \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \nleq \abs{A}$.
+  \item[\it Could Define:] $\abs{A} = \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \leq \abs{A}$.
+  \item[] $\abs{A} < \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \nleq \abs{A}$.
 \end{itemize}
 
 
@@ -120,8 +119,9 @@
       % \item The set of primes $\Pr$ is countable since $\Pr \subset \N$ and yet infinite.
       \item The positive rational numbers $\Q^+$ are countably infinite since: 
         \begin{itemize}
-          \item There is an injection from $\Q^+$ to $\set{\tuple{n,m}\in\N^2: m \neq 0 \text{ and } n\bot m}$ 
-          \item Countable since $f(\tuple{n,m})=2^n \cdot 3^m$ is an injection from $\Q$ to $\N$.
+          \item There is an injection from $\Q^+$ to $\N^2$. 
+          \item And $f(\tuple{n,m})=2^n \cdot 3^m$ is an injection from $\N^2$ to $\N$.
+          \item Hence $\Q^+$ is countable, and so $\Q$ is also countable. 
           \item Infinite since identity is an injection from $\N$ to $\Q$. 
         \end{itemize}
       % \item FTA: every natural number has a unique prime decomposition.
@@ -135,15 +135,15 @@
 
 \begin{enumerate}
   \item[\it Real Interval:] The real interval $(0,1)$ is uncountably infinite.
-    \item $\abs{\N_1} \leq \abs{(0,1)}$ since $f(x) = 1/x$ is an injection $f: \N_1 \to (0,1)$.
+    \item $\abs{\N_2} \leq \abs{(0,1)}$ since $f(x) = 1/x$ is an injection $f: \N_2 \to (0,1)$.
     % \item Let $B=\set{.b_0b_1b_2\ldots : b_i \in \set{0,1} \text{ for all } i \in \N}/\set{0,1}$.
     % \item By Cantor's diagonal argument, $\abs{\N_1} \neq \abs{B}$.
-    \item $\abs{\N_1} \neq \abs{(0,1)}$ by Cantor's diagonal argument.
+    \item $\abs{\N_2} \neq \abs{(0,1)}$ by Cantor's diagonal argument.
     \item Thus $\abs{\N_1} < \abs{(0,1)}$.
     \item Observe that $g(x) = \pi(x - 1/2)$ is a bijection $g: (0,1) \to (-\pi/2,\pi/2)$. 
     \item Additionally~ $\texttt{tan}: (-\pi/2,\pi/2) \to \R$ is a bijection. 
     \item By the bijection principle, $\abs{(0,1)} = \abs{(-\pi/2,\pi/2)} = \abs{\R}$.
-    \item Thus $\abs{\N_1} < \abs{\R}$.
+    \item Thus $\abs{\N_2} < \abs{\R}$ where $\abs{\N_2} = \abs{\N}$, so $\abs{\N} < \abs{\R}$.
   % \item[\it No Countable Difference:] $\abs{S}=\abs{S \cup A}$ ~whenever~ $\abs{\N} \leq \abs{S}$ and $\abs{A} \leq \abs{\N}$.
   %   \begin{itemize}[leftmargin=-.5in]
   %     \item[\bf Proof:] 
@@ -155,8 +155,8 @@
 \section*{Cantor's Theorem}
 
 \begin{enumerate}
-  \item[\it Power Set:] $\wp(A)=\set{X : X\subseteq A}$.
-  \item[\it Theorem:] $\abs{A} < \abs{\wp(A)}$ for any set $A$. 
+  % \item[\it Power Set:] $\wp(A)=\set{X : X\subseteq A}$.
+  \item[\it Theorem:] $\abs{A} < \abs{\wp(A)}$ for any set $A$ where $\wp(A)=\set{X : X\subseteq A}$. 
     \item $\abs{A} \leq \abs{\wp(A)}$ since $f(a) = \set{a}$ is an injection. 
     \item Assume there is a bijection $f: A \to \wp(A)$.
     \item Let $D=\set{a \in A: a \notin f(a)}$.
@@ -166,6 +166,24 @@
     \item This has the form $P \leftrightarrow \neg P$ which is equivalent to $P \wedge \neg P$. 
     \item Thus there is no bijection $f: A \to \wp(A)$, and so $\abs{A} \neq \abs{\wp(A)}$.
     \item Given the above, $\abs{A} < \abs{\wp(A)}$.
+\end{enumerate}
+
+
+
+\section*{Corollary}
+
+\begin{enumerate}
+  \item[\it Universal Set:] There is no set of all sets.
+  \item Suppose there were a set $U$ of all sets. 
+  \item Since every $X \in \wp(U)$ is a set, $\wp(U) \subseteq U$. 
+  \item So $f(x) = x$ is an injection $f: \wp(U) \to U$. 
+  \item Thus $\abs{\wp(U)} \leq \abs{U}$.
+  \item Moreover, $g(x) = \set{x}$ is an injection $g: U \to \wp(U)$.
+  \item So $\abs{U} \leq \abs{\wp(U)}$.
+  \item Thus $\abs{U} = \abs{\wp(U)}$.
+  \item By Cantor's Theorem, $\abs{U} < \abs{\wp(U)}$, so $\abs{U} \neq \abs{\wp(U)}$.
+  \item Hence there is no set $U$ of all sets, so no set of everything!
+
 \end{enumerate}
 
 
@@ -180,7 +198,8 @@
   \item[\it Compare:] G\"{o}del showed that ZFC is consistent if ZF is consistent.
   \item[\it Axiom of Choice:] Every set of sets $X$ has a function $f$ where $f(Y)\in Y$ for all $Y\in X$. 
   \item[\it Well-Ordering Theorem:] Every set $X$ can be well-ordered (its subsets all have least elements). 
-  \item AC, the WOT, and \texttt{Total} are all equivalent, intuitive, and useful.
+  \item AC and WOT are equivalent, intuitive, and extremely useful.
+  \item Not so for CH!
 \end{itemize}
 
 
