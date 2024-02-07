@@ -18,7 +18,7 @@
 \setcitestyle{aysep=}
 % \usepackage{fitchproof} 
 
-% \linespread{1} % Change line spacing here, Palatino benefits from a slight increase by default
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 
 \newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
 \newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
@@ -27,6 +27,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 
@@ -43,7 +44,7 @@
 {\@author} % Author name
 \\\@date % Date
 
-\vspace{-10pt} % Some vertical space between the author block and abstract
+\vspace{-30pt} % Some vertical space between the author block and abstract
 \end{flushright}
 }
 
@@ -75,46 +76,112 @@
     \begin{itemize}
       \item[\tt Reflexive:] $A \simeq A$.
       \item[\tt Symmetric:] if $A \simeq B$, then $B \simeq A$.
+      \begin{itemize}[leftmargin=-.5in]
+        \item What's an inverse of a relation?
+        \item Do functions always have inverses?
+        \item Observe: the inverse of a bijection is a bijection.
+      \end{itemize}
       \item[\tt Transitive:] if $A \simeq B$ and $B \simeq C$, then $A \simeq C$.
     \end{itemize}
+  \item[\bf Observe:] We get equivalence classes but no ordering.
   \item[\it Injection Principle:] $\abs{A} \leq \abs{B}$ \textit{iff} $A \simeq C$ for some $C\subseteq B$. 
     \begin{itemize}
       \item[\tt Reflexive:] $|A| \leq |A|$.
       \item[\tt Transitive:] if $|A| \leq |B|$ and $|B| \leq |C|$, then $|A| \leq |C|$.
       \item[\tt Anti-Symmetric:] if $|A| \leq |B|$ and $|B| \leq |A|$, then $|A| = |B|$.
+        \begin{itemize}[leftmargin=.5in]
+          \item[\it Cantor-Schroeder-Bernstein Theorem:] If there are injective functions $f: A \to B$ and $g: B \to A$, then there is a bijection $h: A \to B$. 
+        \end{itemize}
       \item[\tt Total:] $|A| \leq |B|$ or $|B| \leq |A|$.\\
         (Equivalent to the Axiom of Choice)
     \end{itemize}
-\end{enumerate}
+  \item[\it Same Number:] $\abs{A} = \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \leq \abs{A}$.
+  \item[\it Strict Order:] $\abs{A} < \abs{B}$ \textit{iff} $\abs{A} \leq \abs{B}$ and $\abs{B} \nleq \abs{A}$.
+\end{itemize}
 
 
 
-\section*{Cantor-Schroeder-Bernstein}
-
-\begin{enumerate}
-  \item[\it Theorem:] If there are injective functions $f: A \to B$ and $g: B \to A$, then there is a bijective function $h: A \to B$.
-\end{enumerate}
 
 
-\section*{Countable Infinity}
+
+\section*{Countably Infinite}
 
 \begin{enumerate}
-  \item[\it Identities:] Bijection Principle makes many sets countably infinite.
+  \item[\it Countable:] A set $A$ is \textit{countable iff} $\abs{A} \leq \abs{\N}$.
+  \item[\it Infinite:] A set $A$ is \textit{infinite iff} $\abs{\N} \leq \abs{A}$.
     \begin{itemize}[leftmargin=-.2in]
-      \item $\abs{\N} = \abs{\N_m} = \abs{\N_{(m)}}$.  
-      \item $\abs{\N} = \abs{\Z} = \abs{\Q}$.
-      \item[\bf (?)] What about $\abs{\N} = \abs{\R}$?
+      \item $\N_m$ is countably infinite since $f(n) = n + m$ is a bijection.  
+      \item $\N_{(m)}$ is countably infinite since $f(n) = n \times m$ is a bijection.
+      \item $\Z$ is countably infinite since there is a bijection $f(n) = 
+        \begin{cases}
+          \frac{n}{2}       & \text{if } n \text{ is even}\\
+          \frac{-(n+1)}{2}  & \text{otherwise.}
+        \end{cases}$.
+      % \item The set of primes $\Pr$ is countable since $\Pr \subset \N$ and yet infinite.
+      \item The positive rational numbers $\Q^+$ are countably infinite since: 
+        \begin{itemize}
+          \item There is an injection from $\Q^+$ to $\set{\tuple{n,m}\in\N^2: m \neq 0 \text{ and } n\bot m}$ 
+          \item Countable since $f(\tuple{n,m})=2^n \cdot 3^m$ is an injection from $\Q$ to $\N$.
+          \item Infinite since identity is an injection from $\N$ to $\Q$. 
+        \end{itemize}
+      % \item FTA: every natural number has a unique prime decomposition.
     \end{itemize}
-  \item[\it Next Time:] We will show that there are different sizes of infinity.
 \end{enumerate}
 
 
 
 
+\section*{Real Numbers}
+
+\begin{enumerate}
+  \item[\it Real Interval:] The real interval $(0,1)$ is uncountably infinite.
+    \item $\abs{\N_1} \leq \abs{(0,1)}$ since $f(x) = 1/x$ is an injection $f: \N_1 \to (0,1)$.
+    % \item Let $B=\set{.b_0b_1b_2\ldots : b_i \in \set{0,1} \text{ for all } i \in \N}/\set{0,1}$.
+    % \item By Cantor's diagonal argument, $\abs{\N_1} \neq \abs{B}$.
+    \item $\abs{\N_1} \neq \abs{(0,1)}$ by Cantor's diagonal argument.
+    \item Thus $\abs{\N_1} < \abs{(0,1)}$.
+    \item Observe that $g(x) = \pi(x - 1/2)$ is a bijection $g: (0,1) \to (-\pi/2,\pi/2)$. 
+    \item Additionally~ $\texttt{tan}: (-\pi/2,\pi/2) \to \R$ is a bijection. 
+    \item By the bijection principle, $\abs{(0,1)} = \abs{(-\pi/2,\pi/2)} = \abs{\R}$.
+    \item Thus $\abs{\N_1} < \abs{\R}$.
+  % \item[\it No Countable Difference:] $\abs{S}=\abs{S \cup A}$ ~whenever~ $\abs{\N} \leq \abs{S}$ and $\abs{A} \leq \abs{\N}$.
+  %   \begin{itemize}[leftmargin=-.5in]
+  %     \item[\bf Proof:] 
+  %   \end{itemize}
+\end{enumerate}
 
 
 
+\section*{Cantor's Theorem}
 
+\begin{enumerate}
+  \item[\it Power Set:] $\wp(A)=\set{X : X\subseteq A}$.
+  \item[\it Theorem:] $\abs{A} < \abs{\wp(A)}$ for any set $A$. 
+    \item $\abs{A} \leq \abs{\wp(A)}$ since $f(a) = \set{a}$ is an injection. 
+    \item Assume there is a bijection $f: A \to \wp(A)$.
+    \item Let $D=\set{a \in A: a \notin f(a)}$.
+    \item Since $D \subseteq A$, we know that $D \in \wp(A)$.
+    \item Since $f$ is surjective, $f(d) = D$ for some $d \in A$. 
+    \item But $d \in f(d)$ \textit{iff} $d \in D$ \textit{iff} $d \notin f(d)$.
+    \item This has the form $P \leftrightarrow \neg P$ which is equivalent to $P \wedge \neg P$. 
+    \item Thus there is no bijection $f: A \to \wp(A)$, and so $\abs{A} \neq \abs{\wp(A)}$.
+    \item Given the above, $\abs{A} < \abs{\wp(A)}$.
+\end{enumerate}
+
+
+
+\section*{Axioms and Intuitions}
+
+\begin{itemize}
+  \item[\it Continuum Hypothesis:] There is no set $A$ where $\abs{\N} < \abs{A} < \abs{\R}$.
+  \item[\it Independent:] Adding CH or its negation to ZFC is consistent if ZFC is consistent.
+  \item Is it up to us to choose?
+  \item Neither intuition nor mathematical practice seems to decide the issue.
+  \item[\it Compare:] G\"{o}del showed that ZFC is consistent if ZF is consistent.
+  \item[\it Axiom of Choice:] Every set of sets $X$ has a function $f$ where $f(Y)\in Y$ for all $Y\in X$. 
+  \item[\it Well-Ordering Theorem:] Every set $X$ can be well-ordered (its subsets all have least elements). 
+  \item AC, the WOT, and \texttt{Total} are all equivalent, intuitive, and useful.
+\end{itemize}
 
 
 \end{document}
