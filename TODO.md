@@ -1,22 +1,25 @@
 # TODO
 
-- [ ] Week 1
+- [x] Week 1
   - [x] Wednesday lecture
   - [x] Monday lecture
   - [x] canvas module
     - [x] problem set
     - [x] quiz
     - [x] announcements
-  - [ ] extra
-    - [ ] CSB theorem
-    - [ ] hierarchy
-  - [ ] TA meeting
+  - [x] extra
+    - [x] CSB theorem
+  - [x] TA meeting
 - [ ] Week 2
-  - [ ] Monday lecture
+  - [x] Monday lecture
+    - [x] take notes
+    - [x] outline
+    - [x] handout
   - [ ] Wednesday lecture
   - [ ] canvas module
-    - [ ] problem set
-    - [ ] quiz
+    - [x] problem set
+    - [x] quiz
     - [ ] announcements
+  - [ ] logic primer
   - [ ] extra
   - [ ] TA meeting

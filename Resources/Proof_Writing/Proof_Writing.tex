@@ -1,0 +1,147 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\usepackage{tikz}
+
+  \def\firstcircle{(140:-1.5cm) circle (1.5cm)}
+  \def\secondcircle{(210:1.75cm) circle (2.5cm)}
+  \def\thirdcircle{(330:1.75cm) circle (2.5cm)}
+
+
+\setcitestyle{aysep={}}
+
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\qed}[0]{$\hfill\Box$} %%Box at end of proofs
+\newcommand{\s}[0]{\mathcal{S}} %%Box at end of proofs
+\renewcommand{\t}[0]{\mathcal{A}} %%Box at end of proofs
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Corner quotes
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+%\DeclarePairedDelimiter\ceil{\lceil}{\rceil}    
+\newcommand{\qpar}[0]{\par\hspace*{.2in}}
+
+\usepackage{calc}
+\makeatletter
+\newcommand{\labelalign@original@item}{}
+\let\labelalign@original@item\item
+\newcommand*{\labelalign@envir}{labelalign}
+\newlength{\labelalign@totalleftmargin}
+\newlength{\labelalign@linewidth}
+\newcommand{\labelalign@makelabel}[1]{\llap{#1}}%
+\newcommand{\labelalign@item}[1][]{%
+  \setlength{\@totalleftmargin}%
+       {\labelalign@totalleftmargin+\widthof{\textbf{#1 }}+.25in-\leftmargin}%
+  \setlength{\linewidth}
+       {\labelalign@linewidth-\widthof{\textbf{#1 }}-.25in+\leftmargin}%
+  \par\parshape \@ne \@totalleftmargin \linewidth
+  \labelalign@original@item[\textbf{#1}]%
+}
+\newenvironment{labelalign}
+  {\list{}{\setlength{\labelwidth}{0in}%
+           \let\makelabel\labelalign@makelabel}%
+   \setlength{\labelalign@totalleftmargin}{\@totalleftmargin}%
+   \setlength{\labelalign@linewidth}{\linewidth}%
+   \renewcommand{\item}{\ifx\@currenvir\labelalign@envir
+                           \expandafter\labelalign@item
+                        \else
+                           \expandafter\labelalign@original@item
+                        \fi}}
+  {\endlist}
+\makeatother
+
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\lineskiplimit=-100pt\relax
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{30pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Writing Informal Proofs}} % Subtitle
+
+\author{\em Benjamin Brast-McKie} % Institution
+
+\date{\today\vspace{-0pt}} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Proofs}
+
+A proof is an argument which consists of assumptions often called \textit{premises}, inferences from those premises, and a \textit{conclusion}.
+All arguments aim to provide reasons to believe the conclusion on the basis of believing the premises, though not all arguments are successful, and some arguments are stronger than others.
+Unlike arguments in the law or elsewhere in day-to-day dealings, \textit{proofs} aim to draw an especially strong conclusion between the premises and their conclusion.
+
+\section*{Common Locutions}
+
+ 	\vspace{.025in}
+ 	\begin{labelalign} \small
+		\item[\sc Assume:] Use `Assume $X$' when you need to proof something of the form `If $X$, then $Y$'.
+			You should then try to make use of your assumption to establish $Y$.
+			You may then conclude that if $X$, then $Y$ as needed.
+			(Note that this is not the only case in which you might use `Assume'.)
+		\item[\sc So:] Use `So' or `It follows that', to indicate to your reader that what you are now saying follows from the line above.
+			Of course, if the proof is going to work, your claim must actually follow from the line above.
+		\item[\sc Since:] Use `Since', `Having already shown that', `Given that', or `Because' to indicate that you are about to restate something that you have already established on a line prior to the previous line to go on to derive some further claim.
+			For instance, we might write `Having already shown that $X$, it follows that $Y$' to indicate that we are drawing on $X$ (perhaps together with the previous line) to conclude that $Y$ is the case.
+		% \item[\sc Know:] Use `We know that' to pick up with some claim which occurs prior to the previous line to continue with that .
+		\item[\sc Cases:] Use `Consider the following cases' or `Either of the following must then hold' before labelling the different possibilities you want to consider in order.
+			You may then proceed case by case, citing the labels that you have provided.
+			(This is easier to read and write than using columns to consider cases in parallel.)
+		\item[\sc RAA:] Use `Assume for RAA' to indicate that you are assuming the opposite of what you want to show for a \textit{reductio ad absurdum} style proof.
+		\item[\sc $\bot$:] After deriving both $P$, and then at some latter point deriving $\neg P$ (or \textit{vice versa}, you may use `But this contradicts $P$' followed by `$\bot$' as a sentence of its own, or just `$\bot$' when the contradiction is clear.
+		% You may then use `Thus' as below to restate your desired conclusion.
+		\item[\sc But:] Use `But' or `However' to recall some past conclusion which contradicts (perhaps after some further reasoning) the claim just above.
+			This is a common devise used in writing RAA proofs.
+		\item[\sc Let:] Use `Let $\alpha$ be an arbitrary $F$', or `Let $\alpha\in X$', or etc., to establish a general claim of the form `All $\alpha$ which are $F$ are also $G$'.
+			After choosing such an arbitrary $\alpha$ which is $F$ (or in $X$, etc.), you should aim to show that $\alpha$ is $G$ before concluding that every $\alpha$ which is $F$ is also $G$.
+		\item[\sc Thus:] Use `Thus', `Therefore', or `We may then conclude that' to mark that your proof is coming to a close with the following claim.
+ 	\end{labelalign}
+
+
+
+\vfill
+
+\bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+\bibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+
+
+\end{document}
+

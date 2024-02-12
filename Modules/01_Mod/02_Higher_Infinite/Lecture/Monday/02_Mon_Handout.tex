@@ -1,0 +1,163 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{0pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{The Higher Infinite}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{The Continuum Hypothesis}
+
+\begin{itemize}
+  \item[\it Sizes of Infinity:] We have seen that $\abs{\N} < \abs{\wp(\N)}$ where $\abs{\wp(\N)} = \abs{\R}$. 
+    \item $B=\set{.b_0b_1b_2\ldots : b_i \in \set{0, 1} \text{ for all } i \in \N}$.
+    \item $\abs{\wp(\N)} = \abs{B} = \abs{B/\set{.\overline{0},.\overline{1}}} = \abs{(0,1)} = \abs{(-\pi/2,\pi/2)} = \abs{\R}$.
+    \item $\abs{S} = \abs{S \cup A}$ whenever $\abs{\N} \leq \abs{S}$ and $\abs{A} \leq \abs{\N}$.
+  \item[\it Continuum Hypothesis:] There is no set $A$ where $\abs{\N} < \abs{A} < \abs{\R}$.
+  \item[\it Independence:] Adding CH or its negation to ZFC is consistent if ZFC is consistent.
+  \item $ZFC+CH$ is consistent if $ZFC$ is consistent (Kurt G\"{o}del 1940).
+  \item $ZFC \nvdash CH$ (Paul Cohen 1963).
+  \item[\it Convention:] Is it up to us to choose which we include?
+  \item Neither intuition nor mathematical practice seems to decide the issue.
+  \item Platonism, conventionalism, and pragmatism.
+\end{itemize}
+
+
+
+\section*{The Axiom of Choice}
+
+\begin{itemize}
+  \item[\it Axiom of Choice:] Every set of sets $X$ has a function $f$ where $f(Y)\in Y$ for all $Y\in X$. 
+  \item G\"{o}del (1938) showed that ZFC is consistent if ZF is consistent.
+  \item Cohen (1963) showed that ZF$\neg$C is consistent if ZF is consistent.
+  \item How does AC compare to CH?
+  \item[\it Well-Ordering Theorem:] Every set $X$ can be well-ordered (its subsets all have least elements). 
+  \item AC and WOT are equivalent, intuitive, and extremely useful.
+  \item \texttt{Totality:} $\abs{A} \leq \abs{B}$ or $\abs{B} \leq \abs{A}$ for all sets $A$ and $B$. 
+  \item That \texttt{Totality} is equivalent to the WOT is good reason to accept AC.
+\end{itemize}
+
+
+
+\section*{Orderings}
+
+\begin{itemize}
+  \item[\it Weak Total Ordering:] $\tuple{X,\leq}$ reflexive, anti-symmetric, transitive, and total.
+  \item[\it Strict Total Ordering:] $\tuple{X,<}$ asymmetric, transitive, and total.
+    \item The irreflexive kernel of WTO is STO; reflexive closure is the inverse.
+  \item[\it Total Well-Ordering:] A WTO/STO where every subset has a least element.
+\end{itemize}
+
+
+
+
+\section*{The Ordinals}
+
+\begin{itemize}
+  \item[\it Something from Nothing:] $\varnothing,\ \set{\varnothing},\ \set{\varnothing,\set{\varnothing}},\ \set{\varnothing,\set{\varnothing},\set{\varnothing,\set{\varnothing}}},\ldots$
+  \item[\it Infinite Succession:] $0, 0', 0'', 0''',\ldots$ where taking $n' = n + 1$ makes these look familiar.
+  \item[\it Successor:] $\alpha' = \alpha \cup \set{\alpha}$.
+  \item[\it Successor Ordinal:] $\alpha$ is a \textit{successor ordinal} \textit{iff} $\alpha = \beta'$ for some ordinal $\beta$. 
+  \item Every ordinal has a successor and contains all of its predecessors.
+  \item And its predecessors contain their predecessors, and so on.
+  \item[\it Set-Transitive:] For any ordinal $\alpha$, if $\beta\in\alpha$ and $\gamma\in\beta$, then $\gamma\in\alpha$.
+  \item[\bf Question:] Are the successor ordinals all of the ordinals there are?
+  \item[\it Omega:] Let $\omega = \set{0, 0', 0''',\ldots}$ be the smallest set to contain $0$ that is closed under the successor operation, i.e, $\alpha'\in \omega$ whenever $\alpha\in \omega$. 
+  \item $\omega$ is not a successor ordinal. 
+  \item[\bf Question:] Is $\omega$ an ordinal? What's an ordinal?
+  \item[\it Ordinal:] $\alpha$ is an \textit{ordinal iff} $\alpha$ is set-transitive and well-ordered by $\in$. 
+  \item[\it Ordering:] $\alpha <_o \beta \coloneq \alpha \in \beta$.
+  \item[\it Key Ideas:] Ordinals contain their predecessors and always bottom out.
+  \item Not all ordinals have a greatest predecessor, i.e, are successor ordinals.
+  \item[\it Limit Ordinal:] $\alpha$ is a \textit{limit ordinal iff} $\alpha$ is an ordinal that is not a successor ordinal. 
+  \item[\it Continuation:] $0,0',0'',0''',\ldots,\omega, \omega', \omega'', \omega''',\ldots$ where~ $'$~ is defined as before.
+  \item[\bf Question:] How shall we write the next limit ordinal?
+  \item $\omega+\omega=\omega\times 0''$ but $0''\times\omega=\omega$ and $\omega + 0''\neq 0'' + \omega$.
+  \item $\abs{\omega+\omega} = \abs{\omega}$.
+\end{itemize}
+
+
+
+
+\section*{Well-Order Types}
+
+\begin{itemize}
+  \item[\it Cantor Ordinals:] Consider $c,\ \set{c},\ \set{c,\set{c}},\ \set{c,\set{c},\set{c,\set{c}}},\ldots$ where `$c$' names Cantor.
+  \item[\bf Question:] Couldn't we repeat all the same tricks, substituting `$c$' for `$\varnothing$'?
+  \item What it Dedekind gets jealous and wants a hierarchy? Then Hilbert\ldots
+  \item[\it Well-Order Type:] Every ordinal in any hierarchy is a well-ordered set.
+  \item[\it Isomorphism:] Let $\alpha \cong \beta$ \textit{iff} there is a bijection $f: \alpha \to \beta$ such that $\gamma <_a \delta$ just in case $f(\gamma) <_b f(\delta)$ for all $\gamma,\delta\in\alpha$ where $<_a$ orders $\alpha$ and $<_b$ orders $\beta.$ 
+  \item[\it Ordinals:] The ordinals represent their own well-order type. 
+\end{itemize}
+
+
+
+
+
+
+\end{document}
+
+
