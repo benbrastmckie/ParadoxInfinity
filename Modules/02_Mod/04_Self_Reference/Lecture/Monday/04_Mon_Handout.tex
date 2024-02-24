@@ -1,0 +1,194 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Omega Sequences}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Paradox Grading Rubric}
+
+\begin{itemize}
+  \item[\it Grading:] Let 0 be low and 10 be high for the following qualities:
+    \item Informative/illuminating.
+    \item Intelligible/salient/compelling on a first take.
+    \item Difficult to analyze/make progress.
+    \item Examined/well-studied.
+    \item Controversial/unsolved.
+    \item Dangerous/risk of devouring one's career.
+    \item Fundamental/influential for other areas.
+\end{itemize}
+
+
+
+\section*{Filthy Liars}
+
+\begin{itemize}
+  \item[\it Blackboard:] The only sentence on the blackboard in room 32-141 is false.
+  \item[\it Self-Reference:] This sentence is false. 
+  \item[\it Pairs:] $(A)$ $B$ is true.\quad\quad $(B)$ $A$ is false. 
+    % \vspace{-.1in}
+    % \begin{multicols}{2}
+      % \item[\it $(A)$] $B$ is true. 
+      % \item[\it $(B)$] $A$ is false. 
+    % \end{multicols}
+    % \vspace{-.1in}
+  \item[\it Truth Predicate:] $\corner{T(\corner{A})}$ is a sentence for every sentences $A$. 
+  \item[\it Truth Schema:] $T(\corner{A}) \leftrightarrow A$. 
+  \item[\it Fixed Point Lemma:] If $\varphi(x)$ has at most $x$ free , $PA \vdash  \varphi^\star \leftrightarrow \varphi(\varphi^\star)$ for some $\varphi^\star$.
+  \item[\it Liar:] Letting $\varphi(x) = \neg T(x)$, then $\vdash L \leftrightarrow \neg T(\corner{L})$ where $\varphi^\star = L$.
+    \item If $T(\corner{L})$, then $L$ by the \textit{Truth Schema}.
+    \item So $\neg T(\corner{L})$ by \textit{Liar}, and so $\bot$.
+    \item If $\neg T(\corner{L})$, then $L$ by \textit{Liar}.
+    \item So $T(L)$ by \textit{Truth Schema}, hence $\bot$. 
+    \item So $T(\corner{L}) \vee \neg T(\corner{L}) \vdash \bot$, and so $LEM \vdash \bot$.
+\end{itemize}
+
+
+
+
+
+\section*{Classical Logic}
+
+\begin{itemize}
+  \item[\it Excluded Middle:] $\vdash A \vee \neg A$ (Every sentence is either true or not true).
+  \item[\it Ex Falso Quidlebet:] $P, \neg P \vdash Q$. 
+    \item EFQ follows from \textit{Disjunction Introduction} and \textit{Disjunctive Syllogism}.
+    \item Dialetheists like Priest even give up \textit{Modus Ponens}.
+\end{itemize}
+
+
+
+
+\section*{Self Reference}
+
+\begin{itemize}
+  \item[\it Claim:] The problem arises from self-reference.
+  \item[\it Insufficient:] Some self-reference is OK. 
+    \item I hope this letter finds you well.
+    \item This sentence contains five words.
+  \item[\it Not Necessary:] The sentence $\neg T(L)$ does not refer to itself.
+\end{itemize}
+
+
+
+
+
+
+\section*{Infinite Liar}
+
+\begin{itemize}
+  \item[\it Yablo:] Even more trouble without self-reference.
+    \item $s_k$: $s_n$ is false for every $n>k$. 
+    \item $s_k$ is true \textit{iff} $s_n$ is false for every $n>k$. 
+  \item[\it Finite Sequences:] No paradox arises since we reach a semantic bottom. 
+    \item But if that bottom is always deferred, we are in trouble.
+\end{itemize}
+
+
+
+
+
+\section*{Solution?}
+
+\begin{itemize}
+  \item[\bf Question:] What would a solution look like?
+    \item Restrict language to avoid paradoxes, i.e., deriving contradictions.
+    \item On its own, even a successful restriction would be \textit{ad hoc}.
+    \item Also need to explain why that restriction is in place.
+\end{itemize}
+
+
+
+
+
+
+\section*{Metalanguages}
+
+\begin{itemize}
+  % \item[\it Language:] Includes arithmetic, first-order logic, and the truth predicate.
+  %   \item Let $g$ map symbols to a unique non-zero number: $\tuple{0, 1}$,\ldots $\tuple{\neg, 11}$,\ldots $\tuple{(,17}$\ldots.
+  %   \item Sentences in the language are finite strings of symbols $s_1,\ldots,s_n$.
+  %   \item $\corner{A} \mapsto 2^{g(s_1)}\cdots p_n^{g(s_n)}$ maps sentences to unique numbers.
+  %   \item Assume $T(L)$
+  \item[\it Truth:] We can only define truth for $\L_{n}$ in a metalanguage $\L_{n+1}$ for $\L$.
+    \item Assume $\L_0$ contains no truth-predicates.
+    \item $\L_{n+1}$ may include $A \leftrightarrow T_n(\corner{A})$ for each sentence $A$ of $\L_n$.
+    \item $T_n$ does not apply to sentences in $\L_n$, and so no paradox. 
+  \item[\bf Question:] Is this a good response for natural languages?
+    \item Truth would then be radically polysemous.
+    \item What if we define super-true as true in any sense?
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+

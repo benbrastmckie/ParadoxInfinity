@@ -79,7 +79,7 @@
   \item[\it Continuum Hypothesis:] There is no set $A$ where $\abs{\N} < \abs{A} < \abs{\R}$.
   \item[\it Independence:] Adding CH or its negation to ZFC is consistent if ZFC is consistent.
   \item $ZFC+CH$ is consistent if $ZFC$ is consistent (Kurt G\"{o}del 1940).
-  \item $ZFC \nvdash CH$ (Paul Cohen 1963).
+  \item $ZFC+\neg CH$ is consistent if $ZFC$ is consistent (Paul Cohen 1963).
   \item[\it Convention:] Is it up to us to choose which we include?
   \item Neither intuition nor mathematical practice seems to decide the issue.
   \item Platonism, conventionalism, and pragmatism.
@@ -124,12 +124,12 @@
   \item Every ordinal has a successor and contains all of its predecessors.
   \item And its predecessors contain their predecessors, and so on.
   \item[\it Set-Transitive:] For any ordinal $\alpha$, if $\beta\in\alpha$ and $\gamma\in\beta$, then $\gamma\in\alpha$.
+  \item[\it Ordering:] $\alpha <_o \beta \coloneq \alpha \in \beta$.
   \item[\bf Question:] Are the successor ordinals all of the ordinals there are?
   \item[\it Omega:] Let $\omega = \set{0, 0', 0''',\ldots}$ be the smallest set to contain $0$ that is closed under the successor operation, i.e, $\alpha'\in \omega$ whenever $\alpha\in \omega$. 
   \item $\omega$ is not a successor ordinal. 
   \item[\bf Question:] Is $\omega$ an ordinal? What's an ordinal?
-  \item[\it Ordinal:] $\alpha$ is an \textit{ordinal iff} $\alpha$ is set-transitive and well-ordered by $\in$. 
-  \item[\it Ordering:] $\alpha <_o \beta \coloneq \alpha \in \beta$.
+  \item[\it Ordinal:] $\alpha$ is an \textit{ordinal iff} $\alpha$ is set-transitive and well-ordered by $<_o$. 
   \item[\it Key Ideas:] Ordinals contain their predecessors and always bottom out.
   \item Not all ordinals have a greatest predecessor, i.e, are successor ordinals.
   \item[\it Limit Ordinal:] $\alpha$ is a \textit{limit ordinal iff} $\alpha$ is an ordinal that is not a successor ordinal. 

@@ -10,16 +10,35 @@
   - [x] extra
     - [x] CSB theorem
   - [x] TA meeting
-- [ ] Week 2
+- [x] Week 2
   - [x] Monday lecture
     - [x] take notes
     - [x] outline
     - [x] handout
-  - [ ] Wednesday lecture
-  - [ ] canvas module
+  - [x] Wednesday lecture
+  - [x] canvas module
     - [x] problem set
     - [x] quiz
-    - [ ] announcements
-  - [ ] logic primer
-  - [ ] extra
+    - [x] announcements
+  - [x] TA meeting
+- [x] Week 3
+  - [x] reading
+  - [x] canvas module
+  - [x] Monday lecture
+  - [x] Wednesday lecture
+  - [x] TA meeting
+- [.] Week 4
+  - [x] reading
+  - [x] plan response
+  - [ ] Monday lecture
+  - [x] canvas module
+  - [ ] Wednesday lecture
   - [ ] TA meeting
+- [ ] Week 5
+  - [ ] reading
+  - [ ] plan response
+  - [ ] Monday lecture
+  - [ ] canvas module
+  - [ ] Wednesday lecture
+  - [ ] TA meeting
+  - [ ] logic primer

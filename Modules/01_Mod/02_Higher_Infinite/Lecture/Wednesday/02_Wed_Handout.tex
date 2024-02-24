@@ -1,0 +1,183 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{The Higher Infinite}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+
+
+\section*{The Ordinals}
+
+\begin{itemize}
+  \item[\it Cardinalities:] Observe that $\abs{\omega}=\abs{\omega + 1}=\abs{\omega+2}=\ldots=\abs{\omega+\omega}=\ldots$
+    \item This is just Hilbert's hotel all over again.
+  \item[\it Structure:] But $\omega \neq \omega + 1 \neq \omega + 2 \neq \ldots \neq \omega + \omega \neq \ldots$ 
+    \item Ordinals have more structure than is encoded by their cardinalities.
+    \item $2$ represents the class of two things where one is \textit{after} the other. 
+  \item[\it Order:] The ordinals have order structure--- they are \textit{well-ordered}.
+    \item $\alpha$ and $\beta$ have the same order-type \textit{iff} $\tuple{\alpha,<_o} \cong \tuple{\beta,<_o}$.
+    \item Even though $\omega \simeq \omega + 1$, we don't get that $\tuple{\omega,<_o} \cong \tuple{\omega+1,<_o}$.
+    \item Moreover, $1 + \omega = \omega$ even though $\omega +1 \neq \omega$.
+  \item[\it Sequences:] If we care about numbers, why introduce the ordinals at all?
+    \item Isn't this a bate and switch?
+    \item Why do we need transfinite order structure?
+
+\end{itemize}
+
+
+
+
+\section*{Ordinals and Algorithms}
+
+\begin{itemize}
+  \item[\it Algorithms:] Programs/instructions to add $1$ some (ordinal) number of times. 
+    \item Roughly: `$3$' says `add $1$ three times'.
+    \item Note that we use `three' to say what `$3$' means.
+  \item[\it First Pass:] $3 + 2 = 0''' + 0'' = 0'''' + 0' = 0''''' + 0 = 0''''' = 5$.
+    \item $\alpha + \beta' = \alpha' + \beta$.
+    \item Doesn't generalize since $\omega + \omega = \omega' +\ ?$ 
+  \item[\it Adding Limit Ordinals:] How should we think about adding $1$ $\omega + \omega$ times?
+    \item What if we could parallel process (add)?
+    \item Then we would get $\omega + \omega = \omega$.
+    \item Need to preserve order and ``parallel processing'' ignores order.
+  \item[\it Simpler Case:] $\omega + 1 \neq 1 + \omega$.
+    \item Think of the simplest case you can to exhibit some feature.
+    \item Not always the first case you might think of.
+  \item[\it Conclusion:] If we ignore order, we are back to cardinality.
+\end{itemize}
+
+
+
+
+
+\section*{Ordinal Arithmetic}
+
+\begin{itemize}
+  \item[\it Addition:] 
+    $\alpha + 0 = \alpha$\\ 
+    $\alpha + \beta' = (\alpha + \beta)'$\\ 
+    $\alpha + \lambda = \bigcup \set{ \alpha + \beta : \beta <_o \lambda }$ where $\lambda\neq 0$ is a limit ordinal.
+  \item[\it Examples:]
+    $3 + 2 = 3 + 1' = (3 + 1)' = (3 + 0')' = (3 + 0)'' = 3'' = 5$.\\
+    $\omega + \omega = \bigcup \set{ \omega + 0, \omega + 1, \omega +2, \ldots } = \set{ 0, 1, 2, \ldots, \omega, \omega +1, \omega + 2, \ldots }$.\\
+    $1 + \omega = \bigcup \set{ 1 + 0, 1 + 1, 1 + 2, \ldots } = \set{ 0, 1, 2, \ldots } = \omega$.
+  \item[\it Multiplication:] 
+    $\alpha \times 0 = 0$\\ 
+    $\alpha \times \beta' = (\alpha \times \beta) + \alpha$\\ 
+    $\alpha \times \lambda = \bigcup \set{ \alpha \times \beta : \beta <_o \lambda }$ where $\lambda\neq 0$ is a limit ordinal.
+  \item[\it Examples:] 
+    $\omega \times 2 = (\omega \times 1) + \omega = ((\omega \times 0) + \omega) + \omega = (0 + \omega) + \omega = \omega + \omega$.\\
+    $\omega \times \omega = \bigcup \set{ \omega \times 0, \omega \times 1, \omega \times 2, \ldots }$\\
+    \strut\hspace{.42in} $= 
+      \begin{cases}
+        0,1,\ldots\\
+        \omega, \omega + 1,\ldots\\
+        \omega + \omega, (\omega + \omega) +1, \ldots\\
+        \strut\quad\vdots\quad, \quad\vdots\quad, \quad\vdots\quad, 
+      \end{cases}$
+    % $3 \times 2 = (3 \times 1) + 3 = ((3 \times 0) + 3 ) + 3 = (0 + 3) + 3 = 3 + 3$.\\
+    % $2 \times 3 = (2 \times 2) + 3 = $
+\end{itemize}
+
+
+
+
+\section*{``Small'' Cardinals}
+
+\begin{itemize}
+  \item[\it Recall:] $\abs{\N} < \abs{\wp(\N)} < \abs{\wp^2(\N)} < \ldots < \abs{U}$. 
+    \item Remember that `$<$' means `injection but no bijection' here.
+    \item We can use $\omega$ to define $U$.
+  \item[\it Definition:] Let $\B_\alpha = 
+    \begin{cases}
+      \N                                            & \text{if } \alpha = 0\\
+      \wp(\B_\beta)                                 & \text{if } \alpha = \beta'\\
+      \bigcup \set{ \B_\gamma : \gamma <_o \alpha } & \text{otherwise.} 
+    \end{cases}$
+  \item[\it Example:] $\B_\omega = \bigcup \set{\N,\wp(\N),\wp^2(\N),\ldots} = U$.
+\end{itemize}
+
+
+
+\section*{Uncountable Ordinals}
+
+\begin{itemize}
+  \item[\it Countable Ordinals:] We have only seen countable ordinals so far. 
+  \item[\it Beth:] Let $\beth_\alpha = \beta$ \textit{iff} $\abs{\beta} = \abs{\B_\alpha}$ and $\beta <_o \gamma$ for all $\gamma$ where $\abs{\gamma} = \abs{\B_\alpha}$. 
+    \item $\beth_0 = \omega$ since $\abs{\omega} = \abs{\B_0} = \abs{\N}$.
+    \item We can then make big ordinals to make even bigger cardinals, etc.
+  \item[\it Motivations:] Why care about all of this?
+    \item Because math (is awesome).
+    \item We are probing the limits of what is thinkable, not useful.
+\end{itemize}
+
+
+\end{document}
+
+

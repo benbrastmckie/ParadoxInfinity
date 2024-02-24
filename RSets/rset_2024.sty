@@ -1,0 +1,127 @@
+%Packages
+\usepackage{url}
+
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{qtree}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+
+
+% Boolean Packages
+\usepackage{xstring}
+\usepackage{etoolbox}
+
+
+%Braces
+\newcommand{\seq}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\tuple}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\rseq}[1]{\left( {#1} \right)}
+\newcommand{\db}[1]{\llbracket {#1} \rrbracket}
+
+%Quotes
+\newcommand{\cn}[1]{\ulcorner{#1}\urcorner}
+\newcommand{\qt}[1]{\mbox{`}{#1}\mbox{'}}
+
+
+%At Symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
+
+
+
+
+%Comments
+%\newcommand{\com}[1]{\textbf{[#1]}  % prints comments in brackets
+\newcommand{\com}[1]{}  % do not print comments
+
+
+%
+%Blanks
+\newcommand{\blank}{\underline{\hspace{18mm}}}
+
+%Special Symbols
+\newcommand{\powerset}{\raisebox{.1\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\ub}{\ensuremath{\underline{\enspace}}}
+%\newcommand{\ub}{\text{\textunderscore}}
+
+
+%Questions and Answers Macro
+
+\newbool{questions}
+\newbool{answers}
+
+\newcommand{\qa}[1]{%
+    \IfEqCase{#1}{%
+        {q}{\booltrue{questions}\boolfalse{answers}}%
+        {a}{\boolfalse{questions}\booltrue{answers}}%
+        {b}{\booltrue{questions}\booltrue{answers}}%
+    }[\PackageError{qa}{Undefined option to qa: #1}{}]%
+}%
+
+
+
+\newcommand{\psintro}[1]{%
+\question{
+\begin{quote}
+
+\begin{center} {\large 24.118: Paradox and Infinity, Spring 2024 \\ \vspace{1mm}}
+ {\large #1\\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+\noindent 
+
+Please include your name and list all of your collaborators on the last page of your response set, preferably a separate page so that no one sees it till the end. \emph{Failing to list collaborators constitutes a violation of academic integrity}.\\
+%
+% \begin{itemize}
+%     \item \underline{Do not} include your name on problem set submissions. If so inclined by the whims of paranoia, include your {MIT ID} instead.
+%     
+%     \item List your collaborators \underline{on the LAST page} of your pset, preferably a separate page so that no one sees it till the end. \emph{Failing to list collaborators constitutes a violation of academic integrity}.
+%     
+%    %  \underline{Do not} list your collaborators on  problem set submissions. Instead, make sure you list any collaborators using the ``comment'' box on Canvas when you submit your problem set. 
+% \end{itemize}
+
+How your answers will be graded:
+
+\begin{itemize} 
+  \item There is no quiz this week so all answers are to be submitted by PDF.
+  \item Each response should be a maximum of 250 words.
+  \item Responses will be evaluated by the clarity, concision, and the degree to which they reflect careful reading and comprehension of the text.
+    Begin by working out your thoughts separately as you might with a problem set, writing up your response only once you have a good sense of what you want to say and how you want to say it.
+  \item You are encouraged to read critically rather than accepting every word of a text as true.
+    At the same time, it is important to be charitable to what the author intends.
+    When something in the text is less than clear, it is important to do your best to get clarity about what the author intends to express, assuming the best interpretation consistent with the text before delivering any criticisms.
+    For instance, saying that something in the text is not clear is not a good criticism even if it is true.
+  \item You may consult published literature and the web, but you must credit all sources where failure to do so constitutes plagiarism and can have serious consequences.
+    For advice about how and when to credit sources see \url{https://integrity.mit.edu/}.
+    Note that merely citing a source does \textit{not} count as a good justification.
+  \item Reading old texts is hard!
+    So don't worry if you struggle to understand every point.
+    Instead, do your best to learn what the author is trying to express, using this as a chance to sharpen your close reading skills.
+\end{itemize}
+
+All submissions must be in PDF format.
+Type-written submissions may be strongly preferred by your TA; handwritten submissions are acceptable only if: 
+
+\begin{enumerate} 
+  \item Your handwriting is easily legible (as judged by your TA); 
+  \item You produce a clean version of the document (as opposed to the sheet of paper you used to work out the problems); and 
+  \item Your manuscript has been scanned to high enough standards (as judged by your TA). Consider using, e.g.~\emph{Scannable} or \emph{Adobe Scan}.
+\end{enumerate}
+
+\end{quote} 
+
+
+}
+}
+
+
