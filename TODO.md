@@ -30,7 +30,7 @@
 - [.] Week 4
   - [x] reading
   - [x] plan response
-  - [ ] Monday lecture
+  - [x] Monday lecture
   - [x] canvas module
   - [ ] Wednesday lecture
   - [ ] TA meeting

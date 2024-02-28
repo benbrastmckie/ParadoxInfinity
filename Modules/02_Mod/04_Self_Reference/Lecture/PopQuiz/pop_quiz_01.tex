@@ -1,0 +1,166 @@
+\documentclass[a4paper,10pt,oneside,headsepline]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{wasysym}% provides \ocircle and \Box
+\usepackage{enumitem}% easy control of topsep and leftmargin for lists
+\usepackage{color}% used for background color
+\usepackage{forloop}% used for \Qrating and \Qlines
+\usepackage{ifthen}% used for \Qitem and \QItem
+\usepackage{typearea}
+\areaset{17cm}{26cm}
+\setlength{\topmargin}{-1cm}
+% \usepackage{scrpage2}
+% \pagestyle{scrheadings}
+% \ihead{Example questionnaire created with \LaTeX}
+% \ohead{\pagemark}
+% \chead{}
+% \cfoot{}
+
+%% \Qq = Questionaire question. Oh, this is just too simple. It helps
+%% making it easy to globally change the appearance of questions.
+\newcommand{\Qq}[1]{\textbf{#1}}
+
+%% \QO = Circle or box to be ticked. Used both by direct call and by
+%% \Qrating and \Qlist.
+% \newcommand{\QO}{$\Box$}% or: $\ocircle$
+\newcommand{\QO}{$\ocircle$}% Use circles now instead of boxes.
+
+%% \Qrating = Automatically create a rating scale with NUM steps, like
+%% this: 0--0--0--0--0.
+\newcounter{qr}
+\newcommand{\Qrating}[1]{\QO\forloop{qr}{1}{\value{qr} < #1}{---\QO}}
+
+%% \Qline = Again, this is very simple. It helps setting the line
+%% thickness globally. Used both by direct call and by \Qlines.
+\newcommand{\Qline}[1]{\noindent\rule{#1}{0.6pt}}
+
+%% \Qlines = Insert NUM lines with width=\linewith. You can change the
+%% \vskip value to adjust the spacing.
+\newcounter{ql}
+\newcommand{\Qlines}[1]{\forloop{ql}{0}{\value{ql}<#1}{\vskip1em\Qline{\linewidth}}}
+
+%% \Qlist = This is an environment very similar to itemize but with
+%% \QO in front of each list item. Useful for classical multiple
+%% choice. Change leftmargin and topsep accourding to your taste.
+\newenvironment{Qlist}{%
+\renewcommand{\labelitemi}{\QO}
+\begin{itemize}[leftmargin=1.5em,topsep=-.5em]
+}{%
+\end{itemize}
+}
+
+%% \Qtab = A "tabulator simulation". The first argument is the
+%% distance from the left margin. The second argument is content which
+%% is indented within the current row.
+\newlength{\qt}
+\newcommand{\Qtab}[2]{
+\setlength{\qt}{\linewidth}
+\addtolength{\qt}{-#1}
+\hfill\parbox[t]{\qt}{\raggedright #2}
+}
+
+%% \Qitem = Item with automatic numbering. The first optional argument
+%% can be used to create sub-items like 2a, 2b, 2c, ... The item
+%% number is increased if the first argument is omitted or equals 'a'.
+%% You will have to adjust this if you prefer a different numbering
+%% scheme. Adjust topsep and leftmargin as needed.
+\newcounter{itemnummer}
+\newcommand{\Qitem}[2][]{% #1 optional, #2 notwendig
+\ifthenelse{\equal{#1}{}}{\stepcounter{itemnummer}}{}
+\ifthenelse{\equal{#1}{a}}{\stepcounter{itemnummer}}{}
+\begin{enumerate}[topsep=2pt,leftmargin=2.8em]
+\item[\textbf{\arabic{itemnummer}#1.}] #2
+\end{enumerate}
+}
+
+%% \QItem = Like \Qitem but with alternating background color. This
+%% might be error prone as I hard-coded some lengths (-5.25pt and
+%% -3pt)! I do not yet understand why I need them.
+\definecolor{bgodd}{rgb}{0.8,0.8,0.8}
+\definecolor{bgeven}{rgb}{0.9,0.9,0.9}
+\newcounter{itemoddeven}
+\newlength{\gb}
+\newcommand{\QItem}[2][]{% #1 optional, #2 notwendig
+\setlength{\gb}{\linewidth}
+\addtolength{\gb}{-5.25pt}
+\ifthenelse{\equal{\value{itemoddeven}}{0}}{%
+\noindent\colorbox{bgeven}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+\stepcounter{itemoddeven}%
+}{%
+\noindent\colorbox{bgodd}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+\setcounter{itemoddeven}{0}%
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of questionnaire command definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+\textbf{\huge Pop Quiz \#1}
+\end{center}\vskip1em
+
+\textit{Please answer the following and return to your TA.}
+
+\bigskip
+
+\Qq{Your Name}: \Qline{8cm}
+
+\bigskip
+
+\Qq{Student Number}: \Qline{8cm}
+
+\bigskip
+
+\Qitem{ \Qq{Question:} Is it possible to consistently assign a single truth-value to the following $\omega$-liar sequence which includes the existential quantifier `some' in place of `every'?
+  \hskip0.5cm \QO{} Yes \hskip0.5cm \QO{} No
+  \begin{Qlist}
+    \item[(1)] $s_1$: $s_n$ is false for some $n>1$. 
+    \item[(2)] $s_2$: $s_n$ is false for some $n>2$. 
+    \item[(3)] $s_3$: $s_n$ is false for some $n>3$. 
+    \item[] $\vdots$
+  \end{Qlist}
+}
+
+\Qitem{ \Qq{Question:} If you answered `Yes', provide an assignment of truth-values. If you answered `No', briefly explain why you think there is no consistent assignment of truth-values.}
+
+\Qlines{4}\\
+
+
+\bigskip
+
+\textit{Please evaluate the following ancient paradoxes (no justification needed).}
+
+\bigskip
+
+\Qitem{ In your estimation, how does \Qq{Zeno's Paradox} fair by the following rubric?\\
+  \begin{itemize}[leftmargin=1.75in]
+    \item[Pointless] \Qrating{10} Informative
+    \item[Hard to feel the force of] \Qrating{10} Vivid
+    \item[Easy to analyze] \Qrating{10} Difficult
+    \item[Obvious solution] \Qrating{10} Controversial
+    \item[Silly] \Qrating{10} Interesting
+  \end{itemize}
+}
+
+\bigskip
+
+\Qitem{ In your estimation, how does \Qq{The Liar Paradox} fair by the following rubric?\\
+  \begin{itemize}[leftmargin=1.75in]
+    \item[Pointless] \Qrating{10} Informative
+    \item[Hard to feel the force of] \Qrating{10} Vivid
+    \item[Easy to analyze] \Qrating{10} Difficult
+    \item[Obvious solution] \Qrating{10} Controversial
+    \item[Silly] \Qrating{10} Interesting
+  \end{itemize}
+}
+
+\bigskip
+
+\Qitem{ \Qq{Question:} What is your favorite paradox that we have covered so far?}
+
+
+
+\end{document}

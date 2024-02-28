@@ -1,0 +1,165 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Self Reference}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{An Untyped Language}
+
+  \begin{itemize}
+    \item[\it Vicious Circle Priciple:] ``Whatever contains an apparent variable must not be a possible value of that variable.''
+    \item[\it Language:] Names $c_1,c_2,\ldots \in C$, variables $x_1,x_2,\ldots \in V$, predicates $R_1,R_2,\ldots \in P$, operators $\neg,\vee,\wedge,\rightarrow,\leftrightarrow,\forall\alpha,\exists\alpha$ where $\alpha$ is any variable. 
+    \item[\it Formulas:] The set of \textit{formulas} $F$ is defined recursively:
+      \item $R(\alpha_1,\ldots,\alpha_n)$ is a formula in $F$ if $R \in P$ and $\alpha_1,\ldots,\alpha_n \in C \cup V$.
+      \item $z(\varphi_1,\ldots,\varphi_n)$ is a formula in $F$ if $z \in V$ and $\varphi_1,\ldots,\varphi_n \in C\cup V\cup F$. 
+      \item $\neg \varphi, \varphi \vee \psi, \varphi \wedge \psi, \ldots, \forall \alpha \varphi, \exists \alpha \varphi$ are formulas in $F$ if $\varphi,\psi \in F$ and $\alpha \in V$. 
+      \item Nothing else is a formula in $F$.
+    % \item[\it Higher-Order:] The formula $x_1(k_1,\ldots,k_m)$ has $x_1$ as a variable of \textit{higher type} and $k_1,\ldots,k_n$ as either constants, variables, or formulas. 
+    % \item[\it Atomic:] $R(\alpha_1,\ldots,\alpha_n)$ is \textit{atomic} if $R \in P$ and $\alpha_1,\ldots,\alpha_n \in C$.
+    \item[\it Example:] In the following examples $z$ is of higher type: 
+      \item Mathematical induction shows that for any property $z$, if $z(0)$ and $z(x')$ whenever $z(x)$, then $z(x)$ for all numbers $x$. 
+      \item $\forall z(z \vee \neg z)$.
+    \item[\it Self Reference:] Observe that $\neg z(z)$ is a formula, but it will not have a type. 
+  \end{itemize}
+
+
+
+\section*{Ramified Theory of Types}
+
+  \begin{itemize}
+    \item[\it Simple Types:] The simple types will be defined recursively.
+      \item $0$ is the simple type of \textit{individuals}.
+      \item If $t_1,\ldots,t_n$ are simple types, then $(t_1,\ldots,t_n)$ is a simple type. 
+      \item Nothing else is a simple type.
+    \item[\it Example:] `Kim' is type $0$, `is running' is type $(0)$, and `Kim is running' is type $()$.
+    \item[\it Ramified:] Also defined recursively:
+      \item $0^0$ is a ramified type. 
+      \item If $t_1^{o_n},\ldots,t_n^{o_n}$ are ramified types, $o\in\N$, and $o>\max{o_1,\ldots,o_n}$, then $(t_1^{o_1},\ldots,t_n^{o_n})^o$ is a ramified type where $o\geq 0$ if $n=0$. 
+      \item Nothing else is a ramified type.
+    \item[\it Example:] \mbox{`Kim' is type $0^0$, `is running' is type $(0^0)^1$, and `Kim is running' is type $()^1$.}
+    \item[\it Predicative Types:] $t^o$ is \textit{predicative} if $o$ is as low as it can be, c.f., $(0^0)^2$.  
+  \end{itemize}
+
+
+
+
+
+\section*{A Typed Language}
+
+  \begin{itemize}
+    \item[\it Atomic Formulas:] $R(c_1,\ldots,c_n)$ is \textit{atomic} if $R$ is a predicate and $c_1,\ldots,c_n$ are constants. 
+    \item[\it Typed Expresions:] The expressions of the language will be typed recursively.
+      \item $c:0^0$ if $c$ is a constant. 
+      \item $\varphi:()^0$ if $\varphi$ is atomic. 
+      \item If $\varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$ and $\psi : (d_1^{r_1},\ldots,d_n^{r_n})^b$, then:
+        \begin{itemize}
+          \item $\neg\varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$.
+          \item $\varphi \vee \psi : (t_1^{o_1},\ldots,t_n^{o_n},d_1^{r_1},\ldots,d_n^{r_n})^{\max{a,b}}$.
+          \item[\vdots] ~
+        \end{itemize}
+      \item If $(t_1^{o_1},\ldots,t_n^{o_n})^a$ is predicative and $\varphi_1 : t_1^{o_1}$, \ldots, $\varphi_n : t_n^{o_n}$ for expressions $\varphi_1,\ldots,\varphi_n$, then $z(\varphi_1,\ldots,\varphi_n) : ((t_1^{o_1},\ldots,t_n^{o_n})^a,t_1^{o_1},\ldots,t_n^{o_n})^{a+1}$.
+      \item If $\varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$, then $\forall x : t_i^{o_i} \varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$.
+      \item There is more that we won't get into\ldots
+    \item[\it Typed Formuals:] A \textit{typed formula} is a typed expression that is a formula.
+      \item $\neg z(z)$ is a formula, but cannot be typed.
+      \item $\forall z(z \vee \neg z)$ can be typed.
+    \item[\it Type Restrictions:] ``Whatever contains an apparent variable must be of a different type from the possible values of that variable\ldots'' 
+  \end{itemize}
+
+
+
+
+\section*{Axiom of Reducibility}
+
+\begin{itemize}
+  \item[\it Identity of Indiscernibles:] $x = y$ \textit{iff} $\forall z [z(x) \leftrightarrow z(y)]$.
+  \item[\it Stratification:] For each order $n\in \N$, we may articulate a version of the principle above:
+    $x = y$ \textit{iff} $\forall z : (0^0)^n [z(x) \leftrightarrow z(y)]$.
+  \item[\it Planets Example:] Do Hesperus and Phosphorus have the same first-order properties?
+    \item But what if they differ on second-order properties?
+    \item Maybe someone loves Hesperus but no one loves Phosphorus.
+  \item[\it Induction Example:] ``A finite number is one which possesses \textit{all} properties possessed by $0$ and by the successors of all numbers possessing them.''
+    \item If something holds of all first-order properties, why think it holds for all higher-order properties?
+  \item[\it Axiom of Reducibility:] ``[E]very propositional function is equivalent, for all its values, to some predicative function.'' (pp.~242-3)
+  \item[\it Translation:] Every typed formula is logically equivalent to some formula with a predicative type, and so:
+    $x = y$ \textit{iff} $\forall z : (0^0)^1 [z(x) \leftrightarrow z(y)]$.
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
+
+

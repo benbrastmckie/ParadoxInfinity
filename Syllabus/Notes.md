@@ -1,5 +1,22 @@
 # NOTES
 
+## Future Structure
+
+1. Cantor's theorem and no set of all sets
+2. Ordinals, small-cardinals, and the Burali-Forti paradox
+3. Zeno's paradox, real numbers, and analysis
+4. Frege's logicism and Russell's paradox
+5. Informal liar and the coordination response
+6. Godel numbers and the fixed point lemma
+7. The incompleteness of arithmetic
+8. Formalizing the liar and Tarski's metalanguages
+9. Non-classical logics and their bad consequences
+10. Russell's solution and ramified type theory
+11. Ramsey's criticisms of the axiom of reducibility
+12. ZFC and the iterative conception of set
+13. Continuum hypothesis and large cardinals
+14. Absolute generality and indefinite extensibility
+
 ## Module 1: Cantor's Paradise
 
 - Week 1: Infinite Cardinalities
