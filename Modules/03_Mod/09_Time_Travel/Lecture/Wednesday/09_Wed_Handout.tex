@@ -1,0 +1,150 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Time Travel}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Future Possibility}
+
+\begin{itemize}
+  \item[\it Open Future:] There is a reading of `possible' that is about the future.
+    \item Metaphysical modality is much broader than that reading.
+    \item Future possibility reading is a subset of nomological possibility. 
+    \item The laws in our world may be incompatible with time travel.
+    \item We intend to ask if there is any possible world in which someone travels into the actual past of that world.
+\end{itemize}
+
+
+
+
+\section*{Grandfather Paradox}
+
+\begin{itemize}
+  \item[\it Paradox:] Tim travels to a time before his grandfather and grandmother met.
+    \item Tim intends to kill his grandfather and is poised to do so.
+  \item[\bf Question:] Can Tim kill his grandfather?
+    \item If so, then neither Tim's parent, nor Tim would have been born.
+    \item So Tim wouldn't have traveled back in time, nor killed his grandfather.
+    \item But how could Tim fail if appropriately poised to kill his grandfather?
+    \item It would seem that Tim both can and cannot kill his grandfather.
+    \item Perhaps this shows that time travel is not possible after all. 
+  \item[\it Equivocation:] Lewis takes this argument to equivocate on `can'.
+    \item Considering everything, Tim cannot kill his grandfather.
+    \item But `can' is context sensitive, only taking some things into account.
+    \item There are contexts which do not take everything into account where Tim \textit{can} kill his grandfather.
+    \item Tim has the necessary skills, position, timing, etc., he just doesn't do it.
+  \item[\it Example:] Holding some facts fixed, I can speak Finnish.
+    \item Holding others fixed, I cannot speak Finnish.
+    \item Thus there are contexts in which Tim can kill his grandfather. 
+    \item Nevertheless, it is impossible for Tim to kill his grandfather.
+  \item[\it Change:] Do we mean to ask about Tim's abilities in this context sensitive sense?
+    \item Instead we may ask: is it possible for Tim to kill his grandfather?
+    \item The answer is already clear, but perhaps this is still frustrating to Tim.
+\end{itemize}
+
+
+
+
+
+\section*{Open Future}
+
+\begin{itemize}
+  \item[\it Determined:] Tim's actions are entirely determined during his journey.
+    \item This includes not killing his grandfather.
+    \item But it may also include a whole lot else to which he is unaware.
+    \item He is only able to become aware of some of the things that he can't do.
+    \item And not just for Tim: no time traveler can kill their ancestor.
+    \item But if there are any time travelers, then there are a lot of them.
+    \item What explains the fact that none of them succeed is consistency.
+    \item But it may still seem strange to Tim that however he tries he fails.
+  \item[\it Actuality:] For Lewis, each world is a space-time continuum.
+    \item So the actual world is also a space-time continuum.
+    \item So we all do only what we will do, though we don't know what.
+    \item From this perspective, what is strange about time travel is that it puts us in a position to figure out what we cannot do.
+    \item But determinism follows from the conception of possible worlds.
+  \item[\it Open Future:] Is time travel compatible with the open future?
+    \item Consider a set of \textit{world states} $S$ and a \textit{task relation} $\to$ over $S$.
+    \item Let $\tau : \Z \to S$ be a \textit{world history iff} $\tau(x) \to \tau(x+1)$ for all $x \in \Z$. 
+    \item Nothing binds us to a single world and so the future is open.
+    \item Just because you travel to the actual past, nothing holds you there.
+    \item But that does that mean such cases don't count as time travel?
+  \item[\it Determinism:] One cannot change \textit{the} past or \textit{the} future.
+    \item But there need not be a unique past nor a unique future.
+    % \item If there is a \textit{directed path} from $s \Rightarrow r$ and $t \Rightarrow r$, then one path is part of the other.  
+    % \item If there is a \textit{directed path} from $s \Rightarrow t$ and $s \Rightarrow r$, then one path is part of the other.  
+    % % \item Could take $\tuple{S,\to}$ to be a directed forest in either direction. 
+    % \item Or both directions in which it is a set of linear orderings.
+\end{itemize}
+
+\end{document}
+
+
+

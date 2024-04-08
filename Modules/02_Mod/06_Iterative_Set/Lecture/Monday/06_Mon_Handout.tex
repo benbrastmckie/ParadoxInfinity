@@ -1,0 +1,178 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Set Theory}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+% NEXT:
+  % extensionality gives uniqueness
+  % no universal set
+  % iterative conception of set
+
+
+\section*{Motivations}
+
+  \begin{itemize}
+    \item[\it Dialectic:] Recall Ramsey's simple theory of types.
+      \item Sets are replaced with properties.
+      \item `$x \in x$' is treated as `$x(x)$' which cannot be typed.
+      \item If `$\in$' is intelligible in its own right, the paradox remains.
+      \item Set theory is more intuitive than simple type theory.
+      \item Worth developing in place of or alongside type theory.
+  \end{itemize}
+
+
+
+
+
+\section*{Naive Set Theory}
+
+  \begin{itemize}
+    \item[\it Language:] $\forall, \exists, \neg, \vee, \wedge, \rightarrow, \leftrightarrow, =, \in, S, x_1, x_2,\ldots, (,)$ are primitive symbols. 
+      \item For purposes of illustration we may add other predicates and names.
+      \item But strictly speaking, the language of set theory is very austere.
+    \item[\it Comprehension:] Every open sentence with one free variable corresponds to a set.
+      \item $\exists y\forall x(x \in y \leftrightarrow \varphi)$ where `$y$' does not occur in `$\varphi$'.
+      \item From open sentences to predicates \textit{vs.} definite descriptions.
+      \item Sets are objects not properties.
+      \item[\bf Question:] Why assume uniqueness.
+    \item[\it Extensinoality:] Sets are defined by their members.
+      \item $\forall z(z \in x \leftrightarrow z \in y) \rightarrow x = y$.
+      \item The set of fish that walk is identical to the set of pigs that fly.
+      \item Properties need not be identified with sets.
+      \item Set theory restricts attention to the extensions of predicates.
+  \end{itemize}
+
+
+
+
+\section*{Russell's Paradox}
+
+  \begin{itemize}
+    \item[\it Russell Set:] The open sentence `$x \notin x$' can be used to define a set.
+      \item $R\coloneq\set{x : x \notin x}$, i.e., $\exists y\forall x(x \in y \leftrightarrow x \notin x)$.
+      \item $R \in R$ \textit{iff} $R \notin R$. 
+      \item Restricting comprehension looks \textit{ad hoc}.
+  \end{itemize}
+
+
+
+
+
+
+\section*{The Iterative Conception of Set}
+
+  \begin{itemize}
+    \item[\it Intuitions:] No reason to expect our intuitions to be univocal.
+      \item Lots of reasons to expect otherwise, e.g., \textit{same number as}, etc.
+      \item First impressions often have to be revised.
+    \item[\it Extensinoality:] Compare the following metaphysical theses.
+      \item \textit{What it is to be} (identical to) a set is to have the members it has.
+      \item \textit{What it is for} a set to exist is for its members to exist.
+      \item Sets \textit{ontologically depend} on their members: part of what it is for a set to exist is for all of its members to exist.
+      \item Put otherwise: for a set to exist it is \textit{necessary for} its members to exist.
+      \item But then sets can't be members of themselves.
+    \item[\it Sufficiency:] Is the existence of some entities \textit{sufficient for} a set to exist?
+      \item Do you have to ``put a lasso around'' some entities to make a set?
+      \item Intuitionists of a certain stripe might claim so.
+      \item What about the empty set? Is it a product of our conceptual exertion.
+      \item Platonists reject this, taking sets to exist objectively and necessarily.
+      \item Existence of the members to be sufficient for the existence of a set.
+  \end{itemize}
+
+
+
+
+\section*{Separation Axiom}
+
+  \begin{itemize}
+    \item[\it Construction:] Sets are constructed not in time, but in nature.
+      \item The ingredients precede the product in constitution.
+      \item Given any things, we have a set from which we can build new sets.
+    \item[\it Comprehension:] $\forall z\exists y\forall x(x \in y \leftrightarrow (y \in z \wedge \varphi))$, i.e., some $k \coloneq \set{x \in z : \varphi}$ for any set $z$.
+      \item What of Russell's paradox?
+      \item For any set $z$, there is a set $R_z \coloneq \set{x \in z : x \notin x}$.
+    \item[\it Indefinite Extensibility:] Whence the contradiction?
+      \item Assume $R_z \in z$ for contradiction.
+      \item Then $R_z \in R_z$ \textit{iff} $R_z \in z$ and $R_z \notin R_z$ \textit{iff} $R_z \notin R_z$. 
+      \item So $R_z \notin z$.
+      \item Letting $z'\coloneq z\cup\set{R_z}$, then $R_{z'} \notin z'$, so $z'' \coloneq z'\cup{R_{z'}}$, etc.
+    \item[\it Solution:] Consider the following conclusions.
+      \item There is no universal set.
+      \item No set belongs to itself and so $R_z = z$ for any set $z$.
+      \item Every set is indefinitely extensible.
+  \end{itemize}
+
+
+\end{document}
+
+
+

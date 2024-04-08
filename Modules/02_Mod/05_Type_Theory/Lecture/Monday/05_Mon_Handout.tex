@@ -1,0 +1,185 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{0pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Type Theory}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+% \section*{Rationals from the Integers}
+%
+% \begin{enumerate}
+%   \item[\it Construction:] The aim is to construct the numbers.
+% \end{enumerate}
+
+
+\section*{Reals from the Rationals}
+
+\begin{enumerate}
+  \item[\it Construction:] Dedekind aimed to construct the real numbers to ground analysis.
+  \item[\it Definition:] A \textit{real number} is any nonempty proper subset $X \subset \Q$ where: 
+    \item $X$ is downward closed, i.e., $x \in X$ whenever $y\in X$ and $x < y$. 
+    \item $X$ has no greatest element, i.e., for every $x \in X$, there is some $y \in X$ where $x < y$. 
+  \item[\it Roots:] Let $\sqrt{2} = \set{x \in \Q : x^2 < 2}$.
+  % \item[\it Least Upper Bound:] $\bigcup X$ is the \textit{least upper bound} of a set of real numbers $X$.
+  \item[\it Higher-Order:] The real numbers are of higher-order than the rationals.
+  \item[\it Subsumption:] The rationals are \textit{subsumed} by the reals $\frac{2}{5} = \set{x \in \Q : x < \frac{2}{5}}$.
+\end{enumerate}
+
+
+
+
+
+\section*{Greatest Lower Bounds}
+
+\begin{enumerate}
+  \item[\it Ordering:] For $x, y \in \R$, $x \leq y$ \textit{iff} $x \subseteq y$. 
+  \item[\it Lower Bound:] $x$ is a \textit{lower bound} of $X \subseteq R$ \textit{iff} $x \leq y$ for all $y \in X$.  
+  \item[\it Greatest Lower Bound:] $x$ is a \textit{greatest lower bound} of $X \subseteq R$ \textit{iff} $x$ is a lower bound of $X$ and $x \geq y$ for any lower bound of $y$ of $X$.
+    \item[$\bullet$] The definition of the glb of $X$ quantifies over real numbers in $X$.
+    \item[$\bullet$] Mathematics is full of definitions of properties of every higher-order.
+    \item[$\bullet$] We want to quantify over all properties of real numbers at once.
+  \item[\it Properties:] `$P(6)$' vs. `$6 \in \pi$' where $\pi=\set{x \in \N : P(x)}$.
+  \item[\it Type Restrictions:] ``Whatever contains an apparent variable must be of a different type from the possible values of that variable\ldots'' 
+\end{enumerate}
+
+
+
+
+\section*{Predicative Properties}
+
+  \begin{itemize}
+    \item[\it Typed Expresions:] Recall the recursive clauses from last time:
+      \item If $(t_1^{o_1},\ldots,t_n^{o_n})^a$ is predicative and $\varphi_1 : t_1^{o_1}$, \ldots, $\varphi_n : t_n^{o_n}$ for expressions $\varphi_1,\ldots,\varphi_n$, then $z(\varphi_1,\ldots,\varphi_n) : ((t_1^{o_1},\ldots,t_n^{o_n})^a,t_1^{o_1},\ldots,t_n^{o_n})^{a+1}$.
+      \item If $\varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$, then $\forall x : t_i^{o_i} \varphi : (t_1^{o_1},t_{i-1}^{o_{i-1}},\ldots,t_{i+1}^{o_{i+1}},t_n^{o_n})^a$.
+    \item[\it Stratification:] Quantification is stratified by ramified types.
+    \item[\it Predicative Types:] $t^o$ is \textit{predicative} if $o$ is as low as it can be, c.f., $(0^0)^1$ and $(0^0)^2$.  
+  \end{itemize}
+
+
+
+
+
+\section*{Axiom of Reducibility}
+
+\begin{itemize}
+  \item[\it Axiom of Reducibility:] ``[E]very propositional function is equivalent, for all its values, to some predicative function.'' (pp.~242-3)
+    \item Want all properties of real numbers to be on a par.
+    \item Russell assumes there always are equivalent predicative properties.
+    \item What is the property \textit{being the glb of $X$} equivalent to?
+    \item Neither Russell nor anyone else can say.
+  \item[\it Construction:] This undermines the spirit of Dedekind's project.
+    \item The aim is to construct the numbers (ultimately from the empty set).
+    \item But Russell was a logicist, not an constructivist/intuitionist.
+    \item Logicists have a much more realist conception of mathematics where logic describes objective universal principles (the laws of thought) and mathematics reduces to logic.
+    \item Nevertheless, one might worry that the AR is not logical, i.e., it is thinkable (consistent) for it to be false.
+\end{itemize}
+
+
+
+\section*{Mathematics or Metaphysics}
+
+\begin{itemize}
+  \item[\it Planets Example:] Let Hesperus and Phosphorus have the same first-order properties.
+    \item Hesperus is shining \textit{iff} Phosphorus is shining, etc.
+    \item Could they differ in higher-order properties?
+    \item Maybe someone loves Hesperus but no one loves Phosphorus?
+    \item There is a relation someone bears to Hesperus but not to Phosphorus?
+    \item Given that Hesperus is Phosphorus, this might seem unlikely.
+  \item[\it Iron Spheres:] Consider two iron spheres that have all the same properties. 
+    \item Could there be a higher-order property upon which they differ?
+  \item[\it Logic:] Logic is concerned with what must be the case.
+    \item By `must' we mean: it would be contradictory for it to not be the case.
+    \item Compare the axioms of set theory which are contingent.
+    \item Must the axiom of reducibility hold?
+    \item Many have thought it contingent (e.g., Ramsey and Wittgenstein).
+  \item[\it Logicists:] Ensuring AR is a truth of logic is required for logicism.
+    \item Reducing math to logic is an ambitious program.
+    \item Neither logicists and intuitionists can easily accommodate AR.
+  % \item[\it Wittgenstein's Example:] Imagine there are a countable infinity of things. 
+  %   \item There is \textit{one} relation $R$ which holds of infinitely many things.
+  %   \item $R$ does not hold between all things.
+  %   \item $R$ does not hold between finitely many things. 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+

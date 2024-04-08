@@ -1,0 +1,153 @@
+%Packages
+\usepackage{url}
+
+\usepackage{fullpage}
+\usepackage{a4wide}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{euscript}
+\usepackage{qtree}
+\usepackage{courier}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+
+
+% Boolean Packages
+\usepackage{xstring}
+\usepackage{etoolbox}
+
+
+%Braces
+\newcommand{\seq}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\tuple}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\rseq}[1]{\left( {#1} \right)}
+\newcommand{\db}[1]{\llbracket {#1} \rrbracket}
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+
+%Quotes
+\newcommand{\cn}[1]{\ulcorner{#1}\urcorner}
+\newcommand{\qt}[1]{\mbox{`}{#1}\mbox{'}}
+
+
+%At Symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
+
+%Math Symbols
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+
+
+%Comments
+%\newcommand{\com}[1]{\textbf{[#1]}  % prints comments in brackets
+\newcommand{\com}[1]{}  % do not print comments
+
+
+%
+%Blanks
+\newcommand{\blank}{\underline{\hspace{18mm}}}
+
+%Special Symbols
+\newcommand{\powerset}{\raisebox{.1\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\ub}{\ensuremath{\underline{\enspace}}}
+%\newcommand{\ub}{\text{\textunderscore}}
+
+
+%Questions and Answers Macro
+
+\newbool{questions}
+\newbool{answers}
+
+\newcommand{\qa}[1]{%
+    \IfEqCase{#1}{%
+        {q}{\booltrue{questions}\boolfalse{answers}}%
+        {a}{\boolfalse{questions}\booltrue{answers}}%
+        {b}{\booltrue{questions}\booltrue{answers}}%
+    }[\PackageError{qa}{Undefined option to qa: #1}{}]%
+}%
+
+
+
+\newcommand{\psintro}[1]{%
+\question{
+\begin{quote}
+
+\begin{center} {\large 24.118: Paradox and Infinity, Spring 2024 \\ \vspace{1mm}}
+ {\large #1\\ \vspace{1mm}}
+ 
+\end{center}
+\vspace{3mm}
+\noindent 
+
+  Please include your name and the names of all of your collaborators.
+  Although you are encouraged to talk through your essay with others, please restrict your collaboration to groups of three, and make sure that all of your writing is your own and not taken from any source online, or otherwise.
+  \emph{Failing to list collaborators or cite your sources constitutes a violation of academic integrity}.\\
+%
+% \begin{itemize}
+%     \item \underline{Do not} include your name on problem set submissions. If so inclined by the whims of paranoia, include your {MIT ID} instead.
+%     
+%     \item List your collaborators \underline{on the LAST page} of your pset, preferably a separate page so that no one sees it till the end. \emph{Failing to list collaborators constitutes a violation of academic integrity}.
+%     
+%    %  \underline{Do not} list your collaborators on  problem set submissions. Instead, make sure you list any collaborators using the ``comment'' box on Canvas when you submit your problem set. 
+% \end{itemize}
+
+Guides and grades:
+
+\begin{itemize} 
+  \item Submissions must be in PDF format and typed rather than handwritten. 
+  \item Your essay should not be longer than 1500 words (six pages double spaced with reasonable margins).
+    Avoid footnotes, including all substantive points and citations in the body of your essay.
+  \item There is no single right answer.
+    Rather, you will be graded on the quality and clarity of your arguments.
+    Think of writing your essay like building a bridge; the first criterion is its structural integrity as a bridge.
+  \item In constructing arguments, more is not always more.
+    Think about what makes your argument work, and try to refine it to the point where it only includes the elements that support your argument rather than distracting from what you are trying to say.
+    Were building a \textit{bridge} not a birds nest!
+  \item You do not need a ``hook'' or any fancy introduction. 
+    For instance, you are welcome to begin by presenting the paradox you will discuss, assuming the reader cares about this paradox and its solution.
+    If you feel it is relevant to the points you want to make, you could say something about how we arrive at the paradox.
+    What you don't need are broad statements that don't contribute to the arguments that you want to make.
+  \item It is important to elaborate the supporting points that you want to make.
+    It can sometimes help to present an argument independently of the support that you go on to provide for its premises.
+  \item You are welcome to include formal elements in elaborating your position.
+    However, as with any argument, be sure to only include relevant details, while also adequately justifying the steps in your argument.
+  \item Skipping steps in both informal and formal reasoning is a judgment call.
+    Skip too many steps and your argument may not hang together; skip no steps at all, and your argument may take up too much space at the further cost of being pedantic and tiresome to read.
+    Thus you should strive to include all and only the steps that improve the clarity, precision, and overall impact of your arguments.
+    This is as much an art as it is a science.
+  \item You are not expected to devise novel solutions, and attempting to do so in any kind of systematic way in a six page essay is to be discouraged.
+    Rather, you should make use of this assignment for careful presentation and thoughtful reflection on the paradox and its solutions.
+    Think of this essay as an opportunity to refine your perspective on the paradox.
+  \item Work out your thoughts separately as you might with a problem set.
+    This might take the form of elaborating specific point which you may or may not end up using.
+    You might also try constructing a few different rough outlines to see what works best, writing up your response only once you have a good sense of what you want to say and how you want to say it.
+  \item You are welcome to use quotations from the texts that we have read, however, make sure to specify what you take each quote to be saying.
+    Alternatively, you may skip straight to paraphrasing an author, including the appropriate citation.
+  \item You may consult published literature and the web, but you must credit all sources where failure to do so constitutes plagiarism and can have serious consequences.
+    For advice about how and when to credit sources see \url{https://integrity.mit.edu/}.
+    Note that merely citing a source does \textit{not} count as a good justification.
+\end{itemize}
+
+
+
+\end{quote} 
+
+
+}
+}
+
+

@@ -1,0 +1,172 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Set Theory}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+% NEXT:
+  % extensionality gives uniqueness
+  % no universal set
+  % iterative conception of set
+
+
+\section*{Axioms and Theorems}
+
+  \begin{itemize}
+    \item[\it Restriction:] We will restrict the quantifiers to sets.
+    \item[\sc Separation:] $\forall z\exists y\forall x(x \in y \leftrightarrow (x \in z \wedge \varphi))$ where `$y$' does not occur in `$\varphi$'.
+      \item Given any set $z$, there is a set of $z$'s members that are $\varphi$.
+    \item[\bf Question:] Could there be more than one subset of $\varphi$s? 
+    \item[\sc Extensionality:] $\forall z(z \in x \leftrightarrow z \in y) \rightarrow x = y$.
+      \item Extensionality guarantees uniqueness.
+      \item Whereas \textit{Extensionality} is an axiom, \textit{Separation} is an \textit{axiom schema}.
+    \item[\bf Question:] Could there be a universal set $U$?
+      \item Assume there is a universal set $U$ where $\forall x(x \in U)$.
+      \item $\exists y\forall x(x \in y \leftrightarrow (x \in U \wedge \varphi))$ from \textit{Separation} with $U$ for $z$.
+      \item $\exists y\forall x(x \in y \leftrightarrow \varphi)$ since $x \in U$ for all $x$.
+      \item $\exists y\forall x(x \in y \leftrightarrow x \notin x)$ by replacing $\varphi$ with $x \notin x$.
+      \item $\forall x(x \in r \leftrightarrow x \notin x)$ by existential elimination.
+      \item $r \in r \leftrightarrow r \notin r$ by instantiating $x$ with $r$.
+      \item Hence $\neg \exists y \forall x(x \in y)$ is a theorem.
+    \item[\it Theorems:] We don't need an axiom to rule out $U$.
+    \item[\bf Question:] What other axioms do we need to describe the concept?
+  \end{itemize}
+
+
+
+
+
+\section*{Zermelo's Theory of Sets}
+
+  \begin{itemize}
+    \item[\sc Null Set:] $\exists y \forall x (x \notin y)$.
+      \item There is a set with no members.
+    \item[\sc Pairs:] $\forall z \forall w \exists y \forall x (x \in y \leftrightarrow (x = z \vee x = w))$.
+      \item For any sets $x$ and $w$, there is a set whose only members are $x$ and $w$. 
+    \item[\sc Unions:] $\forall z \exists y \forall x (x \in y \leftrightarrow \exists w (x \in w \wedge w \in z))$.
+      \item For any set $z$, there is a set of all members of members of $z$. 
+    \item[\it Subset Definition:] $x \subseteq z \coloneq \forall w(w \in x \rightarrow w \in z)$
+      \item Every member of $x$ is a member of $z$. 
+    \item[\sc Power Set:] $\forall z \exists y \forall x (x \in y \leftrightarrow x \subseteq z)$.
+      \item For any set $z$, there is a set $y$ of all subsets of $z$. 
+  \end{itemize}
+
+
+
+
+\section*{Infinite Sets}
+
+  \begin{itemize}
+    \item[\bf Question:] Does anything guarantee that there are infinite sets?
+      \item If we want there to be infinite sets, how would we guarantee this?
+    \item[\it Contains the Null Set:] $\varnothing \in y \coloneq \exists x(x \in y \wedge \forall z (z \notin x))$.
+    \item[\it Successor:] $z = x'\coloneq \forall y(y \in z \leftrightarrow (y \in x \vee y = x))$.\footnote{Better to define the successor function $'$.}
+    \item[\sc Infinity:] $\exists y[\varnothing \in y \wedge \forall x(x \in y \rightarrow \exists z (z \in y \wedge z = x'))]$.
+    \item[\sc Regularity:] $\exists x \varphi \rightarrow \exists x (\varphi \wedge \forall y (y \in x \rightarrow \neg \varphi[y/x]))$ where $\varphi$ does not contain `$y$' and $\varphi[y/x]$ is the result of replacing all occurrences of `$x$' in $\varphi$ with `$y$'.
+      \item If some set is such that $\varphi$, there is ``smallest set'' $x$ that is such that $\varphi$. % insofar as the members $y$ of $x$ are not such that $\varphi[y/x]$.
+    \item[\it Example:] Letting $\varphi$ be `$\exists z (z \in x)$', there is a set that only contains the empty set.
+      \item $\exists x \exists z (z \in x) \rightarrow \exists x (\exists z (z \in x) \wedge \forall y (y \in x \rightarrow \forall z (z \notin y)))$.
+    \item[\it Example:] Assume there is a set that belongs to itself, i.e., $\exists x (x \in x)$.
+      \item $\exists x (x \in x \wedge \forall y (y \in x \rightarrow y \notin y))$ by \textit{Regularity}.
+      \item $r \in r$ and $\forall y (y \in r \rightarrow y \notin y)$ by conjunction and existential elimination.
+      \item $r \in r \rightarrow r \notin r$ by universal elimination.
+      \item $r \notin r$ by conditional elimination. 
+      \item Hence $\neg \exists x (x \in x)$ is a theorem.
+  \end{itemize}
+
+
+
+
+\section*{Stage Theory}
+
+\begin{itemize}
+  \item[\it Motivation:] Why believe these axioms and not some others?
+  \item[\it Iterative Conception:] Because they conform to an iterative conception of set.
+  \item[\it Stages:] Here are the stage axioms.
+    \item No stage is earlier than itself.
+    \item Earlier than is transitive.
+    \item Earlier than is connected/total.
+    \item There is an earliest stage.
+    \item Every stage has a next stage.
+  \item[\it Formation:] Here are the formation axioms.
+    \item There is a limit stage which does not have a latest predecessor.
+    \item Every set is formed at a unique stage.
+    \item Every member of a set is formed earlier than that set.
+    \item If the members of a set are formed before a stage the set is formed at that stage.
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+

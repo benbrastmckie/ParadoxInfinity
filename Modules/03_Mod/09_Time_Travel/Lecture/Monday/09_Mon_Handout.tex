@@ -1,0 +1,173 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Time Travel}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{Time Travel}
+
+\begin{itemize}
+  \item[\bf Question:] What is it to travel in time?
+  \item[\it Personal Duration:] The journey's duration in personal time: $\Delta_p$.
+  \item[\it External Time:] The time for Earth's frame of reference: $t_i$.
+  \item[\it External Duration:] The difference in the external start and end times: $\Delta_w \coloneq t_e - t_b$.
+  \item[\it Trival Time Travel:] Occurs when $\Delta_w \neq 0$.
+  \item[\it Non-Trival Time Travel:] Occurs when $\Delta_p \neq \Delta_w$ (e.g., $0 < \Delta_p < \Delta_w$).
+    \item If Bob travels close to the speed of light.
+  \item[\it Extraordinary Time Travel:] Occurs when $\Delta_w$ is negative or much greater than $\Delta_p$.
+    % \item Suppose $\Delta_p$ is 1 hour (and in general never negative).
+  \item[\it Example:] $t_b$ is 10am EST, April 1st, 2024 and $t_e$ is 10am EST, April 1st, 1924.
+    \item Then $\Delta_w = -100$ years (i.e., 100 years in the past). 
+\end{itemize}
+
+
+
+\section*{Metaphysical Possibility}
+
+\begin{itemize}
+  \item[\bf Question:] Is it possible to travel in time (in an extraordinary way)?
+  \item[\it Practical Possibility:] Is it possible for me to do a double backflip (on Earth's surface)?
+  \item[\it Nomological Possibility:] Is it nomologically possible for me to do a double backflip?
+  \item[\it Metaphysically Possibility:] Is it metaphysically possible to travel faster than the speed of light?
+  \item[\it Objective Modality:] Each modality concerns a range of objective \textit{ways for things to be}.
+    \item Metaphysical modality is the maximal objective modality.
+  \item[\it Epistemic Modality:] Is it possible that $a^n + b^n = c^n$ for some $a,b,c \in \N^+$ and $n > 2$?
+    \item Fermat's last theorem was proven to be true (1995).
+    \item Moreover, it is not possible for Fermat's last theorem to be false.
+    \item Nevertheless, it may be epistemically possible for the uniformed.
+  % \item[\it Necessity:] Necessarily $A$ \textit{iff} it is not possible for it not to be the case that $A$. 
+    % \item Fermat' last theorem is (and always was) metaphysically necessary.
+    \item Or consider the epistemic possibility that $2,641 \times 31 \neq 81,971$.
+\end{itemize}
+
+
+
+\section*{The Possibility of Time Travel}
+
+\begin{itemize}
+  \item[\it Assume:] It is practically impossible to travel back in time.
+  \item[\it Agnostic:] It is nomologically possible to travel back in time. 
+  \item[\bf Question:] Is it metaphysically possible to travel back in time?
+\end{itemize}
+
+
+
+
+\section*{World Travel}
+
+\begin{itemize}
+  \item[\it Actuality:] Suppose that nobody has ever arrived from a future time.
+    \item Deep in an MIT laboratory, Michele finishes her time machine.
+    \item She gets in, eager to zip off into the distant past.
+    \item Is it possible to travel into the past?
+  \item[\it Branching Worlds:] Is it possible to change the past?
+    \item Instead of traveling to the actual past, one has traveled to another past.
+    \item In what sense is traveling to a branching world count as time travel?
+  \item[\it Take Two:] Assume we restrict attention to time travel within one time-line.
+    \item Michele can't travel back in time if she hasn't already arrived.
+    \item If she has already arrived, she must travel back to those times.
+  \item[\it Open Future:] Is the future open if time travelers have already arrived?
+    \item At least it is not as open as it might otherwise be assumed to be.
+    \item But traveling back in time may be assumed to be entirely fixed.
+  \item[\it Possibility:] We don't just want to ask if our open future includes any time travel.
+    \item We are asking if there are any worlds at all that include time travel.
+\end{itemize}
+
+
+
+
+\section*{Grandfather Paradox}
+
+\begin{itemize}
+  \item[\it Paradox:] Tim travels to a time before his grandfather and grandmother met.
+  \item[\bf Question] Can Tim kill his grandfather?
+    \item If so, then neither Tim's father, nor Tim would have been born.
+    \item So Tim wouldn't have traveled back in time, nor killed his grandfather.
+    \item But how could Tim fail if appropriately poised to kill his grandfather?
+    \item It would seem that Tim both can and cannot kill his grandfather.
+    \item Perhaps this shows that time travel is not possible after all. 
+  \item[\it Equivocation:] Or perhaps Tim can time travel, but only do exactly what he did.
+    \item Considering everything, Tim cannot kill his grandfather.
+    \item But `can' is context sensitive, only taking some things into account.
+    \item There are contexts which do not take everything into account where Tim \textit{can} kill his grandfather.
+    \item Tim has the necessary skills, position, timing, etc., he just doesn't do it.
+  \item[\it Determined:] Perhaps Tim can kill his grandfather even though it is impossible.
+    \item Time travel has been defined in such a way that the future is closed.
+    \item But as we will see next time, nothing forces this choice.
+\end{itemize}
+
+
+
+\end{document}
+
+
+

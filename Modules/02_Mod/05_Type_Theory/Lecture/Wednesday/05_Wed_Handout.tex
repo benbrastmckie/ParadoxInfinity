@@ -1,0 +1,175 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Type Theory}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{Against Ramification}
+
+  \begin{itemize}
+    % \item[\it Typed Expresions:] Recall the recursive clause for quantification from Russell's RTT:
+    %   \item If $\varphi : (t_1^{o_1},\ldots,t_n^{o_n})^a$, then $\forall x : t_i^{o_i} \varphi : (t_1^{o_1},t_{i-1}^{o_{i-1}},\ldots,t_{i+1}^{o_{i+1}},t_n^{o_n})^a$.
+    %   \item Observe that $\forall x : t_i^{o_i} \varphi$ is of \textit{higher order}. 
+    \item[\it Orders:] Ramsey rejects Russell's divisions of the types into orders.
+    \item[\it Autological:] A predicate is \textit{autological iff} it expresses a property it has.
+    \item[\it Heterological:] A predicate is \textit{heterological iff} it is not autological.
+      \item Whereas `short' is autological, `long' is heterological.
+      \item Is `heterological' heterological?
+      \item Use/mention distinction.
+    \item[\it Solution:] In the style of \textit{Principia Mathematica} we have:
+      \item $H(w)$ \textit{iff} there is a property $P$ where $w$ expresses $P$ and $\neg P(w)$.
+      \item The variable `$P$' ranges over first-order properties which $H$ is not. 
+      \item ``This theory of a hierarchy of orders of functions of individuals escapes the contradictions; but it lands us in an almost equally serious difficulty, for it invalidates many important mathematical arguments\ldots''
+  \end{itemize}
+
+
+
+
+\section*{Simple Type Theory}
+
+  \begin{itemize}
+    \item[\it Logical:] Ramsey accepts Russell's solution to the logical paradoxes.
+    \item[\it Simple Types:] Recall the function application clause from the simple theory of types:
+      \item If $\varphi_1 : t_1$, \ldots, $\varphi_n : t_n$, then $z(\varphi_1,\ldots,\varphi_n) : ((t_1,\ldots,t_n),t_1,\ldots,t_n)$.
+      \item Observe that $z$ is of \textit{higher type} than its arguments. 
+    \item[\it Self-Application:] A predicate, ``cannot significantly take itself as argument\ldots''
+      \item Neither $P(P)$ nor $\neg P(P)$ can be simply typed, and so meaningless. 
+      \item This case differs from \textit{heterological} since no semantic terms occur.
+      % \item What about Russell's paradox?
+    \item[\bf Question:] Is there any self application in $R \coloneq \set{ x : \neg \texttt{In}(x,x) }$?
+    \item[\it Sets:] Russell identifies classes (sets) with functions (properties). 
+      \item `$x \in y$' is notational variant of `$y(x)$'.
+      \item Thus `$x \in x$' abbreviates `$x(x)$' which cannot be simply typed.
+    \item[\bf Question:] Why not respond by faulting the identification of sets with properties?
+      \item Blocking this identification further undoes Russell's solution.
+      \item But it does not solve the paradox.
+      \item Ramsey thought we should leave this part of Russell's solution.
+  \end{itemize}
+
+
+
+
+\section*{Dividing the Paradoxes}
+
+  \begin{itemize}
+    \item[\it Russell:] Solves all the paradoxes by accepting RTT + AR.
+    \item[\it Ramsey:] Rejects AR, and also rejects RTT to preserve mathematics.
+      \item Ramsey divides the paradoxes into the logical and semantic.
+      \item The semantic paradoxes include naming, expressing, meaning, etc.
+      \item The semantic paradoxes concern the interpretation of language.
+      \item Ramsey thought they deserved their own solution.
+    \item[\it Tarski:] Recall Tarski's levels of languages.
+      \item Could distinguish between true$_1$, true$_2$, etc.
+      \item The semantic terms for a language cannot belong to that language.
+      \item The object/metalanguage distinction is widely accepted.
+    \item[\it Truth:] What of a theory of truth, meaning, reference, etc.?
+      \item The object/metalanguage distinction doesn't provide a theory of truth.
+      \item Nor does it provide a theory of meaning, or reference, etc.
+      \item Lots remains to be done to understand how language works.
+  \end{itemize}
+
+
+
+
+
+
+\section*{Higher-Order Logic}
+
+  \begin{itemize}
+    \item[\it Mathematics:] Truth theories remain controversial but mathematics is preserved.
+      \item The logical paradoxes are solved.
+      \item We also get the theory of simple types as a result.
+    \item[\it Higher-Order:] Since talk of orders has been banished, we may reclaim the term.
+      \item Today, `order' refers to the type of the variable bound by a quantifier. 
+      \item The quantifiers of \textit{first-order logic} bind variables in name position.
+      \item The quantifiers of \textit{higher-order logics} bind variables of higher type.
+    \item[\it Quine:] Thought higher-order logic was ``set theory in sheep's clothing.''
+      \item Instead of recasting sets as properties, \textit{first-orderists} go the other way.
+      \item But then how are we to escape Russell's paradox (this is for next week).
+    \item[\it Types:] Consider the following defense of higher-order logic:
+      \item Properties, relations, etc., are not first-order objects.
+      \item If we recognize type distinctions, why only first-order quantifiers?
+      \item If there are some higher-order things, why not quantify over them?
+    \item[\it Controvercy:] Quine's shadow remains long in philosophy but not computer science.
+  \end{itemize}
+
+
+
+
+
+
+
+
+\end{document}
+
+
+

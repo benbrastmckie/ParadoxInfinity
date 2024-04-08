@@ -1,0 +1,148 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Absolute Generality}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Absolutism}
+
+\begin{itemize}
+  \item[\it Gloss:] It is possible to quantify over absolutely everything.
+    \item By `possible' we mean `there is an interpretation $I,{\hat{a}}$ of the language'.
+  \item[\it Minimal Language:] Consider a language $\L$ with just `$\forall$', `$x$', and `$F$' as primitive symbols.
+    \item The extension $I(F) \subseteq D_I$ interprets the predicate `$F$'.
+    \item $\hat{a}$ is a variable assignment for $\L$ \textit{iff} $\hat{a}(x) \in D_I$.
+    % \item $\corner{\forall \alpha \varphi}$ is true in $I,{\hat{a}}$ \textit{iff} $\corner{\varphi}$ is true in $I,{\hat{b}}$ for every $\alpha$-variant $\hat{b}$ of $\hat{a}$. 
+    \item `$Fx$' is true in $I, \hat{a}$ \textit{iff} $\hat{a}(x) \in I(F)$. 
+    \item `$\forall xFx$' is true in $I,{\hat{a}}$ \textit{iff} `$Fx$' is true in $I,{\hat{b}}$ for every $x$-variant $\hat{b}$ of $\hat{a}$.
+  \item[\it Restatement:] For anything $y$ there is an interpretation $I$ of $\L$ where $y \in D_I$. 
+    \item Everything belongs to the domain of quantification $D_I$.
+    \item $\forall y\exists D(y \in D)$.
+    \item But this is just the claim that there is a universal set.
+  \item[\it Direct Method:] We must learn to understand absolute quantification directly.
+    \item Model theory does not provide an adequate account.
+    \item At most we can say: $\forall x \exists y(x =y)$.
+    \item But this is trivial, failing to communicate the substance of absolutism.
+\end{itemize}
+
+
+
+
+\section*{No Domain Theory}
+
+\begin{itemize}
+  \item[\it Absolute Plurality:] There is a plurality of everything, i.e., $\exists xx \forall y ( y \prec xx )$.
+    % \item Example: ``The seashells are scattered across the sand.''
+    \item ``They lifted the piano,'' ``They won the championship,'' etc.
+    \item We read `$y \prec xx$' as `$y$ is \textit{one of} the $xx$s'.
+  \item[\it Quinian Doubts:] Some have thought that $\exists xx \varphi$ is just shorthand for $\exists x(S(x) \wedge \varphi)$.
+    \item Similarly, `$y \prec xx$' is just shorthand for `$y \in x$'.
+    \item But this flattens the absolutists current attempt to state their thesis.
+    \item Instead the absolutist must take plural quantifiers to be primitive.
+    \item We do seem to have plural quantifiers in English.
+  \item[\it Plural Separation:] For any\textit{things}, there is a set of those that are such that $\varphi$.
+    \item Formally: $\forall xx \exists y \forall x ( x \in y \leftrightarrow x \prec xx \wedge \varphi )$ where `$y$' doesn't occur in $\varphi$.
+    \item Naive comprehension follows: $\exists y \forall x ( x \in y \leftrightarrow \varphi)$.
+  \item[\it Plural Comprehension:] $\exists yy \forall x ( x \prec yy \leftrightarrow \varphi )$ where `$yy$' does not occur in $\varphi$.
+    % \item Better: $\forall xx \exists yy \forall x ( x \prec yy \leftrightarrow x \prec xx \wedge \varphi )$ where `$yy$' doesn't occur in $\varphi$.
+\end{itemize}
+
+
+
+
+\section*{Indefinitely Extensible?}
+
+\begin{itemize}
+  \item[\it Extensions:] Predicates are interpreted by assigning them to sets.
+    \item But how are we to interpret `\texttt{set}'?
+    \item Suppose $I(\texttt{set}) \subseteq D$.
+    % \item Assume $I(\texttt{set}) \in D$.
+    \item But since $I(\texttt{set}) \notin I(\texttt{set})$, there is a set not in the extension of `\texttt{set}`.
+  \item[\it Relativism:] Claims that we can always extend any extension of the predicate `\texttt{set}'.
+    \item $I \subseteq J$ \textit{iff} $I(\kappa) \subseteq J(\kappa)$ for any predicate $\kappa$.
+    \item $I \subset J$ \textit{iff} $I \subseteq J$ and $J \nsubseteq I$. 
+    \item For any $I$ of $\L$, there is some $J$ of $\L$ where $I \subset J$.
+    \item Every extension of `\texttt{set}' has a broader extension.
+  % \item[\it Modals:] We may now make sense of `can always extend and extension'.
+  %   \item Let `$\Diamond A$' read `There is an interpretation in which $A$ is true'.
+  %   \item Let `$\Box A$' read `In every interpretation $A$ is true'.
+  \item[\it Absolutism:] Instead of sets, suppose extensions are taken to be pluralities.
+    \item The intended extension of `\texttt{set}' is the plurality of all sets.
+    \item $\exists yy \forall x ( x \prec yy \leftrightarrow \texttt{set}(x) )$.
+    \item The relativist may claim that this fails to capture indefinite extensibility.
+    \item The absolutist is happy to avoid indefinite extensibility.
+\end{itemize}
+
+
+\end{document}
+
+
+

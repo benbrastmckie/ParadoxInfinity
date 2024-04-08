@@ -1,0 +1,240 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{The Metaphysics of Time}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+
+\section*{Ameliorating Intuitions}
+
+\begin{itemize}
+  \item[\it Time:] Calling something a theory of time does not make it a theory of time.
+    \item Must fill the appropriate theoretical role, conforming to a significant extent with our intuitions.
+    \item Compare a theory of sets that rejects extensionality.
+    \item Or a theory of identity that rejects reflexivity.
+  \item[\it Pre-Theory:] Intuitions correspond to common ways of speaking about time.
+    \item These ways of speaking serve our practical aims.
+    \item Nothing as systematic as talk of sets used naively in mathematics.
+    \item Our aim is to improve on this situation.
+\end{itemize}
+
+
+
+
+\section*{The B-Series}
+
+\begin{itemize}
+  \item[\it Earlier-Than:] An asymmetric and transitive relation over events. 
+    \item The ordering of events by the earlier-than relation is called the B-series.
+  \item[\it Events:] Queen Anne's death; the poker is hot.
+    \item Events may be understood roughly as instantaneous configurations.
+    \item Does not capture a natural way of speaking about extended events.
+    \item Could replace `events' with `states' or `propositions'.
+  \item[\it Russell:] An event is past, present, or future only in relation to an event in time. 
+    \item Typically it is the event of assertion that we intend to relate.
+    \item Queen Anne's death is past in relation to the present assertion event.
+    \item But events are never past, present, or future \textit{simpliciter}.
+  \item[\it No Change:] If $e_1$ is earlier than $e_2$, then $e_1$ is \textit{always} earlier than $e_2$. 
+    \item The B-series does not change.
+    \item Can a change be $\tuple{e_1,e_2}$ where $e_1$ is earlier than $e_1$?
+    \item The poker being hot ($e_1$) is earlier than the poker being cool $(e_2)$.
+  \item[\it Space:] Compare ``change'' over space.
+    \item The tip of the poker is hot; the handle of the poker is not hot.
+    \item But the poker need not change for this to be true.
+    \item How does change over time differ from ``change'' over space?
+\end{itemize}
+
+
+
+
+
+\section*{The A-Series}
+
+\begin{itemize}
+  \item[\it Change:] Events change from being future, then present, then past.
+    \item A-series: \textit{past}, \textit{present}, \textit{future}.
+    \item Without the A-series their is no change at all.
+    \item Everything in time must have each of the A-series properties.
+  \item[\it Relational Properties:] Some properties include other objects.
+    \item \textit{Being North of London} is a relational property (includes London).
+    \item Non-relational properties may be called \textit{absolute}.
+  \item[\it Atemporal:] At most, A-series properties relate events to something outside of time.
+    \item If \textit{past} is a relational property, it does not relate two events in time.
+    \item Let `$P(e,x)$' read `$e$ \textit{is past relative to} $x$'.
+    \item If $x$ is an event, $P(e,x)$ is always or never the case, so cannot change. 
+  \item[\it Spotlight:] What do the A-series properties include if not other events?
+    \item \textit{Was in}, \textit{is in}, \textit{will be in} ``the spotlight.''
+    \item B-series as moving through the A-series.
+    \item A-series as moving over the B-series.
+    \item Film projector metaphor: was projected, is projected, will be projected.
+  \item[\it Absolute:] A-series properties may just as well be taken to be absolute.
+    \item Either way, the A-series properties are incompatible.
+    \item $Pe \vdash \neg Ne \wedge \neg Fe$; $Ne \vdash \neg Pe \wedge \neg Fe$; $Fe \vdash \neg Pe \wedge \neg Ne$.
+    
+\end{itemize}
+
+
+
+
+
+
+\section*{Paradox}
+
+\begin{itemize}
+  \item[\it Argument 1:] The A-series is essential to the reality of time.
+    \item[\bf P1] If time is real, then events change.
+    \item[\bf P2] If an event changes, then its A-series properties are what change.
+    \item[\bf P3] \mbox{If an event's A-series properties change, events have A-series properties.}
+    \item[\bf C1] Therefore, if time is real, then events have A-series properties.
+  \item[\it Argument 2:] Events do not have A-series properties.
+    % \item[\bf P4] If an event has an A-series property, it has every A-series property.
+    \item[\bf P4] If an event has an A-series property, it has every A-series property.
+    \item[\bf P5] The A-series properties are incompatible.
+    \item[\bf C2] There are no events that have A-series properties. 
+  \item[\it Argument 3:] Putting these first two arguments together, McTaggard concludes:
+    \item[\bf C3] Time is not real.
+\end{itemize}
+
+
+
+
+
+\section*{Being in Time}
+
+\begin{itemize}
+  \item[\it Respones:] No event has every A-series property \textit{at once}.
+    \item Rather $e$ is present at a present moment $n$, $e$ was in the future at a past moment $p$, and $e$ will be in the past at a future moment $f$.
+    \item So there are the events of $Ne$ at $n$, $Fe$ at $p$, and $Pe$ at $f$. 
+    \item Like all events, $n$, $p$, and $f$ are equally past, present, and future.
+    \item The response generates the same problem, yielding a vicious regress.
+    \item Thus the response fails to avoid contradiction.
+  \item[\it Vicious:] Is the regress really vicious?
+    % \item The response is only inadequate assuming premise 4. 
+    % \item But the response ought to be taken to revise premise 4.
+    \item Is the contradiction ever avoided, or ever preserved?
+    \item Compare building a set $U$ out of members which include $U$.
+  \item[\it Tense:] Also involves a mixture of tense operators and properties.
+    \item Better to choose one or the other.
+    \item Properties cannot be iterated, so best to stick to operators.
+    \item Let `$\past A/\future A$' read `It was/will be the case that $A$'.
+  \item[\it Events:] It becomes extremely artificial to speak in terms of events.
+    \item Is $Fe$ an event? 
+    \item Also, most events seem to occur over a duration, not at a time.
+\end{itemize}
+
+
+
+
+\section*{The Reality of Tense}
+
+\begin{itemize}
+  \item[\it Tense:] Letting $e$ be the ``event'' of it being the case that $\varphi$:
+    \item We may replace $Pe$ with $\past \varphi$. 
+    \item We may replace $Fe$ with $\future \varphi$. 
+    \item We may replace $Ne$ with $\varphi$. 
+    % \item And take $\sometimes \varphi \coloneq \past \varphi \vee \varphi \vee \future \varphi$ to read `It is \textit{sometimes} the case that $\varphi$'.
+  \item[\it Premise 4:] In place of \textbf{P4} assume $\varphi \vdash \past\future \varphi$ and $\varphi \vdash \future\past \varphi$.
+  \item[\it Logic:] What other inference rules might we maintain?
+    \item $\past \varphi \vdash \future\past \varphi$ and $\past \varphi \vdash \past\future \varphi$.
+    \item $\future \varphi \vdash \past\future \varphi$ and $\past \varphi \vdash \future\past \varphi$.
+    \item $\future \varphi \dashv\vdash \future\future \varphi$ and $\past \varphi \dashv\vdash \past\past \varphi$.
+  \item[\it Consistent:] No contradiction arises.
+  \item[\it Change:] Let `$\odot \varphi$' read `There is a change as to whether it is the case that $\varphi$'.
+    \item $\sometimes \varphi \coloneq \past \varphi \vee \varphi \vee \future \varphi$ expresses that it is \textit{sometimes} the case that $\varphi$.
+    % \item $\always \varphi \coloneq \neg \sometimes \neg \varphi$ expresses that it is \textit{always} the case that $\varphi$.
+    \item $\odot \varphi \coloneq \sometimes \varphi \wedge \sometimes \neg \varphi$.
+    % \item $\odot \varphi \coloneq \neg \varphi \wedge (\past \varphi \vee \future \varphi)$.
+  \item[\it Realism:] Tensed claims may be taken to assert facts about temporal reality.
+\end{itemize}
+
+
+
+\end{document}
+
+
+

@@ -1,0 +1,171 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{00pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Absolute Generality}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Restricted Quantifiers}
+
+\begin{itemize}
+  \item[\it Coffee:] There is no more coffee.
+    \item Of course there is some coffee somewhere.
+  \item[\it Bags:] I have packed everything.
+    \item But not everything in existence.
+  \item[\it Restriction:] The domain of quantification is, somehow, restricted by context.
+    \item Context does not change the meaning of `there is' or `everything'.
+    \item The quantifiers have the same semantics, just the domain shifts.
+\end{itemize}
+
+
+
+
+
+\section*{Unrestricted Quantifiers}
+
+\begin{itemize}
+  \item[\it Biology:] All humans are mortal.
+  \item[\it Identity:] Everything is self-identical.
+  \item[\it Sets:] No set is a member of itself.
+    \item It appears that we can quantify over \textit{everything}.
+    \item If not, quantified claims are not as informative as they could be.
+  \item[\bf Question:] Are we able to quantify over everything, at least sometimes?
+\end{itemize}
+
+
+
+
+\section*{Russellian Doubts}
+
+\begin{enumerate}
+  \item[\it Reductio:] Consider the following argument against unrestricted quantification:
+    \item Assume that we can quantify over all sets.
+    \item The domain of quantification must include all sets.
+    \item Quantifier domains are sets.
+    \item So there is a universal set of all sets.
+    \item We can derive naive comprehension from separation.
+    \item A contradiction follows by Russell's paradox.
+    \item Hence we cannot quantify over all sets.
+    \item Sets are things.
+    \item Thus we cannot quantify over everything.
+\end{enumerate}
+
+
+
+
+\section*{Domain Free Quantification}
+
+\begin{itemize}
+  \item[\it All-in-One:] Cartwright rejects (3) above.
+    \item Can we quantify over everything though there is no set of everything?
+    \item ``There is no set that has as members all and only those things that are not members of themselves.
+      But the things that are not members of themselves can simultaneously be the values of the variables of a first-order language; so at any rate I claim.'' ---Cartwright (1994, p.~3)
+    % \item The \textit{universe of discourse} can contain all sets without forming a set.
+  \item[\it Absolute Generality:] Why can't $x$ be instantiated by $w$ in $\forall x(x \in w \leftrightarrow x \notin x)$? 
+    \item Because there is no set $w$ according to ZFC. 
+    \item Rather, by \textit{Separation}, we get $\forall x(x \in w' \leftrightarrow (x \in z \wedge x \notin x))$ for some $z$.
+    \item But there is no universal set, and so at most $w' = z$.
+    \item But if we can quantify over everything, what justifies \textit{Separation}?
+\end{itemize}
+
+
+
+
+\section*{Relatively Unrestricted Quantification}
+
+\begin{itemize}
+  \item[\it Indefinite Extensibility:] In quantifying unrestrictedly, new entities can always be defined.
+    \item In particular, $w$ falls outside the domain of the quantifier.  
+    \item Naive comprehension may be preserved, but $w$ cannot instantiate $x$.
+  \item[\it Self-Defeating:] It is not possible to quantify over everything. 
+    \item Hence I am not quantifying over everything.
+    \item So there is something that I am not quantifying over.
+    \item But this is self-defeating, and so false.
+  \item[\it Context Domains:] Not everything is quantified over in context $c$.
+    \item For the reasons above, this theses is false in $c$.
+  \item[\it Context Principle:] For any $c$, there is some $c'$ where something quantified over in $c'$ is not also quantified over in $c$.
+    \item So not everything is quantified over in $c$, which is false in $c$.
+    \item But $c$ was an arbitrary context, so the \textit{Context Principle} is false in any $c$. 
+  \item[\it Show Don't Tell:] The relativist might claim only to be able to always shift the context.
+    \item Start in $c$, Russell's paradox moves us to $c'$ with broader quantifiers. 
+    \item Should we trust a theory that we can't state?
+  \item[\it Absolutism:] Claiming that we can quantify over everything is not self-defeating.
+    \item We may quantify over everything but are still beholden to \textit{Separation}.
+    \item Not as many sets exist as we might think we are able to naively define.
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+
+

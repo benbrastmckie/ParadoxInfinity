@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace} %%Enables \doublespacing command for double linespacing
+
+%Some useful packages
+\usepackage{url}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[mathscr]{euscript} %for Euler script. different from \mathcal
+
+%Some useful bracket notation 
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\abs}[1]{\lvert#1\rvert} % for absolute value or cardinality 
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Corner quotes
+
+%Sets of numbers
+\newcommand{\N}{\ensuremath{\mathbb{N}}} % symbol for set of natural numbers
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}} % symbol for set of integers
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}} % symbol for set of rational numbers
+\newcommand{\R}{\ensuremath{\mathbb{R}}} % symbol for set of rational numbers
+
+%For the sake of convenience: 
+\newcommand\be{\begin{equation}} 			% Begins Equation		
+\newcommand\ee{\end{equation}} 		
+\newcommand\bm{\mathbf} 			% bold in math mode
+
+%%% CITATIONS %%%
+% \usepackage{bibentry} %%Replace \bibliography{} with \nobibliography{} for no bib
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep={}}
+  % NOTES:
+  %   \citet{key} ==>>                Jones et al. (1990)
+  %   \citet*{key} ==>>               Jones, Baker, and Smith (1990)
+  %   \citep{key} ==>>                (Jones et al., 1990)
+  %   \citep*{key} ==>>               (Jones, Baker, and Smith, 1990)
+  %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
+  %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
+  %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
+  %   \citeauthor{key} ==>>           Jones et al.
+  %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
+  %   \citeyear{key} ==>>             1990
+\usepackage{etoolbox} %%For \citepos
+\usepackage{xstring} %%For \citepos
+
+\makeatletter %definition of \citepos
+% \patchcmd{\NAT@test}{\else \NAT@nm}{\else \NAT@nmfmt{\NAT@nm}}{}{} %turn on for numeric citations
+\DeclareRobustCommand\citepos% define \citepos
+  {\begingroup
+   \let\NAT@nmfmt\NAT@posfmt% same as for citet except with a different name format
+   \NAT@swafalse\let\NAT@ctype\z@\NAT@partrue
+   \@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}
+  }
+   
+\let\NAT@orig@nmfmt\NAT@nmfmt %makes adapt to last names ending with an 's'.
+\def\NAT@posfmt#1{%
+  \StrRemoveBraces{#1}[\NAT@temp]%
+  \IfEndWith{\NAT@temp}{s}
+    {\NAT@orig@nmfmt{#1'}}
+    {\NAT@orig@nmfmt{#1's}}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\title{\sc TITLE}
+\author{\textit{YOUR NAME}\\ \small STUDENT ID} 
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+% \vspace{.1in}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\doublespacing
+
+\section{Introduction}
+  \label{Intro}
+
+Here are some example citations. Use whatever style you please.
+
+\cite{Russell1908}
+
+\cite{Laan1996}
+
+\citep{Weyl1946}
+
+\citep{Ramsey2013}
+
+\citepos{Boolos1971}
+
+\citepos{Felgner2010}
+
+\citet{Cartwright1994}
+
+\citet{Williamson2003}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{footnotesize} %%Makes bib footnotesize text size
+\singlespacing %%Makes single spaced
+\bibliographystyle{bib_style} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+\setlength{\bibsep}{5pt} %%Changes spacing between bib entries
+\bibliography{essay_template} %%bib database found in bib folder, in bibtex folder
+\thispagestyle{empty} %%Removes page numbers
+\end{footnotesize} %%End makes bib small text size
+
+\end{document}
