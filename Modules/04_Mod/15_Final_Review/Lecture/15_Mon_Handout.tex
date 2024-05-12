@@ -1,0 +1,196 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % for adding extra padding to rows
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+\DeclareFontSubstitution{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\diamondright}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\medcirc}{\mathrel}{symbolsC}{"07}
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-30pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Surprise Exam Paradox}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Disbelief}
+
+\begin{itemize}
+  \item[\it Knowledge:] Sometimes the argument is developed in terms of knowledge.
+    \item Were going to stick with belief.
+  \item[\it Belief:] Can the students believe the instructor?
+    \item Yes, easily so long as they don't do too much reasoning (bad answer).
+    \item Let $S = (E_m \wedge \neg \B_m(E_m)) \vee (E_w \wedge \neg \B_w(E_w)) \vee (E_f \wedge \neg \B_f(E_f))$.
+    \item The interesting question is whether $\B_m(S)$ given \textit{Closure}, etc. 
+  \item[\it Logic:] Can logically omniscient students believe $S$ on Monday?
+    \item It might seem that the arguments show that the answer is `No'. 
+    \item But it seems like there can be surprises, and so $S$ could be true. 
+    \item So are the logically omniscient students missing out on a true belief?
+    % \item If $S$ can't be believed, what could the logically omniscient believe? 
+  \item[\it Repost:] Perhaps the good reasons for belief are overturned by the argument.
+    \item Even the most expert testimonies can be overturned, why not this?
+    \item Remains to accommodate the possibility of a surprise exam.
+    \item But we also want to maintain reasonably strong epistemic principles.
+\end{itemize}
+
+
+
+
+
+\section*{Doubts}
+
+\begin{itemize}
+  \item[\it Setup:] Why can't the students believe $S$?
+    \item One explanation claims that $S$ happens to be false. 
+    \item But surely $S$ is possible, and if so, assume such a case. 
+    \item Another strategy looks to spot the mistake in our reasoning before.
+  \item[\it One Day:] Can there be an announced surprise exam on just one day?
+    \item Announcement: ``There is a surprise exam on Monday.''
+    \item Seems that the announcement ensures that it is false.
+  \item[\it Two Days:] Can there be an announced surprise exam on one of two days?
+    \item Suppose the exam is held on Monday (as opposed to Wednesday).
+    \item Would it come as a surprise to the students?
+    \item On Monday, how could they be sure that it wasn't on Wednesday?
+    \item Because if it was on Wednesday, it wouldn't be a surprise \textit{then}.
+    \item But we might be surprised \textit{today} to find out that it is on Wednesday.
+  % \item[\it Argument:] Which step in the argument have we gone wrong?
+\end{itemize}
+
+
+
+
+\section*{Surprise}
+
+\begin{itemize}
+  \item[\it Timing:] It would come as a surprise on Monday that it is/isn't on Monday.
+    \item It wouldn't be a surprise on Wednesday if it didn't happen Monday.
+    \item Do we need to maintain that it is a surprise on the day of?
+    \item Why not take something to be a surprise by referencing the day before?
+  \item[\it Analysis:] Let $E_i$ be a \textit{surprise iff} $E_i \wedge \neg \B_{i-1}(E_i)$.
+    \item Assume $m-1 = f'$ (on the week before),~ $w-1=m$,~ and $f-1=w$. 
+    \item If $E_f$, then since $\neg \B_{f-1}(E_f) = \neg \B_{w}(E_f)$, so it is a surprise.
+    \item Really the surprise takes place on Wednesday.
+    \item On Wednesday, the surprise is about whether $E_w$ or $E_f$. 
+    % \item On Friday, the surprise has come and gone, but our new definition captures this.
+  % \item[\it Belief:] New analysis seems to get something right about the conn
+  \item[\it Surprise:] Does this new analysis capture a natural notion of surprise?
+    \item No less reasonable than the first analysis, and blocks the argument.
+    \item So there can be surprise exams, just not of the first kind of surprise.
+    \item Is this adequate?
+  \item[\it Learning:] Compare learning something new: you go from $\neg \B(X)$ to $\B(X)$.
+    \item Suppose that you learn something now about something in the future.
+    \item Suppose Ali will go on a walk tomorrow.
+    \item Learning this today, must we be surprised?
+    \item You might say, ``I'm not surprised,'' since Ali often goes on walks.
+    \item But this has the same form as before: $\texttt{Walk}_i \wedge \neg \B_{i-1}(\texttt{Walk}_i)$.
+  \item[\it Belief:] Could weaken our analysis to a mere necessary condition.
+    \item Partial analysis risks being fairly weak, though still true.
+    \item Consider the exclamations: ``I don't believe it!'', ``I am in disbelief!''.
+    \item We say these things when we believe something that surprises us.
+    \item It's not just that we learn something new, it has to be anticipated.
+    % \item High stakes is one reason to anticipate something.
+    % \item But it also seems that we can be surprised about things we do believe.
+  \item[\it Credences:] But couldn't we anticipate Ali's walk without being surprised?
+    \item Merely contemplating a future event is not enough to anticipate it.
+    \item Instead of changing our beliefs, consider updating our credences.
+    \item The bigger the jump in credences, the more surprising.
+    \item When no test is given Wednesday, we go from $\frac{1}{2}$ to $1$ that it is on Friday. 
+    \item Couldn't our expectation that Ali goes on a walk be similar?
+    \item What makes the exam a surprise and Ali's walk anything but?
+  \item[\it Stakes:] One thought is that the \textit{stakes} play a role.
+    \item The higher the stakes, the more surprising something can be.
+    % \item Or so it might seem\ldots
+\end{itemize}
+
+
+
+% \bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+% \nobibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+\end{document}

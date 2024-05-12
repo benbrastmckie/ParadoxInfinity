@@ -1,0 +1,189 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Newcomb's Problem}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Aporia}
+
+\begin{itemize}
+  \item[\it Opinionated:] Associated with being informed or knowledgeable (a strong look).
+    \item Can be inappropriate for sensitive, complicated, or subtle matters.
+    \item Can also make one less sensitive to alternatives (confirmation bias).
+  \item[\it Uninformed:] Having no opinion can be due to lack of knowledge about a case.
+    \item Knowledge is valued over ignorance, and opinion signals knowledge.
+    \item But opinion doesn't entail knowledge, nor is it valuable itself.
+  \item[\it Aporia:] Suspension of opinion for the sake of greater sensitivity to the truth.
+    \item Aporia is often a state that is achieved since we often begin with biases.
+    \item Aporia can be difficult to maintain, leading back to opinion.
+  \item[\it Obvious:] Taking one's assumptions/biases to be obvious is the opposite.
+    \item Paradoxes are one way to achieve aporia, even if only temporarily.
+    \item Aim is to see one's views in the context of many alternatives.
+\end{itemize}
+
+\section*{Two Boxes or One?}
+
+\begin{itemize}
+  \item[\it Boxes:] A small box has \$1000 and a big box could have a \$1,000,000.
+    \item On Wednesday, you will choose between two boxes or just the big box.
+    \item On Monday, a predictor with 99\% accuracy put \$1,000,000 in the big box if you are predicted to take the big box, and nothing otherwise.
+    \item What would an ideally rational agent do?
+\end{itemize}
+
+
+
+\section*{Two Box}
+
+\begin{itemize}
+  \item[\it Dominance:] Take both boxes, of course!
+    \item The big box is either \texttt{Full} or \texttt{Empty} and not both.
+    \item If \texttt{Empty}, then \texttt{OneBox} gives \$0 and \texttt{TwoBox} gives \$1,000.
+    \item If \texttt{Full}, then \texttt{OneBox} gives \$1,000,000 and \texttt{TwoBox} gives \$1,001,000.
+    \item \texttt{TwoBox} \textit{dominates} \texttt{OneBox} since it never leaves you worse off.
+  \item[\it Rational:] To be rational, choose a dominant strategy if there is one.
+  % \item[\it Rational:] Given that there is a dominate strategy, an ideally rational agent will choose that strategy, and so \texttt{TwoBox}.
+\end{itemize}
+
+
+
+
+\section*{One Box}
+
+\begin{itemize}
+  \item[\it Probability:] But this ignores the probabilities for the outcomes \texttt{Full} and \texttt{Empty}.
+    \item The actions under consideration are $\A = \set{\texttt{OneBox}, \texttt{TwoBox}}$ .
+    \item \mbox{The outcomes $\O_A = \set{\texttt{Full},\texttt{Empty}}$ are exclusive and exhaustive for $A \in \A$.} 
+    \item $EV(A) = \sum\limits_{i \in I_A} v(S_i^A)P(S_i^A|A)$ where $\O_A = \set{S_i^A: i \in I_A}$ and $A \in \A$.
+    \item $EV(\texttt{OneBox})=\$1,000,000\times.99 + \$0\times.01 = \$990,000$.
+    \item $EV(\texttt{TwoBox})=\$1,001,000\times.01 + \$1,000\times.99 = \$11,000$.
+    % \item $\sum\limits_{i \in I}P(S_i|A) = 1$ requires the outcomes to be exhaustive. 
+    % \item $P(S_i \cap S_j)=0$.
+    \item So \texttt{OneBox} is 90 times higher expected utility than \texttt{TwoBox}.
+  \item[\it Maximize:] \mbox{To be rational, choose an $A \in \A$ where $EV(A) \geq EV(B)$ for any $B \in \A$ (if any).}  
+    \item Expected utility is maximized by \texttt{OneBox}.
+    \item Thus a rational agent will \texttt{OneBox}.
+\end{itemize}
+
+
+
+
+\section*{Double or Nothing}
+
+\begin{itemize}
+  \item[\it Bets:] You are given \$1,000 with the option of drawing a stone from an urn.
+    \item The urn has 51 black stones and 49 white, all well mixed.
+    \item Drawing black doubles your winnings, but drawing white loses all.
+    \item Should you take draw a stone or take the \$1000?
+  \item[\it Utility:] Suppose a rational agent would maximize expected utility.
+    \item $EV(\texttt{Take}_1) = \$1,000 \times 1.00 = \$1,000$ since $\O_{\texttt{Take}_1}=\set{T_1}$ 
+    \item $EV(\texttt{Draw}_1) = \$2,000 \times .51 + \$0 \times .49 = \$1,020$ since $\O_{\texttt{Draw}_1}=\set{B_1,W_1}$. 
+    \item Since $EV(\texttt{Draw}_1) > EV(\texttt{Take}_1)$, the rational agent will draw.
+    \item $EV(\texttt{Take}_2) = \$2,000 \times 1.00 = \$2,000$ since $\O_{\texttt{Take}_2}=\set{T_2}$ 
+    \item $EV(\texttt{Draw}_2) = \$4,000 \times .51 + \$0 \times .49 = \$2,040$ since $\O_{\texttt{Draw}_2}=\set{B_2,W_2}$. 
+    \item The same reasoning may be repeated indefinitely.
+  \item[\it Risk:] What are the chances that you walk away with nothing after $n$ draws? 
+    \item \$1,000 after 0 draws with probability 1: $EV(0) = \$1,000$.
+    \item \$2,000 after 1 draws with probability .51: $EV(1) = \$1,020$.
+    \item \$4,000 after 2 draws with probability .26: $EV(2) = \$1,040$.
+    % \item \$8,000 after 3 draws with probability .13: $EV(3) = \$1,061$.
+    \item $EV(n) = \$1,000 \times 2^n \times .51^n \geq \$1,000$ for all $n \geq 0$.
+  \item[\it Certanty:] Fails to account for the value of certainty.
+    % \item $EV(\texttt{Draw}_1') = \$2,000 \times .51 + \$0 \times .49 + v(\texttt{Certain}) \times .00 = \$1,020$. 
+    \item $EV(\texttt{Take}_1') = (\$1,000 + v(\texttt{Certain})) \times 1.00 = \$1,000 + v(\texttt{Certain})$.
+    \item $EV(\texttt{Draw}_1') = (\$2,000 + \frac{1}{.51}v(\texttt{Certain})) \times .51 = \$1,020 + v(\texttt{Certain})$. 
+    \item Certainty has a different kind of value than money.
+\end{itemize}
+
+
+
+\end{document}
+
+
+

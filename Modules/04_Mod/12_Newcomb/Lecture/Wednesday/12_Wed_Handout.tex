@@ -1,0 +1,223 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+\DeclareFontSubstitution{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\diamondright}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\medcirc}{\mathrel}{symbolsC}{"07}
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Newcomb's Problem}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Green Grass}
+
+\begin{itemize}
+  \item[\it Drought:] The town of Bayes has seen a terrible drought and the grass is dying.
+    \item $P(\texttt{WetGrass}\ |\ \texttt{Umbrellas})=.99$ and $P(\texttt{DryGrass}\ |\ \texttt{Umbrellas}) = .01$.
+    \item $P(\texttt{WetGrass}\ |\ \neg\texttt{Umbrellas})=.1$ and $P(\texttt{DryGrass}\ |\ \neg\texttt{Umbrellas}) = .9$.
+    \item Assume that $v(\texttt{WetGrass}) = 10$ and $v(\texttt{DryGrass}) = -10$.
+    \item $EV(\texttt{Umbrellas}) = .99 \times v(\texttt{WetGrass}) + .01 \times v(\texttt{DryGrass}) = 9.8$.
+    \item $EV(\neg\texttt{Umbrellas}) = .1 \times v(\texttt{WetGrass}) + .9 \times v(\texttt{DryGrass}) = -8$.
+  \item[\it Solution:] Upon learning of these numbers, the mayor calls for the Bayesians to go outside with their umbrellas so that the grass can get some water. 
+    \item Something has gone wrong, but what is it?
+\end{itemize}
+
+
+
+
+\section*{Epilepsy}
+
+\begin{itemize}
+  \item[\it Lassie:] Angela has a dog Lassie which can reliably predict her seizures.
+    \item $P(\texttt{Seizure}\ |\ \texttt{Bark})=.99$ and $P(\neg\texttt{Seizure}\ |\ \texttt{Bark}) = .01$.
+    \item Assume that $v(\texttt{Seizure} + \texttt{Meds}) = 0$ and $v(\texttt{Seizure} + \neg \texttt{Meds}) = -10$.
+    \item Lassie is barking and so Angela is sure to take her medication.
+    \item But given what was said above, has she made a mistake?
+\end{itemize}
+
+
+
+
+\section*{Two Conditionals}
+
+\begin{itemize}
+  \item[\it Indication:] Umbrellas on the streets and Lassie's barks are reliable indicators.
+    \item If you only knew \texttt{Umbrellas}/\texttt{Barks} you could make a safe bet.
+    \item \texttt{Umbrellas} and \texttt{Barks} indicate a cause, but are not causes themselves.
+    \item Their is a common cause of \texttt{Umbrellas}/\texttt{WetGrass} and \texttt{Barks}/\texttt{Seizure}.
+  \item[\it Indicatives:] Indicative conditionals can be used to assert conditional knowledge.
+    \item If \texttt{Barks}, then \texttt{Seizure}.
+    \item If \texttt{Umbrellas}, then \texttt{WetGrass}.
+  \item[\it Subjunctives:] Subjunctive conditionals can be used to track causal connections.
+    \item If the Bayesians \textit{were} to go out with umbrellas, the grass \textit{would} be wet.
+    \item If Lassie \textit{were} to bark, then Angela would have a seizure.
+\end{itemize}
+
+% NOTES
+  % back to boxes
+    % assuming you OneBox, getting rich is likely
+    % but that doesn't mean OneBoxing causes the money to be there
+    % it is just highly correlated with it
+    % this explains what is wrong with the EV calculation
+    % but what is the right way to reason and why
+  % causal dependence
+    % approximated by counterfactuals
+    % it is likely that: given that you are out with an umbrella, the garden will 
+    % if you were to go outside with an umbrella, the garden would get some water
+  % 
+  % 
+  % 
+  % 
+
+\section*{Two Box}
+
+\begin{itemize}
+  \item[\it Action:] Faced with two boxes, the question is what are you in a position to do.
+    \item LIKELY: If you choose \texttt{OneBox}, the big box will be \texttt{Full}.
+    \item UNLIKELY: If you were to choose \texttt{OneBox}, the big box would be \texttt{Full}.
+    % \item Choosing \texttt{OneBox} or \texttt{TwoBox} will not change the money in the boxes.
+    % \item Can hope that you have been predicted to choose \texttt{OneBox} in the past.
+    \item Choosing \texttt{OneBox} isn't going to fill it with money (compare \texttt{Umbrellas}).
+    \item So you might as well take what is there, and hence \texttt{TwoBox}.
+  \item[\it Independence:] When can we use an expected utility calculation as before?
+    \item Is the outcome causally or probabilistically dependent on the action?
+    \item An outcome $S$ is \textit{counterfactually independent} of an action $A$ \textit{iff} either: 
+    \vspace{-.1in}
+    \begin{enumerate}
+      \begin{multicols}{2}
+        \item $A \boxright S$ and $\neg A \boxright S$.
+        \item $A \boxright \neg S$ and $\neg A \boxright \neg S$.
+      \end{multicols}
+    \end{enumerate}
+    \vspace{-.1in}
+    \item $P(\texttt{OneBox} \boxright \texttt{Full}) = P(\texttt{Full})$ and $P(\texttt{TwoBox} \boxright \texttt{Full}) = P(\texttt{Full})$.
+    \item $P(\texttt{OneBox} \boxright \texttt{Empty}) = P(\texttt{Empty})$ and $P(\texttt{TwoBox} \boxright \texttt{Empty}) = P(\texttt{Empty})$.
+    \item By exclusivity and exhaustivity, $P(\texttt{Empty}) = 1 - P(\texttt{Full})$.
+    % \item Conditional probabilities are helpful under ignorance.
+    % \item But Newcomb is not a case of betting about what we don't know.
+  \item[\it Causal Decision Theory:] To be rational, maximize expected causal utility if possible.
+    \item Weighting utilities in proportion to their likelihood is not the problem.
+    \item The problem is mistaking probabilistic for counterfactual dependence.
+    \item $ECU(A) = \sum\limits_{i \in I_A} v(S_i^A)P(A \boxright S_i^A)$ instead of $EV(A) = \sum\limits_{i \in I_A} v(S_i^A)P(S_i^A | A)$.
+    \item \mbox{$ECU(\texttt{OneBox}) = \$1,000,000\times P(\texttt{OneBox} \boxright \texttt{Full}) + \$0\times P(\texttt{OneBox} \boxright \texttt{Empty})$}
+    \item[] \hspace{.94in} $= \$1,000,000\times P(\texttt{Full})$.
+    \item \mbox{$ECU(\texttt{TwoBox}) = \$1,001,000\times P(\texttt{TwoBox} \boxright \texttt{Full}) + \$1,000\times P(\texttt{TwoBox} \boxright \texttt{Empty})$.}
+    \item[] \hspace{.94in} $= \$1,001,000\times P(\texttt{Full}) + \$1,000\times P(\texttt{Empty})$
+    \item[] \hspace{.94in} $= \$1,001,000\times P(\texttt{Full}) + \$1,000\times (1 - P(\texttt{Full}))$
+    \item[] \hspace{.94in} $= \$1,000,000\times P(\texttt{Full}) + \$1,000$
+    \item[] \hspace{.94in} $= ECU(\texttt{OneBox}) + \$1,000$
+    \item Two boxing is better independent of the value of $P(\texttt{Full})$.
+\end{itemize}
+
+
+
+
+\section*{Short}
+
+\begin{itemize}
+  \item[\it Bonus:] Choose, but before opening, bet about the total value for a bonus.
+    \item Your choice may indicate what you were inclined to choose in the past.
+    \item And your past inclinations indicate the prediction made about you.
+    \item Bet \texttt{Empty} if and only if you chose \texttt{TwoBox}.
+    \item You might feel that you have been punished for your rationality.
+    \item So it goes in mischievous though experiments!
+\end{itemize}
+
+
+
+
+
+\end{document}
+
+
+

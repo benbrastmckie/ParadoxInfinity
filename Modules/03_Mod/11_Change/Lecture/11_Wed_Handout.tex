@@ -1,0 +1,169 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{50pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Time and Change}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Real Change}
+
+\begin{itemize}
+  \item[\it Grid:] Consider a universe consisting of three pieces on a $3 \times 3$ grid. 
+    \item Consider three successive configurations of the grid in time.
+    \item Compare this to three configurations of the grid separated in space. 
+    \item How does change across time differ from change across space?
+  \item[\it Identity:] The spatially separated grids are not identical.
+    \item By contrast, the temporally separated grids are one.
+    \item The properties of one and the same grid differ at different times.
+    \item Call a complete configuration a \textit{world state}.
+  \item[\it Properties:] What properties are to be included in a world state?
+    \item A piece $x$ is \textit{shrew} at $t$ \textit{iff} either: (1) $x$ is shaded at $t$ and $t$ is before 11am; or (2) $x$ not shaded at $t$ and $t$ is after 11am.
+    \item Suppose a shaded piece goes on being shaded at 11am.
+    \item Does that piece change from being shrew to not being shrew at 11am?
+  \item[\it Things:] Consider the object which consists of the grid at different times.
+    \item This object does not change in time, but goes on just as it is.
+    \item Suppose we exclude temporally defined properties and things.
+    \item We can ask what real properties every real thing has at a time.
+  \item[\it Existence:] World states determines which properties everything has.
+    \item But suppose one grid ends and another begins at each change.
+    \item Can still say that each grid is thus and so at each time.
+    \item Do the things and properties that exist also change?
+  \item[\it Change:] A difference between the real properties real things have.
+    \item Do two times differ only if there is a change between them?
+    \item Something is some way at time $t$, and not that way at time $t'$.
+    \item Could there be two times where the same things are all the same ways?
+\end{itemize}
+
+
+
+
+\section*{Real Possibility}
+
+\begin{itemize}
+  \item[\it Logical Possibility:] ``What is in question here is not whether it is physically possible for there to be time without change but whether this is logically or conceptually possible.'' --- Shoemaker (p.~368, 1969)
+    \item Important to distinguish logical possibility in the sense of consistency.
+    \item It is consistent for the atom to be gold and to have only 6 protons.
+    \item There is no \textit{way for things to be} where the gold atom has only 6 protons.
+  \item[\it Metaphysical Possibility:] Broadest range of objective possibilities (ways for things to be).
+    \item Fixing the interpretation, how must things be for the claim to be true?
+    \item Is there any way whatsoever for things to be where the claim is true?
+    \item Interpretational possibility concerns truth on any interpretation.
+\end{itemize}
+
+
+
+
+\section*{Total Freezes}
+
+\begin{itemize}
+  \item[\it Universe:] Suppose there is a possible world with A, B, and C regions.
+    \item Local freezes occur every 3rd year in region A.
+    \item Local freezes occur every 4th year in region B.
+    \item Local freezes occur every 5th year in region C.
+  \item[\it Total:] On certain years, the freezes in different regions align.
+    \item A and B freeze together every 12th year.
+    \item A and C freeze together every 15th year.
+    \item B and C freeze together every 20th year.
+    \item A, B, and C all freeze every 60th year.
+  \item[\it No Change:] On that 60th year, does time pass without change?
+    \item More dramatically, could there be permanently frozen worlds?
+    \item What about worlds that occupy the same world states more than once?
+  \item[\it Possible Worlds:] Let $W$ be the set of \textit{world states} and $T$ a strict total order of \textit{times}. 
+    \item A \textit{world evolution} is any function from $\tau : T \to W$.
+    \item Which world evolutions are possible worlds? 
+    \item Are constant functions permitted? What about loops?
+  \item[\it Convention:] Is it a matter of convention whether there are total freezes or not?
+    \item Which of two bodies is rotating around each other?
+    \item The year is exactly 365 days long with a one day freeze every 4th year.
+    \item Compare the continuum hypothesis or axiom of choice for sets.
+\end{itemize}
+
+
+\end{document}
+
+
+

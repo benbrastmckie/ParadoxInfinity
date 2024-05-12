@@ -1,0 +1,210 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % for adding extra padding to rows
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+\DeclareFontSubstitution{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\diamondright}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\medcirc}{\mathrel}{symbolsC}{"07}
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Prisoners' Dilemma}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+% NOTES
+  % review assignment
+  % Bermudez's argument
+  % critique
+  % twist: assume players are optimally rational and know it
+    % is there one way to be optimally rational?
+    % if so, players must act the same, eliminating two options
+    % does this mean the players will cooperate?
+    % what matters is if the players both think there is one way to be optimally rational
+    % optimal rationality shouldn't include a theory of rationality any more than it should include a theory of physics
+    % so this way of eliminating two of the four options fails
+    % but maybe there is another way to eliminate options?
+
+\section*{Instance Thesis}
+
+\begin{itemize}
+  \item[\it Argument:] Lewis argues that $(P)$ is an instance of $(N)$:
+    \item[$(P)$] $\texttt{Rich}_A$ \textit{iff} $\neg \texttt{Take}_B$.
+    \item[$(N)$] $\texttt{Rich}_A$ \textit{iff} it is predicted that $\neg \texttt{Take}_A$.
+  \item[\it Inessentials:] Lewis claims $(N)$ is equivalent to the following:
+    \item[$(N)'$] $\texttt{Rich}_A$ \textit{iff} a certain potentially predictive process (which may go on before, during, or after my choice) yields an outcome which could warrant a prediction that I do not take my \$1,000.
+    \item Lewis claims that $(N)'$ eliminates inessentials from $(N)$.
+    \item Focusing on $(N)$, we may take $(N)'$ to elaborate what $(N)$ intends.
+  \item[\it Instance:] Is $(P)$ an instance of $(N)$?
+    \item Does $\neg \texttt{Take}_B$ predict that $\neg \texttt{Take}_A$? 
+    \item Lewis says `yes' when prisoners $A$ and $B$ are sufficiently similar. 
+    \item What is sufficient for $\neg \texttt{Take}_B$ to predict that $\neg \texttt{Take}_A$?
+\end{itemize}
+
+
+
+
+\section*{Prediction and Probability}
+
+\begin{itemize}
+  \item[\it Motivation:] Lewis appeals to the prisoner's dilemma to motivate CDT. 
+    \item All that matters is that $\neg \texttt{Take}_B$ raises the likelihood of $\neg \texttt{Take}_A$ enough. 
+    \item Letting $r = \frac{\$1,000}{\$1,000,000}$, the probability must greater than $\frac{1 + r}{2} = .5005$. 
+    \item $\neg \texttt{Take}_B$ predicts $\neg \texttt{Take}_A$ \textit{if} $P(\neg \texttt{Take}_A\ |\ \neg \texttt{Take}_B) > .5005$. 
+  \item[\it Coin:] Does getting heads $7/10$ times \textit{predict} heads is more likely? 
+    \item If the coin is fair, heads is just as likely as tails.
+    \item The fairness of the coin justifies the prediction that heads is $.5$ likely. 
+  \item[\it Similarity:] What could justify that $P(\neg \texttt{Take}_A\ |\ \neg \texttt{Take}_B) > .5005$?
+    \item Lewis claims that simulation is a predictive process \textit{par excellence}.
+    \item ``To predict whether I will take my thousand, make a replica of me, put my replica in a replica of my predicament, and see whether my replica takes his thousand.'' ---\citet[p.~237]{Lewis1979a}
+    \item Is prisoner $B$ a good enough replica of prisoner $A$?
+  \item[\it Conclusion:] If so, then $(P)$ is an instance of $(N)$ as Lewis claims.
+\end{itemize}
+
+
+
+
+
+
+\section*{Optimal Rationality}
+
+\begin{itemize}
+  \item[\it Collaboration:] Suppose that both prisoners are (optimally) rationally.
+    \item Suppose they know that they are each optimally rational.
+    \item Suppose they have all the same information and values.
+    \item Does this mean that they act in the same way?
+    \item One sort of answers claims `yes': optimal rationality is unique.
+    \item Thus there are only two possible outcomes: $\texttt{Take}_{AB}$ or $\neg \texttt{Take}_{AB}$.
+    \item Moreover, $v(\neg \texttt{Take}_{AB}) \gg v(\texttt{Take}_{AB})$.
+    \item Can we conclude that optimally rational prisoners will collaborate?
+  \item[\it Theory:] Is optimal rationality unique?
+    \item Is there just one rational action for each agent in each case?
+    \item \mbox{Does optimal rationality require knowing whether optimal rationality is unique?}
+    % \item Even if unique, rationality doesn't require knowing it is unique.
+    % \item An agent need not know all of physics to be optimally rational.
+    \item One needn't know a final linguistic theory to be fluent in English.
+    \item Nor does one need to know physics in order to hit a baseball.
+    \item Being rational doesn't require knowing what rationality is.
+    \item In particular, one needn't know if optimal rationality is unique.
+  \item[\it Uniqueness:] Can the prisoners assume that they will act in the same way?
+    \item Even if optimal rationality is unique, can't assume they know this.
+    \item Thus they can't conclude they will act in the same way.
+    \item So the prisoner's can't run the reasoning above to $\neg \texttt{Take}_{AB}$.
+    \item This reasoning also fails if rationality is not unique.
+\end{itemize}
+
+
+
+
+\section*{Modulo Theory}
+
+\begin{itemize}
+  \item[\it Rationality:] What is it to be rational?
+    \item \mbox{Takes an epistemic state and values as input and action choice as output.}
+    \item There are the various ways people act given their values and info.
+    % \item Should we expect rationally to form a total order?
+    \item Holding the inputs fixed, can the outputs be totally ordered?
+    \item If totally ordered, must there be a maximally rational output?
+  \item[\it Theory:] Is it the task of a theory of rationality to provide a total ordering?
+    \item For instance, EDT and CDT recommend opposing choices.
+    \item Should we assume the same theory will be universally applicable?
+    \item If not, how are we to decide which theory to choose when?
+    \item For instance, we saw before that a twoboxer might use CDT to choose, but then use EDT to bet against themselves.
+  % \item[\it Hard Choices:] Compare buying an apartment in Boston to a farm in Vermont.
+  %   \item Suppose that you value them in different ways.
+  %   \item Must any two types of value be commensurate, even subjectively?
+    % \item If not, are such choices irrational?
+\end{itemize}
+
+
+
+\bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+\nobibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+\end{document}

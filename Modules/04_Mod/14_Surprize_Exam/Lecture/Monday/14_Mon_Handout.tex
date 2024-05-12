@@ -1,0 +1,216 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % for adding extra padding to rows
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+\DeclareFontSubstitution{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\diamondright}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\medcirc}{\mathrel}{symbolsC}{"07}
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-30pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Surprise Exam Paradox}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{The Exam}
+
+\begin{itemize}
+  \item[\it Setup:] A single surprise exam is announced for next week ($9$am $m, w$, or $f$).
+    \item Let `$E_i$' read `The exam occurs on $i$' where $i \in \set{m, w, f}$.
+    \item Let `$\B_i(A)$' read `The students believe $A$ at $9$am on $i$'.
+    \item $E_i$ is a \textit{surprise iff} $E_i \wedge \neg \B_i(E_i)$.
+    \item Let $S = (E_m \wedge \neg \B_m(E_m)) \vee (E_w \wedge \neg \B_w(E_w)) \vee (E_f \wedge \neg \B_f(E_f))$.
+    \item The students believe this announcement $S$ throughout the week.
+  \item[\it Closure:] If $\B_i(A)$ for all $A \in \Gamma$ and $\Gamma \vdash B$, then $\B_i(B)$.
+    \item We only need limited instances of \textit{Closure} to hold.
+  \item[\it Informed:] The students learn each day if there is an exam, forming a true belief.
+  \item[\it Memory:] The students maintain their beliefs from the previous days.
+  % \item[\it Introspection:] Both $\B_i(A) \vdash \B_i(\B_i (A))$ and $\neg \B_i(A) \vdash \B_i(\neg \B_i (A))$.
+    % \item These principles needn't hold universally, just for the cases here.
+  \item[\it Friday:] On Monday $8$am, the students reason as follows:
+    \item If $E_f$, then $\neg E_m$ and $\neg E_w$, so $\B_m(\neg E_m)$ and $\B_w(\neg E_w)$ by \textit{Informed}.
+    \item So $\B_f(\neg E_m)$ and $\B_f(\neg E_w)$ by \textit{Memory}, where $\B_f(S)$ is a premise. 
+    \item But $S, \neg E_m, \neg E_w \vdash E_f$, and so $\B_f(E_f)$ by \textit{Closure}. 
+    % \item Also $S, \neg E_m, \neg E_w \vdash \neg \B_f(E_f)$, and so $\B_f(\neg \B_f(E_f))$ by \textit{Closure}. 
+    % \item Since $\B_f(\B_f(E_f))$ by \textit{Introspection}, $\B_f(\bot)$.
+    \item Thus $E_f$ is not a surprise, i.e., $\neg \neg \B_f(E_f)$, and so $\neg (E_f \wedge \neg \B_f(E_f))$.
+    \item In this way, the students come to $\B_m(\neg (E_f \wedge \neg \B_f(E_f)))$.
+    \item However, $S, \neg (E_f \wedge \neg \B_f(E_f)) \vdash (E_m \wedge \neg \B_m(E_m)) \vee (E_w \wedge \neg \B_w(E_w))$.
+    \item By \textit{Closure}, $\B_m(S')$ where $S' = (E_m \wedge \neg \B_m(E_m)) \vee (E_w \wedge \neg \B_w(E_w))$.
+  \item[\it Wednesday:] The students (on Monday 8:05am) turn to reason about Wednesday:
+    \item If $E_w$, then $\neg E_m$, so $\B_m(\neg E_m)$ by \textit{Informed} and $\B_w(\neg E_m)$ by \textit{Memory}.
+    \item However, $\B_m(S')$ by \textit{Friday}, and so $\B_w(S')$ by \textit{Memory}.
+    \item Since $S', \neg E_m \vdash E_w$, it follows by \textit{Closure} that $\B_w(E_w)$.
+    % \item By repeating the \textit{Friday} argument on Wednesday morning, $\B_w(\neg E_f)$.
+    % \item However, $\B_w(E_m \vee E_w \vee E_f)$, and so $\B_w(E_w)$ by \textit{Closure}.
+    \item Thus if $E_w$, then $E_w$ is not a surprise, and so  $\neg (E_w \wedge \neg \B_w(E_w))$.
+    \item In this way, the students come to $\B_m(\neg (E_w \wedge \neg \B_w(E_w)))$.
+    \item However, $S', \neg (E_w \wedge \neg \B_w(E_w)) \vdash E_m \wedge \neg \B_m(E_m)$.
+    \item By \textit{Closure}, $\B_m(S'')$ where $S'' = E_m \wedge \neg \B_m(E_m)$. 
+  \item[\it Monday] The students now turn to consider Monday (still on Monday 8:10am):
+    % \item However, they come to realize that their belief $\B_m (S'')$ is very strange.
+    \item $\B_m(S'')$ entails $\B_m(E_m)$ and $\B_m(\neg \B_m(E_m))$. %, so $\B_m(E_m) \nvdash \B_m(\B_m(E_m))$.
+    % \item But it would seem that the students can introspect about $\B_m(E_m)$.
+    \item $\B_m(E_m) \vdash \B_m(\B_m(E_m))$ leads to believing a contradiction.
+    \item So the students would seem to have reason to reject $\B_m(S'')$.
+\end{itemize}
+
+
+
+
+
+
+\section*{Moore's Problem}
+
+\begin{itemize}
+  \item[\it Rain:] It is raining $(R)$ but I do not believe that it is raining $\neg \B (R)$.
+    \item Can be true, but can't be asserted (normally).
+    \item Can \textit{assert} either $R$ or $\neg \B(R)$, but not both. 
+    \item OK to assert: It is raining but \textit{you} do not believe that it is raining.
+  \item[\it Belief Norm:] Don't assert what you don't yourself believe (in normal circumstances).
+    \item One could appeal to this norm to infer $\B(R)$ from an assertion of $R$.
+    \item Similarly, $\B(\neg \B(R))$ can be inferred from an assertion of $\neg \B(R)$.
+    \item Can \textit{believe} $R$ or $\neg \B(R)$, but not both?
+  \item[\it Introspection:] The following introspection principles have many true instances.
+    \vspace{-.05in}
+    % \begin{itemize}
+      \begin{multicols}{2}
+        \item[] (\textit{Positive})~~ $\B (A) \vdash \B(\B (A))$.
+        \item[] (\textit{Negative})~~ $\neg \B (A) \vdash \B(\neg \B (A))$.
+      \end{multicols}
+    % \end{itemize}
+    \vspace{-.1in}
+    \item Nothing seems to block introspection for $A = E_m$.
+    \item As above, $\B_m(S)$ entails $\B_m(E_m)$ and $\B_m(\neg \B_m(E_m))$. 
+    \item So $\B_m(\B_m(E_m))$ follows by \textit{Positive Introspection}. 
+    \item Moreover $\B_m(E_m), \neg \B_m(E_m) \vdash \B_m(E_m) \wedge \neg \B_m(E_m)$.
+    \item Hence $\B_m(\B_m(E_m) \wedge \neg \B_m(E_m))$ follows by \textit{Closure}. 
+    \item But $\B_m(E_m) \wedge \neg \B_m(E_m)$ is a contradiction. 
+  \item[\it Contradiction:] Don't believe contradictions (revise your beliefs accordingly).
+    \item Since $\B_m(S) \vdash \B_m(\B_m(E_m) \wedge \neg \B_m(E_m))$, we get $\neg \B_m(S)$.
+    \item But the students are able to believe that there will be a surprise exam.
+  \item[\it Blindspot:] Is the paradox solved by claiming that it is impossible for $\B_m(S)$?
+    \item Is it still possible for $S$ to be true? 
+\end{itemize}
+
+
+
+
+
+
+
+% \section*{A Comparison}
+%
+% \begin{itemize}
+%   \item[\it Prisoners:] The prisoner's from before play three rounds $P_m$, $P_w$, and $P_f$.
+%     \item Assume it is rational not to cooperate in a single round.
+%     \item Then it is rational not to cooperate in the final round $P_f$.
+%     \item Both prisoners assume as much about each other on $P_f$.
+%     \item Given that $P_f$ is settled, shouldn't the same be true for $P_w$ and $P_m$? 
+%   \item[\it Cooperation:] Is there a better strategy?
+%     \item Begin by baiting the other prisoner into cooperating by not taking.
+%     \item If they also don't take, continue the strategy.
+%     \item If they do take, try again?
+%     \item Even if they don't take, what do you do on the last round?
+%     \item But then if both take on the last, why not also on the second to last?
+%   \item[\it Rational:] Can the cooperation strategy be rational at any round?
+%     \item How similar is this case to the surprise exam paradox?
+% \end{itemize}
+
+
+
+
+
+
+
+% \bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+% \nobibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+\end{document}

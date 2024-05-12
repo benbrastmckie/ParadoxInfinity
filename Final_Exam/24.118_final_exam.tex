@@ -1,0 +1,129 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{exam_2024}
+\usepackage{bibentry}
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+
+%%% CITATIONS %%%
+% \usepackage{bibentry} %%Replace \bibliography{} with \nobibliography{} for no bib
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep={}}
+ %   \citet{key} ==>>                Jones et al. (1990)
+ %   \citet*{key} ==>>               Jones, Baker, and Smith (1990)
+ %   \citep{key} ==>>                (Jones et al., 1990)
+ %   \citep*{key} ==>>               (Jones, Baker, and Smith, 1990)
+ %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
+ %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
+ %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
+ %   \citeauthor{key} ==>>           Jones et al.
+ %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
+ %   \citeyear{key} ==>>             1990
+\usepackage{etoolbox} %%For \citepos
+\usepackage{xstring} %%For \citepos
+
+\makeatletter %definition of \citepos
+% \patchcmd{\NAT@test}{\else \NAT@nm}{\else \NAT@nmfmt{\NAT@nm}}{}{} %turn on for numeric citations
+\DeclareRobustCommand\citepos% define \citepos
+  {\begingroup
+   \let\NAT@nmfmt\NAT@posfmt% same as for citet except with a different name format
+   \NAT@swafalse\let\NAT@ctype\z@\NAT@partrue
+   \@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}
+  }
+   
+\let\NAT@orig@nmfmt\NAT@nmfmt %makes adapt to last names ending with an 's'.
+\def\NAT@posfmt#1{%
+  \StrRemoveBraces{#1}[\NAT@temp]%
+  \IfEndWith{\NAT@temp}{s}
+    {\NAT@orig@nmfmt{#1'}}
+    {\NAT@orig@nmfmt{#1's}}}
+\makeatother
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{qa}
+
+
+\begin{document}
+
+\psintro{Final Exam for Paradox and Infinity: 24.118}{3 problems}{160 minutes}{160 minutes + 10 minutes to check for errors}
+
+\vspace{.2in}
+
+\noindent
+\textbf{Instructions:} 
+Write one essay for each of the topics (A), (B), and (C) given below, making sure to address the following (20 points for each per essay):
+\begin{itemize}
+  \item Setup the paradox/puzzle in your own words, explaining why it is paradoxical.
+  \item Defend a response to the paradox.
+  \item Consider at least one counter argument and response.
+  \item Explain what we stand to learn from such a paradox.
+\end{itemize}
+Note that you needn't feel convinced of the truth of the positions that you choose to defend.
+Even if you are in a state of \textit{aporia}, what matters here is the quality of your reasoning, demonstrating your understanding of the paradoxes that you choose to address.
+
+\vspace{.2in}
+
+
+
+\subsection*{Topic A}
+
+\begin{enumerate}
+  \item 
+    \question{
+      There is no set of all sets.
+    }
+    \answer{
+    }
+  \item 
+    \question{
+      The liar paradox.
+    }
+    \answer{
+    }
+\end{enumerate}
+
+
+
+
+\subsection*{Topic B}
+
+\begin{enumerate}
+  \item 
+    \question{
+      The grandfather paradox.
+    }
+    \answer{
+    }
+  \item 
+    \question{
+      There cannot be time without change.
+    }
+    \answer{
+    }
+\end{enumerate}
+
+
+
+\subsection*{Topic C}
+
+\begin{enumerate}
+  \item 
+    \question{
+      Newcomb's problem.
+    }
+    \answer{
+    }
+  \item 
+    \question{
+      The surprise exam paradox.
+    }
+    \answer{
+    }
+\end{enumerate}
+
+\vspace{.2in}
+\noindent
+\textbf{Note:} You are welcome to draw on anything that you have written during the term but do not be tempted to use ChatGPT or any other sources that are not original and that you do not cite explicitly.
+Attempting to do so won't help you anyhow.
+
+\end{document}
+

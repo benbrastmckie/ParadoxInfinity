@@ -1,0 +1,196 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-20pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{The Metaphysics of Time}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Paradox}
+
+\begin{itemize}
+  \item[\it Argument 1:] If time is real, then events have A-series properties.
+    \item[\bf P1] If time is real, then events change.
+    \item[\bf P2] If an event changes, then its A-series properties are what change.
+    \item[\bf P3] \mbox{If an event's A-series properties change, events have A-series properties.}
+    \item[\bf C1] Therefore, if time is real, then events have A-series properties.
+  \item[\it Argument 2:] Events do not have A-series properties.
+    % \item[\bf P4] If an event has an A-series property, it has every A-series property.
+    \item[\bf P4] If an event has an A-series property, it has every A-series property.
+    \item[\bf P5] The A-series properties are incompatible.
+    \item[\bf C2] There are no events that have A-series properties. 
+  \item[\it Argument 3:] Putting these first two arguments together, McTaggard concludes:
+    \item[\bf C3] Time is not real.
+\end{itemize}
+
+
+
+
+
+\section*{Being in Time}
+
+\begin{itemize}
+  \item[\it Respones:] No event has every A-series property \textit{at once}.
+    \item If $e$ \textit{is} present, then $e$ \textit{was future} and \textit{will be past}.
+    % \item Similarly, $Pe \vdash PFe \wedge PNe$ and $Fe \vdash FNe \wedge FPe$.
+    % \item Also $Pe \vdash PPe$, $Ne \vdash NNe$, and $Fe \vdash FFe$.
+    % \item But $Pe \vdash PPe \wedge PNe \wedge PFe$ and $Fe \vdash FPe \wedge FNe \wedge FFe$.
+    \item So $Fe$ at a past time $p$, and $Pe$ at a future time $f$.
+  \item[\it Repost:] ``But every moment, like every event, is both past, present, and future.''
+    \item So $\neg Fe$ when $p$ is present or future, and $\neg Pe$ when $f$ is present or past. 
+    % \item Like all events, $n$, $p$, and $f$ are equally past, present, and future.
+    \item The response generates the same problem, yielding a vicious regress.
+    % \item Thus the response fails to avoid contradiction.
+  \item[\it Vicious:] Is the regress really vicious?
+    % \item The response is only inadequate assuming premise 4. 
+    % \item But the response ought to be taken to revise premise 4.
+    \item Is the contradiction ever avoided, or ever preserved?
+    \item Compare building a set $U$ out of members which include $U$.
+  \item[\it Events:] It becomes extremely artificial to speak in terms of events.
+    \item Is $Fe$ an event? 
+    \item Also, most events seem to occur over a duration, not at a time.
+  \item[\it Tense:] Involves a mixture of tense operators and temporal properties.
+    \item Properties cannot be iterated, so best to stick to operators.
+    \item Let `$\past \varphi/\future \varphi$' read `It was/will be the case that $\varphi$'.
+\end{itemize}
+
+
+
+
+\section*{The Reality of Tense}
+
+\begin{itemize}
+  \item[\it Tense:] Let $\varphi$ be a sentence where $e$ is the ``event'' of it being the case that $\varphi$:
+    \item Replace $Pe$ with $\past \varphi$, replace $Fe$ with $\future \varphi$, and replace $Ne$ with $\varphi$. 
+    % \item And take $\sometimes \varphi \coloneq \past \varphi \vee \varphi \vee \future \varphi$ to read `It is \textit{sometimes} the case that $\varphi$'.
+  \item[\it Inference Rules:] In place of \textbf{P4} we may maintain $\varphi \vdash \past\future\varphi \wedge \future\past\varphi$. 
+    \item Also have $\past \varphi \vdash \future\past \varphi \wedge \past\future \varphi$ and $\future \varphi \vdash \past\future \varphi \wedge \future\past \varphi$.
+    \item And $\future \varphi \dashv\vdash \future\future \varphi$ and $\past \varphi \dashv\vdash \past\past \varphi$.
+  \item[\it Operators:] To say $\past\varphi$, $\past\future\varphi$, etc., is not to say that an event $e$ has some property. 
+    \item Thus we need not say that $Fe$ at a past time, nor $Pe$ at a future time. 
+    \item No contradiction arises.
+  \item[\it Semantics:] Given a strict total ordering $\tuple{T,<}$ of \textit{times} where $x,y \in T$, consider:
+    % \item $x \vDash p_i$ \textit{iff} $x \in |p_i|$. 
+    \item $x \vDash \past\varphi$ \textit{iff} $y \vDash \varphi$ for some $y < x$.
+    \item $x \vDash \future\varphi$ \textit{iff} $y \vDash \varphi$ for some $y > x$.
+  \item[\it Change:] Let `$\odot \varphi$' read `There is a change as to whether it is the case that $\varphi$'.
+    \item $\sometimes \varphi \coloneq \past \varphi \vee \varphi \vee \future \varphi$ expresses that it is \textit{sometimes} the case that $\varphi$.
+    % \item $\always \varphi \coloneq \neg \sometimes \neg \varphi$ expresses that it is \textit{always} the case that $\varphi$.
+    \item $\odot \varphi \coloneq \sometimes \varphi \wedge \sometimes \neg \varphi$ expresses that things change (compare \textbf{P1}).
+    % \item $\odot \varphi \coloneq \neg \varphi \wedge (\past \varphi \vee \future \varphi)$.
+  % \item[\it Flow:] Perhaps we can even say that change is constant.
+  %   \item For any times $x < y$, there is some 
+\end{itemize}
+
+
+
+
+\section*{Does Time Flow?}
+
+\begin{itemize}
+  \item[\it Objection:] The tense semantics does not capture the sense in which time flows.
+    \item Suppose that $n \vDash \varphi \wedge \past\future\varphi \wedge \future\past\varphi$ where $n$ is the present time. 
+    \item So $x \vDash \future\varphi$ and $y \vDash \past\varphi$ for some $x < n < y$.
+    \item But these claims are permanent, i.e., they never change.
+  \item[\it Impermenance:] The metalinguistic claims about our language need not change. %Unless we are doing semantics, what we assert are $\varphi, \future\varphi, \past\future\varphi,\ldots$
+    \item What changes are the claims made in the object language.
+    \item Letting $\always\varphi \coloneq \neg\sometimes\neg\varphi$, one might claim $\always\exists p(p \wedge \neg\past p \wedge \neg\future p)$.
+    \item Or consider the more radical claim $\always\forall p(p \rightarrow \neg\past p \wedge \neg\future p)$.
+  \item[\it Space:] It would seem something similar may be said about space.
+    \item Consider the poker where every point along it has a temperature.
+    \item Let `$L\varphi$' and `$R\varphi$' read: `To the left $\varphi$' and `To the right $\varphi$'.
+    \item If $0 \vDash 20^\circ$, then $-5 \vDash R20^\circ$ and $5 \vDash L20^\circ$. 
+    \item Thus we have not captured the difference between time and space.
+  \item[\it Present:] Whereas space has no privileged center, time has a privileged present.
+    \item The present is what obtains, or perhaps all that exists.
+    \item Maybe the past also has a privileged status, and is always growing.
+    % \item But we can't say of any time or event that it has the properties $P,N,F$.
+\end{itemize}
+
+\end{document}
+
+
+

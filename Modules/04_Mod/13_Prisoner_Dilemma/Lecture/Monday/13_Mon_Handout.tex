@@ -1,0 +1,205 @@
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % for adding extra padding to rows
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{enumitem} %%Enables control over enumerate and itemize environments
+\usepackage{setspace}
+\usepackage{amssymb, amsmath, mathrsfs,mathabx} %%Math packages
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{multicol} 
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{array}
+\usepackage{bibentry}
+\usepackage{prooftrees} 
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep=}
+% \usepackage{fitchproof} 
+
+% \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{txsyc}{bx}{n}
+\DeclareFontSubstitution{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\boxright}{\mathrel}{symbolsC}{"80}
+\DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{"91}
+\DeclareMathSymbol{\diamondright}{\mathrel}{symbolsC}{"84}
+\DeclareMathSymbol{\medcirc}{\mathrel}{symbolsC}{"07}
+
+\newcommand{\tuple}[1]{\langle#1\rangle} %%Angle brackets
+\newcommand{\corner}[1]{\ulcorner#1\urcorner} %%Angle brackets
+\newcommand{\set}[1]{\lbrace#1\rbrace} %%Set brackets
+\newcommand{\abs}[1]{|#1|} %%Set brackets
+\newcommand{\interpret}[1]{\llbracket#1\rrbracket} %%Double brackets
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathfrak{B}}
+\renewcommand{\max}[1]{\texttt{max}\set{#1}}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\past}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \hspace{.4pt}\textsc{p}}}}}
+
+\newcommand{\Past}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{p}}}}}
+
+\newcommand{\future}{\mathpalette\superimpose{{\Diamond}{\raisebox{1.5pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\Future}{\mathpalette\superimpose{{\Box}{\raisebox{1.2pt}{\tiny \textsc{f}}}}}
+
+\newcommand{\always}{\ensuremath \raisebox{1.3pt}{\rotatebox[origin=c]{180}{$\triangle$}}}
+
+\newcommand{\sometimes}{\ensuremath \raisebox{-1.3pt}{$\triangle$}}
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{10pt} % Some vertical space between the title and author name
+
+{\@author} % Author name
+\\\@date % Date
+
+\vspace{-10pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Prisoners' Dilemma}} % Subtitle
+
+\author{\textsc{Paradox and Infinity}\\ \em Benjamin Brast-McKie} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+\thispagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+
+\section*{Two Prisoners}
+
+\begin{itemize}
+  \item[\it Setup:] Two separated prisoners are each offered \$1,000. They will be given an additional \$1,000,000 \textit{iff} the other prisoner does not take the \$1,000.
+    % \item Prisoner $A$ gets \$1,000,000 \textit{iff} prisoner $B$ does not take the \$1,000. 
+    \item The prisoners' choices are causally independent.
+    \item $P(\texttt{Take}_A \boxright \texttt{Take}_B) = P(\neg \texttt{Take}_A \boxright \texttt{Take}_B) = P(\texttt{Take}_B)$.
+    \item $P(\texttt{Take}_A \boxright \neg \texttt{Take}_B) = P(\neg \texttt{Take}_A \boxright \neg \texttt{Take}_B) = P(\neg \texttt{Take}_B)$.
+    \item We know that $P(\neg \texttt{Take}_B) = 1 - P(\texttt{Take}_B)$, but don't know $P(\texttt{Take}_B)$.
+    \item Something similar may be said swapping `$A$' and `$B$' above.
+    \item The prisoner's know everything except for the other's choice.
+    \item What is it rational for prisoner $A$ (similarly $B$) to do?
+  \item[\it Dominant:] Taking the \$1,000 is a \textit{dominant strategy} for prisoner $A$ (similarly $B$).
+    \item Whether \texttt{Take}$_B$ or not, $v(\texttt{Take}_A) > v(\neg\texttt{Take}_A)$ for prisoner $A$.
+    % \item Would it matter if prisoner $A$ knew the probability $P(\texttt{Take}_B)$?
+    \item We get the following alternatives:
+  \vspace{-.25in}
+  \begin{center} \begin{tabular}{>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5cm}|}
+         & $\texttt{Take}_B$ & $\neg \texttt{Take}_B$ \\
+      \hline
+      $\texttt{Take}_A$ & $(A, B: \$1,000)$ & $(A: \$1,001,000)$, $(B: \$0)$ \\
+      \hline
+      $\neg \texttt{Take}_A$ & $(A: \$0)$, $(B: \$1,001,000)$ & $(A, B: \$1,000,000)$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+    \item The setup assumes that neither prisoner cares about the other.
+    \item If the prisoners cared about each other, that would be a different case.
+  \item[\it Predictor:] Given the circumstances, each prisoner is a good predictor of the other.
+    \item $\texttt{Take}_A$ predicts that $\texttt{Take}_B$, i.e., $P(\texttt{Take}_B\ |\ \texttt{Take}_A)$ is high.
+    \item Thus $P(\neg \texttt{Rich}_A\ |\ \texttt{Take}_A)$ is high since $\texttt{Take}_B$ \textit{iff} $\neg \texttt{Rich}_A$.
+    \item So if $\texttt{Take}_A$, then prisoner $A$ has good reason to bet $\neg \texttt{Rich}_A$.
+    \item We don't know what the probabilities $P(\texttt{Take}_A)$ or $P(\texttt{Take}_B)$.
+    \item Does $\neg \texttt{Take}_A$ change the probability $P(\neg \texttt{Take}_B) = P(\texttt{Rich}_A)$?
+  \item[\it Newcomb:] $\texttt{Rich}_A$ \textit{iff} it is predicted that $\neg \texttt{Take}_A$ (by $\neg \texttt{Take}_B$). 
+    \item $\neg \texttt{Take}_B$ is a \textit{prediction instance} (a way of predicting $\neg \texttt{Take}_A$).
+    \item The predication amounts to probabilistic dependence (not causal).
+    \item When the prediction happens does not matter to the case.
+    \item Is the prisoners' dilemma a Newcomp problem?
+\end{itemize}
+
+
+
+
+
+
+\section*{Dominance Calculations}
+
+\begin{itemize}
+  \item[\it Expected Causal Utility:] Recall that: (a) $\texttt{Rich}_A$ \textit{iff} $\neg \texttt{Take}_B$; and (b) $\texttt{Rich}_B$ \textit{iff} $\neg \texttt{Take}_A$.
+    % \item Thus $P(\texttt{Take}_A \boxright \texttt{Rich}_A) = P(\texttt{Take}_A \boxright \neg \texttt{Take}_B) = P(\neg \texttt{Take}_B)$.
+    % \item Similarly, $P(\texttt{Take}_A \boxright \neg \texttt{Rich}_A) = P(\texttt{Take}_A \boxright \texttt{Take}_B) = P(\texttt{Take}_B)$. 
+    % \item Lastly, $P(\neg \texttt{Take}_A \boxright \texttt{Rich}_A) = P(\neg \texttt{Take}_A \boxright \neg \texttt{Take}_B) = P(\neg \texttt{Take}_B)$.
+    \item What are the \textit{expected causal utilities} of $\texttt{Take}_A$ and $\neg \texttt{Take}_A$? 
+    \item \mbox{$ECU(\neg \texttt{Take}_A) = \$1,000,000\times P(\neg \texttt{Take}_A \boxright \texttt{Rich}_A) + \$0\times P(\neg \texttt{Take}_A \boxright \neg \texttt{Rich}_A)$}
+    \item[] \hspace{.99in} $= \$1,000,000\times P(\neg \texttt{Take}_B)$ by (a).
+    \item \mbox{$ECU(\texttt{Take}_A) = \$1,001,000\times P(\texttt{Take}_A \boxright \texttt{Rich}_A) + \$1,000\times P(\texttt{Take}_A \boxright \neg \texttt{Rich}_A)$.}
+    \item[] \hspace{.87in} \mbox{$= \$1,001,000\times P(\neg \texttt{Take}_B) + \$1,000\times P(\texttt{Take}_B)$ by (a).}
+    \item[] \hspace{.87in} $= \$1,001,000\times P(\neg \texttt{Take}_B) + \$1,000\times (1 - P(\neg \texttt{Take}_B))$.
+    % \item[] \hspace{.87in} $= \$1,001,000\times P(\neg \texttt{Take}_B) - \$1,000\times P(\neg \texttt{Take}_B) + (\$1,000$.
+    \item[] \hspace{.87in} $= \$1,000,000\times P(\neg \texttt{Take}_B) + \$1,000$.
+    \item[] \hspace{.87in} $= ECU(\neg \texttt{Take}_A) + \$1,000$.
+    \item Taking the money is better for prisoner $A$ (and similarly for $B$).
+\end{itemize}
+
+
+
+
+\section*{Accuracy}
+
+\begin{itemize}
+  \item[\it Clash:] The predication does not have to be very accurate for the expected utility calculation to clash with causal expected utility (i.e. $> .5005$).
+    \item Suppose $P(\texttt{Take}_B\ |\ \texttt{Take}_A) = P(\neg \texttt{Take}_B\ |\ \neg \texttt{Take}_A) = .5006$.
+    % \item Similarly $P(\texttt{Rich}_A\ |\ \texttt{Take}_A) = .5006$, so $P(\neg \texttt{Rich}_A\ |\ \neg\texttt{Take}_A) = .4994$.
+    \item So $P(\texttt{Rich}_A\ |\ \neg \texttt{Take}_A) = P(\neg \texttt{Take}_B\ |\ \neg \texttt{Take}_A) = .5006$.
+    \item \mbox{And $P(\texttt{Rich}_A\ |\ \texttt{Take}_A) = P(\neg \texttt{Take}_B\ |\ \texttt{Take}_A) = 1 - P(\texttt{Take}_B\ |\ \texttt{Take}_A) = .4994$.}
+    % \item $P(\texttt{Rich}_A\ |\ \neg \texttt{Take}_A) = P(\neg \texttt{Rich}_A\ |\ \texttt{Take}_A)$ and $P(\neg \texttt{Rich}_A\ |\ \texttt{Take}_A) = P(\texttt{Rich}_A\ |\ \neg \texttt{Take}_A)$.
+    \item $EV(\neg \texttt{Take}_A) = \$1,000,000\times P(\texttt{Rich}_A\ |\ \neg\texttt{Take}_A) + \$0\times P(\neg \texttt{Rich}_A\ |\ \neg \texttt{Take}_A)$
+    \item[] \hspace{.88in} $= \$1,000,000\times P(\texttt{Rich}_A\ |\ \neg\texttt{Take}_A)$
+    \item[] \hspace{.88in} $= \$500,600$.
+    \item $EV(\texttt{Take}_A) = \$1,001,000\times P(\texttt{Rich}_A\ |\ \texttt{Take}_A) + \$1,000\times P(\neg \texttt{Rich}_A\ |\ \texttt{Take}_A)$
+    \item[] \hspace{.76in} $= \$1,000,000\times P(\texttt{Rich}_A\ |\ \texttt{Take}_A) + \$1,000$
+    \item[] \hspace{.76in} $= \$500,400$.
+    \item Even if prisoner $A$ is an inaccurate predictor of prisoner $B$, the expected utility and expected causal utility calculations are bound to come apart.
+\end{itemize}
+
+
+
+\section*{Upshot}
+
+\begin{itemize}
+  \item[\it Common:] Newcomb's problem is fanciful, but prisoners' dilemmas are common.
+    \item Prisoners' dilemmas support \textit{causal decision theory} on their own.
+    \item No need to appeal to Newcomb cases to motivate CDT.
+  \item[\it Comparison:] Should a oneboxer also avoid taking the money?
+    \item Does comparing the cases put any pressure on the oneboxer to twobox?
+\end{itemize}
+
+
+
+\end{document}
+
+
+
