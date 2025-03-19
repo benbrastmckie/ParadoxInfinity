@@ -1,44 +1,5 @@
 # TODO
 
-- [x] Week 1
-  - [x] Wednesday lecture
-  - [x] Monday lecture
-  - [x] canvas module
-    - [x] problem set
-    - [x] quiz
-    - [x] announcements
-  - [x] extra
-    - [x] CSB theorem
-  - [x] TA meeting
-- [x] Week 2
-  - [x] Monday lecture
-    - [x] take notes
-    - [x] outline
-    - [x] handout
-  - [x] Wednesday lecture
-  - [x] canvas module
-    - [x] problem set
-    - [x] quiz
-    - [x] announcements
-  - [x] TA meeting
-- [x] Week 3
-  - [x] reading
-  - [x] canvas module
-  - [x] Monday lecture
-  - [x] Wednesday lecture
-  - [x] TA meeting
-- [.] Week 4
-  - [x] reading
-  - [x] plan response
-  - [x] Monday lecture
-  - [x] canvas module
-  - [ ] Wednesday lecture
-  - [ ] TA meeting
-- [ ] Week 5
-  - [ ] reading
-  - [ ] plan response
-  - [ ] Monday lecture
-  - [ ] canvas module
-  - [ ] Wednesday lecture
-  - [ ] TA meeting
-  - [ ] logic primer
+- expand first two modules to cover the full term
+- consolidate assets
+- add readme

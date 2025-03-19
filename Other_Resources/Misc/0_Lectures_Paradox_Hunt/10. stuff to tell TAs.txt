@@ -1,8 +1,0 @@
-tell TAs that for 1d if someone builds in that the two numbers on either side are distinct, then accept that: forall x forall y exists z (if not(x=z) then (  ( & ) v ( & ) ) 
-
-and for 1a, fine to use divisibility predicate: 19 | x_i 
-
-and emphasize that fine if students don't use x_1 notation for everything. e.g. can use a's, b's, c
-
-
-clarify that `provable' does not involve truth. purely syntactic. just derivable. 
