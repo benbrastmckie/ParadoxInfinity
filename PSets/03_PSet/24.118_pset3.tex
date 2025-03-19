@@ -33,7 +33,6 @@
 \item 
 \question{  Lazy wants to run from \(A\) to \(B\), but he likes to take one-second breaks. He first stops halfway between \(A\) and \(B\) and takes a one-second break. He then stops halfway between that point and \(B\) and takes a one-second break, and so on. (More generally: for each  $k \geq 1$, Lazy takes a break at a distance of $(B-A)/2^k$ from $B$.) Assume that the traveling itself takes Lazy no time at all. Is there a positive integer \(n\) such that after \(n\) seconds Lazy has reached point \(B\)? If so, what is it? (10 points)}
 
-\answer{No, there is no such positive integer \(n\). For suppose otherwise. Then there is some positive integer \(n\) such that Lazy will have reached \(B\) after \(n\) seconds. But that means she must have taken no more than \(n\) breaks. But after \(n\) breaks she will be at a distance from \(B\) of \((1/2^n)\) the distance between \(B\) and \(A\). So if Lazy takes no more than \(n\) breaks, then she cannot be any closer to \(B\) than \((1/2^n)\) the distance between \(B\) and \(A\).}
 
 \item \question{
 
@@ -53,11 +52,9 @@ As soon as they each see the color of the other's hat (but not the color of thei
 \item \question{Find a strategy that the prisoners can agree upon ahead of time which guarantees
 that they are both set free.  Make sure your strategy is \emph{deterministic}: it must determine a definite outcome for each prisoner, given the prisoner's situation at the time of his decision. (8 points)}
 
-\answer{Here's a strategy that guarantees success: Prisoner 1 picks the color of the other prisoner's hat; Prisoner 2 picks the color opposite to that of the other prisoner's hat.}
 
 \item \question{Given that the prisoners have no access to information about the color of their own hats, and that the colors were chosen using independent coin tosses, what explains the possibility of a deterministic strategy that brings the prisoners' chance of freedom above 50\%? (12 points)}
 
-\answer{The probability that a given prisoner answers correctly is no better than 50\%. (In fact, it is exactly 50\%.) But the strategy above guarantees that the prisoners' answers are \emph{coordinated}, so that one of them is right if and only if the other one is wrong. That's why the group's probability of success can go up to 1 even if the probability that each prisoner answers correctly is stuck at 50\%.}
 
 \end{enumerate}
 
@@ -70,26 +67,15 @@ For each of the scenarios below, determine whether one can settle the question o
 
 \item  \question{Ten islanders, \(S_0, S_1, \ldots, S_{9}\), are lined up. \(S_0\) is at the back; in front of her is \(S_1\); in front of him is \(S_2\); and so on. Each islander says: ``There is at least one person in front of me, and everyone in front of me is a knave.''  (10~points)}
 
-\answer{  \(S_0\) is a knave. We know that \(S_9\) doesn't have anyone in front of her. So, \(S_9\) is lying---so \(S_9\) is a knave. So \(S_8\) speaks truly when he says, ``There is at least one person in front of me, and everyone in front of me is a knave." Since \(S_8\) is telling the truth, \(S_8\) must be a knight. But then we know that everyone else---\(S_7\), \(S_6\), \dots and \(S_0\)---are lying when they say ``There is at least one person in front of me, and everyone in front of me is a knave," since in front of all of them is one person who isn't a knave. Since \(S_0\) is lying, \(S_0\) is a knave.  }
  
 \item   \question{An $\omega$-sequence of islanders,  \(S_0, S_1, S_2, \ldots\), are lined up.  \(S_0\) is still at the back of the line; in front of her is \(S_1\); in front of him is \(S_2\), and so on. Each islander says: 
 ``There is at least one person in front of me, and everyone in front of me is a knave.'' \textit{You may go over the word limit here}! (14~points)}
 
-\answer{There is no coherent assignment of knight or knave status to \(S_0\). This problem is just Yablo's Paradox in disguise: it's just that we have island inhabitants instead of sentences.
-      To see that no coherent assignment of knight or knave status is possible for \(S_0\), we will proceed by \emph{reductio}. We will first consider the assumption that \(S_0\) is a knight, and show that it leads to contradiction. We will then consider the assumption that \(S_0\) is a knave, and show that it too leads to contradiction.
-      Suppose, first, that \(S_0\) is a knight. Then what she says is true. So it is true that there is at least one person in front of \(S_0\), and that everyone in front of her is a knave. That means, in particular, that \(S_1\) is a knave. So everything \(S_1\) says is false. So it is false that there is at least one person in front of \(S_1\) and that everyone in front of \(S_1\) is a knave. But since there are, in fact, people in front of \(S_1\), the only way for this to be false is for there to be some knight in front of \(S_0\), which contradicts the hypothesis that everything \(S_0\) says is true.
-      Now suppose that \(S_0\) is a knave. Then what she says is false. So it is false that there is at least one person in front of \(S_0\) and that everyone in front of \(S_0\) is a knave. Since there are, in fact, people in front of \(S_0\), the only way for this to be false is for there to be some knight in front of \(S_0\). Say that that knight is \(S_k\). The same reasoning we used above to show that \(S_0\) cannot be a knight can be used to show that \(S_k\) cannot be a knight.
-}
   
   
 
 \item \question{As in the previous case, but this time each islander says: ``There is at least one person in front of me, and everyone in front of me is a knight.'' (14~points)}
 
-\answer{It is consistent with the description of the problem that \(S_0\) be a knight, and consistent with the problem that \(S_0\) be a knave. 
-
-It is consistent with the problem that everyone be a knight (and therefore that \(S_0\) be a knight). To see this, suppose that everyone is, indeed, a knight. Then for, any \(S_k\), it is true that there is at least one person in front of \(S_k\), and that everyone in front of \(S_k\) is a knight. So what \(S_k\) says is true. So \(S_k\) is indeed a knight. This means that our hypothesis that everyone is a knight is consistent with the description of the problem
- 
- It is also consistent with the problem that everyone be a knave (and therefore that \(S_0\) be a knave). To see this, suppose that everyone is, indeed, a knave. Then for, any \(S_k\), it is false that everyone in front of \(S_k\) is a knight (and therefore false that there is at least one person in front of \(S_k\), \emph{and} that everyone in front of \(S_k\) is a knight). So what \(S_k\) says is false. So \(S_k\) is indeed a knave. This means that our hypothesis that everyone is a knave is consistent with the description of the problem}
 
 
 \end{enumerate}
@@ -117,10 +103,6 @@ There are countably many assassins ready to kill Oscar, should he attempt to ent
 All assassins kill instantly if they kill at all. On the assumption that Oscar can only die if he's killed by someone, is it possible for him to cross the threshold? Possible for him to cross the threshold and remain alive? If not, what stops him?  (10 points; don't forget about the word limit.)
 %}
 
-\answer{What I'm looking for here is some awareness of the fact that the situation is paradoxical. An especially good answer would suggest a sensible way out of the paradox. (It might say, for example, that in any world with the relevant setup Oscar fails to enter the room, and therefore that it is impossible for him to enter the room given the setup.)}
-}
-
-
 \item \question{The following questions are intended to test your understanding of continuity assumptions. At least one of them might get into ``murky'' territory. If you think there is a \textit{determinate way} the wheel will look or direction a line will point, explain why. \\ If instead you think that the way the wheel will look or where a line will point is \textit{undetermined} by the scenario described, explain why.}
 
 %They may or may not have determinate answers. (If you think a question has a determinate answer, make sure you explain why. If you think it doesn't, make sure you explain why not.)}%\footnote{Rayo was told that the underlying puzzle was created by Frank Arntzenius's daughter, when she was very little.}
@@ -145,7 +127,6 @@ Suppose you perform this operation infinitely many times, once for each positive
 
 \textbf{Question}: in which direction will the red line be pointing at 1pm? Don't forget to justify your answer. (10 points)}
 
-\answer{The answer is not determined by the description of the problem.}
 
 
 \item \question{
@@ -169,14 +150,12 @@ Suppose that you rotate the wheel infinitely many times, once for each positive 
 }
 
 
-\answer{One excellent answer is to say that the wheel looks exactly the way it did before you started rotating. (Some students might add that the description of the problem doesn't settle the wheel's orientation, but failure to do so shouldn't be penalized.)}
 
 
 \item \question{Suppose you start by drawing lines on the wheel as in part (b). But this time you perform no rotations. Instead, you \emph{erase} red lines using the following procedure. At 1:00pm you erase the red line pointing to the twelve o'clock position. At 1:30 you erase the line pointing one radian in the clockwise direction from the last line erased. And so forth: for each $n \geq 1$, you erase the line one radian away in the clockwise direction from the last line erased.
 
 \textbf{Question}: Is there a difference between the way our wheel looks at 2pm and the way the wheel in the previous exercise looked at 2pm? Assume that the only way for an erased line to reappear is for someone to redraw it. (10~points)}
 
-\answer{Yes, there is a difference. In the case in which you erase lines, the wheel will be completely unmarked at 2pm.}
 
 
 \end{enumerate}

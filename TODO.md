@@ -2,4 +2,7 @@
 
 - expand first two modules to cover the full term
 - consolidate assets
-- add readme
+- improve problem sets and answers
+- integrate resources from previous years
+- clean up latex styling
+  - add assets sty files to be used throughout
