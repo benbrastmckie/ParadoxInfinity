@@ -7,7 +7,6 @@ This repository was created for the course _Paradox and Infinity_ (24.118) at MI
 - **Problem Sets**: Course problem sets
 - **Response Sets**: Reading response sets
 - **Essay assignments**: Two essay assignments
-- **Final Exam**: Final essay exam
 - **Resources**: Additional learning resources and references
 
 All materials are organized by topic following the course structure outlined below.
