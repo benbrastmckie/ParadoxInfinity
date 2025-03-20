@@ -1,7 +1,7 @@
 # TODO
 
 - expand first two modules to cover the full term
-  - see the [NOTES.md]()
+  - see the [NOTES.md](https://github.com/benbrastmckie/ParadoxInfinity/blob/master/NOTES.md)
 - consolidate assets
 - improve problem sets and answers
 - integrate resources from previous years
