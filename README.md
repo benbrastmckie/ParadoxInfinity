@@ -4,10 +4,9 @@ This repository was created for the course _Paradox and Infinity_ (24.118) at MI
 
 - **Syllabus**: Complete course [syllabus](https://github.com/benbrastmckie/ParadoxInfinity/blob/master/Syllabus/Syllabus.pdf) with detailed policies and requirements
 - **Lecture Notes**: [Handouts](https://github.com/benbrastmckie/ParadoxInfinity/blob/master/Handouts/All_Handouts.pdf) for the lectures
-- **Problem Sets**: Course problem sets
-- **Response Sets**: Reading response sets
-- **Essay assignments**: Two essay assignments
-- **Resources**: Additional learning resources and references
+- **Problem Sets**: Course [problem sets](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/problem_sets)
+- **Response Sets**: Reading [response sets](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/response_sets)
+- **Essay assignments**: Two [essay assignments](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/essays)
 
 All materials are organized by topic following the course structure outlined below.
 
