@@ -15,20 +15,6 @@ All materials are organized by topic following the course structure outlined bel
 This course covers important paradoxes from technical topics in philosophy, with a focus on infinity and the theories these paradoxes have inspired.
 The course progresses through paradoxes of the infinite, time travel paradoxes, and decision theoretic paradoxes.
 
-### Course Details
-
-- **Instructor**: Benjamin Brast-McKie (brastmck@mit.edu)
-- **Term**: Spring 2024
-- **Schedule**: Mon & Wed 10-11am in 32-141
-- **Prerequisites**: Recommended: 6.100A, 18.01
-- **Office Hours**: Mon & Wed 11-12pm in 32-D966
-
-### Teaching Assistants
-
-- Bess Ann Rothman (Fri 10am recitation)
-- Katie Zhou (Fri 11am recitation)
-- Kenneth Nathaniel Black (Fri 12pm recitation)
-
 ## Learning Objectives
 
 - Understand what drives the sense of perplexity or clash of intuitions in each paradox
@@ -107,7 +93,7 @@ The course progresses through paradoxes of the infinite, time travel paradoxes, 
 - Laptops and phones are not permitted in lecture
 - Lecture notes will be provided after class
 
-## Support
+### Support
 
 - For disability accommodations, contact Disability and Access Services (das-student@mit.edu)
 - Course discussion forum available on Piazza: [https://piazza.com/mit/spring2024/24118](https://piazza.com/mit/spring2024/24118)
