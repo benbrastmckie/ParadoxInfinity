@@ -1,0 +1,119 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{../../assets/styles/rset_2024}
+\usepackage{bibentry}
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+
+%%% CITATIONS %%%
+% \usepackage{bibentry} %%Replace \bibliography{} with \nobibliography{} for no bib
+\usepackage[round]{natbib} %%Or change 'round' to 'square' for square backers
+\setcitestyle{aysep={}}
+ %   \citet{key} ==>>                Jones et al. (1990)
+ %   \citet*{key} ==>>               Jones, Baker, and Smith (1990)
+ %   \citep{key} ==>>                (Jones et al., 1990)
+ %   \citep*{key} ==>>               (Jones, Baker, and Smith, 1990)
+ %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
+ %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
+ %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
+ %   \citeauthor{key} ==>>           Jones et al.
+ %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
+ %   \citeyear{key} ==>>             1990
+\usepackage{etoolbox} %%For \citepos
+\usepackage{xstring} %%For \citepos
+
+\makeatletter %definition of \citepos
+% \patchcmd{\NAT@test}{\else \NAT@nm}{\else \NAT@nmfmt{\NAT@nm}}{}{} %turn on for numeric citations
+\DeclareRobustCommand\citepos% define \citepos
+  {\begingroup
+   \let\NAT@nmfmt\NAT@posfmt% same as for citet except with a different name format
+   \NAT@swafalse\let\NAT@ctype\z@\NAT@partrue
+   \@ifstar{\NAT@fulltrue\NAT@citetp}{\NAT@fullfalse\NAT@citetp}
+  }
+   
+\let\NAT@orig@nmfmt\NAT@nmfmt %makes adapt to last names ending with an 's'.
+\def\NAT@posfmt#1{%
+  \StrRemoveBraces{#1}[\NAT@temp]%
+  \IfEndWith{\NAT@temp}{s}
+    {\NAT@orig@nmfmt{#1'}}
+    {\NAT@orig@nmfmt{#1's}}}
+\makeatother
+
+%Questions and Answers
+\qa{q} % a="answers only"; q ="questions only"; b="both"
+\usepackage{../../assets/styles/qa}
+\usepackage{setspace}
+
+
+    % Given the set of integers $\Z$, suppose one were to identify the \textit{rational numbers} with the ordered pairs $\tuple{x,y}$ for $x,y \in \Z$ where $\tuple{x,y}$ aims to represent the fraction $\frac{x}{y}$. 
+    % This definition has two problems:
+    % (1) we cannot divide by $0$; and
+    % (2) $\frac{1}{2} = \frac{2}{4}$ even though $\tuple{1,2} \neq \tuple{2,4}$.
+    % In order to avoid these problems we may first 
+
+\begin{document}
+
+\psintro{Response Set 5: Newcomb's Problem and the Prisoner's Dilemma}
+
+\newpage
+
+\vspace{.2in}
+
+
+\begin{enumerate}
+
+  \item 
+    \question{
+      Provide a detailed outline of \citepos{Lewis1979a} argument that Newcomb's problem is a prisoner's dilemma.
+      Do you find Lewis' argument convincing?
+      If so, describe what you find convincing, and if not, say why you think the argument fails.
+    }
+    \answer{
+    \item[\tt (A)] 
+      answer
+    }
+
+\item 
+  \question{
+    Explain what Lewis' reasons are for making the following claims.
+    \begin{quote}\singlespacing\small
+      As Newcomb's Problem is usually told, the predictive process involved is extremely reliable.
+      But that is inessential.
+      The disagreement between conceptions of rationality that gives the problem its interest arises even when the reliability of the process, as estimated by the agent, is quite poor-indeed, even when the agent judges that the predictive process will do little better than chance.
+      \hfill(p.~238)
+    \end{quote}
+    Present Lewis' reasoning as clearly and succinctly, commenting on why Lewis makes this point (what role it plays in his argument overall).
+  }
+  \answer{
+    answer
+  }
+
+
+\item
+  \question{
+    In response to \citepos{Lewis1979a} paper, \citet{Bermudez2013} writes the following:
+    \begin{quote}\singlespacing\small
+      What matters in Newcomb’s problem is not simply that there be a two-way dependence between my receiving \$1,000,000 and it being predicted that I not take the \$1,000.
+      That two-way dependence only generates a problem because I know that the contingency holds.
+      \hfill(p.~427)
+    \end{quote}
+    Explain the point that Berm{\'u}dez is making here (and goes on to further elaborates in his paper).
+    Do you find this point convincing?
+  }
+
+\item
+  \question{
+    Berm{\'u}dez concludes by writing:
+    \begin{quote}\singlespacing\small
+      [T]he considerations that Lewis brings to bear to show that the game he starts with is an NP equally show that the game is not a PD.
+      \hfill(p.~428-9)
+    \end{quote}
+    Do you agree?
+    Say why or why not, presenting Berm{\'u}dez's argument in support of your evaluation of his conclusion.
+  }
+
+\end{enumerate}
+
+\vfill
+\bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
+\bibliography{24.118_rset_05} %%bib database found in bib folder, in bibtex folder
+\end{document}
+
