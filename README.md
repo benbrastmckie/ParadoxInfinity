@@ -1,6 +1,6 @@
 # Paradox and Infinity (24.118)
 
-This repository contains materials for the MIT course 24.118: Paradox and Infinity.
+This repository contains materials for the MIT course _24.118: Paradox and Infinity_.
 
 ## Directory Structure
 
@@ -28,7 +28,7 @@ This repository contains materials for the MIT course 24.118: Paradox and Infini
 
 ## Course Overview
 
-This course covers important paradoxes in philosophy, with a focus on infinity and the theories these paradoxes have inspired. The course progresses through paradoxes of the infinite, self-reference, time travel, and decision theory.
+This course covers the paradoxes of the infinite, self-reference, time travel, and decision theory.
 
 ## Course Materials
 
@@ -45,29 +45,29 @@ This course covers important paradoxes in philosophy, with a focus on infinity a
 
 ### Module 1: The Infinite
 
-- Infinite Cardinalities: [Monday](handouts/01_Mon_Handout.pdf) | [Wednesday](handouts/01_Wed_Handout.pdf)
-- The Higher Infinite: [Monday](handouts/02_Mon_Handout.pdf) | [Wednesday](handouts/02_Wed_Handout.pdf)
-- Omega Sequences: [Tuesday](handouts/03_Tue_Handout.pdf) | [Wednesday](handouts/03_Wed_Handout.pdf)
+- Infinite Cardinalities: [Monday](modules/01_mod/01_infinite_cardinalities/lecture/monday/handout/01_Mon_Handout.pdf) | [Wednesday](modules/01_mod/01_infinite_cardinalities/lecture/wednesday/01_Wed_Handout.pdf)
+- The Higher Infinite: [Monday](modules/01_mod/02_higher_infinite/lecture/monday/02_Mon_Handout.pdf) | [Wednesday](modules/01_mod/02_higher_infinite/lecture/wednesday/02_Wed_Handout.pdf)
+- Omega Sequences: [Tuesday](modules/01_mod/03_omega_sequences/lecture/tuesday/03_Tue_Handout.pdf) | [Wednesday](modules/01_mod/03_omega_sequences/lecture/wednesday/03_Wed_Handout.pdf)
 
 ### Module 2: Self-Reference and Set Theory
 
-- Self Reference: [Monday](handouts/04_Mon_Handout.pdf) | [Wednesday](handouts/04_Wed_Handout.pdf)
-- A Theory of Types: [Monday](handouts/05_Mon_Handout.pdf) | [Wednesday](handouts/05_Wed_Handout.pdf)
-- Iterative Conception of Set: [Monday](handouts/06_Mon_Handout.pdf) | [Wednesday](handouts/06_Wed_Handout.pdf)
-- Absolute Generality: [Monday](handouts/07_Mon_Handout.pdf) | [Wednesday](handouts/07_Wed_Handout.pdf)
+- Self Reference: [Monday](modules/02_mod/04_self_reference/lecture/monday/04_Mon_Handout.pdf) | [Wednesday](modules/02_mod/04_self_reference/lecture/wednesday/04_Wed_Handout.pdf)
+- A Theory of Types: [Monday](modules/02_mod/05_type_theory/lecture/monday/05_Mon_Handout.pdf) | [Wednesday](modules/02_mod/05_type_theory/lecture/wednesday/05_Wed_Handout.pdf)
+- Iterative Conception of Set: [Monday](modules/02_mod/06_iterative_set/lecture/monday/06_Mon_Handout.pdf) | [Wednesday](modules/02_mod/06_iterative_set/lecture/wednesday/06_Wed_Handout.pdf)
+- Absolute Generality: [Monday](modules/02_mod/07_absolute_generality/lecture/monday/07_Mon_Handout.pdf) | [Wednesday](modules/02_mod/07_absolute_generality/lecture/wednesday/07_Wed_Handout.pdf)
 
 ### Module 3: Time
 
-- Time Travel Paradoxes: [Monday](handouts/09_Mon_Handout.pdf) | [Wednesday](handouts/09_Wed_Handout.pdf)
-- The Metaphysics of Time: [Monday](handouts/10_Mon_Handout.pdf) | [Wednesday](handouts/10_Wed_Handout.pdf)
-- Time and Change: [Wednesday](handouts/11_Wed_Handout.pdf)
+- Time Travel Paradoxes: [Monday](modules/03_mod/09_time_travel/lecture/monday/09_Mon_Handout.pdf) | [Wednesday](modules/03_mod/09_time_travel/lecture/wednesday/09_Wed_Handout.pdf)
+- The Metaphysics of Time: [Monday](modules/03_mod/10_metaphysics_time/lecture/Monday/10_Mon_Handout.pdf) | [Wednesday](modules/03_mod/10_metaphysics_time/lecture/Wednesday/10_Wed_Handout.pdf)
+- Time and Change: [Wednesday](modules/03_mod/11_change/lecture/11_Wed_Handout.pdf)
 
 ### Module 4: Decision Theory
 
-- Newcomb's Problem: [Monday](handouts/12_Mon_Handout.pdf) | [Wednesday](handouts/12_Wed_Handout.pdf)
-- Prisoners' Dilemma: [Monday](handouts/13_Mon_Handout.pdf) | [Wednesday](handouts/13_Wed_Handout.pdf)
-- Surprise Exam Paradox: [Monday](handouts/14_Mon_Handout.pdf) | [Wednesday](handouts/14_Wed_Handout.pdf)
-- Review: [Monday](handouts/15_Mon_Handout.pdf)
+- Newcomb's Problem: [Monday](modules/04_mod/12_newcomb/lecture/monday/12_Mon_Handout.pdf) | [Wednesday](modules/04_mod/12_newcomb/lecture/wednesday/12_Wed_Handout.pdf)
+- Prisoners' Dilemma: [Monday](modules/04_mod/13_prisoner_dilemma/lecture/monday/13_Mon_Handout.pdf) | [Wednesday](modules/04_mod/13_prisoner_dilemma/lecture/wednesday/13_Wed_Handout.pdf)
+- Surprise Exam Paradox: [Monday](modules/04_mod/14_surprize_exam/lecture/monday/14_Mon_Handout.pdf) | [Wednesday](modules/04_mod/14_surprize_exam/lecture/wednesday/14_Wed_Handout.pdf)
+- Review: [Monday](modules/04_mod/15_final_review/lecture/15_Mon_Handout.pdf)
 
 ## Resources
 
@@ -75,3 +75,10 @@ This course covers important paradoxes in philosophy, with a focus on infinity a
 
 - **Problem Set Template**: [PDF](assets/pset_template/pset_template.pdf) | [TeX](assets/pset_template/pset_template.tex)
 - **Essay Template**: [PDF](assets/essay_template/essay_template.pdf) | [TeX](assets/essay_template/essay_template.tex)
+
+### Scripts
+
+- **[update_handouts.sh](update_handouts.sh)**: Script to collect and combine handouts
+  - Run with `./update_handouts.sh` from the repository root
+  - Copies all handout PDFs from the modules directory to the handouts directory
+  - Creates a combined PDF file (All_Handouts.pdf) containing all handouts
