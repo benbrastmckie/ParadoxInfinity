@@ -1,8 +1,8 @@
 # run with bash to update handouts in Modules directory
 
 # Define the base directory and the target directory
-base_directory="Modules"
-target_directory="Handouts"
+base_directory="modules"
+target_directory="handouts"
 
 # Create the target directory if it doesn't exist
 mkdir -p "$target_directory"

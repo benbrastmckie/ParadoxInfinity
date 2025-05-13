@@ -1,57 +1,81 @@
 # Paradox and Infinity (24.118)
 
-This repository was created for the course _Paradox and Infinity_ (24.118) at MIT and includes the following resources:
+This repository contains materials for the MIT course 24.118: Paradox and Infinity.
 
-- **Syllabus**: Complete course [syllabus](https://github.com/benbrastmckie/ParadoxInfinity/blob/master/Syllabus/Syllabus.pdf) with detailed policies and requirements
-- **Lecture Notes**: [Handouts](https://github.com/benbrastmckie/ParadoxInfinity/blob/master/Handouts/All_Handouts.pdf) for the lectures
-- **Problem Sets**: Course [problem sets](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/problem_sets)
-- **Response Sets**: Reading [response sets](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/response_sets)
-- **Essay assignments**: Two [essay assignments](https://github.com/benbrastmckie/ParadoxInfinity/tree/master/essays)
+## Directory Structure
 
-All materials are organized by topic following the course structure outlined below.
+```
+.
+├── assets/
+│   ├── essay_template/      # LaTeX template for essays
+│   ├── pset_template/       # LaTeX template for problem sets
+│   ├── styles/              # Style files for LaTeX documents
+│   └── images/              # Images used in course materials
+├── essays/                  # Essay assignments
+│   ├── 01_essay/            # First essay
+│   └── 02_essay/            # Second essay
+├── handouts/                # Lecture handouts by week
+├── modules/                 # Course modules with lecture materials
+│   ├── 01_mod/              # Module 1: The Infinite
+│   ├── 02_mod/              # Module 2: Self-Reference and Set Theory
+│   ├── 03_mod/              # Module 3: Time
+│   └── 04_mod/              # Module 4: Decision Theory
+├── problem_sets/            # Problem sets with solutions
+│   └── proof_writing/       # Guide to writing mathematical proofs
+├── response_sets/           # Reading response assignments
+└── syllabus/                # Course syllabus
+```
 
 ## Course Overview
 
-This course covers important paradoxes from technical topics in philosophy, with a focus on infinity and the theories these paradoxes have inspired.
-The course progresses through paradoxes of the infinite, time travel paradoxes, and decision theoretic paradoxes.
+This course covers important paradoxes in philosophy, with a focus on infinity and the theories these paradoxes have inspired. The course progresses through paradoxes of the infinite, self-reference, time travel, and decision theory.
 
-## Learning Objectives
+## Course Materials
 
-- Understand what drives the sense of perplexity or clash of intuitions in each paradox
-- Evaluate the range of responses for each paradox and their advantages/disadvantages
-- Practice close reading of philosophical papers, presenting puzzles, arguments, and lessons in your own words
+- **Syllabus**: [Course syllabus](syllabus/syllabus.pdf) with detailed policies and requirements
+- **Handouts**: [Complete handout collection](handouts/All_Handouts.pdf)
+- **Modules**: [Course modules](modules/README.md) organized by topic
+- **Problem Sets**: [Problem set assignments](problem_sets/README.md)
+- **Response Sets**: [Reading response assignments](response_sets/README.md)
+- **Essay Assignments**:
+  - Essay 1: [PDF](essays/01_essay/01_essay.pdf) | [TeX](essays/01_essay/01_essay.tex)
+  - Essay 2: [PDF](essays/02_essay/02_essay.pdf) | [TeX](essays/02_essay/02_essay.tex)
 
 ## Course Structure
 
-### Main Topics
+### Module 1: The Infinite
 
-1. **Part 1: Cantor's Paradise**
-   - Infinite Cardinalities
-   - The Higher Infinite
-   - Omega Sequences
+- Infinite Cardinalities
+- The Higher Infinite
+- Omega Sequences
 
-2. **Part 2: Paradox in Paradise**
-   - Self Reference
-   - A Theory of Types
-   - Iterative Conception of Set
-   - Absolute Generality
+### Module 2: Self-Reference and Set Theory
 
-3. **Part 3: Time Travel**
-   - Time Travel Paradoxes
-   - The Metaphysics of Time
-   - Time and Change
+- Self Reference
+- A Theory of Types
+- Iterative Conception of Set
+- Absolute Generality
 
-4. **Part 4: Newcomb's Problem**
-   - Newcomb's Problem
-   - Prisoners' Dilemma
-   - Surprise Exam Paradox
+### Module 3: Time
 
-### Required Materials
+- Time Travel Paradoxes
+- The Metaphysics of Time
+- Time and Change
 
-- **Main Textbook**: "On the Brink of Paradox" by Agustín Rayo (2019)
-- Additional readings provided on Canvas
+### Module 4: Decision Theory
 
-## Assessment
+- Newcomb's Problem
+- Prisoners' Dilemma
+- Surprise Exam Paradox
+
+## Resources
+
+### Templates
+
+- **Problem Set Template**: [PDF](assets/pset_template/pset_template.pdf) | [TeX](assets/pset_template/pset_template.tex)
+- **Essay Template**: [PDF](assets/essay_template/essay_template.pdf) | [TeX](assets/essay_template/essay_template.tex)
+
+### Assessment
 
 - Problem Sets (20%) - 4/5 assignments at 5% each
 - Reading Responses (20%) - 4/5 assignments at 5% each
@@ -63,38 +87,13 @@ The course progresses through paradoxes of the infinite, time travel paradoxes, 
 ### Grading Scale
 
 - A+ = 97-100
-- A  = 93-96
+- A = 93-96
 - A- = 90-92
 - B+ = 87-89
-- B  = 83-86
+- B = 83-86
 - B- = 80-82
 - C+ = 77-79
-- C  = 73-76
+- C = 73-76
 - C- = 70-72
-- D  = 60-69
-- F  < 60
-
-## Policies
-
-### Academic Integrity
-
-- Collaboration is encouraged for discussion and preparation
-- All submitted work must be your own
-- Use of ChatGPT or other LLMs is not permitted
-- Clear attribution of sources is required
-
-### Late Work
-
-- Extensions require official support from S³
-- Advance arrangements required except in exceptional circumstances
-
-### Technology
-
-- Laptops and phones are not permitted in lecture
-- Lecture notes will be provided after class
-
-### Support
-
-- For disability accommodations, contact Disability and Access Services (das-student@mit.edu)
-- Course discussion forum available on Piazza: [https://piazza.com/mit/spring2024/24118](https://piazza.com/mit/spring2024/24118)
-
+- D = 60-69
+- F < 60
