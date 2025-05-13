@@ -45,28 +45,29 @@ This course covers important paradoxes in philosophy, with a focus on infinity a
 
 ### Module 1: The Infinite
 
-- Infinite Cardinalities
-- The Higher Infinite
-- Omega Sequences
+- Infinite Cardinalities: [Monday](handouts/01_Mon_Handout.pdf) | [Wednesday](handouts/01_Wed_Handout.pdf)
+- The Higher Infinite: [Monday](handouts/02_Mon_Handout.pdf) | [Wednesday](handouts/02_Wed_Handout.pdf)
+- Omega Sequences: [Tuesday](handouts/03_Tue_Handout.pdf) | [Wednesday](handouts/03_Wed_Handout.pdf)
 
 ### Module 2: Self-Reference and Set Theory
 
-- Self Reference
-- A Theory of Types
-- Iterative Conception of Set
-- Absolute Generality
+- Self Reference: [Monday](handouts/04_Mon_Handout.pdf) | [Wednesday](handouts/04_Wed_Handout.pdf)
+- A Theory of Types: [Monday](handouts/05_Mon_Handout.pdf) | [Wednesday](handouts/05_Wed_Handout.pdf)
+- Iterative Conception of Set: [Monday](handouts/06_Mon_Handout.pdf) | [Wednesday](handouts/06_Wed_Handout.pdf)
+- Absolute Generality: [Monday](handouts/07_Mon_Handout.pdf) | [Wednesday](handouts/07_Wed_Handout.pdf)
 
 ### Module 3: Time
 
-- Time Travel Paradoxes
-- The Metaphysics of Time
-- Time and Change
+- Time Travel Paradoxes: [Monday](handouts/09_Mon_Handout.pdf) | [Wednesday](handouts/09_Wed_Handout.pdf)
+- The Metaphysics of Time: [Monday](handouts/10_Mon_Handout.pdf) | [Wednesday](handouts/10_Wed_Handout.pdf)
+- Time and Change: [Wednesday](handouts/11_Wed_Handout.pdf)
 
 ### Module 4: Decision Theory
 
-- Newcomb's Problem
-- Prisoners' Dilemma
-- Surprise Exam Paradox
+- Newcomb's Problem: [Monday](handouts/12_Mon_Handout.pdf) | [Wednesday](handouts/12_Wed_Handout.pdf)
+- Prisoners' Dilemma: [Monday](handouts/13_Mon_Handout.pdf) | [Wednesday](handouts/13_Wed_Handout.pdf)
+- Surprise Exam Paradox: [Monday](handouts/14_Mon_Handout.pdf) | [Wednesday](handouts/14_Wed_Handout.pdf)
+- Review: [Monday](handouts/15_Mon_Handout.pdf)
 
 ## Resources
 
@@ -74,26 +75,3 @@ This course covers important paradoxes in philosophy, with a focus on infinity a
 
 - **Problem Set Template**: [PDF](assets/pset_template/pset_template.pdf) | [TeX](assets/pset_template/pset_template.tex)
 - **Essay Template**: [PDF](assets/essay_template/essay_template.pdf) | [TeX](assets/essay_template/essay_template.tex)
-
-### Assessment
-
-- Problem Sets (20%) - 4/5 assignments at 5% each
-- Reading Responses (20%) - 4/5 assignments at 5% each
-- Short Essays (20%) - 2 assignments at 10% each
-- Essay Final Exam (10%)
-- Recitation Attendance (24%) - 12/14 meetings at 2% each
-- Pop Quizzes (6%) - 3/4 quizzes at 2% each
-
-### Grading Scale
-
-- A+ = 97-100
-- A = 93-96
-- A- = 90-92
-- B+ = 87-89
-- B = 83-86
-- B- = 80-82
-- C+ = 77-79
-- C = 73-76
-- C- = 70-72
-- D = 60-69
-- F < 60
