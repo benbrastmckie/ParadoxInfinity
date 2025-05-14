@@ -107,8 +107,8 @@
 \section*{Proofs}
 
 A proof is an argument which consists of assumptions often called \textit{premises}, inferences from those premises, and a \textit{conclusion}.
-All arguments aim to provide reasons to believe the conclusion on the basis of believing the premises, though not all arguments are successful, and some arguments are stronger than others.
-Unlike arguments in the law or elsewhere in day-to-day dealings, \textit{proofs} aim to draw an especially strong conclusion between the premises and their conclusion.
+Although all arguments aim to provide reasons to believe the conclusion on the basis of believing the premises, not all arguments are successful, and some arguments are stronger than others.
+Unlike arguments in the law or elsewhere in day-to-day dealings, \textit{proofs} aim to draw an especially strong connections between the premises and their conclusion.
 
 \section*{Common Locutions}
 
@@ -123,25 +123,31 @@ Unlike arguments in the law or elsewhere in day-to-day dealings, \textit{proofs}
 		\item[\sc Since:] Use `Since', `Having already shown that', `Given that', or `Because' to indicate that you are about to restate something that you have already established on a line prior to the previous line to go on to derive some further claim.
 			For instance, we might write `Having already shown that $X$, it follows that $Y$' to indicate that we are drawing on $X$ (perhaps together with the previous line) to conclude that $Y$ is the case.
 		% \item[\sc Know:] Use `We know that' to pick up with some claim which occurs prior to the previous line to continue with that .
-		\item[\sc Cases:] Use `Consider the following cases' or `Either of the following must then hold' before labelling the different possibilities you want to consider in order.
+		\item[\sc Cases:] Use `Consider the following cases' or `Either of the following must then hold' before labeling the different possibilities you want to consider in order.
 			You may then proceed case by case, citing the labels that you have provided.
 			(This is easier to read and write than using columns to consider cases in parallel.)
 		\item[\sc RAA:] Use `Assume for RAA' to indicate that you are assuming the opposite of what you want to show for a \textit{reductio ad absurdum} style proof.
+      Alternatively, you could use `Assume for contradiction' for a similar effect.
+      Then you have to show that the assumption leads to a contradiction, drawing the negation of your assumption as a conclusion
 		\item[\sc $\bot$:] After deriving both $P$, and then at some latter point deriving $\neg P$ (or \textit{vice versa}, you may use `But this contradicts $P$' followed by `$\bot$' as a sentence of its own, or just `$\bot$' when the contradiction is clear.
 		% You may then use `Thus' as below to restate your desired conclusion.
-		\item[\sc But:] Use `But' or `However' to recall some past conclusion which contradicts (perhaps after some further reasoning) the claim just above.
+		\item[\sc But:] Use `But' or `However' to recall some past conclusion which contradicts the claim just above (perhaps after some further reasoning).
 			This is a common devise used in writing RAA proofs.
 		\item[\sc Let:] Use `Let $\alpha$ be an arbitrary $F$', or `Let $\alpha\in X$', or etc., to establish a general claim of the form `All $\alpha$ which are $F$ are also $G$'.
-			After choosing such an arbitrary $\alpha$ which is $F$ (or in $X$, etc.), you should aim to show that $\alpha$ is $G$ before concluding that every $\alpha$ which is $F$ is also $G$.
-		\item[\sc Thus:] Use `Thus', `Therefore', or `We may then conclude that' to mark that your proof is coming to a close with the following claim.
+			After choosing such an arbitrary $\alpha$ which is $F$ (or a member of $X$, etc.), you should aim to show that $\alpha$ is $G$ before concluding that every $\alpha$ which is $F$ is also $G$.
+		\item[\sc Thus:] Use `Thus', `Therefore', or `We may then conclude that' to mark that your proof, or a substantial part of it, is coming to a close.
  	\end{labelalign}
 
-
+\noindent
+Try to divide longer proofs into natural sections in the same way that you might divide an essay into paragraphs.
+It can help a lot to write a quick outline or ``sketch'' of your proof before you try to write it in more careful detail.
+Most hard proofs require more than one version before they make sense and clearly communicate what you aim to establish.
+Much like other writing, proofs require editing.
 
 \vfill
 
 \bibliographystyle{Phil_Review} %%bib style found in bst folder, in bibtex folder, in texmf folder.
-\bibliography{Zotero} %%bib database found in bib folder, in bibtex folder
+\nobibliography{Zotero} %%bib database found in bib folder, in bibtex folder
 
 
 \end{document}
