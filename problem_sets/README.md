@@ -2,8 +2,6 @@
 
 This directory contains problem sets for the MIT course 24.118: Paradox and Infinity.
 
-## Directory Structure
-
 ```bash
 problem_sets/
 ├── 01_pset/
@@ -26,9 +24,7 @@ problem_sets/
     └── proof_writing.tex             # Guide to writing proofs (TeX)
 ```
 
-## Problem Set Files
-
-### Problem Set 1: Infinite Cardinalities
+## Problem Set 1: Infinite Cardinalities
 
 - [Problem Set 1 (PDF)](01_pset/24.118_pset1.pdf) | [(TeX)](01_pset/24.118_pset1.tex)
 
@@ -42,7 +38,7 @@ Topics covered:
 - Infinite trees and paths
 - Cantor's Theorem
 
-### Problem Set 2: The Higher Infinite
+## Problem Set 2: The Higher Infinite
 
 - [Problem Set 2 (PDF)](02_pset/24.118_pset2.pdf) | [(TeX)](02_pset/24.118_pset2.tex)
 
@@ -55,7 +51,7 @@ Topics covered:
 - Transfinite recursion
 - Characterization of well-ordering types
 
-### Problem Set 3: Omega-Sequence Paradoxes
+## Problem Set 3: Omega-Sequence Paradoxes
 
 - [Problem Set 3 (PDF)](03_pset/24.118_pset3.pdf) | [(TeX)](03_pset/24.118_pset3.tex)
 
@@ -68,7 +64,7 @@ Topics covered:
 - Continuity assumptions in infinite processes
 - Philosophical analysis of infinity puzzles
 
-### Problem Set 4: Time Travel
+## Problem Set 4: Time Travel
 
 - [Problem Set 4 (PDF)](04_pset/24.118_pset4.pdf) | [(TeX)](04_pset/24.118_pset4.tex)
 
@@ -80,7 +76,7 @@ Topics covered:
 - Predestination and personal time vs. external time
 - Philosophical implications of time travel
 
-### Problem Set 5: Newcomb's Problem
+## Problem Set 5: Newcomb's Problem
 
 - [Problem Set 5 (PDF)](05_pset/24.118_pset5.pdf) | [(TeX)](05_pset/24.118_pset5.tex)
 
@@ -93,7 +89,7 @@ Topics covered:
 - Decision making with perfect predictors
 - Value of information in decision problems
 
-### Proof Writing Guide
+## Proof Writing Guide
 
 - [Proof Writing Guide (PDF)](proof_writing/proof_writing.pdf) | [(TeX)](proof_writing/proof_writing.tex)
 
