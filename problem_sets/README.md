@@ -4,18 +4,33 @@ This directory contains problem sets for the MIT course 24.118: Paradox and Infi
 
 ## Directory Structure
 
-- `01_pset/`: Problem Set 1 - Infinite Cardinalities
-- `02_pset/`: Problem Set 2 - The Higher Infinite
-- `03_pset/`: Problem Set 3 - Omega-Sequence Paradoxes
-- `04_pset/`: Problem Set 4 - Time Travel
-- `05_pset/`: Problem Set 5 - Newcomb's Problem
-- `proof_writing/`: Guide to writing informal proofs
+```bash
+problem_sets/
+├── 01_pset/
+│   ├── 24.118_pset1.pdf              # Problem Set 1 (PDF)
+│   └── 24.118_pset1.tex              # Problem Set 1 (TeX)
+├── 02_pset/
+│   ├── 24.118_pset2.pdf              # Problem Set 2 (PDF)
+│   └── 24.118_pset2.tex              # Problem Set 2 (TeX)
+├── 03_pset/
+│   ├── 24.118_pset3.pdf              # Problem Set 3 (PDF)
+│   └── 24.118_pset3.tex              # Problem Set 3 (TeX)
+├── 04_pset/
+│   ├── 24.118_pset4.pdf              # Problem Set 4 (PDF)
+│   └── 24.118_pset4.tex              # Problem Set 4 (TeX)
+├── 05_pset/
+│   ├── 24.118_pset5.pdf              # Problem Set 5 (PDF)
+│   └── 24.118_pset5.tex              # Problem Set 5 (TeX)
+└── proof_writing/
+    ├── proof_writing.pdf             # Guide to writing proofs (PDF)
+    └── proof_writing.tex             # Guide to writing proofs (TeX)
+```
 
 ## Problem Set Files
 
 ### Problem Set 1: Infinite Cardinalities
 
-- [Problem Set 1 (PDF)](01_pset/24.118_pset1.pdf) | [Source (TeX)](01_pset/24.118_pset1.tex)
+- [Problem Set 1 (PDF)](01_pset/24.118_pset1.pdf) | [(TeX)](01_pset/24.118_pset1.tex)
 
 Topics covered:
 - Relations (reflexivity, symmetry, transitivity)
@@ -29,7 +44,7 @@ Topics covered:
 
 ### Problem Set 2: The Higher Infinite
 
-- [Problem Set 2 (PDF)](02_pset/24.118_pset2.pdf) | [Source (TeX)](02_pset/24.118_pset2.tex)
+- [Problem Set 2 (PDF)](02_pset/24.118_pset2.pdf) | [(TeX)](02_pset/24.118_pset2.tex)
 
 Topics covered:
 - Power sets
@@ -42,7 +57,7 @@ Topics covered:
 
 ### Problem Set 3: Omega-Sequence Paradoxes
 
-- [Problem Set 3 (PDF)](03_pset/24.118_pset3.pdf) | [Source (TeX)](03_pset/24.118_pset3.tex)
+- [Problem Set 3 (PDF)](03_pset/24.118_pset3.pdf) | [(TeX)](03_pset/24.118_pset3.tex)
 
 Topics covered:
 - Supertasks and infinite sequences
@@ -55,7 +70,7 @@ Topics covered:
 
 ### Problem Set 4: Time Travel
 
-- [Problem Set 4 (PDF)](04_pset/24.118_pset4.pdf) | [Source (TeX)](04_pset/24.118_pset4.tex)
+- [Problem Set 4 (PDF)](04_pset/24.118_pset4.pdf) | [(TeX)](04_pset/24.118_pset4.tex)
 
 Topics covered:
 - Consistent time travel stories
@@ -67,7 +82,7 @@ Topics covered:
 
 ### Problem Set 5: Newcomb's Problem
 
-- [Problem Set 5 (PDF)](05_pset/24.118_pset5.pdf) | [Source (TeX)](05_pset/24.118_pset5.tex)
+- [Problem Set 5 (PDF)](05_pset/24.118_pset5.pdf) | [(TeX)](05_pset/24.118_pset5.tex)
 
 Topics covered:
 - Evidential Decision Theory
@@ -80,7 +95,7 @@ Topics covered:
 
 ### Proof Writing Guide
 
-- [Proof Writing Guide (PDF)](proof_writing/proof_writing.pdf) | [Source (TeX)](proof_writing/proof_writing.tex)
+- [Proof Writing Guide (PDF)](proof_writing/proof_writing.pdf) | [(TeX)](proof_writing/proof_writing.tex)
 
 Topics covered:
 - Informal definition of a proof
